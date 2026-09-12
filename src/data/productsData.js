@@ -10,8 +10,8 @@ export const productsData = [
     detailedDesc:
       "SSPR Resilient Seated Butterfly Valves are designed for shut-off and control applications in a wide range of industrial processes. With a resilient seat design, these valves provide bubble-tight sealing, low operating torque and long service life, making them ideal for water, HVAC, chemical and general industrial applications.",
     tagline: "Reliable Sealing. Superior Performance.",
-    image: "/images/products/butterfly_valve.png",
-    detailMainImage: "/images/products/butterfly-detail.png",
+    image: "/images/products/butterfly_valve_hq.webp",
+    detailMainImage: "/images/products/butterfly_valve_hq.webp",
     thumbnails: [
       "/images/products/butterfly_thumb_1.png",
       "/images/products/butterfly_thumb_2.png",
@@ -85,9 +85,9 @@ export const productsData = [
     detailedDesc:
       "SSPR Sluice Valves are manufactured to withstand high pressures and continuous water handling duties across municipal, industrial and irrigation pipelines. Designed with solid wedge and bronze/gunmetal trims for long-term reliability and zero maintenance.",
     tagline: "Rugged Design. Reliable Isolation.",
-    image: "/images/products/sluice_valve.png",
-    detailMainImage: "/images/products/sluice_valve.png",
-    thumbnails: ["/images/products/sluice_valve.png"],
+    image: "/images/products/sluice_valve_hq.webp",
+    detailMainImage: "/images/products/sluice_valve_hq.webp",
+    thumbnails: ["/images/products/sluice_valve_hq.webp"],
     quickFeatures: [
       { title: "Rigid Construction", desc: "Heavy-duty cast & ductile iron body" },
       { title: "Low Head Loss", desc: "Full-bore unobstructed waterway" },
@@ -153,9 +153,9 @@ export const productsData = [
     detailedDesc:
       "SSPR Non Return / Check Valves are engineered to eliminate hydraulic shock and prevent water hammer in pumping mains. Available in single door swing, multi-door, and dual plate configurations with quick non-slam closure.",
     tagline: "Immediate Response. Zero Backflow.",
-    image: "/images/products/check_valve.png",
-    detailMainImage: "/images/products/check_valve.png",
-    thumbnails: ["/images/products/check_valve.png"],
+    image: "/images/products/check_valve_hq.webp",
+    detailMainImage: "/images/products/check_valve_hq.webp",
+    thumbnails: ["/images/products/check_valve_hq.webp"],
     quickFeatures: [
       { title: "Non-Slam Closure", desc: "Rapid closure prevents damaging water hammer" },
       { title: "Low Cracking Pressure", desc: "Opens fully at low fluid velocity" },
@@ -220,9 +220,9 @@ export const productsData = [
     detailedDesc:
       "SSPR Kinetic and Double Orifice Air Valves ensure continuous pipeline efficiency by discharging trapped air during pipeline filling, releasing small air pockets during normal operation, and drawing in massive air volumes during draining to avoid vacuum collapse.",
     tagline: "Pipeline Protection. Maximum Flow Efficiency.",
-    image: "/images/products/air_valve.png",
-    detailMainImage: "/images/products/air_valve.png",
-    thumbnails: ["/images/products/air_valve.png"],
+    image: "/images/products/air_valve_hq.webp",
+    detailMainImage: "/images/products/air_valve_hq.webp",
+    thumbnails: ["/images/products/air_valve_hq.webp"],
     quickFeatures: [
       { title: "Triple Function", desc: "Air release, vacuum prevention & pressurized degassing" },
       { title: "Non-Clogging Floats", desc: "High-density polymer or SS floats" },

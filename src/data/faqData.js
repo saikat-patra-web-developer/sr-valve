@@ -28,7 +28,7 @@ export const faqData = [
     id: 5,
     question: "What quality certifications and testing standards does SSPR Valve comply with?",
     answer:
-      "Our Howrah manufacturing plant is certified under ISO 9001:2015 (Quality Management), ISO 14001:2015 (Environmental Management), and ISO 45001:2018 (Occupational Health & Safety), with NSIC and MSME registrations. Every valve undergoes 100% hydrostatic and pneumatic pressure testing in accordance with API 598, EN 12266-1, and relevant Indian Standards (IS 14846, IS 5312, IS 14845).",
+      "Our Howrah manufacturing plant is certified under ISO 9001:2015 (Quality Management), ISO 14001:2015 (Environmental Management), and ISO 45001:2018 (Occupational Health & Safety). Every valve undergoes 100% hydrostatic and pneumatic pressure testing in accordance with API 598, EN 12266-1, and relevant Indian Standards (IS 14846, IS 5312, IS 14845).",
   },
   {
     id: 6,

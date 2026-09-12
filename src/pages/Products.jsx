@@ -1,35 +1,11 @@
 import PageHero from '../components/PageHero'
-import React, { useState, useMemo } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { Search, ArrowRight, Droplets, Sprout, Building, Cpu, Landmark, FlaskConical, PhoneCall } from 'lucide-react'
+import { ArrowRight, Droplets, Sprout, Building, Cpu, Landmark, FlaskConical, PhoneCall } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
-import { productsData, productCategories, productApplications } from '../data/productsData'
+import { productsData } from '../data/productsData'
 
 export default function Products({ onOpenQuote }) {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('All Categories')
-  const [selectedApp, setSelectedApp] = useState('All Applications')
-
-  // Filter products dynamically
-  const filteredProducts = useMemo(() => {
-    return productsData.filter((product) => {
-      const matchesSearch =
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.detailedDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.applications.some((app) => app.toLowerCase().includes(searchQuery.toLowerCase()))
-
-      const matchesCategory =
-        selectedCategory === 'All Categories' || product.category === selectedCategory
-
-      const matchesApp =
-        selectedApp === 'All Applications' ||
-        product.applications.some((app) => app.toLowerCase().includes(selectedApp.toLowerCase()))
-
-      return matchesSearch && matchesCategory && matchesApp
-    })
-  }, [searchQuery, selectedCategory, selectedApp])
-
   const industries = [
     {
       icon: <Droplets className="w-6 h-6 text-blue-600" />,
@@ -69,87 +45,7 @@ export default function Products({ onOpenQuote }) {
       {/* 1. HERO BANNER */}
       <PageHero type="products" />
 
-      {/* 2. SEARCH & FILTER BAR */}
-      <section className="bg-white py-6 border-b border-slate-200 shadow-2xs product-filters">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-50 p-4 rounded-md border border-slate-200 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-            
-            {/* Search Input (5 cols) */}
-            <div className="md:col-span-5 relative">
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">
-                Search Products
-              </label>
-              <div className="relative">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                <input
-                  aria-label="Search products"
-                  type="text"
-                  placeholder="Search by product name, keyword or application..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full text-xs pl-9 pr-3 py-2.5 rounded-lg border border-slate-300 bg-white focus:outline-hidden focus:border-[#f37021] focus:ring-1 focus:ring-[#f37021]"
-                />
-              </div>
-            </div>
-
-            {/* Category Filter (3 cols) */}
-            <div className="md:col-span-3">
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">
-                Filter by Product Category
-              </label>
-              <select
-                aria-label="Filter by product category"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full text-xs px-3 py-2.5 rounded-lg border border-slate-300 bg-white focus:outline-hidden focus:border-[#f37021] focus:ring-1 focus:ring-[#f37021]"
-              >
-                {productCategories.map((cat, idx) => (
-                  <option key={idx} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Application Filter (2 cols) */}
-            <div className="md:col-span-2">
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">
-                Filter by Application
-              </label>
-              <select
-                aria-label="Filter by application"
-                value={selectedApp}
-                onChange={(e) => setSelectedApp(e.target.value)}
-                className="w-full text-xs px-3 py-2.5 rounded-lg border border-slate-300 bg-white focus:outline-hidden focus:border-[#f37021] focus:ring-1 focus:ring-[#f37021]"
-              >
-                {productApplications.map((app, idx) => (
-                  <option key={idx} value={app}>
-                    {app}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Action button (2 cols) */}
-            <div className="md:col-span-2 pt-4 md:pt-4">
-              <button
-                onClick={() => {
-                  setSearchQuery('')
-                  setSelectedCategory('All Categories')
-                  setSelectedApp('All Applications')
-                }}
-                className="w-full bg-[#f37021] hover:bg-[#e05f13] text-white text-xs font-bold py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
-              >
-                <Search className="w-3.5 h-3.5" />
-                <span>{searchQuery || selectedCategory !== 'All Categories' || selectedApp !== 'All Applications' ? 'Reset Filters' : 'Search Products'}</span>
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 3. PRODUCT GRID */}
+      {/* PRODUCT GRID */}
       <section className="py-5 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -163,35 +59,18 @@ export default function Products({ onOpenQuote }) {
               </p>
             </div>
             <span className="text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-2xs">
-              Showing {filteredProducts.length} Products
+              Showing {productsData.length} Products
             </span>
           </div>
 
-          {filteredProducts.length === 0 ? (
-            <div className="text-center py-16 bg-white rounded-md border border-slate-200 p-8 space-y-3">
-              <p className="text-base font-bold text-slate-700">No matching valves found</p>
-              <p className="text-xs text-slate-500">Try adjusting your keyword search or category filter criteria.</p>
-              <button
-                onClick={() => {
-                  setSearchQuery('')
-                  setSelectedCategory('All Categories')
-                  setSelectedApp('All Applications')
-                }}
-                className="mt-2 text-xs font-bold text-[#f37021] underline cursor-pointer"
-              >
-                Reset all filters
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {filteredProducts.map((product) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {productsData.map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
                 />
               ))}
-            </div>
-          )}
+          </div>
 
         </div>
       </section>

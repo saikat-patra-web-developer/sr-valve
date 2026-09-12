@@ -27,9 +27,6 @@ export const companyData = {
     { code: "ISO 9001:2015", label: "Valid to 10 June 2027", image: "/images/certifications/badge_iso9001.webp", document: "/downloads/SSPR ISO upto 11.05.2027.pdf" },
     { code: "ISO 14001:2015", label: "Valid to 16 April 2028", image: "/images/certifications/badge_iso14001.webp", document: "/downloads/ISO 14001 - Upto 16.04.2028.pdf" },
     { code: "ISO 45001:2018", label: "Valid to 16 April 2028", image: "/images/certifications/badge_iso45001.webp", document: "/downloads/ISO 45001 - Upto 16.04.2028.pdf" },
-    { code: "MSME", label: "Micro, Small & Medium Enterprises", image: "/images/certifications/badge_msme.png" },
-    { code: "NSIC", label: "ISO 9001 : 2015", image: "/images/certifications/badge_nsic.png" },
-    { code: "Make in India", label: "Proudly Indian", image: "/images/certifications/badge_make_in_india.png" },
   ],
   stats: [
     { value: "15+", label: "Years Experience", sublabel: "Trusted Expertise" },

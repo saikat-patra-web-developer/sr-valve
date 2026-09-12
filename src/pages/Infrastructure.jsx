@@ -17,8 +17,6 @@ INFRASTRUCTURE & MANUFACTURING CAPABILITY BROCHURE
 Manufacturing Plant:
 ONGC Road, Dakshin Jhapordha, Domjur, Howrah - 711405 (West Bengal)
 ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
-NSIC & MSME Registered
-
 PLANT CAPABILITIES & MACHINERY:
 1. CNC & VMC Centers: High precision computerized machining centers for body, disc and flanges.
 2. Heavy Lathes: Boring and facing operations for valves up to DN2400 (96").

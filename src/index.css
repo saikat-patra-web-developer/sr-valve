@@ -9,6 +9,10 @@ a,button,input,select,textarea { outline-offset: 4px; }
 :focus-visible { outline: 2px solid #ff7800; }
 img { max-width: 100%; }
 .site-page { background: #fff; }
+.page-home { display:flex; flex-direction:column; }
+.page-home > .page-hero { order:-3; }
+.page-home > .home-about-section { order:-2; }
+.page-home > .certifications-strip { order:-1; }
 .site-page :is(h1,h2,h3,h4), .clients-section :is(h2,h3), .certifications-strip h3, .infrastructure-strip h2 { color: #0735b9; }
 .site-page :is(h1,h2,h3,h4) { letter-spacing: -.025em; }
 .site-page h2 { line-height: 1.08; }

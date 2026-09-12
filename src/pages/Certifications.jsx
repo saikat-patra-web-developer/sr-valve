@@ -51,45 +51,6 @@ export default function Certifications({ onOpenQuote }) {
         "Zero lost-time injury (LTI) target proactively maintained",
       ],
     },
-    {
-      code: "MSME Registration",
-      title: "Ministry of Micro, Small & Medium Enterprises",
-      scope: "Registered Industrial Manufacturer under the Government of India MSME Development Act.",
-      certifyingBody: "Government of India",
-      validity: "Permanent Registration",
-      image: "/images/certifications/badge_msme.png",
-      keyPoints: [
-        "Recognized vendor for central and state public procurement schemes",
-        "Priority participation in Indian national infrastructure initiatives",
-        "Access to technology upgrade and industrial cluster support programs",
-      ],
-    },
-    {
-      code: "NSIC Registration",
-      title: "National Small Industries Corporation (ISO 9001:2015)",
-      scope: "Government Purchase Enlistment Certificate for Valves and Fluid Control Components.",
-      certifyingBody: "National Small Industries Corporation Ltd (A Govt. of India Enterprise)",
-      validity: "Certified Quality Assured",
-      image: "/images/certifications/badge_nsic.png",
-      keyPoints: [
-        "Verified technical capability and production capacity",
-        "Direct qualification for Indian Railways, Defence, CPWD, and PHED tenders",
-        "Competency certified for heavy mechanical engineering production",
-      ],
-    },
-    {
-      code: "Make in India",
-      title: "Proudly Indian Manufacturing Initiative",
-      scope: "100% Indigenous Design, Foundry Casting, Machining, Assembly and Testing in Howrah, West Bengal.",
-      certifyingBody: "Government of India Initiative",
-      validity: "Indigenous Manufacturer",
-      image: "/images/certifications/badge_make_in_india.png",
-      keyPoints: [
-        "100% domestic value addition strengthening national water security",
-        "Supporting domestic supply chains, foundries and skilled engineers",
-        "Serving flagship missions including Jal Jeevan Mission and AMRUT",
-      ],
-    },
   ]
 
   return (

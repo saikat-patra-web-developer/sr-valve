@@ -9,8 +9,7 @@ import InfrastructureStrip from '../components/InfrastructureStrip'
 import { productsData } from '../data/productsData'
 
 export default function Home({ onOpenQuote }) {
-  // First 8 products for Home page
-  const coreProducts = ['sluice-valve','butterfly-valve','check-valve','air-valve','resilient-gate-valve','knife-gate-valve','penstocks','custom-valves'].map(id => productsData.find(p => p.id === id)).filter(Boolean)
+  const coreProducts = productsData
 
   const whyChooseItems = [
     {
@@ -51,7 +50,7 @@ export default function Home({ onOpenQuote }) {
       {/* 1. HERO SECTION */}
       <PageHero type="home" />
 
-      {/* 2. OUR CORE PRODUCT RANGE (8 CARDS) */}
+      {/* 2. OUR CORE PRODUCT RANGE */}
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -73,11 +72,11 @@ export default function Home({ onOpenQuote }) {
             </Link>
           </div>
 
-          <div className="home-products grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <div className="home-products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {coreProducts.map((product) => (
               <ProductCard
                 key={product.id}
-                product={product} compact
+                product={product}
               />
             ))}
           </div>
@@ -128,7 +127,7 @@ export default function Home({ onOpenQuote }) {
       <ClientsSection subtitle="POWERING NATION BUILDING TOGETHER" />
 
       {/* 5. ABOUT SSPR VALVE SPLIT SECTION */}
-      <section className="py-5 bg-slate-50/50">
+      <section className="home-about-section py-5 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="home-about-panel">
@@ -154,7 +153,7 @@ export default function Home({ onOpenQuote }) {
                     ABOUT SSPR VALVE
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1 leading-tight">
-                    Manufacturing Private Limited
+                    SSPR Valve Manufacturing Private Limited
                   </h3>
                 </div>
 
