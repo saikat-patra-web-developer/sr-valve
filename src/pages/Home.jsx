@@ -1,7 +1,7 @@
 import PageHero from '../components/PageHero'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ShieldCheck, Award, Clock, Wrench, Headphones, CheckCircle2, Check } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Clock, Wrench, Headphones, CheckCircle2, Check } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
@@ -14,33 +14,28 @@ export default function Home({ onOpenQuote }) {
   const whyChooseItems = [
     {
       icon: <Wrench className="w-6 h-6 text-blue-600" />,
-      title: "Precision Engineering",
-      desc: "Designed for superior performance and dimensional fidelity.",
+      title: "In-House Manufacturing",
+      desc: "Complete manufacturing under one roof with advanced machinery, supervised by qualified and experienced engineers.",
     },
     {
       icon: <CheckCircle2 className="w-6 h-6 text-blue-600" />,
-      title: "Quality Testing",
-      desc: "Rigorous hydrostatic & pneumatic quality checks at every stage.",
+      title: "In-House Testing Facility",
+      desc: "Our in-house BIS-approved laboratory tests raw materials and helps us maintain consistent product quality.",
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-blue-600" />,
-      title: "Durable Materials",
-      desc: "Built with certified metallurgy to withstand harsh industrial conditions.",
+      title: "Certified Systems",
+      desc: "Certified to ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018 standards.",
+    },
+    {
+      icon: <Headphones className="w-6 h-6 text-blue-600" />,
+      title: "Customer Support",
+      desc: "Our relationship continues after the sale. Our technical team coordinates with site engineers throughout the project.",
     },
     {
       icon: <Clock className="w-6 h-6 text-blue-600" />,
       title: "On-Time Delivery",
-      desc: "Committed to project timelines with streamlined fabrication.",
-    },
-    {
-      icon: <Headphones className="w-6 h-6 text-blue-600" />,
-      title: "Technical Support",
-      desc: "Expert engineering guidance whenever you need.",
-    },
-    {
-      icon: <Award className="w-6 h-6 text-blue-600" />,
-      title: "Trusted Performance",
-      desc: "Preferred by government departments and leading private EPCs.",
+      desc: "We recognize that dependable, on-time delivery directly supports customer satisfaction and project success.",
     },
   ]
 
@@ -99,7 +94,7 @@ export default function Home({ onOpenQuote }) {
             </div>
           </div>
 
-          <div className="why-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="why-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {whyChooseItems.map((item, idx) => (
               <div
                 key={idx}
