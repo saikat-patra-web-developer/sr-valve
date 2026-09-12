@@ -1,0 +1,249 @@
+import PageHero from '../components/PageHero'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, ShieldCheck, Award, Clock, Wrench, Headphones, CheckCircle2, Check } from 'lucide-react'
+import ProductCard from '../components/ProductCard'
+import ClientsSection from '../components/ClientsSection'
+import CertificationsStrip from '../components/CertificationsStrip'
+import InfrastructureStrip from '../components/InfrastructureStrip'
+import { productsData } from '../data/productsData'
+
+export default function Home({ onOpenQuote }) {
+  // First 8 products for Home page
+  const coreProducts = ['sluice-valve','butterfly-valve','check-valve','air-valve','resilient-gate-valve','knife-gate-valve','penstocks','custom-valves'].map(id => productsData.find(p => p.id === id)).filter(Boolean)
+
+  const whyChooseItems = [
+    {
+      icon: <Wrench className="w-6 h-6 text-blue-600" />,
+      title: "Precision Engineering",
+      desc: "Designed for superior performance and dimensional fidelity.",
+    },
+    {
+      icon: <CheckCircle2 className="w-6 h-6 text-blue-600" />,
+      title: "Quality Testing",
+      desc: "Rigorous hydrostatic & pneumatic quality checks at every stage.",
+    },
+    {
+      icon: <ShieldCheck className="w-6 h-6 text-blue-600" />,
+      title: "Durable Materials",
+      desc: "Built with certified metallurgy to withstand harsh industrial conditions.",
+    },
+    {
+      icon: <Clock className="w-6 h-6 text-blue-600" />,
+      title: "On-Time Delivery",
+      desc: "Committed to project timelines with streamlined fabrication.",
+    },
+    {
+      icon: <Headphones className="w-6 h-6 text-blue-600" />,
+      title: "Technical Support",
+      desc: "Expert engineering guidance whenever you need.",
+    },
+    {
+      icon: <Award className="w-6 h-6 text-blue-600" />,
+      title: "Trusted Performance",
+      desc: "Preferred by government departments and leading private EPCs.",
+    },
+  ]
+
+  return (
+    <div className="site-page page-home">
+      
+      {/* 1. HERO SECTION */}
+      <PageHero type="home" />
+
+      {/* 2. OUR CORE PRODUCT RANGE (8 CARDS) */}
+      <section className="py-5 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-transparent gap-2">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857]">
+                Our Core <span className="text-[#f37021]">Product Range</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+                Robust, Reliable. Built for Real-World Applications.
+              </p>
+            </div>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0d2857] hover:text-[#f37021] transition-colors cursor-pointer"
+            >
+              <span>View All Products</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="home-products grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+            {coreProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product} compact
+              />
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. WHY CHOOSE SSPR VALVE */}
+      <section className="py-5 bg-slate-50 border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-200 gap-2">
+            <div>
+              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
+                ENGINEERING EXCELLENCE IN EVERY FLOW
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
+                Why Choose <span className="text-[#f37021]">SSPR Valve</span>
+              </h2>
+            </div>
+          </div>
+
+          <div className="why-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {whyChooseItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-start gap-2"
+              >
+                <div className="p-2.5 rounded-lg bg-blue-50 shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#0d2857]">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. TRUSTED BY LEADING ORGANIZATIONS */}
+      <ClientsSection subtitle="POWERING NATION BUILDING TOGETHER" />
+
+      {/* 5. ABOUT SSPR VALVE SPLIT SECTION */}
+      <section className="py-5 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="home-about-panel">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              {/* Left: Facility Image (4 cols) */}
+              <div className="lg:col-span-4 relative rounded-md overflow-hidden border border-slate-200 shadow-xs group">
+                <img
+                  src="/images/about/facility_home.png"
+                  alt="Our Facility - Howrah, West Bengal"
+                  className="w-full h-64 sm:h-72 object-cover group-hover:scale-103 transition-transform duration-300"
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 to-transparent p-3 text-white">
+                  <span className="text-[11px] font-bold block">Our Facility</span>
+                  <span className="text-[10px] text-slate-300 block">Howrah, West Bengal</span>
+                </div>
+              </div>
+
+              {/* Middle: Content (5 cols) */}
+              <div className="lg:col-span-5 space-y-4">
+                <div>
+                  <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
+                    ABOUT SSPR VALVE
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1 leading-tight">
+                    Manufacturing Private Limited
+                  </h3>
+                </div>
+
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  We are an experienced manufacturer of industrial valves, penstocks and flow-control products, based in Howrah, West Bengal. With a state-of-the-art manufacturing facility, modern technology and a skilled team, we deliver high-quality, reliable solutions for water treatment, irrigation, desalination, civil construction and sea water applications.
+                </p>
+
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Our commitment to quality, innovation and ethical business practices has made us a trusted partner for government and private projects across India.
+                </p>
+
+                <div className="pt-2">
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center gap-2 bg-[#0d2857] hover:bg-blue-900 text-white text-xs font-bold px-5 py-2.5 rounded-lg shadow-2xs transition-colors cursor-pointer"
+                  >
+                    <span>Know More About Us</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right: Key Highlights (3 cols) */}
+              <div className="lg:col-span-3 bg-slate-50/80 rounded-md p-4 border border-slate-200/80 space-y-3">
+                <h4 className="text-xs font-bold text-[#0d2857] uppercase tracking-wider border-b border-slate-200 pb-2">
+                  Key Strengths
+                </h4>
+                
+                {[
+                  "Modern Manufacturing Facility",
+                  "Advanced Technology & Machinery",
+                  "Skilled & Experienced Team",
+                  "Ethical Business Practices",
+                ].map((highlight, index) => (
+                  <div key={index} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>{highlight}</span>
+                  </div>
+                ))}
+
+                <div className="pt-2 border-t border-slate-200">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase block mb-1">
+                    Serving Critical Sectors
+                  </span>
+                  <p className="text-[11px] text-slate-600 leading-relaxed">
+                    Water Treatment | Irrigation | Desalination | Civil Construction | Sea Water Applications
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. CERTIFICATIONS & REGISTRATIONS */}
+      <CertificationsStrip showQualityBanner={true} />
+
+      {/* 7. OUR INFRASTRUCTURE (4 CARDS) */}
+      <InfrastructureStrip />
+
+      {/* 8. CUSTOM VALVE REQUIREMENT CTA BANNER */}
+      <section className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-1 max-w-xl">
+              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+                Have a Custom Valve Requirement?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-200">
+                Our team is ready to provide the right flow control solution for your project.
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <button
+                onClick={() => onOpenQuote()}
+                className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
+              >
+                <span>Send Enquiry Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  )
+}
+
