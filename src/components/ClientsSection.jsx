@@ -3,6 +3,8 @@ import { clientData } from '../data/clientData'
 import ResponsiveImage from './ResponsiveImage'
 
 export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TOGETHER" }) {
+  const carouselClients = [...clientData, ...clientData]
+
   return (
     <section className="clients-section py-4 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,13 +24,15 @@ export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TO
           </p>
         </div>
 
-        {/* Client Logos Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 items-center">
-          {clientData.map((client) => (
+        {/* Continuously moving client logos: six visible on desktop */}
+        <div className="clients-carousel" aria-label="Client organizations">
+          <div className="clients-carousel-track">
+          {carouselClients.map((client, index) => (
             <div
-              key={client.id}
-              className="group flex flex-col items-center justify-center p-3 rounded-md bg-slate-50/70 hover:bg-white border border-slate-200/70 hover:border-blue-300 hover:shadow-md transition-all duration-200 text-center"
+              key={`${client.id}-${index}`}
+              className="client-carousel-item group flex flex-col items-center justify-center p-3 rounded-md bg-slate-50/70 hover:bg-white border border-slate-200/70 hover:border-blue-300 hover:shadow-md transition-all duration-200 text-center"
               title={`${client.name} (${client.state})`}
+              aria-hidden={index >= clientData.length}
             >
               <div className="w-16 h-16 sm:w-18 sm:h-18 flex items-center justify-center rounded-full bg-white p-1.5 shadow-xs border border-slate-100 group-hover:scale-105 transition-transform">
                 <ResponsiveImage
@@ -47,6 +51,7 @@ export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TO
               </span>
             </div>
           ))}
+          </div>
         </div>
 
       </div>
