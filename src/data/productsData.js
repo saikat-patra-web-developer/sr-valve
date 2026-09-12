@@ -847,8 +847,13 @@ productsData.forEach((product) => {
   if (suppliedCatalog[product.id]) Object.assign(product, suppliedCatalog[product.id])
 })
 
-// Display order follows the product range mockup.
-productsData.sort((a,b) => { const order=['sluice-valve','butterfly-valve','check-valve','air-valve','resilient-gate-valve','knife-gate-valve','penstocks','ball-valve','globe-valve','diaphragm-valve','expansion-joint','custom-valves']; return order.indexOf(a.id)-order.indexOf(b.id) })
+// Only the four product families approved in the supplied Product.xlsx are published.
+const approvedProductOrder = ['sluice-valve', 'butterfly-valve', 'check-valve', 'air-valve']
+productsData.splice(
+  0,
+  productsData.length,
+  ...approvedProductOrder.map((id) => productsData.find((product) => product.id === id)),
+)
 
 export const productCategories = [
   "All Categories",
@@ -856,11 +861,6 @@ export const productCategories = [
   "Butterfly Valves",
   "Check Valves",
   "Air Valves",
-  "Quarter Turn Valves",
-  "Control & Regulating",
-  "Corrosion Resistant",
-  "Specialized Equipment",
-  "Piping Accessories",
 ]
 
 export const productApplications = [
