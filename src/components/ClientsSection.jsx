@@ -1,5 +1,6 @@
 import React from 'react'
 import { clientData } from '../data/clientData'
+import ResponsiveImage from './ResponsiveImage'
 
 export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TOGETHER" }) {
   return (
@@ -30,11 +31,12 @@ export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TO
               title={`${client.name} (${client.state})`}
             >
               <div className="w-16 h-16 sm:w-18 sm:h-18 flex items-center justify-center rounded-full bg-white p-1.5 shadow-xs border border-slate-100 group-hover:scale-105 transition-transform">
-                <img
+                <ResponsiveImage
                   src={client.logo}
                   alt={client.name}
                   className="max-h-full max-w-full object-contain filter contrast-105"
                   loading="lazy"
+                  sizes="96px"
                 />
               </div>
               <span className="mt-2 text-[11px] font-bold text-slate-700 group-hover:text-blue-900 transition-colors line-clamp-1">

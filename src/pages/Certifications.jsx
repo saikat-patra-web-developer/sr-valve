@@ -11,7 +11,8 @@ export default function Certifications({ onOpenQuote }) {
       title: "Quality Management System (QMS)",
       scope: "Design, Manufacture, Testing and Supply of Industrial Sluice Valves, Butterfly Valves, Check Valves, Air Valves, Gate Valves, Penstocks and Flow Control Equipment.",
       certifyingBody: "International Organization for Standardization (Accredited Certification)",
-      validity: "Active & Monitored",
+      validity: "Valid to 10 June 2027",
+      document: "/downloads/SSPR ISO upto 11.05.2027.pdf",
       image: "/images/certifications/badge_iso9001.png",
       keyPoints: [
         "Stringent incoming raw material inspection with 100% mill test traceability",
@@ -25,7 +26,8 @@ export default function Certifications({ onOpenQuote }) {
       title: "Environmental Management System (EMS)",
       scope: "Environmentally Responsible Valve Manufacturing, Scrap Recycling, Resource Conservation and Sustainable Industrial Operations at Howrah Plant.",
       certifyingBody: "International Environmental Accreditation",
-      validity: "Active & Monitored",
+      validity: "Valid to 16 April 2028",
+      document: "/downloads/ISO 14001 - Upto 16.04.2028.pdf",
       image: "/images/certifications/badge_iso14001.png",
       keyPoints: [
         "100% non-toxic, eco-friendly epoxy and powder coating systems",
@@ -39,7 +41,8 @@ export default function Certifications({ onOpenQuote }) {
       title: "Occupational Health & Safety Management (OHSMS)",
       scope: "Workplace Safety, Safe Handling of Heavy Castings, Ergonomics and Industrial Hygiene for Engineers and Skilled Workforce.",
       certifyingBody: "International Safety Accreditation",
-      validity: "Active & Monitored",
+      validity: "Valid to 16 April 2028",
+      document: "/downloads/ISO 45001 - Upto 16.04.2028.pdf",
       image: "/images/certifications/badge_iso45001.png",
       keyPoints: [
         "Comprehensive PPE compliance across foundry, machining & testing bays",
@@ -155,6 +158,7 @@ export default function Certifications({ onOpenQuote }) {
                   <span className="text-[10px] font-semibold text-slate-400 block">
                     Issued to / Authority: {cert.certifyingBody}
                   </span>
+                  {cert.document && <a href={cert.document} target="_blank" rel="noreferrer" className="inline-flex mt-3 text-xs font-bold text-blue-700 hover:text-[#f37021]">View certificate PDF</a>}
                 </div>
               </div>
             ))}

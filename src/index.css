@@ -117,7 +117,7 @@ img { max-width: 100%; }
 .infrastructure-strip .p-3\.5 { padding:7px 12px; }
 .infrastructure-strip .p-3\.5>span { display:none; }
 .infrastructure-strip .p-3\.5 p { font-size:11px; margin-top:0; }
-.site-page>section.text-white { background-image:linear-gradient(90deg,#06366ed9,#00458aa6),url('/images/infra/home_team.png'),url('/images/products/plant_piping.png'); background-size:cover,45% auto,cover; background-position:center,left center,right center; background-repeat:no-repeat; padding-block:25px; }
+.site-page>section.text-white { background-image:linear-gradient(90deg,#06366ed9,#00458aa6),url('/images/infra/projects/treatment-plant-overview.webp'),url('/images/products/plant_piping.webp'); background-size:cover,45% auto,cover; background-position:center,left center,right center; background-repeat:no-repeat; padding-block:25px; }
 .site-page>section.text-white :is(h2,h3,h4) { color:white; }
 .page-about>section:nth-of-type(2) img { height:370px; }
 .page-about>section:nth-of-type(2) .absolute.top-4 { display:none; }
@@ -146,7 +146,7 @@ img { max-width: 100%; }
 .contact-information .w-10 { width:64px; height:64px; border-radius:50%; }
 .contact-information .w-10 svg { width:30px; height:30px; }
 .page-contact .contact-information h4 { font-size:15px; color:#0635b9; }
-.product-banner { background:linear-gradient(90deg,#043771cf,#003b7aa6),url('/images/products/plant_piping.png') center/cover; color:white; }
+.product-banner { background:linear-gradient(90deg,#043771cf,#003b7aa6),url('/images/infra/projects/industrial-valve-installation.webp') center/cover; color:white; }
 .product-banner>div { max-width:1440px; margin:auto; padding:28px 42px; }
 .product-banner h2 { color:white; font-size:44px; font-weight:700; }
 .product-banner p { font-size:18px; }

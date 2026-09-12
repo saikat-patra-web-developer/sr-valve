@@ -1,28 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import ResponsiveImage from './ResponsiveImage'
 
 export default function InfrastructureStrip() {
   const infraItems = [
     {
       title: "Plant & Machinery",
       desc: "Modern equipment for high-precision manufacturing.",
-      image: "/images/infra/home_machinery.png",
+      image: "/images/infra/projects/industrial-valve-installation.webp",
     },
     {
       title: "Testing Facilities",
       desc: "Comprehensive testing for assured quality.",
-      image: "/images/infra/home_testing.png",
+      image: "/images/infra/projects/installed-butterfly-valves.webp",
     },
     {
       title: "Skilled Team",
       desc: "Experienced professionals driving excellence.",
-      image: "/images/infra/home_team.png",
+      image: "/images/infra/projects/treatment-plant-pump-house.webp",
     },
     {
       title: "Manufacturing Process",
       desc: "Streamlined and quality-driven production.",
-      image: "/images/infra/home_process.png",
+      image: "/images/infra/projects/control-room.webp",
     },
   ]
 
@@ -58,11 +59,12 @@ export default function InfrastructureStrip() {
               className="group bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all duration-200 flex flex-col cursor-pointer"
             >
               <div className="h-36 w-full overflow-hidden bg-slate-100 relative">
-                <img
+                <ResponsiveImage
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>

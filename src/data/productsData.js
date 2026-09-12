@@ -815,6 +815,38 @@ export const productsData = [
   },
 ]
 
+// Verified catalog data supplied in Doc/Product.xlsx and the four product specification documents.
+const suppliedCatalog = {
+  "sluice-valve": {
+    fullName: "Metal Seated & Resilient Seated Sluice Valves",
+    shortDesc: "Metal seated, non-rising stem, rising stem and resilient seated sluice valves.",
+    quickSpecs: { sizeRange: "50 mm to 2000 mm", pressureRating: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150 & 300", endConnection: "Flanged — BS / IS / ANSI / DIN", temperatureRange: "Application dependent" },
+    specsTable: { "Product Variants": "Metal seated (non-rising/rising stem); resilient seated", "Size Range": "Metal seated: 50–2000 mm; resilient seated: 50–1200 mm", "Pressure Rating": "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300", "Design Standard": "IS 14846; resilient seated also BS 5163", "Testing Standard": "IS 14846:2000 Clause 10; BS 5163", "Flange Standard": "BS / IS / ANSI / DIN", "Material": "CI / DI / CS; resilient seated: DI", "Accessories": "Gear, actuator, bypass arrangement, shoe & channel, head stock" },
+  },
+  "butterfly-valve": {
+    fullName: "Flanged End & Wafer Type Butterfly Valves",
+    shortDesc: "Flanged-end and wafer-type butterfly valves with gear, actuator or lever operation.",
+    quickSpecs: { sizeRange: "40 mm to 2000 mm", pressureRating: "PN 1.0, PN 1.6, PN 2.0 & PN 2.5", endConnection: "Flanged / Wafer", temperatureRange: "Application dependent" },
+    specsTable: { "Product Variants": "Flanged end; wafer type", "Size Range": "Flanged: 100–2000 mm; wafer: 40–400 mm", "Pressure Rating": "Flanged: PN 1.0, 1.6, 2.0, 2.5; wafer: PN 1.0, 1.6", "Design Standard": "IS 13095; wafer also BS 5155 / AWWA C-504", "Testing Standard": "IS 13095", "Flange Standard": "BS / IS / ANSI / DIN", "Material": "CI / DI / CS", "Accessories": "Gear, actuator; lever available for wafer type" },
+  },
+  "check-valve": {
+    fullName: "Single Door, Multi Door & Dual Plate Non Return Valves",
+    shortDesc: "Single-door, multi-door and dual-plate non-return valves for reliable backflow prevention.",
+    quickSpecs: { sizeRange: "50 mm to 2000 mm", pressureRating: "PN 1.0–2.5, Class 150 & 300", endConnection: "Flanged / Dual plate", temperatureRange: "Application dependent" },
+    specsTable: { "Product Variants": "Single door; multi door; dual plate", "Size Range": "Single door: 50–600 mm; multi door: 700–1500 mm; dual plate: 50–2000 mm", "Pressure Rating": "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300", "Design Standard": "IS 5312 Part I/II, BS 1868, AWWA C-508; dual plate API 594 / API 6D", "Testing Standard": "IS 5312; dual plate API 598", "Flange Ends": "BS / IS / ANSI / DIN", "Material": "CI / DI / CS", "Accessories": "Bypass arrangement; hydraulic option for single door" },
+  },
+  "air-valve": {
+    fullName: "S1, S2, DS1, DS2, DK & Tamper-Proof Air Valves",
+    shortDesc: "Single, double-acting, kinetic and tamper-proof air valves for pipeline protection.",
+    quickSpecs: { sizeRange: "15 mm to 400 mm", pressureRating: "PN 1.0 & PN 1.6", endConnection: "Screwed / Flanged", temperatureRange: "Water service" },
+    specsTable: { "Product Variants": "Small orifice S1; large orifice S2; DS1; DS2; kinetic DK; tamper-proof triple function", "Size Range": "S1: 15–40 mm; S2: 25–50 mm; DS1/DS2: 40–200 mm; DK: 40–300 mm; tamper-proof: 40–400 mm", "Pressure Rating": "PN 1.0 & PN 1.6", "Design Standard": "IS 14845; S2/DS2/DK also G&K; tamper-proof AWWA C-512", "Testing Standard": "IS 14845", "Ends": "Screwed or flanged — BS / IS / ANSI / DIN", "Material": "CI / DI / CS" },
+  },
+}
+
+productsData.forEach((product) => {
+  if (suppliedCatalog[product.id]) Object.assign(product, suppliedCatalog[product.id])
+})
+
 // Display order follows the product range mockup.
 productsData.sort((a,b) => { const order=['sluice-valve','butterfly-valve','check-valve','air-valve','resilient-gate-valve','knife-gate-valve','penstocks','ball-valve','globe-valve','diaphragm-valve','expansion-joint','custom-valves']; return order.indexOf(a.id)-order.indexOf(b.id) })
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, Download, Send, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
 import { productsData } from '../data/productsData'
+import ResponsiveImage from '../components/ResponsiveImage'
 
 export default function ProductDetail({ onOpenQuote, onShowToast }) {
   const { id } = useParams()
@@ -122,7 +123,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                           : 'border-slate-200 hover:border-blue-300'
                       }`}
                     >
-                      <img
+                      <ResponsiveImage
                         src={thumb}
                         alt={`Thumbnail ${idx + 1}`}
                         className="w-full h-full object-contain"
@@ -135,7 +136,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
 
                 {/* Main View Area */}
                 <div className="flex-1 relative bg-white rounded-md border border-slate-200 shadow-sm p-4 flex flex-col items-center justify-center min-h-[340px] group">
-                  <img
+                  <ResponsiveImage
                     src={
                       product.thumbnails && product.thumbnails[activeThumb]
                         ? product.thumbnails[activeThumb]
@@ -345,8 +346,8 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
 
             {/* Right 4 cols: Plant Photo */}
             <div className="lg:col-span-4 relative rounded-md overflow-hidden shadow-sm border border-slate-200 group">
-              <img
-                src="/images/products/plant_piping.png"
+              <ResponsiveImage
+                src="/images/infra/projects/industrial-valve-installation.webp"
                 alt="Industrial Piping Applications"
                 className="w-full h-48 sm:h-52 object-cover group-hover:scale-103 transition-transform duration-300"
               />
@@ -441,7 +442,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                 className="group bg-white rounded-md border border-slate-200 p-3 hover:border-blue-400 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between"
               >
                 <div className="h-28 w-full flex items-center justify-center bg-slate-50 rounded-lg p-2 group-hover:bg-blue-50/40">
-                  <img
+                  <ResponsiveImage
                     src={rel.image}
                     alt={rel.name}
                     className="max-h-24 max-w-full object-contain group-hover:scale-108 transition-transform"
@@ -502,7 +503,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
             >
               <X className="w-5 h-5" />
             </button>
-            <img
+            <ResponsiveImage
               src={product.detailMainImage || product.image}
               alt={product.fullName}
               className="max-h-[70vh] max-w-full object-contain"
