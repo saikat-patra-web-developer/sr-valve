@@ -6,23 +6,23 @@ import ResponsiveImage from './ResponsiveImage'
 export default function InfrastructureStrip() {
   const infraItems = [
     {
-      title: "Plant & Machinery",
-      desc: "Modern equipment for high-precision manufacturing.",
+      title: "Industrial Valve Installation",
+      desc: "Heavy-duty valve systems installed for critical water infrastructure.",
       image: "/images/infra/projects/industrial-valve-installation.webp",
     },
     {
-      title: "Testing Facilities",
-      desc: "Comprehensive testing for assured quality.",
+      title: "Installed Valve Systems",
+      desc: "Field-proven flow-control equipment operating at project sites.",
       image: "/images/infra/projects/installed-butterfly-valves.webp",
     },
     {
-      title: "Skilled Team",
-      desc: "Experienced professionals driving excellence.",
+      title: "Pump House Equipment",
+      desc: "Reliable pumping and pipeline equipment for continuous operation.",
       image: "/images/infra/projects/treatment-plant-pump-house.webp",
     },
     {
-      title: "Manufacturing Process",
-      desc: "Streamlined and quality-driven production.",
+      title: "Plant Control Room",
+      desc: "Integrated electrical controls supporting treatment operations.",
       image: "/images/infra/projects/control-room.webp",
     },
   ]
@@ -51,14 +51,14 @@ export default function InfrastructureStrip() {
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="infrastructure-showcase grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {infraItems.map((item, index) => (
             <Link
               key={index}
               to="/infrastructure"
-              className="group bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all duration-200 flex flex-col cursor-pointer"
+              className="infra-showcase-card group relative rounded-xl overflow-hidden cursor-pointer"
             >
-              <div className="h-36 w-full overflow-hidden bg-slate-100 relative">
+              <div className="infra-showcase-image w-full overflow-hidden bg-slate-100 relative">
                 <ResponsiveImage
                   src={item.image}
                   alt={item.title}
@@ -66,19 +66,19 @@ export default function InfrastructureStrip() {
                   loading="lazy"
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061f4f]/95 via-[#08275d]/30 to-transparent" />
               </div>
-              <div className="p-3.5 flex-1 flex flex-col justify-between">
+              <div className="infra-showcase-copy absolute inset-x-0 bottom-0 p-5 text-white">
                 <div>
-                  <h4 className="text-sm font-bold text-[#0d2857] group-hover:text-[#f37021] transition-colors">
+                  <h4 className="text-lg font-extrabold text-white group-hover:text-amber-300 transition-colors">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                  <p className="text-xs text-blue-50/90 mt-1.5 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
-                <span className="text-[11px] font-semibold text-blue-700 mt-2 inline-flex items-center gap-1">
-                  Learn More <ArrowRight className="w-3 h-3" />
+                <span className="text-[11px] font-bold text-amber-300 mt-3 inline-flex items-center gap-1.5">
+                  Explore Infrastructure <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
             </Link>

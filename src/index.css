@@ -92,8 +92,8 @@ img { max-width: 100%; }
 .contact-hero-features strong { font-size:10px; text-transform:uppercase; color:#2145af; }
 .product-card { display:flex; flex-direction:column; overflow:hidden; border:1px solid #e9eff8; border-radius:6px; background:#fff; transition:border-color .2s,transform .2s; min-width:0; }
 .product-card:hover { border-color:#8caeff; transform:translateY(-3px); }
-.product-image { background:linear-gradient(125deg,#f4f9fd,#f1f6fc); aspect-ratio:1/1.08; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.product-image img { width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; }
+.product-image { background:transparent; aspect-ratio:1/1.08; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.product-image img { width:100%; height:100%; object-fit:contain; mix-blend-mode:normal; }
 .product-copy { padding:13px 14px; flex:1; display:flex; flex-direction:column; }
 .product-card h3 { color:#0034bc; font-size:18px; font-weight:700; line-height:1.12; margin-bottom:10px; }
 .product-card p { font-size:14px; color:#7385b0; line-height:1.2; margin-bottom:14px; }
@@ -102,6 +102,8 @@ img { max-width: 100%; }
 .product-card.compact h3 { font-size:14px; margin-bottom:8px; }
 .product-card.compact p { font-size:11px; margin-bottom:6px; }
 .product-card.compact .product-action { padding:0; border:0; justify-content:flex-start; }
+.product-card .product-image { height:clamp(155px,18vw,220px); aspect-ratio:auto; padding:18px; }
+.product-card .product-image img { width:88%; height:88%; }
 .why-grid>div { background:linear-gradient(130deg,#fff,#fbfdff); border:0; }
 .why-grid>div>div:first-child { border-radius:50%; }
 .why-grid p { line-height:1.25; }
@@ -128,6 +130,14 @@ img { max-width: 100%; }
 .infrastructure-strip .p-3\.5 { padding:7px 12px; }
 .infrastructure-strip .p-3\.5>span { display:none; }
 .infrastructure-strip .p-3\.5 p { font-size:11px; margin-top:0; }
+.infra-showcase-card { min-height:270px; border:1px solid #dbe6f5; box-shadow:0 12px 30px #0b347518; transition:transform .25s ease,box-shadow .25s ease; }
+.infra-showcase-card:hover { transform:translateY(-5px); box-shadow:0 20px 38px #0b34752b; }
+.infra-showcase-image { height:270px; }
+.infra-showcase-image img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.infra-showcase-card:hover .infra-showcase-image img { transform:scale(1.055); }
+.infra-showcase-copy { text-shadow:0 1px 2px #001a42; }
+.site-page .infrastructure-strip .infra-showcase-copy h4 { color:white; }
+.site-page .infrastructure-strip .infra-showcase-card:hover h4 { color:#fcd34d; }
 .site-page>section.text-white { background-image:linear-gradient(90deg,#06366ed9,#00458aa6),url('/images/infra/projects/treatment-plant-overview.webp'),url('/images/products/plant_piping.webp'); background-size:cover,45% auto,cover; background-position:center,left center,right center; background-repeat:no-repeat; padding-block:25px; }
 .site-page>section.text-white :is(h2,h3,h4) { color:white; }
 .page-about>section:nth-of-type(2) img { height:370px; }
@@ -163,7 +173,7 @@ img { max-width: 100%; }
 .product-banner p { font-size:18px; }
 .page-detail>section:first-of-type { background:white; padding-top:15px; }
 .product-title span { color:#ff7800; display:block; }
-.page-detail .min-h-\[340px\] { min-height:430px; background:linear-gradient(130deg,#f1f7fc,#f9fcff); border:0; }
+.page-detail .min-h-\[340px\] { min-height:430px; background:white; border:0; }
 .page-detail .min-h-\[340px\] img { max-height:380px; mix-blend-mode:multiply; }
 .page-detail table td,.page-detail table th { padding:6px 14px; }
 .page-detail table tr:nth-child(odd) { background:#f3f7fb; }
