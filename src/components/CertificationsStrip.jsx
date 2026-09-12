@@ -1,6 +1,7 @@
 import React from 'react'
 import { Leaf } from 'lucide-react'
 import { companyData } from '../data/companyData'
+import ResponsiveImage from './ResponsiveImage'
 
 export default function CertificationsStrip({ showQualityBanner = true }) {
   return (
@@ -20,18 +21,19 @@ export default function CertificationsStrip({ showQualityBanner = true }) {
         <div className={`grid grid-cols-1 ${showQualityBanner ? 'lg:grid-cols-12' : 'lg:grid-cols-6'} gap-6 items-center`}>
           
           {/* Badges Grid (fills 9 cols if banner shown) */}
-          <div className={`${showQualityBanner ? 'lg:col-span-9' : 'lg:col-span-6'} grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 items-center`}>
+          <div className={`${showQualityBanner ? 'lg:col-span-9' : 'lg:col-span-6'} grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 items-center`}>
             {companyData.certifications.slice(0, 5).map((cert, index) => (
               <div
                 key={index}
                 className="bg-white p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center"
               >
                 <div className="h-12 flex items-center justify-center">
-                  <img
+                  <ResponsiveImage
                     src={cert.image}
                     alt={cert.code}
                     className="max-h-11 max-w-full object-contain filter group-hover:scale-105 transition-transform"
                     loading="lazy"
+                    sizes="160px"
                   />
                 </div>
                 <span className="text-[10px] font-bold text-slate-600 mt-2 line-clamp-1">

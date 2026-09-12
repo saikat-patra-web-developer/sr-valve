@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Check, ArrowRight } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
+import ResponsiveImage from '../components/ResponsiveImage'
 
 export default function Certifications({ onOpenQuote }) {
   const detailedCerts = [
@@ -13,7 +14,7 @@ export default function Certifications({ onOpenQuote }) {
       certifyingBody: "International Organization for Standardization (Accredited Certification)",
       validity: "Valid to 10 June 2027",
       document: "/downloads/SSPR ISO upto 11.05.2027.pdf",
-      image: "/images/certifications/badge_iso9001.png",
+      image: "/images/certifications/badge_iso9001.webp",
       keyPoints: [
         "Stringent incoming raw material inspection with 100% mill test traceability",
         "Calibrated in-process dimensional tolerance checks",
@@ -28,7 +29,7 @@ export default function Certifications({ onOpenQuote }) {
       certifyingBody: "International Environmental Accreditation",
       validity: "Valid to 16 April 2028",
       document: "/downloads/ISO 14001 - Upto 16.04.2028.pdf",
-      image: "/images/certifications/badge_iso14001.png",
+      image: "/images/certifications/badge_iso14001.webp",
       keyPoints: [
         "100% non-toxic, eco-friendly epoxy and powder coating systems",
         "Systematic metallic machining scrap separation and recycling",
@@ -43,7 +44,7 @@ export default function Certifications({ onOpenQuote }) {
       certifyingBody: "International Safety Accreditation",
       validity: "Valid to 16 April 2028",
       document: "/downloads/ISO 45001 - Upto 16.04.2028.pdf",
-      image: "/images/certifications/badge_iso45001.png",
+      image: "/images/certifications/badge_iso45001.webp",
       keyPoints: [
         "Comprehensive PPE compliance across foundry, machining & testing bays",
         "Heavy crane and hoist safety interlocks inspected regularly",
@@ -84,10 +85,11 @@ export default function Certifications({ onOpenQuote }) {
                 <div>
                   <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-4">
                     <div className="h-12 w-28 flex items-center justify-start">
-                      <img
+                      <ResponsiveImage
                         src={cert.image}
                         alt={cert.code}
                         className="max-h-12 max-w-full object-contain"
+                        sizes="160px"
                       />
                     </div>
                     <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-blue-100 text-blue-900">
