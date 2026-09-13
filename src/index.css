@@ -125,6 +125,7 @@ img { max-width: 100%; }
 .certifications-strip .text-center.mb-2 { text-align:left; display:flex; flex-direction:row-reverse; justify-content:flex-end; align-items:center; gap:20px; }
 .certifications-strip .grid>div .grid>div { border:0; }
 .certifications-strip .h-28 { height:85px; border:0; border-right:1px solid #dce5f4; border-radius:0; background:none; }
+.certifications-strip .h-28:last-child { border-right:0; }
 .certifications-strip .max-h-11 { max-height:60px; }
 .infrastructure-strip .h-36 { height:110px; }
 .infrastructure-strip .p-3\.5 { padding:7px 12px; }

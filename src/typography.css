@@ -205,6 +205,75 @@ body {
   font-size: clamp(1rem, 1.25vw, 1.125rem);
 }
 
+/* Evenly aligned About-page trust strip. */
+.about-trust {
+  width: 100%;
+  max-width: var(--content-width);
+  padding: 1.15rem var(--page-gutter);
+}
+
+.about-trust .trust-bar {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+}
+
+.about-trust .trust-bar > div {
+  min-width: 0;
+  min-height: 4.25rem;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+  border-right: 1px solid #d9e3f1;
+}
+
+.about-trust .trust-bar > div:first-child {
+  padding-left: 0;
+}
+
+.about-trust .trust-bar > div:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.about-trust .round-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.about-trust .round-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.about-trust .trust-bar p {
+  min-width: 0;
+}
+
+.about-trust .trust-bar strong {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+
+.about-trust .trust-bar small {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 1023px) {
+  .about-trust .trust-bar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .about-trust .trust-bar > div {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background: #f8fbff;
+  }
+}
+
 @media (max-width: 639px) {
   .product-breadcrumb {
     width: 100%;
@@ -222,6 +291,14 @@ body {
   .hero-certifications h1,
   .hero-contact h1 {
     font-size: 1.875rem;
+  }
+
+  .about-trust .trust-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .about-trust .trust-bar > div {
+    min-height: 0;
   }
 
 }
