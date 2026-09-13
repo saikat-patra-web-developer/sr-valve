@@ -25,7 +25,7 @@ export default function CertificationsStrip({ showQualityBanner = true }) {
             {companyData.certifications.slice(0, 5).map((cert, index) => (
               <div
                 key={index}
-                className="bg-white p-1 sm:p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center min-w-0 w-full"
+                className="bg-white p-1 sm:p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center min-w-0 w-full last:border-r-0"
               >
                 <div className="h-12 flex items-center justify-center w-full min-w-0">
                   <ResponsiveImage

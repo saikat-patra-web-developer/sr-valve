@@ -215,7 +215,7 @@ Contact: info@ssprvalve.com | +91 7044090444
       <section className="py-5 bg-slate-50 border-t border-slate-200" id="gallery">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex items-center justify-between mb-3 pb-3 border-b border-slate-200">
+          <div className="mb-3 pb-3 border-b border-slate-200">
             <div>
               <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
                 OUR FACILITY GALLERY
@@ -224,9 +224,6 @@ Contact: info@ssprvalve.com | +91 7044090444
                 Inside Our <span className="text-[#f37021]">Manufacturing Unit</span>
               </h2>
             </div>
-            <span className="text-xs font-bold text-slate-500">
-              Howrah, West Bengal
-            </span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
