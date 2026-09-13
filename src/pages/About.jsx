@@ -2,10 +2,9 @@ import PageHero from '../components/PageHero'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { ArrowRight, Target, Eye, HeartHandshake, CheckCircle, Quote } from 'lucide-react'
+import { ArrowRight, Target, Eye, HeartHandshake, CheckCircle } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
-import { companyData } from '../data/companyData'
 
 export default function About() {
   return (
@@ -22,19 +21,21 @@ export default function About() {
             
             {/* Left Content (6 cols) */}
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                OUR COMPANY
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">ABOUT COMPANY</span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight">
-                Engineering Excellence in <span className="text-[#f37021]">Every Flow</span>
+                Experience, Quality and <span className="text-[#f37021]">Engineering Excellence</span>
               </h2>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                SSPR Valve Manufacturing Private Limited is an experienced manufacturer of industrial valves, serving critical applications across government and private projects. Based in Howrah, West Bengal, we specialize in delivering high-quality industrial valves, penstocks and flow control solutions for water treatment, irrigation, desalination, civil construction, sea water applications and infrastructure projects.
+                <strong className="text-[#0d2857]">SSPR Valve Manufacturing Private Limited</strong> has vast manufacturing experience in various types of valves for industrial use. Our state-of-the-art manufacturing unit is located in Howrah, West Bengal, and holds ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018 certifications, along with NSIC and MSME registrations.
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                With modern manufacturing technology, strong engineering expertise and a commitment to ethical business practices, we build products that stand the test of time. Our focus on quality, reliability and customer satisfaction has made us a trusted partner for government bodies and leading private organizations across India.
+                We believe in manufacturing quality products by combining modern technology with the technical expertise of our engineering team. The company supplies its manufactured products to various government projects, private projects and organizations in the valve industry.
+              </p>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Under the leadership of <strong className="text-[#0d2857]">Mr. Prasenjit Dey, Managing Director</strong>, and through the dedicated efforts of the entire team, the company continues to achieve new heights in the valve industry. Commitment, quality products and ethical business practices are values we consistently uphold and for which we are applauded by our clients and business associates.
               </p>
 
               <div className="pt-3">
@@ -63,6 +64,27 @@ export default function About() {
               </div>
             </div>
 
+          </div>
+
+          <div className="mt-7 rounded-md border border-slate-200 bg-slate-50 p-5 sm:p-6">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              With over 15 years of experience in the design and manufacture of valves and penstocks, and many satisfied customers across India, SSPR Valve—together with its overseas technology associates—looks forward with renewed vigour to working with discerning customers, consultants, contracting companies and organizations engaged in:
+            </p>
+            <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                'Treatment, pumping and pipeline conveyance of water',
+                'Irrigation pumping and distribution',
+                'Desalination and DM water plants',
+                'Civil construction involving water',
+                'Sea water applications',
+                'Complete PHED (West Bengal) monitoring and control systems, including 24×7 water distribution',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
         </div>
@@ -152,7 +174,7 @@ export default function About() {
           </div>
 
           <div className="bg-white rounded-md border border-slate-200 shadow-xs p-6 lg:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
               {/* MD Photo & Title (3 cols) */}
               <div className="lg:col-span-3 text-center lg:text-left flex flex-col items-center lg:items-start">
@@ -174,36 +196,13 @@ export default function About() {
                 </span>
               </div>
 
-              {/* MD Quote Text (6 cols) */}
-              <div className="lg:col-span-6 space-y-3 relative">
-                <Quote className="w-8 h-8 text-blue-200 absolute -top-4 -left-2 -z-0" />
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic relative z-10">
-                  "{companyData.md.shortQuote}"
-                </p>
-                <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
-                  We guide our business using five core values — <strong className="text-blue-900">lead, grow, deliver, sustain and protect</strong>. I give you my personal commitment that we will deliver what we promise and do it safely and sustainably.
-                </p>
-              </div>
-
-              {/* MD Side Callout Card (3 cols) */}
-              <div className="lg:col-span-3 bg-gradient-to-br from-[#0d2857] to-[#1a3d7c] rounded-md p-5 text-white flex flex-col justify-between shadow-sm relative overflow-hidden">
-                <div className="space-y-2">
-                  <span className="text-amber-400 font-serif text-3xl leading-none">“</span>
-                  <h4 className="text-sm font-extrabold text-white leading-snug">
-                    Reliable Flow for a Brighter Tomorrow
-                  </h4>
-                  <p className="text-[11px] text-slate-300 pt-1">
-                    — Mr. Prasenjit Dey <br />
-                    <span className="text-[10px] text-amber-300">Managing Director</span>
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-white/10 flex justify-end">
-                  <img
-                    src="/images/about/refinery_art.png"
-                    alt="Refinery graphics"
-                    className="h-16 w-auto object-contain opacity-75"
-                  />
-                </div>
+              {/* Managing Director's message */}
+              <div className="lg:col-span-9 space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="font-semibold text-[#0d2857]">I am pleased to welcome you to the SSPR Valve website.</p>
+                <p>Whether you are a potential customer with a challenging project ahead, an existing customer checking our latest news, or a partner, supplier or future employee looking for new opportunities, I trust you will find what you are looking for here.</p>
+                <p>SSPR Valve Manufacturing Private Limited is a company that is driving progress and, with our customers and partners, building better communities through safe, smart and efficient infrastructure—something we have been doing consistently.</p>
+                <p>Our progressive thinking and creative approach make us stand out from the crowd, allowing us to achieve what very few have been able to accomplish.</p>
+                <p>We have a clear vision of what we want to be: leaders in valve manufacturing and infrastructure development. We guide our business using five core values—<strong className="text-[#0d2857]">lead, grow, deliver, sustain and protect</strong>. I am proud of the work we do and give you my personal commitment that we will deliver what we promise, safely and sustainably.</p>
               </div>
 
             </div>
