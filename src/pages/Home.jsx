@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
 import InfrastructureStrip from '../components/InfrastructureStrip'
+import ResponsiveImage from '../components/ResponsiveImage'
 import { productsData } from '../data/productsData'
 
 export default function Home() {
@@ -130,8 +131,9 @@ export default function Home() {
               
               {/* Left: Facility Image (4 cols) */}
               <div className="lg:col-span-4 relative rounded-md overflow-hidden border border-slate-200 shadow-xs group">
-                <img
-                  src="/images/about/facility_home.png"
+                <ResponsiveImage
+                  src="/images/hero/factory-client.png"
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   alt="Our Facility - Howrah, West Bengal"
                   className="w-full h-64 sm:h-72 object-cover group-hover:scale-103 transition-transform duration-300"
                 />
