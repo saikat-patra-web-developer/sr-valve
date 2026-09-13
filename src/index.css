@@ -308,7 +308,7 @@ img { max-width: 100%; }
  .footer-contact>a { overflow-wrap:anywhere; }
  .footer-india { display:grid; grid-template-columns:minmax(5rem,7rem) minmax(0,1fr); align-items:center; }
  .footer-india img { height:6rem; }
- .footer-bottom { padding:15px 20px; flex-direction:column; gap:8px; }
+ .footer-bottom { padding:15px 20px; flex-direction:column; gap:8px; text-align:center; align-items:center; }
  .page-about .lg\:col-span-3:has(.w-36) { display:flex; }
  .page-about>section:nth-of-type(2) img { height:auto; }
  .site-page h2 { font-size:24px; }

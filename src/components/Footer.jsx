@@ -56,7 +56,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <p>
-          Copyright © {new Date().getFullYear()}{' '}
+          © {new Date().getFullYear()}{' '}
           <strong className="footer-copyright-company">SSPR Valve Manufacturing Private Limited</strong>. All Rights Reserved.
         </p>
         <div className="footer-bottom-right">
