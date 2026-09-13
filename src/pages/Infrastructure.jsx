@@ -1,11 +1,12 @@
 import { PencilRuler, Layers, Settings, ClipboardCheck, Truck } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ArrowRight, Building, ShieldCheck, Users, Globe2, Cpu, Wrench, PhoneCall, X } from 'lucide-react'
 import { companyData } from '../data/companyData'
 
-export default function Infrastructure({ onOpenQuote, onShowToast }) {
+export default function Infrastructure({ onShowToast }) {
   const [activeModalCap, setActiveModalCap] = useState(null)
   const [lightboxImg, setLightboxImg] = useState(null)
 
@@ -350,13 +351,13 @@ Contact: info@ssprvalve.com | +91 7044090444
                 Let's discuss how our infrastructure and manufacturing capabilities can support your next project with assured quality and strict delivery schedules.
               </p>
               <div className="pt-3 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => onOpenQuote('Infrastructure Capability Inquiry')}
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
                 >
-                  <span>Send Enquiry Now</span>
+                  <span>Contact Us</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -435,15 +436,13 @@ Contact: info@ssprvalve.com | +91 7044090444
             <p className="text-xs text-slate-600 leading-relaxed">
               {activeModalCap.desc}
             </p>
-            <button
-              onClick={() => {
-                setActiveModalCap(null)
-                onOpenQuote(activeModalCap.title)
-              }}
+            <Link
+              to="/contact"
+              onClick={() => setActiveModalCap(null)}
               className="w-full bg-[#f37021] hover:bg-[#e05f13] text-white font-bold py-2.5 rounded-lg text-xs cursor-pointer"
             >
-              Inquire About Capabilities
-            </button>
+              Contact Us
+            </Link>
           </div>
         </div>
       )}

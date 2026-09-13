@@ -4,7 +4,7 @@ export const faqData = [
     id: 1,
     question: "How can I get a quotation for my requirement?",
     answer:
-      "You can easily request a quotation by clicking the 'Send Enquiry' or 'Request a Quote' button anywhere on our website, or by emailing your technical bill of quantities (BOQ) and datasheets to info@ssprvalve.com. Our technical sales engineering team will review your specifications and revert with a formal techno-commercial proposal within 24 to 48 hours.",
+      "Visit our Contact Us page and submit your requirement, or email your technical bill of quantities (BOQ) and datasheets to info@ssprvalve.com. Our technical sales engineering team will review your specifications and revert with a formal techno-commercial proposal within 24 to 48 hours.",
   },
   {
     id: 2,

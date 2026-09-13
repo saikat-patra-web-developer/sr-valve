@@ -1,11 +1,12 @@
 import PageHero from '../components/PageHero'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Check, ArrowRight } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
 import ResponsiveImage from '../components/ResponsiveImage'
 
-export default function Certifications({ onOpenQuote }) {
+export default function Certifications() {
   const detailedCerts = [
     {
       code: "ISO 9001:2015",
@@ -190,13 +191,13 @@ export default function Certifications({ onOpenQuote }) {
             </div>
 
             <div className="shrink-0">
-              <button
-                onClick={() => onOpenQuote('Certified Valve Requirement')}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
               >
-                <span>Send Enquiry Now</span>
+                <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { Menu, X, Send } from 'lucide-react'
-export default function Navbar({ onOpenQuote }) {
+export default function Navbar() {
   const [open, setOpen] = useState(false)
   return <header className="site-header"><div className="nav-inner">
     <Link to="/" className="brand" onClick={() => setOpen(false)}><img src="/images/logo/logo.webp" alt="SSPR Valve"/><span><strong>SSPR Valve Manufacturing Private Limited</strong><small>FLOWING A STRONGER TOMORROW</small></span></Link>
     <nav id="main-navigation" className={open ? 'main-nav open' : 'main-nav'} aria-label="Main navigation">{[['/','Home'],['/about','About Us'],['/products','Products'],['/infrastructure','Infrastructure'],['/certifications','Certifications'],['/contact','Contact']].map(([path,label]) => <NavLink key={path} to={path} end={path === '/'} onClick={() => setOpen(false)}>{label}</NavLink>)}</nav>
-    <button className="button-orange nav-enquiry" onClick={onOpenQuote}><Send size={17}/><span>Send Enquiry</span></button>
+    <Link className="button-orange nav-enquiry" to="/contact" onClick={() => setOpen(false)}><Send size={17}/><span>Contact Us</span></Link>
     <button className="menu-toggle" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(!open)}>{open ? <X/> : <Menu/>}</button>
   </div></header>
 }

@@ -1,11 +1,10 @@
-import EnquiryForm from '../components/EnquiryForm'
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, Download, Send, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
 import { productsData } from '../data/productsData'
 import ResponsiveImage from '../components/ResponsiveImage'
 
-export default function ProductDetail({ onOpenQuote, onShowToast }) {
+export default function ProductDetail({ onShowToast }) {
   const { id } = useParams()
   const productId = id || 'butterfly-valve'
   const product = productsData.find((p) => p.id === productId) || productsData[0]
@@ -191,13 +190,13 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
 
               {/* Buttons */}
               <div className="flex items-center gap-3 pt-3">
-                <button
-                  onClick={() => onOpenQuote(product.name)}
+                <Link
+                  to="/contact"
                   className="flex-1 inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white text-xs font-bold py-3 px-4 rounded-lg shadow-sm transition-colors cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>Send Enquiry</span>
-                </button>
+                  <span>Contact Us</span>
+                </Link>
                 
                 <button
                   onClick={handleDownloadBrochure}
@@ -209,18 +208,19 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
               </div>
             </div>
 
-            {/* Right: Request a Quote Box (4 cols) */}
-            <div className="product-quote lg:col-span-3 bg-white rounded-md border border-slate-200 shadow-md p-5">
-              <div className="border-b border-slate-100 pb-3 mb-4">
-                <h3 className="text-base font-extrabold text-[#0d2857]">
-                  Request a Quote
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Get the best solution for your project requirement
-                </p>
-              </div>
-
-              <EnquiryForm compact initialProduct={product.name} />
+            {/* Right: Contact card */}
+            <div className="product-quote lg:col-span-3 bg-white rounded-md border border-slate-200 shadow-md p-5 flex flex-col justify-center">
+              <h3 className="text-base font-extrabold text-[#0d2857]">Need product assistance?</h3>
+              <p className="text-xs text-slate-500 mt-1 mb-5">
+                Contact our technical team for product selection, specifications and project support.
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold py-3 px-4 rounded-lg transition-colors text-xs"
+              >
+                <span>Contact Us</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
           </div>
@@ -477,13 +477,13 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
             </div>
 
             <div className="shrink-0">
-              <button
-                onClick={() => onOpenQuote(product.name)}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
               >
-                <span>Send Enquiry Now</span>
+                <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

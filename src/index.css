@@ -243,9 +243,6 @@ img { max-width: 100%; }
 .draft-ready { padding:16px; background:#eef6ff; border:1px solid #abc6f1; border-radius:6px; }
 .draft-ready p { font-size:14px; margin-block:8px 14px; }
 .small-form { gap:10px; }.small-form .enquiry-fields { grid-template-columns:1fr; gap:10px; }.small-form label>span { font-size:11px; }.small-form input,.small-form textarea { padding:8px 10px; font-size:12px; }.small-form .enquiry-fields svg { display:none; }.small-form .form-bottom { display:block; }.small-form .button-orange { width:100%; min-height:40px; font-size:13px; }.small-form .form-bottom p { margin-top:12px; font-size:10px; }.small-form .email-note { font-size:10px; }
-.quote-dialog { padding:0; border:0; border-radius:10px; width:min(560px,calc(100% - 32px)); max-height:90vh; margin:auto; color:#0735b9; }
-.quote-dialog::backdrop { background:#091c3db3; backdrop-filter:blur(4px); }
-.quote-dialog-content { padding:25px; }.quote-dialog-heading { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:22px; }.quote-dialog-heading h2 { font-size:28px; font-weight:700; }.quote-dialog-heading p { font-size:14px; color:#6e80a6; }.quote-dialog textarea { max-height:140px; }
 .page-hero::before { background-size:cover; background-position:center; }
 .hero-home::before { background-size:100% 100%; }
 .site-page>section.text-white { background-image:linear-gradient(90deg,#003e83de,#003974d9),url('/images/hero/contact-wide.png'); background-size:cover; background-position:center; }
@@ -273,7 +270,6 @@ img { max-width: 100%; }
 @media(max-width:639px) {
  .page-hero::before { background-size:auto 230px; background-position:62% bottom; }.hero-home::before,.hero-products::before { background-size:auto 230px; background-position:right bottom; }
  .enquiry-fields { grid-template-columns:1fr; gap:14px; }.enquiry-form { gap:14px; }.form-bottom { flex-direction:column; gap:12px; align-items:stretch; }.form-bottom p { justify-content:center; }.enquiry-form input,.enquiry-form textarea,.enquiry-form select { font-size:16px; }
- .quote-dialog-content { padding:20px; }.quote-dialog .enquiry-fields { grid-template-columns:1fr 1fr; gap:10px; }.quote-dialog .enquiry-fields input { padding-left:10px; font-size:14px; }.quote-dialog .enquiry-fields svg { display:none; }.quote-dialog textarea { min-height:90px; }
  .page-home>section:nth-of-type(3)>div>div:first-child>div>span { display:none; }.page-home>section:nth-of-type(3)>div>div:first-child>div { display:block; }
 }
 .timeline-year { display:block; font-size:18px; color:#0735b9; line-height:1; margin-bottom:5px; }

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import QuoteModal from './components/QuoteModal'
 import Toast from './components/Toast'
 import ScrollToTop from './components/ScrollToTop'
 
@@ -16,14 +15,7 @@ import Certifications from './pages/Certifications'
 import Contact from './pages/Contact'
 
 export default function App() {
-  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
-  const [quoteInitialProduct, setQuoteInitialProduct] = useState('')
   const [toastMessage, setToastMessage] = useState('')
-
-  const handleOpenQuote = (productName = '') => {
-    setQuoteInitialProduct(productName)
-    setQuoteModalOpen(true)
-  }
 
   const handleShowToast = (msg) => {
     setToastMessage(msg)
@@ -38,29 +30,28 @@ export default function App() {
       <ScrollToTop />
 
       {/* Top Navbar */}
-      <Navbar onOpenQuote={() => handleOpenQuote()} />
+      <Navbar />
 
       {/* Main Page Area */}
       <main className="flex-1">
         <Routes>
           <Route
             path="/"
-            element={<Home onOpenQuote={handleOpenQuote} />}
+            element={<Home />}
           />
           <Route
             path="/about"
-            element={<About onOpenQuote={handleOpenQuote} />}
+            element={<About />}
           />
           <Route
             path="/products"
-            element={<Products onOpenQuote={handleOpenQuote} />}
+            element={<Products />}
           />
           <Route
             path="/products/:id"
             element={
               <ProductDetail
                 key={window.location.pathname}
-                onOpenQuote={handleOpenQuote}
                 onShowToast={handleShowToast}
               />
             }
@@ -69,7 +60,6 @@ export default function App() {
             path="/product/:id"
             element={
               <ProductDetail
-                onOpenQuote={handleOpenQuote}
                 onShowToast={handleShowToast}
               />
             }
@@ -78,7 +68,6 @@ export default function App() {
             path="/infrastructure"
             element={
               <Infrastructure
-                onOpenQuote={handleOpenQuote}
                 onShowToast={handleShowToast}
               />
             }
@@ -87,7 +76,6 @@ export default function App() {
             path="/certifications"
             element={
               <Certifications
-                onOpenQuote={handleOpenQuote}
                 onShowToast={handleShowToast}
               />
             }
@@ -96,7 +84,6 @@ export default function App() {
             path="/contact"
             element={
               <Contact
-                onOpenQuote={handleOpenQuote}
                 onShowToast={handleShowToast}
               />
             }
@@ -104,21 +91,13 @@ export default function App() {
           {/* Catch-all fallback route */}
           <Route
             path="*"
-            element={<Home onOpenQuote={handleOpenQuote} />}
+            element={<Home />}
           />
         </Routes>
       </main>
 
       {/* Footer */}
       <Footer />
-
-      {/* Global Interactive Quote Modal */}
-      <QuoteModal
-        isOpen={quoteModalOpen}
-        onClose={() => setQuoteModalOpen(false)}
-        initialProduct={quoteInitialProduct}
-        onShowToast={handleShowToast}
-      />
 
       {/* Notification Toast */}
       <Toast

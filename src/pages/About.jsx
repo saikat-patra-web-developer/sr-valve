@@ -1,13 +1,14 @@
 import { Settings, Users, ChartNoAxesCombined, Cpu, Trophy } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { ArrowRight, Target, Eye, HeartHandshake, CheckCircle, Quote, Droplets, Waves, Building2, Anchor, Factory } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
 import { companyData } from '../data/companyData'
 
-export default function About({ onOpenQuote }) {
+export default function About() {
   const sectorsIcons = [
     <Droplets key="icon-0" className="w-6 h-6 text-blue-600" />,
     <Waves key="icon-1" className="w-6 h-6 text-blue-600" />,
@@ -319,13 +320,13 @@ export default function About({ onOpenQuote }) {
             </div>
 
             <div className="shrink-0">
-              <button
-                onClick={() => onOpenQuote()}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
               >
-                <span>Send Enquiry Now</span>
+                <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import CertificationsStrip from '../components/CertificationsStrip'
 import InfrastructureStrip from '../components/InfrastructureStrip'
 import { productsData } from '../data/productsData'
 
-export default function Home({ onOpenQuote }) {
+export default function Home() {
   const coreProducts = productsData
 
   const whyChooseItems = [
@@ -225,13 +225,13 @@ export default function Home({ onOpenQuote }) {
             </div>
 
             <div className="shrink-0">
-              <button
-                onClick={() => onOpenQuote()}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
               >
-                <span>Send Enquiry Now</span>
+                <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

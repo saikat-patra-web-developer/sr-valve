@@ -5,7 +5,7 @@ import { ArrowRight, Droplets, Sprout, Building, Cpu, Landmark, FlaskConical, Ph
 import ProductCard from '../components/ProductCard'
 import { productsData } from '../data/productsData'
 
-export default function Products({ onOpenQuote }) {
+export default function Products() {
   const industries = [
     {
       icon: <Droplets className="w-6 h-6 text-blue-600" />,
@@ -132,13 +132,13 @@ export default function Products({ onOpenQuote }) {
                 Our expert team can design and manufacture valves as per your specific requirements. Get in touch for technical support, product selection or custom manufacturing enquiries.
               </p>
               <div className="pt-3 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => onOpenQuote('Custom Valve Solution')}
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
                 >
-                  <span>Send Enquiry Now</span>
+                  <span>Contact Us</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
                 <a
                   href="tel:+917044090444"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-5 py-3 rounded-lg border border-white/20 transition-colors text-xs sm:text-sm"

@@ -8,7 +8,7 @@ import { faqData } from '../data/faqData'
 
 import InfrastructureStrip from '../components/InfrastructureStrip'
 
-export default function Contact({ onOpenQuote }) {
+export default function Contact() {
   const [openFaq, setOpenFaq] = useState(null)
   const [allFaqs, setAllFaqs] = useState(false)
 
@@ -29,7 +29,7 @@ export default function Contact({ onOpenQuote }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
             
             {/* Left Column: Form (7 cols) */}
-            <div className="lg:col-span-6 bg-white rounded-md border border-slate-200 p-6 sm:p-8 shadow-xs space-y-5">
+            <div id="contact-form" className="lg:col-span-6 bg-white rounded-md border border-slate-200 p-6 sm:p-8 shadow-xs space-y-5">
               <div>
                 <h2 className="text-2xl font-extrabold text-[#0d2857]">
                   Send Us an <span className="text-[#f37021]">Inquiry</span>
@@ -320,13 +320,13 @@ export default function Contact({ onOpenQuote }) {
                 Let's discuss how our valve solutions can support your business with high durability and on-time project execution.
               </p>
               <div className="pt-2">
-                <button
-                  onClick={() => onOpenQuote('Project Requirement Inquiry')}
+                <a
+                  href="#contact-form"
                   className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
                 >
-                  <span>Send Enquiry Now</span>
+                  <span>Contact Us</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
 
