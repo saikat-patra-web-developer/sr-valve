@@ -21,13 +21,13 @@ export default function CertificationsStrip({ showQualityBanner = true }) {
         <div className={`grid grid-cols-1 ${showQualityBanner ? 'lg:grid-cols-12' : 'lg:grid-cols-6'} gap-6 items-center`}>
           
           {/* Badges Grid (fills 9 cols if banner shown) */}
-          <div className={`${showQualityBanner ? 'lg:col-span-9' : 'lg:col-span-6'} grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 items-center`}>
+          <div className={`${showQualityBanner ? 'lg:col-span-9' : 'lg:col-span-6'} grid grid-cols-3 gap-2 sm:gap-4 items-center w-full min-w-0`}>
             {companyData.certifications.slice(0, 5).map((cert, index) => (
               <div
                 key={index}
-                className="bg-white p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center last:col-span-2 sm:last:col-span-1"
+                className="bg-white p-2 sm:p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center min-w-0 w-full"
               >
-                <div className="h-12 flex items-center justify-center">
+                <div className="h-12 flex items-center justify-center w-full min-w-0">
                   <ResponsiveImage
                     src={cert.image}
                     alt={cert.code}
@@ -36,7 +36,7 @@ export default function CertificationsStrip({ showQualityBanner = true }) {
                     sizes="160px"
                   />
                 </div>
-                <span className="text-[10px] font-bold text-slate-600 mt-2 line-clamp-1">
+                <span className="hidden sm:block text-[10px] font-bold text-slate-600 mt-2 line-clamp-1">
                   {cert.label}
                 </span>
               </div>
