@@ -152,11 +152,11 @@ export default function Home() {
                 </div>
 
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  We are an experienced manufacturer of industrial valves, penstocks and flow-control products, based in Howrah, West Bengal. With a state-of-the-art manufacturing facility, modern technology and a skilled team, we deliver high-quality, reliable solutions for water treatment, irrigation, desalination, civil construction and sea water applications.
+                  With over 15 years of experience, SSPR Valve manufactures a wide range of industrial valves and penstocks at its state-of-the-art facility in Howrah, West Bengal. We combine modern technology with the technical expertise of our engineering team to deliver reliable, high-quality products.
                 </p>
 
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Our commitment to quality, innovation and ethical business practices has made us a trusted partner for government and private projects across India.
+                  Under the leadership of <strong className="text-[#0d2857]">Mr. Prasenjit Dey, Managing Director</strong>, we supply government and private projects across India. Our commitment to quality and ethical business practices is supported by ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018 certifications, along with NSIC and MSME registrations.
                 </p>
 
                 <div className="pt-2">
@@ -177,10 +177,10 @@ export default function Home() {
                 </h4>
                 
                 {[
-                  "Modern Manufacturing Facility",
-                  "Advanced Technology & Machinery",
-                  "Skilled & Experienced Team",
-                  "Ethical Business Practices",
+                  "15+ Years of Manufacturing Experience",
+                  "Modern Technology & Engineering Expertise",
+                  "ISO, NSIC & MSME Credentials",
+                  "Quality & Ethical Business Practices",
                 ].map((highlight, index) => (
                   <div key={index} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
                     <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -193,7 +193,7 @@ export default function Home() {
                     Serving Critical Sectors
                   </span>
                   <p className="text-[11px] text-slate-600 leading-relaxed">
-                    Water Treatment | Irrigation | Desalination | Civil Construction | Sea Water Applications
+                    Water Treatment | Irrigation | Desalination & DM Water | Civil Construction | Sea Water | PHED Monitoring & Control
                   </p>
                 </div>
               </div>

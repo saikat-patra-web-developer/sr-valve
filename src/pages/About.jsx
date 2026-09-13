@@ -161,7 +161,7 @@ export default function About() {
       </section>
 
       {/* 5. MESSAGE FROM OUR MANAGING DIRECTOR */}
-      <section className="py-5 bg-gradient-to-r from-slate-100 via-blue-50/50 to-slate-100 border-y border-slate-200">
+      <section className="about-leadership-section py-10 sm:py-12 bg-gradient-to-r from-slate-100 via-blue-50/50 to-slate-100 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-6">
@@ -173,36 +173,38 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="bg-white rounded-md border border-slate-200 shadow-xs p-6 lg:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="leadership-card overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)]">
               
-              {/* MD Photo & Title (3 cols) */}
-              <div className="lg:col-span-3 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <div className="w-36 h-36 rounded-md overflow-hidden border-2 border-blue-900/20 shadow-md">
+              {/* MD Photo & Title */}
+              <aside className="leadership-profile bg-[#0d2857] p-6 sm:p-8 text-center text-white flex flex-col items-center justify-center">
+                <div className="h-52 w-44 overflow-hidden rounded-lg border-4 border-white/20 bg-white shadow-xl">
                   <img
                     src="/images/about/md_prasenjit_dey.png"
                     alt="Mr. Prasenjit Dey, Managing Director"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-base font-extrabold text-[#0d2857] mt-3">
+                <h3 className="mt-5 text-lg font-extrabold text-white">
                   Mr. Prasenjit Dey
                 </h3>
-                <span className="text-xs font-bold text-[#f37021]">
+                <span className="mt-1 text-sm font-bold text-[#ff8a24]">
                   Managing Director
                 </span>
-                <span className="text-[10px] text-slate-500 mt-0.5">
+                <span className="mt-2 max-w-[220px] text-xs leading-relaxed text-blue-100">
                   SSPR Valve Manufacturing Private Limited
                 </span>
-              </div>
+              </aside>
 
               {/* Managing Director's message */}
-              <div className="lg:col-span-9 space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                <p className="font-semibold text-[#0d2857]">I am pleased to welcome you to the SSPR Valve website.</p>
+              <div className="leadership-message p-6 sm:p-8 lg:p-10 space-y-4 text-sm sm:text-[15px] text-slate-600 leading-7">
+                <div className="border-l-4 border-[#f37021] bg-orange-50 px-4 py-3 rounded-r-lg">
+                  <p className="font-bold text-[#0d2857]">I am pleased to welcome you to the SSPR Valve website.</p>
+                </div>
                 <p>Whether you are a potential customer with a challenging project ahead, an existing customer checking our latest news, or a partner, supplier or future employee looking for new opportunities, I trust you will find what you are looking for here.</p>
                 <p>SSPR Valve Manufacturing Private Limited is a company that is driving progress and, with our customers and partners, building better communities through safe, smart and efficient infrastructure—something we have been doing consistently.</p>
                 <p>Our progressive thinking and creative approach make us stand out from the crowd, allowing us to achieve what very few have been able to accomplish.</p>
-                <p>We have a clear vision of what we want to be: leaders in valve manufacturing and infrastructure development. We guide our business using five core values—<strong className="text-[#0d2857]">lead, grow, deliver, sustain and protect</strong>. I am proud of the work we do and give you my personal commitment that we will deliver what we promise, safely and sustainably.</p>
+                <p className="border-t border-slate-200 pt-4">We have a clear vision of what we want to be: leaders in valve manufacturing and infrastructure development. We guide our business using five core values—<strong className="text-[#0d2857]">lead, grow, deliver, sustain and protect</strong>. I am proud of the work we do and give you my personal commitment that we will deliver what we promise, safely and sustainably.</p>
               </div>
 
             </div>
