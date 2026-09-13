@@ -384,3 +384,42 @@ img { max-width: 100%; }
  .page-about>section:nth-of-type(3) .md\:grid-cols-3>div { padding:14px; }.page-about>section:nth-of-type(3) .md\:grid-cols-3 p { line-height:1.25; }.page-about>section:nth-of-type(3) .md\:grid-cols-3 ul { font-size:11px; }
  .page-about>section:nth-of-type(4)>div>div:last-child { padding:0; border:0; background:transparent; }.page-about>section:nth-of-type(4) .mb-6 { margin-bottom:12px; }.page-about>section:nth-of-type(4) .lg\:col-span-3:last-child { height:175px; padding:16px; background:linear-gradient(110deg,#f4f9ff,#e7f1fa); color:#003abd; }.page-about>section:nth-of-type(4) .lg\:col-span-3:last-child h4 { color:#003abd; }.page-about>section:nth-of-type(4) .lg\:col-span-3:last-child>div:last-child { display:none; }
 }
+
+/* Tablet and phone hardening. Desktop rules above remain untouched. */
+@media(max-width:1100px) {
+ html,body,#root { max-width:100%; overflow-x:clip; }
+ .site-header .nav-inner { position:relative; }
+ .menu-toggle { display:block; }
+ .main-nav { display:none; }
+ .site-footer .footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.5rem 3rem; }
+ .site-footer .footer-grid>* { min-width:0; }
+ .site-footer .footer-india { width:100%; }
+ .hero-inner,.hero-copy,.hero-home .hero-copy,.hero-about .hero-copy,.hero-infrastructure .hero-copy,.hero-certifications .hero-copy,.hero-contact .hero-copy { min-width:0; }
+ .page-detail .overflow-hidden:has(>table) { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+ .page-detail table { min-width:38rem; }
+}
+
+@media(min-width:640px) and (max-width:1100px) {
+ .main-nav.open { position:absolute; top:100%; right:var(--page-gutter); left:auto; display:grid; width:min(24rem,calc(100vw - (2 * var(--page-gutter)))); grid-template-columns:repeat(2,minmax(0,1fr)); gap:.25rem 1.25rem; padding:1rem 1.25rem; border:1px solid #e4ebf5; border-radius:0 0 .65rem .65rem; background:#fff; box-shadow:0 16px 30px rgba(15,42,82,.14); }
+ .main-nav.open a { padding:.7rem 0; }
+ .site-footer .footer-india img { width:100%; }
+}
+
+@media(max-width:639px) {
+ .main-nav.open { display:grid; grid-template-columns:1fr; justify-items:stretch; gap:0; padding:.65rem var(--page-gutter) .85rem; border-top:1px solid #edf2f8; }
+ .main-nav.open a { width:100%; padding:.7rem .25rem; border-bottom-width:1px; }
+ .hero-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; }
+ .hero-actions>* { width:100%; min-width:0; padding-inline:.75rem; }
+ .hero-features { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .contact-hero-features { display:grid; grid-template-columns:1fr; gap:.65rem; }
+ .contact-map-frame { height:22rem; }
+ .page-detail .grid.grid-cols-2.gap-2\.5,.page-detail .mt-10.grid.grid-cols-2,.page-contact .lg\:col-span-4.grid.grid-cols-3,.page-infrastructure .lg\:col-span-4.grid.grid-cols-3 { grid-template-columns:1fr; }
+ .page-detail .product-gallery .min-h-\[340px\] { min-height:17rem; }
+ .page-detail .product-gallery .min-h-\[340px\] img { height:17rem; max-height:17rem; }
+ .page-detail table th,.page-detail table td { padding:.55rem .75rem; }
+ .fixed.inset-0>.max-w-md,.fixed.inset-0>.max-w-3xl { max-height:calc(100dvh - 2rem); overflow-y:auto; }
+ .fixed.bottom-6.right-6 { right:var(--page-gutter); bottom:1rem; left:var(--page-gutter); max-width:none; }
+ .site-footer .footer-grid { grid-template-columns:1fr; }
+ .site-footer .footer-brand,.site-footer .footer-india { grid-column:auto; }
+ .site-footer .footer-india { grid-template-columns:minmax(5rem,7rem) minmax(0,1fr); }
+}
