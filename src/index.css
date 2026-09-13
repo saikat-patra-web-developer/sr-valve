@@ -239,7 +239,7 @@ img { max-width: 100%; }
  .page-contact>section:nth-of-type(3) .md\:grid-cols-3>div a { word-break:break-all; }
 }
 
-@media(max-width:639px) { .client-carousel-item { width:calc((100vw - 32px) / 2); } }
+@media(max-width:639px) { .client-carousel-item { width:calc((100vw - 24px) / 3.5); } .client-carousel-item>div { height:85px; padding:6px; } }
 @media(prefers-reduced-motion:reduce) { .clients-carousel-track { animation:none; } .clients-carousel { overflow-x:auto; } }
 @media(max-width:639px) {
  .nav-inner { padding:6px 15px; gap:10px; min-height:66px; }

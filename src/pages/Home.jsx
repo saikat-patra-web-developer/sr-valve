@@ -61,14 +61,14 @@ export default function Home() {
             </div>
             <Link
               to="/products"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0d2857] hover:text-[#f37021] transition-colors cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-[#0d2857] hover:text-[#f37021] transition-colors cursor-pointer shrink-0"
             >
               <span>View All Products</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="home-products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="home-products grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {coreProducts.map((product) => (
               <ProductCard
                 key={product.id}
