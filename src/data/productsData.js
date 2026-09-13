@@ -12,7 +12,13 @@ export const productsData = [
     tagline: "Reliable Sealing. Superior Performance.",
     image: "/images/products/butterfly_valve_transparent.webp",
     detailMainImage: "/images/products/butterfly_valve_transparent.webp",
-    thumbnails: ["/images/products/butterfly_valve_transparent.webp"],
+    thumbnails: [
+      "/images/products/butterfly_valve_transparent.webp",
+      "/images/products/butterfly_valve_angle_1.webp",
+      "/images/products/butterfly_valve_angle_2.webp",
+      "/images/products/butterfly_valve_angle_3.webp",
+      "/images/products/butterfly_valve_angle_4.webp",
+    ],
     quickFeatures: [
       { title: "Tight Shut-off", desc: "Zero leakage resilient seat" },
       { title: "Low Operating Torque", desc: "Effortless manual or motorized operation" },
@@ -82,7 +88,13 @@ export const productsData = [
     tagline: "Rugged Design. Reliable Isolation.",
     image: "/images/products/sluice_valve_transparent.webp",
     detailMainImage: "/images/products/sluice_valve_transparent.webp",
-    thumbnails: ["/images/products/sluice_valve_transparent.webp"],
+    thumbnails: [
+      "/images/products/sluice_valve_transparent.webp",
+      "/images/products/sluice_valve_angle_1.webp",
+      "/images/products/sluice_valve_angle_2.webp",
+      "/images/products/sluice_valve_angle_3.webp",
+      "/images/products/sluice_valve_angle_4.webp",
+    ],
     quickFeatures: [
       { title: "Rigid Construction", desc: "Heavy-duty cast & ductile iron body" },
       { title: "Low Head Loss", desc: "Full-bore unobstructed waterway" },
@@ -150,7 +162,13 @@ export const productsData = [
     tagline: "Immediate Response. Zero Backflow.",
     image: "/images/products/check_valve_transparent.webp",
     detailMainImage: "/images/products/check_valve_transparent.webp",
-    thumbnails: ["/images/products/check_valve_transparent.webp"],
+    thumbnails: [
+      "/images/products/check_valve_transparent.webp",
+      "/images/products/check_valve_angle_1.webp",
+      "/images/products/check_valve_angle_2.webp",
+      "/images/products/check_valve_angle_3.webp",
+      "/images/products/check_valve_angle_4.webp",
+    ],
     quickFeatures: [
       { title: "Non-Slam Closure", desc: "Rapid closure prevents damaging water hammer" },
       { title: "Low Cracking Pressure", desc: "Opens fully at low fluid velocity" },
@@ -217,7 +235,13 @@ export const productsData = [
     tagline: "Pipeline Protection. Maximum Flow Efficiency.",
     image: "/images/products/air_valve_transparent.webp",
     detailMainImage: "/images/products/air_valve_transparent.webp",
-    thumbnails: ["/images/products/air_valve_transparent.webp"],
+    thumbnails: [
+      "/images/products/air_valve_transparent.webp",
+      "/images/products/air_valve_angle_1.webp",
+      "/images/products/air_valve_angle_2.webp",
+      "/images/products/air_valve_angle_3.webp",
+      "/images/products/air_valve_angle_4.webp",
+    ],
     quickFeatures: [
       { title: "Triple Function", desc: "Air release, vacuum prevention & pressurized degassing" },
       { title: "Non-Clogging Floats", desc: "High-density polymer or SS floats" },

@@ -9,8 +9,10 @@ export default function ProductDetail({ onShowToast }) {
   const productId = id || 'butterfly-valve'
   const product = productsData.find((p) => p.id === productId) || productsData[0]
 
-  const [activeThumb, setActiveThumb] = useState(-1)
+  const [selection, setSelection] = useState({ productId: null, index: -1 })
   const [zoomOpen, setZoomOpen] = useState(false)
+  const activeThumb = selection.productId === product.id ? selection.index : -1
+  const selectedImage = product.thumbnails?.[activeThumb] || product.detailMainImage || product.image
 
   const handleDownloadBrochure = () => {
     const catalogContent = `========================================================
@@ -114,7 +116,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                     <button
                       key={idx}
                       onClick={() => {
-                        setActiveThumb(idx)
+                        setSelection({ productId: product.id, index: idx })
                       }}
                       className={`w-14 h-14 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
                         activeThumb === idx
@@ -136,11 +138,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                 {/* Main View Area */}
                 <div className="flex-1 relative bg-white rounded-md border border-slate-200 shadow-sm p-4 flex flex-col items-center justify-center min-h-[340px] group">
                   <ResponsiveImage
-                    src={
-                      product.thumbnails && product.thumbnails[activeThumb]
-                        ? product.thumbnails[activeThumb]
-                        : product.detailMainImage || product.image
-                    }
+                    src={selectedImage}
                     alt={product.fullName}
                     className="max-h-72 max-w-full object-contain"
                   />
@@ -504,7 +502,7 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
               <X className="w-5 h-5" />
             </button>
             <ResponsiveImage
-              src={product.detailMainImage || product.image}
+              src={selectedImage}
               alt={product.fullName}
               className="max-h-[70vh] max-w-full object-contain"
             />
