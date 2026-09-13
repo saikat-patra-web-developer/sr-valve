@@ -91,24 +91,24 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumbs */}
-          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500 mb-6">
+          <nav className="product-breadcrumb text-xs font-semibold text-slate-500 mb-8" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-blue-900 cursor-pointer">
               Home
             </Link>
-            <span>&gt;</span>
+            <span aria-hidden="true">/</span>
             <Link to="/products" className="hover:text-blue-900 cursor-pointer">
               Products
             </Link>
-            <span>&gt;</span>
+            <span aria-hidden="true">/</span>
             <span className="text-slate-700">{product.category}</span>
-            <span>&gt;</span>
-            <span className="text-[#f37021]">{product.fullName}</span>
-          </div>
+            <span aria-hidden="true">/</span>
+            <span className="product-breadcrumb-current">{product.fullName}</span>
+          </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Gallery Left (4 cols) */}
-            <div className="product-gallery lg:col-span-5 space-y-4">
+            {/* Product gallery */}
+            <div className="product-gallery lg:col-span-6 space-y-4">
               <div className="flex gap-3">
                 {/* Thumbnails */}
                 <div className="flex flex-col gap-2.5">
@@ -154,8 +154,8 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
               </div>
             </div>
 
-            {/* Product Center Info (4 cols) */}
-            <div className="lg:col-span-4 space-y-4">
+            {/* Product information */}
+            <div className="lg:col-span-6 space-y-4 lg:pl-4">
               <div>
                 <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
                   {product.tag}
@@ -204,21 +204,6 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                   <span>Download Brochure</span>
                 </button>
               </div>
-            </div>
-
-            {/* Right: Contact card */}
-            <div className="product-quote lg:col-span-3 bg-white rounded-md border border-slate-200 shadow-md p-5 flex flex-col justify-center">
-              <h3 className="text-base font-extrabold text-[#0d2857]">Need product assistance?</h3>
-              <p className="text-xs text-slate-500 mt-1 mb-5">
-                Contact our technical team for product selection, specifications and project support.
-              </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold py-3 px-4 rounded-lg transition-colors text-xs"
-              >
-                <span>Contact Us</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
 
           </div>

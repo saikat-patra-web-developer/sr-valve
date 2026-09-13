@@ -268,6 +268,90 @@ img { max-width: 100%; }
  .page-home .infrastructure-strip { padding-block:12px; }.page-home .infrastructure-strip .h-36 { height:100px; }
  .page-about>section:nth-of-type(4) .md\:grid-cols-3>div { display:grid; grid-template-columns:80px 1fr; column-gap:18px; padding:18px; }.page-about>section:nth-of-type(4) .md\:grid-cols-3>div>div { grid-row:span 2; border-radius:50%; width:75px; height:75px; }.page-about>section:nth-of-type(4) .md\:grid-cols-3>div>h3 { margin-bottom:6px; }.page-about>section:nth-of-type(4) .md\:grid-cols-3>div>p { font-size:13px; }
 }
+
+@media (max-width: 639px) {
+ .home-title-line {
+  white-space: normal;
+ }
+ .hero-home h1 {
+  font-size: clamp(2.1rem, 10vw, 2.55rem);
+  overflow-wrap: anywhere;
+ }
+}
+
+/* Consistent site-wide layout rhythm */
+:root {
+ --page-gutter: clamp(1.25rem, 4vw, 3rem);
+ --section-space: clamp(2.75rem, 5vw, 4.5rem);
+ --section-space-compact: clamp(2rem, 3.5vw, 3rem);
+ --content-width: 1320px;
+}
+
+/* Keep every page on the same visual grid, including shared strips/footer. */
+.site-page .max-w-7xl,
+.site-header .nav-inner,
+.site-footer .footer-grid,
+.site-footer .footer-bottom,
+.clients-section .max-w-7xl,
+.certifications-strip .max-w-7xl,
+.infrastructure-strip .max-w-7xl,
+.hero-inner,
+.product-banner > div,
+.content-breadcrumb {
+ width: 100%;
+ max-width: var(--content-width);
+ padding-left: var(--page-gutter);
+ padding-right: var(--page-gutter);
+}
+
+/* Main content needs room to breathe; banners and utility strips stay tighter. */
+.site-page > section:not(.page-hero):not(.clients-section):not(.certifications-strip):not(.infrastructure-strip):not(.text-white) {
+ padding-top: var(--section-space);
+ padding-bottom: var(--section-space);
+}
+.site-page > :is(.clients-section, .certifications-strip, .infrastructure-strip),
+.site-page > section.text-white {
+ padding-top: var(--section-space-compact);
+ padding-bottom: var(--section-space-compact);
+}
+
+/* Normalize section headings and grids instead of relying on page-specific nudges. */
+.site-page section > .max-w-7xl > :is(.flex, .text-center):first-child,
+.clients-section .max-w-7xl > div:first-child,
+.certifications-strip .max-w-7xl > div:first-child,
+.infrastructure-strip .max-w-7xl > div:first-child {
+ margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+.site-page :is(.grid, .home-products, .why-grid, .capabilities-grid) {
+ row-gap: clamp(1rem, 2vw, 1.5rem);
+}
+.site-page :is(.rounded-md, .rounded-lg) {
+ scroll-margin-top: 6rem;
+}
+
+@media (max-width: 639px) {
+ :root {
+  --page-gutter: 1.25rem;
+  --section-space: 2.5rem;
+  --section-space-compact: 2rem;
+ }
+ .site-page section > .max-w-7xl > :is(.flex, .text-center):first-child {
+  margin-bottom: 1.25rem;
+ }
+ .site-page .grid {
+  column-gap: 1rem;
+ }
+ .hero-actions {
+  flex-wrap: wrap;
+ }
+ .hero-actions > * {
+  min-width: min(100%, 9rem);
+ }
+ .footer-grid {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+ }
+}
 @media(max-width:639px) {
  .page-hero::before { background-size:auto 230px; background-position:62% bottom; }.hero-home::before,.hero-products::before { background-size:auto 230px; background-position:right bottom; }
  .enquiry-fields { grid-template-columns:1fr; gap:14px; }.enquiry-form { gap:14px; }.form-bottom { flex-direction:column; gap:12px; align-items:stretch; }.form-bottom p { justify-content:center; }.enquiry-form input,.enquiry-form textarea,.enquiry-form select { font-size:16px; }
