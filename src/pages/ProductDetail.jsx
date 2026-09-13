@@ -54,16 +54,16 @@ export default function ProductDetail() {
             
             {/* Product gallery */}
             <div className="product-gallery lg:col-span-6 space-y-4">
-              <div className="flex gap-3">
+              <div className="flex flex-col-reverse sm:flex-row gap-3">
                 {/* Thumbnails */}
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-row sm:flex-col gap-2.5 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
                   {(product.thumbnails || [product.image]).map((thumb, idx) => (
                     <button
                       key={idx}
                       onClick={() => {
                         setSelection({ productId: product.id, index: idx })
                       }}
-                      className={`w-14 h-14 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
+                      className={`w-14 h-14 shrink-0 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
                         activeThumb === idx
                           ? 'border-[#f37021] shadow-xs'
                           : 'border-slate-200 hover:border-blue-300'
@@ -76,8 +76,6 @@ export default function ProductDetail() {
                       />
                     </button>
                   ))}
-
-                  
                 </div>
 
                 {/* Main View Area */}

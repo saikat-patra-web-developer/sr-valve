@@ -174,7 +174,7 @@ export default function About() {
           </div>
 
           <div className="leadership-card overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg">
-            <div className="grid grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)]">
+            <div className="grid grid-cols-1 md:grid-cols-[260px_minmax(0,1fr)] lg:grid-cols-[300px_minmax(0,1fr)]">
               
               {/* MD Photo & Title */}
               <aside className="leadership-profile bg-[#0d2857] p-6 sm:p-8 text-center text-white flex flex-col items-center justify-center">

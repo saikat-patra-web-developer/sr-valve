@@ -155,7 +155,7 @@ Contact: info@ssprvalve.com | +91 7044090444
                     <h4 className="text-sm font-bold text-[#0d2857] group-hover:text-[#f37021] transition-colors">
                       {cap.title}
                     </h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
                       {cap.desc}
                     </p>
                   </div>
@@ -236,7 +236,7 @@ Contact: info@ssprvalve.com | +91 7044090444
                 role="button" tabIndex={0} aria-label={`View ${photo.title}`}
                 onKeyDown={e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLightboxImg(photo) } }}
                 onClick={() => setLightboxImg(photo)}
-                className="group relative rounded-md overflow-hidden border border-slate-200 shadow-xs cursor-pointer bg-black"
+                className="group relative rounded-md overflow-hidden border border-slate-200 shadow-xs cursor-pointer bg-black last:col-span-2 sm:last:col-span-1"
               >
                 <div className="h-40 w-full overflow-hidden">
                   <img
@@ -270,11 +270,11 @@ Contact: info@ssprvalve.com | +91 7044090444
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {companyData.keyMetrics.map((metric, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 p-6 rounded-md border border-slate-200 shadow-2xs text-center hover:border-blue-400 transition-colors"
+                className="bg-slate-50 p-3.5 sm:p-6 rounded-md border border-slate-200 shadow-2xs text-center hover:border-blue-400 transition-colors"
               >
                 <span className="text-3xl sm:text-4xl font-extrabold text-[#0d2857] block">
                   {metric.value}

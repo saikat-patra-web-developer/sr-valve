@@ -21,11 +21,11 @@ export default function CertificationsStrip({ showQualityBanner = true }) {
         <div className={`grid grid-cols-1 ${showQualityBanner ? 'lg:grid-cols-12' : 'lg:grid-cols-6'} gap-6 items-center`}>
           
           {/* Badges Grid (fills 9 cols if banner shown) */}
-          <div className={`${showQualityBanner ? 'lg:col-span-9' : 'lg:col-span-6'} grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 items-center`}>
+          <div className={`${showQualityBanner ? 'lg:col-span-9' : 'lg:col-span-6'} grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 items-center`}>
             {companyData.certifications.slice(0, 5).map((cert, index) => (
               <div
                 key={index}
-                className="bg-white p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center"
+                className="bg-white p-3 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm transition-all flex flex-col items-center text-center group h-28 justify-center last:col-span-2 sm:last:col-span-1"
               >
                 <div className="h-12 flex items-center justify-center">
                   <ResponsiveImage

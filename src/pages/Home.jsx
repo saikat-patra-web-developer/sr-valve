@@ -99,7 +99,7 @@ export default function Home() {
             {whyChooseItems.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-start gap-2"
+                className="bg-white p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-start gap-2 sm:max-lg:[&:last-child]:col-span-2"
               >
                 <div className="p-2.5 rounded-lg bg-blue-50 shrink-0">
                   {item.icon}
