@@ -10,6 +10,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* About page section sequence: leadership before purpose. */
+.page-about { display:flex; flex-direction:column; }
+.page-about>.hero-about { order:1; }
+.page-about>.about-trust { order:2; }
+.page-about>section:nth-of-type(2) { order:3; }
+.page-about>section:nth-of-type(4) { order:4; }
+.page-about>section:nth-of-type(3) { order:5; }
+.page-about>section:nth-of-type(5) { order:6; }
+.page-about>section:nth-of-type(6) { order:7; }
+.page-about>section:nth-of-type(7) { order:8; }
+
 :is(h1, h2, h3, h4, h5, h6),
 .main-nav,
 .button-orange,
@@ -68,6 +79,19 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+.capability-card {
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.capability-card:focus-visible {
+  border-color: #2563eb;
+  outline: 3px solid rgba(37, 99, 235, 0.22);
+  outline-offset: 3px;
 }
 
 .enquiry-form input,

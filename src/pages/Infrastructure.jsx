@@ -135,9 +135,13 @@ Contact: info@ssprvalve.com | +91 7044090444
 
           <div className="capabilities-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {companyData.capabilities.map((cap) => (
-              <div
+              <button
+                type="button"
                 key={cap.id}
-                className="bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group"
+                onClick={() => setActiveModalCap(cap)}
+                aria-haspopup="dialog"
+                aria-label={`View details for ${cap.title}`}
+                className="capability-card bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group text-left"
               >
                 <div>
                   <div className="h-44 w-full overflow-hidden bg-slate-100 relative">
@@ -157,16 +161,7 @@ Contact: info@ssprvalve.com | +91 7044090444
                   </div>
                 </div>
 
-                <div className="px-4 pb-4 pt-1">
-                  <button
-                    onClick={() => setActiveModalCap(cap)}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-700 hover:text-[#f37021] cursor-pointer"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -410,6 +405,9 @@ Contact: info@ssprvalve.com | +91 7044090444
       {activeModalCap && (
         <div
           onClick={() => setActiveModalCap(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="capability-dialog-title"
           className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4"
         >
           <div
@@ -417,7 +415,7 @@ Contact: info@ssprvalve.com | +91 7044090444
             className="bg-white rounded-md max-w-md w-full p-6 shadow-2xl space-y-4"
           >
             <div className="flex items-center justify-between border-b border-transparent pb-3">
-              <h3 className="text-lg font-bold text-[#0d2857]">
+              <h3 id="capability-dialog-title" className="text-lg font-bold text-[#0d2857]">
                 {activeModalCap.title}
               </h3>
               <button
@@ -439,7 +437,7 @@ Contact: info@ssprvalve.com | +91 7044090444
             <Link
               to="/contact"
               onClick={() => setActiveModalCap(null)}
-              className="w-full bg-[#f37021] hover:bg-[#e05f13] text-white font-bold py-2.5 rounded-lg text-xs cursor-pointer"
+              className="inline-flex w-full min-h-12 items-center justify-center bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-5 py-3 rounded-lg text-sm cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f37021]"
             >
               Contact Us
             </Link>

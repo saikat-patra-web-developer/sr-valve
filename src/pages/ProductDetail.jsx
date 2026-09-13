@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Download, Send, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
 import { productsData } from '../data/productsData'
 import ResponsiveImage from '../components/ResponsiveImage'
 
-export default function ProductDetail({ onShowToast }) {
+export default function ProductDetail() {
   const { id } = useParams()
   const productId = id || 'butterfly-valve'
   const product = productsData.find((p) => p.id === productId) || productsData[0]
@@ -13,61 +13,6 @@ export default function ProductDetail({ onShowToast }) {
   const [zoomOpen, setZoomOpen] = useState(false)
   const activeThumb = selection.productId === product.id ? selection.index : -1
   const selectedImage = product.thumbnails?.[activeThumb] || product.detailMainImage || product.image
-
-  const handleDownloadBrochure = () => {
-    const catalogContent = `========================================================
-SSPR VALVE MANUFACTURING PRIVATE LIMITED
-FLOWING A STRONGER TOMORROW
-========================================================
-TECHNICAL DATASHEET: ${product.fullName.toUpperCase()}
-Category: ${product.category}
-Tagline: ${product.tagline}
-
-TECHNICAL SPECIFICATIONS:
-${Object.entries(product.specsTable)
-  .map(([k, v]) => `• ${k}: ${v}`)
-  .join('\n')}
-
-MATERIALS OF CONSTRUCTION:
-• Body: ${product.materials.body}
-• Disc: ${product.materials.disc}
-• Seat: ${product.materials.seat}
-• Shaft: ${product.materials.shaft}
-
-COMPLIANCE STANDARDS:
-• Design: ${product.standards.design}
-• Face to Face: ${product.standards.faceToFace}
-• End Connection: ${product.standards.endConnection}
-• Testing: ${product.standards.testing}
-
-KEY FEATURES & BENEFITS:
-${product.keyFeatures.map((f) => `• ${f.title}: ${f.desc}`).join('\n')}
-
-APPLICATIONS:
-${product.applications.join(', ')}
-
-========================================================
-FACTORY & HEAD OFFICE:
-SSPR Valve Manufacturing Private Limited
-ONGC Road, Dakshin Jhapordha, Domjur, Howrah - 711405, WB, India
-Phone: +91 7044090444 | Email: info@ssprvalve.com
-ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
-========================================================`
-
-    const blob = new Blob([catalogContent], { type: 'text/plain;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = `SSPR-Valve-${product.id}-Brochure.txt`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    URL.revokeObjectURL(url)
-
-    if (onShowToast) {
-      onShowToast(`Downloaded technical brochure for ${product.name}!`)
-    }
-  }
 
   // Related products
   const relatedProducts = productsData.filter((p) => p.id !== product.id).slice(0, 6)
@@ -186,24 +131,6 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                 ))}
               </div>
 
-              {/* Buttons */}
-              <div className="flex items-center gap-3 pt-3">
-                <Link
-                  to="/contact"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white text-xs font-bold py-3 px-4 rounded-lg shadow-sm transition-colors cursor-pointer"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Contact Us</span>
-                </Link>
-                
-                <button
-                  onClick={handleDownloadBrochure}
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0d2857] text-xs font-bold py-3 px-4 rounded-lg border border-slate-300 shadow-2xs transition-colors cursor-pointer"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Brochure</span>
-                </button>
-              </div>
             </div>
 
           </div>
