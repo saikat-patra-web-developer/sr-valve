@@ -55,13 +55,15 @@ img { max-width: 100%; }
 .hero-description { font-size:17px; line-height:1.35; color:#526496; max-width:530px; }
 .hero-actions { display:flex; gap:16px; margin-top:20px; }
 .hero-home .hero-inner { min-height:470px; }
+.hero-home h1 { font-size:clamp(32px,3.25vw,55px); }
+.home-title-line { display:block; white-space:nowrap; }
 .hero-home .hero-copy { width:53%; }
 .hero-home .hero-description { max-width:510px; }
 .hero-home h1 { font-size:clamp(34px,3.8vw,60px); }
-.hero-about .hero-inner { min-height:290px; }
-.hero-about h1 { font-size:clamp(30px,3vw,44px); }
-.hero-about .hero-copy { width:61%; }
-.hero-about .hero-description { max-width:430px; }
+.hero-about .hero-inner,.hero-infrastructure .hero-inner,.hero-certifications .hero-inner { min-height:365px; }
+.hero-about h1,.hero-infrastructure h1,.hero-certifications h1 { font-size:clamp(32px,3.6vw,58px); }
+.hero-about .hero-copy,.hero-infrastructure .hero-copy,.hero-certifications .hero-copy { width:54%; }
+.hero-about .hero-description,.hero-infrastructure .hero-description,.hero-certifications .hero-description { max-width:530px; }
 .hero-about .eyebrow { font-size:11px; letter-spacing:4px; }
 .hero-contact .hero-inner { min-height:365px; }
 .hero-contact h1 { font-size:clamp(54px,7.2vw,100px); }
@@ -244,7 +246,7 @@ img { max-width: 100%; }
 .draft-ready p { font-size:14px; margin-block:8px 14px; }
 .small-form { gap:10px; }.small-form .enquiry-fields { grid-template-columns:1fr; gap:10px; }.small-form label>span { font-size:11px; }.small-form input,.small-form textarea { padding:8px 10px; font-size:12px; }.small-form .enquiry-fields svg { display:none; }.small-form .form-bottom { display:block; }.small-form .button-orange { width:100%; min-height:40px; font-size:13px; }.small-form .form-bottom p { margin-top:12px; font-size:10px; }.small-form .email-note { font-size:10px; }
 .page-hero::before { background-size:cover; background-position:center; }
-.hero-about::before,.hero-infrastructure::before,.hero-certifications::before { background-size:auto 100%; background-position:right center; background-color:#eef7fd; }
+.hero-about::before,.hero-infrastructure::before,.hero-certifications::before { background-size:cover; background-position:center; background-color:#eef7fd; }
 .hero-home::before { background-size:100% 100%; }
 .site-page>section.text-white { background-image:linear-gradient(90deg,#003e83de,#003974d9),url('/images/hero/contact-wide.png'); background-size:cover; background-position:center; }
 .footer-india img { width:175px; height:130px; object-fit:contain; }
