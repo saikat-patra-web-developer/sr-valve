@@ -146,9 +146,6 @@ export default function Home() {
               {/* Middle: Content (5 cols) */}
               <div className="lg:col-span-5 space-y-4">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
-                    ABOUT SSPR VALVE
-                  </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1 leading-tight">
                     SSPR Valve Manufacturing Private Limited
                   </h3>

@@ -55,8 +55,17 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} SSPR Valve Manufacturing Private Limited.</p>
-        <p>All Rights Reserved. <span aria-hidden="true">•</span> Reliable Valves. Stronger India.</p>
+        <p>
+          Copyright © {new Date().getFullYear()}{' '}
+          <strong className="footer-copyright-company">SSPR Valve Manufacturing Private Limited</strong>. All Rights Reserved.
+        </p>
+        <div className="footer-bottom-right">
+          <p>
+            <a href="https://share.google/3RIP1HbmLjJKAnwpN" target="_blank" rel="noreferrer">
+              Design by Saikat Patra
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   )

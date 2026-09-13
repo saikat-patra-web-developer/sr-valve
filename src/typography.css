@@ -114,8 +114,12 @@ body {
 .site-footer .footer-india img { width:100%; height:8.75rem; object-fit:contain; filter:drop-shadow(0 8px 14px rgba(0,0,0,.2)); }
 .site-footer .footer-india strong { display:block; color:#eef5fb; font-size:.8125rem; line-height:1.4; }
 .site-footer .footer-bottom { position:relative; display:flex; justify-content:space-between; gap:1rem; padding-top:1.15rem; padding-bottom:1.15rem; border-top:1px solid rgba(255,255,255,.1); color:#8fa6ba; font-family:'Roboto',Arial,sans-serif; font-size:.6875rem; letter-spacing:.01em; }
+.footer-bottom-right { display:flex; align-items:center; justify-content:flex-end; gap:.55rem; text-align:right; }
+.footer-bottom-right a { color:#c8d6e3; font-weight:600; transition:color 160ms ease; }
+.footer-bottom-right a:hover { color:#ff9b3d; }
+.footer-copyright-company { color:#c8d6e3; font-weight:700; }
 @media(max-width:1023px) { .site-footer .footer-grid { grid-template-columns:1.15fr .85fr; } .site-footer .footer-grid>* { min-width:0; } .site-footer .footer-india { grid-column:auto; } }
-@media(max-width:639px) { .site-footer .footer-grid { grid-template-columns:1fr; gap:2.25rem; padding-top:3rem; padding-bottom:2.5rem; } .site-footer .footer-brand,.site-footer .footer-india { grid-column:auto; } .site-footer .footer-india { display:grid; grid-template-columns:7rem 1fr; align-items:center; } .site-footer .footer-india img { height:6rem; } .site-footer .footer-bottom { flex-direction:column; gap:.4rem; } }
+@media(max-width:639px) { .site-footer .footer-grid { grid-template-columns:1fr; gap:2.25rem; padding-top:3rem; padding-bottom:2.5rem; } .site-footer .footer-brand,.site-footer .footer-india { grid-column:auto; } .site-footer .footer-india { display:grid; grid-template-columns:7rem 1fr; align-items:center; } .site-footer .footer-india img { height:6rem; } .site-footer .footer-bottom { flex-direction:column; gap:.4rem; } .footer-bottom-right { justify-content:flex-start; flex-wrap:wrap; text-align:left; } }
 
 .contact-map-frame {
   width: 100%;
@@ -180,12 +184,46 @@ body {
   font-weight: 700;
 }
 
+/* Match affected page heroes to the approved About-page hierarchy. */
+.hero-infrastructure h1,
+.hero-certifications h1,
+.hero-contact h1 {
+  font-size: clamp(2rem, 3.6vw, 3.625rem);
+  line-height: 1.04;
+}
+
+.hero-infrastructure .hero-copy,
+.hero-certifications .hero-copy,
+.hero-contact .hero-copy {
+  width: 54%;
+}
+
+.hero-infrastructure .hero-description,
+.hero-certifications .hero-description,
+.hero-contact .hero-description {
+  max-width: 33rem;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+}
+
 @media (max-width: 639px) {
   .product-breadcrumb {
     width: 100%;
     gap: 0.4rem;
     padding: 0.7rem 0.8rem;
   }
+
+  .hero-infrastructure .hero-copy,
+  .hero-certifications .hero-copy,
+  .hero-contact .hero-copy {
+    width: 100%;
+  }
+
+  .hero-infrastructure h1,
+  .hero-certifications h1,
+  .hero-contact h1 {
+    font-size: 1.875rem;
+  }
+
 }
 
 @media (max-width: 639px) {
