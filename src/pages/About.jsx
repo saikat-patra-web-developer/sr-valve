@@ -1,23 +1,12 @@
-import { Settings, Users, ChartNoAxesCombined, Cpu, Trophy } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { ArrowRight, Target, Eye, HeartHandshake, CheckCircle, Quote, Droplets, Waves, Building2, Anchor, Factory } from 'lucide-react'
+import { ArrowRight, Target, Eye, HeartHandshake, CheckCircle } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
-import { companyData } from '../data/companyData'
 
 export default function About() {
-  const sectorsIcons = [
-    <Droplets key="icon-0" className="w-6 h-6 text-blue-600" />,
-    <Waves key="icon-1" className="w-6 h-6 text-blue-600" />,
-    <Droplets key="icon-2" className="w-6 h-6 text-blue-600" />,
-    <Building2 key="icon-3" className="w-6 h-6 text-blue-600" />,
-    <Anchor key="icon-4" className="w-6 h-6 text-blue-600" />,
-    <Factory key="icon-5" className="w-6 h-6 text-blue-600" />,
-  ]
-
   return (
     <div className="site-page page-about">
       
@@ -32,19 +21,21 @@ export default function About() {
             
             {/* Left Content (6 cols) */}
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                OUR COMPANY
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">ABOUT COMPANY</span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight">
-                Engineering Excellence in <span className="text-[#f37021]">Every Flow</span>
+                Experience, Quality and <span className="text-[#f37021]">Engineering Excellence</span>
               </h2>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                SSPR Valve Manufacturing Private Limited is an experienced manufacturer of industrial valves, serving critical applications across government and private projects. Based in Howrah, West Bengal, we specialize in delivering high-quality industrial valves, penstocks and flow control solutions for water treatment, irrigation, desalination, civil construction, sea water applications and infrastructure projects.
+                <strong className="text-[#0d2857]">SSPR Valve Manufacturing Private Limited</strong> has vast manufacturing experience in various types of valves for industrial use. Our state-of-the-art manufacturing unit is located in Howrah, West Bengal, and holds ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018 certifications, along with NSIC and MSME registrations.
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                With modern manufacturing technology, strong engineering expertise and a commitment to ethical business practices, we build products that stand the test of time. Our focus on quality, reliability and customer satisfaction has made us a trusted partner for government bodies and leading private organizations across India.
+                We believe in manufacturing quality products by combining modern technology with the technical expertise of our engineering team. The company supplies its manufactured products to various government projects, private projects and organizations in the valve industry.
+              </p>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Under the leadership of <strong className="text-[#0d2857]">Mr. Prasenjit Dey, Managing Director</strong>, and through the dedicated efforts of the entire team, the company continues to achieve new heights in the valve industry. Commitment, quality products and ethical business practices are values we consistently uphold and for which we are applauded by our clients and business associates.
               </p>
 
               <div className="pt-3">
@@ -75,45 +66,25 @@ export default function About() {
 
           </div>
 
-        </div>
-      </section>
-
-      {/* 3. A JOURNEY OF GROWTH & TRUST (TIMELINE) */}
-      <section className="py-5 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-4">
-            <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-              OUR JOURNEY
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
-              A Journey of <span className="text-[#f37021]">Growth & Trust</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-2 font-medium">
-              From a focused beginning to a trusted name in industrial valves, our journey is built on quality, innovation and long-term partnerships.
+          <div className="mt-7 rounded-md border border-slate-200 bg-slate-50 p-5 sm:p-6">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              With over 15 years of experience in the design and manufacture of valves and penstocks, and many satisfied customers across India, SSPR Valve—together with its overseas technology associates—looks forward with renewed vigour to working with discerning customers, consultants, contracting companies and organizations engaged in:
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 relative">
-            {companyData.timeline.map((step, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-md p-4 border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between relative group"
-              >
-                <div>
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[#0d2857] group-hover:bg-[#f37021] group-hover:text-white transition-colors flex items-center justify-center font-extrabold text-sm mb-3">
-                    {[<Factory key="factory"/>,<Settings key="settings"/>,<Users key="people"/>,<ChartNoAxesCombined key="growth"/>,<Cpu key="tech"/>,<Trophy key="today"/>][idx]}
-                  </div>
-                  <strong className="timeline-year">{step.year}</strong>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#0d2857] group-hover:text-[#f37021] transition-colors">
-                    {step.title}
-                  </h4>
-                  <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                'Treatment, pumping and pipeline conveyance of water',
+                'Irrigation pumping and distribution',
+                'Desalination and DM water plants',
+                'Civil construction involving water',
+                'Sea water applications',
+                'Complete PHED (West Bengal) monitoring and control systems, including 24×7 water distribution',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
         </div>
@@ -190,7 +161,7 @@ export default function About() {
       </section>
 
       {/* 5. MESSAGE FROM OUR MANAGING DIRECTOR */}
-      <section className="py-5 bg-gradient-to-r from-slate-100 via-blue-50/50 to-slate-100 border-y border-slate-200">
+      <section className="about-leadership-section py-10 sm:py-12 bg-gradient-to-r from-slate-100 via-blue-50/50 to-slate-100 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-6">
@@ -202,99 +173,41 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="bg-white rounded-md border border-slate-200 shadow-xs p-6 lg:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="leadership-card overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg">
+            <div className="grid grid-cols-1 md:grid-cols-[260px_minmax(0,1fr)] lg:grid-cols-[300px_minmax(0,1fr)]">
               
-              {/* MD Photo & Title (3 cols) */}
-              <div className="lg:col-span-3 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <div className="w-36 h-36 rounded-md overflow-hidden border-2 border-blue-900/20 shadow-md">
+              {/* MD Photo & Title */}
+              <aside className="leadership-profile bg-[#0d2857] p-6 sm:p-8 text-center text-white flex flex-col items-center justify-center">
+                <div className="h-52 w-44 overflow-hidden rounded-lg border-4 border-white/20 bg-white shadow-xl">
                   <img
                     src="/images/about/md_prasenjit_dey.png"
                     alt="Mr. Prasenjit Dey, Managing Director"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-base font-extrabold text-[#0d2857] mt-3">
+                <h3 className="mt-5 text-lg font-extrabold text-white">
                   Mr. Prasenjit Dey
                 </h3>
-                <span className="text-xs font-bold text-[#f37021]">
+                <span className="mt-1 text-sm font-bold text-[#ff8a24]">
                   Managing Director
                 </span>
-                <span className="text-[10px] text-slate-500 mt-0.5">
+                <span className="mt-2 max-w-[220px] text-xs leading-relaxed text-blue-100">
                   SSPR Valve Manufacturing Private Limited
                 </span>
-              </div>
+              </aside>
 
-              {/* MD Quote Text (6 cols) */}
-              <div className="lg:col-span-6 space-y-3 relative">
-                <Quote className="w-8 h-8 text-blue-200 absolute -top-4 -left-2 -z-0" />
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic relative z-10">
-                  "{companyData.md.shortQuote}"
-                </p>
-                <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
-                  We guide our business using five core values — <strong className="text-blue-900">lead, grow, deliver, sustain and protect</strong>. I give you my personal commitment that we will deliver what we promise and do it safely and sustainably.
-                </p>
-              </div>
-
-              {/* MD Side Callout Card (3 cols) */}
-              <div className="lg:col-span-3 bg-gradient-to-br from-[#0d2857] to-[#1a3d7c] rounded-md p-5 text-white flex flex-col justify-between shadow-sm relative overflow-hidden">
-                <div className="space-y-2">
-                  <span className="text-amber-400 font-serif text-3xl leading-none">“</span>
-                  <h4 className="text-sm font-extrabold text-white leading-snug">
-                    Reliable Flow for a Brighter Tomorrow
-                  </h4>
-                  <p className="text-[11px] text-slate-300 pt-1">
-                    — Mr. Prasenjit Dey <br />
-                    <span className="text-[10px] text-amber-300">Managing Director</span>
-                  </p>
+              {/* Managing Director's message */}
+              <div className="leadership-message p-6 sm:p-8 lg:p-10 space-y-4 text-sm sm:text-[15px] text-slate-600 leading-7">
+                <div className="border-l-4 border-[#f37021] bg-orange-50 px-4 py-3 rounded-r-lg">
+                  <p className="font-bold text-[#0d2857]">I am pleased to welcome you to the SSPR Valve website.</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-white/10 flex justify-end">
-                  <img
-                    src="/images/about/refinery_art.png"
-                    alt="Refinery graphics"
-                    className="h-16 w-auto object-contain opacity-75"
-                  />
-                </div>
+                <p>Whether you are a potential customer with a challenging project ahead, an existing customer checking our latest news, or a partner, supplier or future employee looking for new opportunities, I trust you will find what you are looking for here.</p>
+                <p>SSPR Valve Manufacturing Private Limited is a company that is driving progress and, with our customers and partners, building better communities through safe, smart and efficient infrastructure—something we have been doing consistently.</p>
+                <p>Our progressive thinking and creative approach make us stand out from the crowd, allowing us to achieve what very few have been able to accomplish.</p>
+                <p className="border-t border-slate-200 pt-4">We have a clear vision of what we want to be: leaders in valve manufacturing and infrastructure development. We guide our business using five core values—<strong className="text-[#0d2857]">lead, grow, deliver, sustain and protect</strong>. I am proud of the work we do and give you my personal commitment that we will deliver what we promise, safely and sustainably.</p>
               </div>
 
             </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 6. SUPPORTING CRITICAL SECTORS */}
-      <section className="py-5 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 pb-3 border-b border-transparent gap-2">
-            <div>
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                INDUSTRIES WE SERVE
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
-                Supporting <span className="text-[#f37021]">Critical Sectors</span>
-              </h2>
-            </div>
-            <p className="text-xs text-slate-500 font-medium max-w-xs">
-              Reliable Valves for a Stronger, More Sustainable Tomorrow.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {companyData.sectors.map((sector, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 p-4 rounded-md border border-slate-200 text-center hover:border-blue-400 hover:shadow-sm transition-all flex flex-col items-center justify-center group"
-              >
-                <div className="p-3 rounded-md bg-white shadow-2xs group-hover:scale-110 transition-transform mb-3">
-                  {sectorsIcons[index]}
-                </div>
-                <h4 className="text-xs font-bold text-[#0d2857] group-hover:text-[#f37021] transition-colors line-clamp-2">
-                  {sector.name}
-                </h4>
-              </div>
-            ))}
           </div>
 
         </div>

@@ -1,0 +1,389 @@
+/* Final typography layer: display type for authority, Roboto for readability. */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+
+/* About page section sequence: leadership before purpose. */
+.page-about { display:flex; flex-direction:column; }
+.page-about>.hero-about { order:1; }
+.page-about>.about-trust { order:2; }
+.page-about>section:nth-of-type(2) { order:3; }
+.page-about>section:nth-of-type(4) { order:4; }
+.page-about>section:nth-of-type(3) { order:5; }
+.page-about>section:nth-of-type(5) { order:6; }
+.page-about>section:nth-of-type(6) { order:7; }
+.page-about>section:nth-of-type(7) { order:8; }
+
+:is(h1, h2, h3, h4, h5, h6),
+.main-nav,
+.button-orange,
+.button-primary,
+.button-outline,
+.eyebrow,
+.breadcrumb,
+.product-action,
+.site-footer {
+  font-family: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
+}
+
+.site-page :is(h1, h2, h3, h4) {
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+.site-page p,
+.enquiry-form,
+.contact-information {
+  line-height: 1.55;
+}
+
+/* Tailwind's 12px utility was used as normal body copy across the site. */
+.site-page .text-xs {
+  font-size: 0.875rem;
+}
+
+.site-page .text-sm {
+  font-size: 0.9375rem;
+}
+
+.site-page .text-\[11px\] {
+  font-size: 0.8125rem;
+}
+
+.site-page .text-\[10px\] {
+  font-size: 0.6875rem;
+}
+
+.main-nav a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.hero-description {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.55;
+}
+
+.product-card p,
+.why-grid p,
+.capabilities-grid p {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.capability-card {
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.capability-card:focus-visible {
+  border-color: #2563eb;
+  outline: 3px solid rgba(37, 99, 235, 0.22);
+  outline-offset: 3px;
+}
+
+/* Keep the About-page leadership card isolated from legacy section selectors. */
+.page-about > .about-leadership-section > div > .leadership-card {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #dbe3ef;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(13, 40, 87, 0.1);
+}
+
+.page-about .leadership-profile {
+  min-height: 100%;
+}
+
+.page-about .leadership-message p {
+  max-width: 900px;
+}
+
+.enquiry-form input,
+.enquiry-form select,
+.enquiry-form textarea {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.footer-links a,
+.footer-contact > div,
+.footer-contact > a {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  font-size: 0.75rem;
+}
+
+/* Corporate footer */
+.site-footer { position:relative; overflow:hidden; background:radial-gradient(circle at 88% 12%,rgba(47,111,178,.22),transparent 28rem),linear-gradient(120deg,#091f32 0%,#0d2b43 58%,#123b5c 100%); color:#cbd9e7; }
+.site-footer::before { position:absolute; inset:0 0 auto; height:3px; background:linear-gradient(90deg,#ff7a00 0 9%,#f5f8fb 9% 17%,#1f9254 17% 25%,transparent 25%); content:''; }
+.site-footer .footer-grid { display:grid; grid-template-columns:minmax(17rem,1.35fr) minmax(9rem,.65fr) minmax(19rem,1.25fr) minmax(13rem,.75fr); gap:clamp(2rem,4vw,4.5rem); align-items:start; padding-top:clamp(3rem,5vw,4.5rem); padding-bottom:clamp(2.75rem,4vw,4rem); }
+.site-footer .footer-grid>div+div,.site-footer .footer-grid>nav { border:0; padding-left:0; }
+.footer-logo { display:inline-flex; padding:.45rem .75rem; border-radius:.5rem; background:#fff; box-shadow:0 10px 28px rgba(0,0,0,.18); }
+.site-footer .footer-brand img { width:10.5rem; height:4.5rem; border-radius:0; background:transparent; object-fit:contain; }
+.site-footer .footer-brand strong { display:block; max-width:24rem; margin-top:1.25rem; color:#fff; font-size:1.125rem; font-weight:700; line-height:1.25; }
+.site-footer .footer-brand>p { max-width:24rem; margin-top:.75rem; color:#aebfd0; font-family:'Roboto',Arial,sans-serif; font-size:.8125rem; line-height:1.6; }
+.footer-certification { display:inline-flex; align-items:center; gap:.5rem; margin-top:1rem; color:#cfe2f5; font-size:.75rem; font-weight:600; }
+.footer-certification svg { width:1rem; color:#ff9b3d; }
+.footer-kicker { display:block; margin-bottom:.35rem; color:#ff9b3d; font-size:.6875rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+.site-footer .footer-grid h4 { margin-bottom:1.1rem; color:#fff; font-size:1rem; font-weight:700; }
+.footer-link-list { display:grid; gap:.35rem; }
+.site-footer .footer-links a { display:flex; width:fit-content; align-items:center; gap:.4rem; padding:.15rem 0; color:#c5d4e2; font-size:.8125rem; transition:color 160ms ease,transform 160ms ease; }
+.site-footer .footer-links a svg { width:.75rem; opacity:0; transition:opacity 160ms ease; }
+.site-footer .footer-links a:hover { color:#fff; transform:translateX(.2rem); }
+.site-footer .footer-links a:hover svg { opacity:1; }
+.site-footer .footer-contact>div,.site-footer .footer-contact>a { display:grid; grid-template-columns:1.1rem minmax(0,1fr); gap:.7rem; margin-bottom:.8rem; color:#c5d4e2; font-family:'Roboto',Arial,sans-serif; font-size:.8125rem; line-height:1.45; }
+.site-footer .footer-contact>a:hover { color:#fff; }
+.site-footer .footer-contact svg { width:1rem; height:1rem; margin-top:.12rem; color:#ff9b3d; }
+.site-footer .footer-india { display:flex; flex-direction:column; align-items:flex-start; gap:1rem; padding:1.1rem; border:1px solid rgba(255,255,255,.1); border-radius:.65rem; background:transparent; }
+.site-footer .footer-india img { width:100%; height:8.75rem; object-fit:contain; filter:drop-shadow(0 8px 14px rgba(0,0,0,.2)); }
+.site-footer .footer-india strong { display:block; color:#eef5fb; font-size:.8125rem; line-height:1.4; }
+.site-footer .footer-bottom { position:relative; display:flex; justify-content:space-between; gap:1rem; padding-top:1.15rem; padding-bottom:1.15rem; border-top:1px solid rgba(255,255,255,.1); color:#8fa6ba; font-family:'Roboto',Arial,sans-serif; font-size:.6875rem; letter-spacing:.01em; }
+.footer-bottom-right { display:flex; align-items:center; justify-content:flex-end; gap:.55rem; text-align:right; }
+.footer-bottom-right a { color:#c8d6e3; font-weight:600; transition:color 160ms ease; }
+.footer-bottom-right a:hover { color:#ff9b3d; }
+.footer-copyright-company { color:#c8d6e3; font-weight:700; }
+@media(max-width:1023px) { .site-footer .footer-grid { grid-template-columns:1.15fr .85fr; } .site-footer .footer-grid>* { min-width:0; } .site-footer .footer-india { grid-column:auto; } }
+@media(max-width:639px) { .site-footer .footer-grid { grid-template-columns:1fr; gap:2.25rem; padding-top:3rem; padding-bottom:2.5rem; } .site-footer .footer-brand,.site-footer .footer-india { grid-column:auto; } .site-footer .footer-india { display:grid; grid-template-columns:7rem 1fr; align-items:center; } .site-footer .footer-india img { height:6rem; } .site-footer .footer-bottom { flex-direction:column; gap:.4rem; } .footer-bottom-right { justify-content:flex-start; flex-wrap:wrap; text-align:left; } }
+
+.contact-map-frame {
+  width: 100%;
+  height: clamp(22rem, 42vw, 34rem);
+  background: #eef4fb;
+}
+
+.contact-details-grid > div {
+  min-width: 0;
+  height: 100%;
+}
+
+.contact-channels-card {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.contact-channel {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.contact-channel + .contact-channel {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.875rem;
+}
+
+.contact-channel-icon {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #dbeafe;
+}
+
+.product-breadcrumb {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #ff7800;
+  border-radius: 0.5rem;
+  background: #f8fafc;
+  box-shadow: 0 4px 14px rgba(15, 42, 82, 0.04);
+}
+
+.product-breadcrumb > span[aria-hidden='true'] {
+  color: #9aa9bd;
+  font-weight: 400;
+}
+
+.product-breadcrumb-current {
+  color: #e76500;
+  font-weight: 700;
+}
+
+/* Match affected page heroes to the approved About-page hierarchy. */
+.hero-infrastructure h1,
+.hero-certifications h1,
+.hero-contact h1 {
+  font-size: clamp(2rem, 3.6vw, 3.625rem);
+  line-height: 1.04;
+}
+
+@media (min-width: 1024px) {
+  .hero-infrastructure .hero-copy,
+  .hero-certifications .hero-copy,
+  .hero-contact .hero-copy {
+    width: 54%;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-copy,
+  .hero-home .hero-copy,
+  .hero-about .hero-copy,
+  .hero-infrastructure .hero-copy,
+  .hero-certifications .hero-copy,
+  .hero-contact .hero-copy {
+    width: 72%;
+    max-width: 600px;
+  }
+}
+
+.hero-infrastructure .hero-description,
+.hero-certifications .hero-description,
+.hero-contact .hero-description {
+  max-width: 33rem;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+}
+
+/* Evenly aligned About-page trust strip. */
+.about-trust {
+  width: 100%;
+  max-width: var(--content-width);
+  padding: 1.15rem var(--page-gutter);
+}
+
+.about-trust .trust-bar {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+}
+
+.about-trust .trust-bar > div {
+  min-width: 0;
+  min-height: 4.25rem;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+  border-right: 1px solid #d9e3f1;
+}
+
+.about-trust .trust-bar > div:first-child {
+  padding-left: 0;
+}
+
+.about-trust .trust-bar > div:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.about-trust .round-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.about-trust .round-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.about-trust .trust-bar p {
+  min-width: 0;
+}
+
+.about-trust .trust-bar strong {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+
+.about-trust .trust-bar small {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 1023px) {
+  .about-trust .trust-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .about-trust .trust-bar > div {
+    padding: 0.85rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background: #f8fbff;
+  }
+
+  .about-trust .trust-bar > div:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 639px) {
+  .product-breadcrumb {
+    width: 100%;
+    gap: 0.4rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .hero-infrastructure .hero-copy,
+  .hero-certifications .hero-copy,
+  .hero-contact .hero-copy {
+    width: 100%;
+  }
+
+  .hero-infrastructure h1,
+  .hero-certifications h1,
+  .hero-contact h1 {
+    font-size: 1.875rem;
+  }
+
+  .about-trust .trust-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .about-trust .trust-bar > div {
+    min-height: 0;
+  }
+
+}
+
+@media (max-width: 639px) {
+  .site-page .text-xs,
+  .site-page .text-sm {
+    font-size: 0.875rem;
+  }
+
+  .site-page h2:not(.page-hero h2) {
+    font-size: clamp(1.65rem, 8vw, 2rem);
+  }
+
+  .site-page h3 {
+    line-height: 1.2;
+  }
+
+  .main-nav a {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1100px) {
+  .site-footer .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

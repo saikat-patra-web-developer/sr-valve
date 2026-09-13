@@ -1,4 +1,3 @@
-import EnquiryForm from '../components/EnquiryForm'
 import PageHero from '../components/PageHero'
 import React, { useState } from 'react'
 
@@ -22,28 +21,10 @@ export default function Contact() {
       {/* 1. HERO BANNER */}
       <PageHero type="contact" />
 
-      {/* 2. SEND US AN INQUIRY & CONTACT INFORMATION (TWO COLUMNS) */}
+      {/* 2. CONTACT INFORMATION & LIVE LOCATION */}
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-            
-            {/* Left Column: Form (7 cols) */}
-            <div id="contact-form" className="lg:col-span-6 bg-white rounded-md border border-slate-200 p-6 sm:p-8 shadow-xs space-y-5">
-              <div>
-                <h2 className="text-2xl font-extrabold text-[#0d2857]">
-                  Send Us an <span className="text-[#f37021]">Inquiry</span>
-                </h2>
-                <p className="text-xs text-slate-500 mt-1">
-                  Fill in the form below and our team will get back to you shortly. We look forward to discussing your requirements.
-                </p>
-              </div>
-
-              <EnquiryForm />
-            </div>
-
-            {/* Right Column: Contact Information & Map (5 cols) */}
-            <div className="contact-information lg:col-span-6 space-y-3">
+          <div id="contact-details" className="contact-information space-y-6">
               
               <div>
                 <h2 className="text-2xl font-extrabold text-[#0d2857]">
@@ -54,8 +35,8 @@ export default function Contact() {
                 </p>
               </div>
 
-              {/* 4 Info Items */}
-              <div className="space-y-4">
+              {/* Contact details */}
+              <div className="contact-details-grid grid grid-cols-1 md:grid-cols-3 gap-4">
                 
                 <div className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
                   <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#0d2857] flex items-center justify-center shrink-0">
@@ -71,37 +52,34 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#0d2857] flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-blue-700" />
+                <div className="contact-channels-card p-4 rounded-md bg-slate-50 border border-slate-200">
+                  <div className="contact-channel">
+                    <div className="contact-channel-icon">
+                      <Mail className="w-5 h-5 text-blue-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-slate-800">Email Address</h4>
+                      <a
+                        href={`mailto:${companyData.contact.email}`}
+                        className="text-xs font-semibold text-blue-700 hover:text-[#f37021] transition-colors mt-0.5 block break-all"
+                      >
+                        {companyData.contact.email}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-800">
-                      Email Address
-                    </h4>
-                    <a
-                      href={`mailto:${companyData.contact.email}`}
-                      className="text-xs font-semibold text-blue-700 hover:text-[#f37021] transition-colors mt-0.5 block"
-                    >
-                      {companyData.contact.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#0d2857] flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-blue-700" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-800">
-                      Mobile Number
-                    </h4>
-                    <a
-                      href={`tel:${companyData.contact.phone}`}
-                      className="text-xs font-semibold text-blue-700 hover:text-[#f37021] transition-colors mt-0.5 block"
-                    >
-                      {companyData.contact.phone}
-                    </a>
+                  <div className="contact-channel">
+                    <div className="contact-channel-icon">
+                      <Phone className="w-5 h-5 text-blue-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-slate-800">Mobile Number</h4>
+                      <a
+                        href={`tel:${companyData.contact.phone}`}
+                        className="text-xs font-semibold text-blue-700 hover:text-[#f37021] transition-colors mt-0.5 block"
+                      >
+                        {companyData.contact.phone}
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -132,7 +110,7 @@ export default function Contact() {
                     <span>Our Location</span>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=Domjur+Howrah+711405"
+                    href="https://www.google.com/maps/search/?api=1&query=SSPR%20Valve%20manufacturing%20Pvt.%20Ltd.%2C%20Domjur%2C%20Howrah"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-[#f37021] transition-colors"
@@ -141,25 +119,17 @@ export default function Contact() {
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
-                <div className="relative group cursor-pointer">
-                  <img
-                    src="/images/contact/contact_map.png"
-                    alt="Map Location - Domjur, Howrah"
-                    className="w-full h-44 object-cover group-hover:scale-102 transition-transform duration-300"
+                <div className="contact-map-frame">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.526745983605!2d88.20086777560066!3d22.63414117944802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88169e6beb04f%3A0xa066de3838f88a7!2sSSPR%20Valve%20manufacturing%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1789290660685!5m2!1sen!2sin"
+                    title="SSPR Valve Manufacturing Private Limited location"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
                   />
-                  <a
-                    href="https://maps.google.com/?q=Domjur+Howrah+711405"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0 bg-blue-900/10 hover:bg-transparent transition-colors flex items-center justify-center"
-                  >
-                    <span className="sr-only">Open Google Maps</span>
-                  </a>
                 </div>
               </div>
-
-            </div>
-
           </div>
 
         </div>
@@ -321,7 +291,7 @@ export default function Contact() {
               </p>
               <div className="pt-2">
                 <a
-                  href="#contact-form"
+                  href={`mailto:${companyData.contact.email}?subject=Project%20Inquiry`}
                   className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
                 >
                   <span>Contact Us</span>

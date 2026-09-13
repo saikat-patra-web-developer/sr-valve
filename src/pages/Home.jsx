@@ -99,7 +99,7 @@ export default function Home() {
             {whyChooseItems.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-start gap-2"
+                className="bg-white p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-start gap-2 sm:max-lg:[&:last-child]:col-span-2"
               >
                 <div className="p-2.5 rounded-lg bg-blue-50 shrink-0">
                   {item.icon}
@@ -146,20 +146,17 @@ export default function Home() {
               {/* Middle: Content (5 cols) */}
               <div className="lg:col-span-5 space-y-4">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
-                    ABOUT SSPR VALVE
-                  </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1 leading-tight">
                     SSPR Valve Manufacturing Private Limited
                   </h3>
                 </div>
 
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  We are an experienced manufacturer of industrial valves, penstocks and flow-control products, based in Howrah, West Bengal. With a state-of-the-art manufacturing facility, modern technology and a skilled team, we deliver high-quality, reliable solutions for water treatment, irrigation, desalination, civil construction and sea water applications.
+                  With over 15 years of experience, SSPR Valve manufactures a wide range of industrial valves and penstocks at its state-of-the-art facility in Howrah, West Bengal. We combine modern technology with the technical expertise of our engineering team to deliver reliable, high-quality products.
                 </p>
 
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Our commitment to quality, innovation and ethical business practices has made us a trusted partner for government and private projects across India.
+                  Under the leadership of <strong className="text-[#0d2857]">Mr. Prasenjit Dey, Managing Director</strong>, we supply government and private projects across India. Our commitment to quality and ethical business practices is supported by ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018 certifications, along with NSIC and MSME registrations.
                 </p>
 
                 <div className="pt-2">
@@ -180,10 +177,10 @@ export default function Home() {
                 </h4>
                 
                 {[
-                  "Modern Manufacturing Facility",
-                  "Advanced Technology & Machinery",
-                  "Skilled & Experienced Team",
-                  "Ethical Business Practices",
+                  "15+ Years of Manufacturing Experience",
+                  "Modern Technology & Engineering Expertise",
+                  "ISO, NSIC & MSME Credentials",
+                  "Quality & Ethical Business Practices",
                 ].map((highlight, index) => (
                   <div key={index} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
                     <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -196,7 +193,7 @@ export default function Home() {
                     Serving Critical Sectors
                   </span>
                   <p className="text-[11px] text-slate-600 leading-relaxed">
-                    Water Treatment | Irrigation | Desalination | Civil Construction | Sea Water Applications
+                    Water Treatment | Irrigation | Desalination & DM Water | Civil Construction | Sea Water | PHED Monitoring & Control
                   </p>
                 </div>
               </div>

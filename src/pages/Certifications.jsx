@@ -81,7 +81,7 @@ export default function Certifications() {
             {detailedCerts.map((cert, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 rounded-md border border-slate-200 p-6 flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group"
+                className="bg-slate-50 rounded-md border border-slate-200 p-6 flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group md:max-lg:[&:last-child]:col-span-2"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-4">

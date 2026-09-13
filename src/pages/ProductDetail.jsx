@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Download, Send, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
 import { productsData } from '../data/productsData'
 import ResponsiveImage from '../components/ResponsiveImage'
 
-export default function ProductDetail({ onShowToast }) {
+export default function ProductDetail() {
   const { id } = useParams()
   const productId = id || 'butterfly-valve'
   const product = productsData.find((p) => p.id === productId) || productsData[0]
@@ -13,61 +13,6 @@ export default function ProductDetail({ onShowToast }) {
   const [zoomOpen, setZoomOpen] = useState(false)
   const activeThumb = selection.productId === product.id ? selection.index : -1
   const selectedImage = product.thumbnails?.[activeThumb] || product.detailMainImage || product.image
-
-  const handleDownloadBrochure = () => {
-    const catalogContent = `========================================================
-SSPR VALVE MANUFACTURING PRIVATE LIMITED
-FLOWING A STRONGER TOMORROW
-========================================================
-TECHNICAL DATASHEET: ${product.fullName.toUpperCase()}
-Category: ${product.category}
-Tagline: ${product.tagline}
-
-TECHNICAL SPECIFICATIONS:
-${Object.entries(product.specsTable)
-  .map(([k, v]) => `• ${k}: ${v}`)
-  .join('\n')}
-
-MATERIALS OF CONSTRUCTION:
-• Body: ${product.materials.body}
-• Disc: ${product.materials.disc}
-• Seat: ${product.materials.seat}
-• Shaft: ${product.materials.shaft}
-
-COMPLIANCE STANDARDS:
-• Design: ${product.standards.design}
-• Face to Face: ${product.standards.faceToFace}
-• End Connection: ${product.standards.endConnection}
-• Testing: ${product.standards.testing}
-
-KEY FEATURES & BENEFITS:
-${product.keyFeatures.map((f) => `• ${f.title}: ${f.desc}`).join('\n')}
-
-APPLICATIONS:
-${product.applications.join(', ')}
-
-========================================================
-FACTORY & HEAD OFFICE:
-SSPR Valve Manufacturing Private Limited
-ONGC Road, Dakshin Jhapordha, Domjur, Howrah - 711405, WB, India
-Phone: +91 7044090444 | Email: info@ssprvalve.com
-ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
-========================================================`
-
-    const blob = new Blob([catalogContent], { type: 'text/plain;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = `SSPR-Valve-${product.id}-Brochure.txt`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    URL.revokeObjectURL(url)
-
-    if (onShowToast) {
-      onShowToast(`Downloaded technical brochure for ${product.name}!`)
-    }
-  }
 
   // Related products
   const relatedProducts = productsData.filter((p) => p.id !== product.id).slice(0, 6)
@@ -91,34 +36,34 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumbs */}
-          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500 mb-6">
+          <nav className="product-breadcrumb text-xs font-semibold text-slate-500 mb-8" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-blue-900 cursor-pointer">
               Home
             </Link>
-            <span>&gt;</span>
+            <span aria-hidden="true">/</span>
             <Link to="/products" className="hover:text-blue-900 cursor-pointer">
               Products
             </Link>
-            <span>&gt;</span>
+            <span aria-hidden="true">/</span>
             <span className="text-slate-700">{product.category}</span>
-            <span>&gt;</span>
-            <span className="text-[#f37021]">{product.fullName}</span>
-          </div>
+            <span aria-hidden="true">/</span>
+            <span className="product-breadcrumb-current">{product.fullName}</span>
+          </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Gallery Left (4 cols) */}
-            <div className="product-gallery lg:col-span-5 space-y-4">
-              <div className="flex gap-3">
+            {/* Product gallery */}
+            <div className="product-gallery lg:col-span-6 space-y-4">
+              <div className="flex flex-col-reverse sm:flex-row gap-3">
                 {/* Thumbnails */}
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-row sm:flex-col gap-2.5 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
                   {(product.thumbnails || [product.image]).map((thumb, idx) => (
                     <button
                       key={idx}
                       onClick={() => {
                         setSelection({ productId: product.id, index: idx })
                       }}
-                      className={`w-14 h-14 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
+                      className={`w-14 h-14 shrink-0 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
                         activeThumb === idx
                           ? 'border-[#f37021] shadow-xs'
                           : 'border-slate-200 hover:border-blue-300'
@@ -131,8 +76,6 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                       />
                     </button>
                   ))}
-
-                  
                 </div>
 
                 {/* Main View Area */}
@@ -154,8 +97,8 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
               </div>
             </div>
 
-            {/* Product Center Info (4 cols) */}
-            <div className="lg:col-span-4 space-y-4">
+            {/* Product information */}
+            <div className="lg:col-span-6 space-y-4 lg:pl-4">
               <div>
                 <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
                   {product.tag}
@@ -186,39 +129,6 @@ ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 Certified
                 ))}
               </div>
 
-              {/* Buttons */}
-              <div className="flex items-center gap-3 pt-3">
-                <Link
-                  to="/contact"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white text-xs font-bold py-3 px-4 rounded-lg shadow-sm transition-colors cursor-pointer"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Contact Us</span>
-                </Link>
-                
-                <button
-                  onClick={handleDownloadBrochure}
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0d2857] text-xs font-bold py-3 px-4 rounded-lg border border-slate-300 shadow-2xs transition-colors cursor-pointer"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Brochure</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Right: Contact card */}
-            <div className="product-quote lg:col-span-3 bg-white rounded-md border border-slate-200 shadow-md p-5 flex flex-col justify-center">
-              <h3 className="text-base font-extrabold text-[#0d2857]">Need product assistance?</h3>
-              <p className="text-xs text-slate-500 mt-1 mb-5">
-                Contact our technical team for product selection, specifications and project support.
-              </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold py-3 px-4 rounded-lg transition-colors text-xs"
-              >
-                <span>Contact Us</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
 
           </div>
