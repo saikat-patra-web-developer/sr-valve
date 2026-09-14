@@ -83,7 +83,7 @@ img { max-width: 100%; }
 .round-icon { width:42px; height:42px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; background:#e7f0ff; color:#0036ca; }
 .round-icon svg { width:26px; height:26px; stroke-width:1.7; }
 .about-trust { background:#fff; max-width:1440px; margin:auto; padding:12px 32px; }
-.about-trust .trust-bar { margin:0; grid-template-columns:repeat(5,1fr); }
+.about-trust .trust-bar { margin:0; grid-template-columns:repeat(4,1fr); }
 .hero-features { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:26px; max-width:560px; }
 .hero-features>div { background:#ffffffbd; border-radius:6px; text-align:center; padding:10px 4px; }
 .hero-features svg { margin:0 auto 6px; color:#0735e9; width:28px; height:28px; }
@@ -724,7 +724,7 @@ img { max-width: 100%; }
  .page-about>section:not(.page-hero):not(.certifications-strip):not(.clients-section) { padding-block:18px; }
  .page-about>section>.max-w-7xl,.page-about>.certifications-strip .max-w-7xl,.page-about>.clients-section .max-w-7xl { padding-inline:18px; }
  .page-about>.about-trust { padding:10px 12px; overflow:hidden; }
- .page-about>.about-trust .trust-bar { display:grid; grid-template-columns:repeat(5,minmax(68px,1fr)); width:max-content; min-width:100%; gap:4px; }
+ .page-about>.about-trust .trust-bar { display:grid; grid-template-columns:repeat(4,minmax(68px,1fr)); width:max-content; min-width:100%; gap:4px; }
  .page-about>.about-trust .trust-bar>div { width:68px; padding:0 2px; border:0; flex-direction:column; text-align:center; gap:3px; }
  .page-about>.about-trust .round-icon { width:28px; height:28px; }
  .page-about>.about-trust .round-icon svg { width:15px; height:15px; }
@@ -806,7 +806,7 @@ img { max-width: 100%; }
 
 @media(max-width:639px) {
  .page-about>.about-trust { padding:10px 8px; }
- .page-about>.about-trust .trust-bar { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); width:100%; min-width:0; gap:4px; }
+ .page-about>.about-trust .trust-bar { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:100%; min-width:0; gap:4px; }
  .page-about>.about-trust .trust-bar>div { grid-column:auto !important; width:auto; min-width:0; padding:5px 2px; border:0; border-radius:6px; background:#f7faff; flex-direction:column; justify-content:flex-start; text-align:center; gap:4px; }
  .page-about>.about-trust .trust-bar p { min-width:0; }
  .page-about>.about-trust .trust-bar strong { font-size:7.5px; line-height:1.12; overflow-wrap:anywhere; }

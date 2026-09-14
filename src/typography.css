@@ -268,7 +268,7 @@ body {
 }
 
 .about-trust .trust-bar {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   align-items: stretch;
 }
@@ -333,7 +333,7 @@ body {
   }
 
   .about-trust .trust-bar > div:last-child {
-    grid-column: span 2;
+    grid-column: auto;
     padding-right: 1rem;
     border-right: 1px solid #e2e8f0;
   }
@@ -385,7 +385,7 @@ body {
   }
 
   .about-trust .trust-bar > div:last-child {
-    grid-column: span 2;
+    grid-column: auto;
     padding-right: 10px;
     border-right: 1px solid #e2e8f0;
   }

@@ -10,7 +10,7 @@ const copy = {
   certifications: { crumb: 'Certifications', eyebrow: 'QUALITY & CERTIFICATIONS', title: <>Committed to<br /><em>Global Standards</em></>, description: 'ISO 9001 certification through June 2027, with ISO 14001:2015 and ISO 45001:2018 certifications valid through April 2028.', image: 'factory-hero-wide.webp' },
 }
 export function TrustBar({ expanded = false }) {
-  const items = expanded ? [[Settings, '15+', 'Years of Manufacturing Experience'], [Landmark, 'Trusted by', 'Government & Private Organizations'], [MapPin, 'Based in Howrah, West Bengal', 'Serving Pan India'], [Award, 'High-Quality', 'Industrial Valves'], [Leaf, 'Committed to', 'a Sustainable Future']] : [[Settings, '15+', 'Years Experience'], [Award, 'ISO 9001:2015', '14001:2015 · 45001:2018'], [Landmark, 'Government &', 'Private Project Supply'], [MapPin, 'Based in Howrah,', 'West Bengal']]
+  const items = expanded ? [[Settings, '15+', 'Years of Manufacturing Experience'], [Landmark, 'Trusted by', 'Government & Private Organizations'], [Award, 'High-Quality', 'Industrial Valves'], [Leaf, 'Committed to', 'a Sustainable Future']] : [[Settings, '15+', 'Years Experience'], [Award, 'ISO 9001:2015', '14001:2015 · 45001:2018'], [Landmark, 'Government &', 'Private Project Supply'], [MapPin, 'Based in Howrah,', 'West Bengal']]
   return <div className={`trust-bar ${expanded ? 'expanded' : ''}`}>{items.map(([Icon, title, desc]) => <div key={title}><span className="round-icon"><Icon /></span><p><strong>{title}</strong><small>{desc}</small></p></div>)}</div>
 }
 export default function PageHero({ type }) {
