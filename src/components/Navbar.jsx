@@ -217,14 +217,14 @@ export default function Navbar() {
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
           >
-            Home
+            <span>Home</span>
           </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
           >
-            About Us
+            <span>About Us</span>
           </NavLink>
 
           {/* Products Dropdown with Multi-Level Submenus */}
@@ -569,7 +569,7 @@ export default function Navbar() {
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
           >
-            Clients
+            <span>Clients</span>
           </NavLink>
           <NavLink
             to="/contact"
