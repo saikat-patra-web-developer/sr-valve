@@ -1129,7 +1129,7 @@ img { max-width: 100%; }
 
 @media(max-width:639px) {
  /* Seamless client-logo carousel on every mobile page. */
- .clients-section .clients-carousel { width:100%; height:68px; overflow:hidden; }
+ .clients-section .clients-carousel { width:100%; height:88px; padding-top:7px; padding-bottom:13px; overflow:hidden; }
  .clients-section .clients-carousel-track,
  .page-home .clients-carousel-track,
  .page-about>.clients-section .clients-carousel-track,
