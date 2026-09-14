@@ -573,7 +573,7 @@ export default function Navbar() {
           </NavLink>
           <NavLink
             to="/contact"
-            className={({ isActive }) => `nav-btn nav-btn-cta ${isActive ? 'active' : ''}`}
+            className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
           >
             <Send size={14} className="nav-btn-icon" aria-hidden="true" />

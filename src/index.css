@@ -146,30 +146,6 @@ img { max-width: 100%; }
   color: #ffffff;
 }
 
-/* Contact CTA button: default solid theme orange glass button */
-.nav-btn-cta {
-  background: linear-gradient(180deg, #ff962b 0%, #ff7600 55%, #f36500 100%);
-  border-color: rgba(255, 255, 255, 0.6);
-  color: #ffffff !important;
-  box-shadow: 
-    0 6px 18px -2px rgba(255, 118, 0, 0.42),
-    0 2px 6px rgba(0, 0, 0, 0.08),
-    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.85),
-    inset 0 -1.5px 2px rgba(0, 0, 0, 0.12);
-}
-
-.nav-btn-cta::before {
-  opacity: 0.9;
-}
-
-.nav-btn-cta:hover {
-  background: linear-gradient(180deg, #ffa845 0%, #ff7e0a 55%, #f36500 100%);
-  box-shadow: 
-    0 9px 24px -2px rgba(255, 118, 0, 0.55),
-    0 3px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95);
-}
-
 /* Product Navigation Dropdown */
 .nav-item-dropdown { position: relative; display: inline-flex; align-items: center; height: 100%; }
 .nav-dropdown-trigger-row { display: inline-flex; align-items: center; }
