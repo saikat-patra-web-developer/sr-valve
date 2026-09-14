@@ -62,41 +62,41 @@ const productNavHierarchy = [
   {
     id: 'air-valve',
     name: 'Air Valve',
-    path: '/products/air-valve',
+    path: '/products/single-air-valve',
     children: [
       {
         id: 'single-air-valve',
         name: 'Single Air Valve',
-        path: '/products/air-valve#single-air-valve',
+        path: '/products/single-air-valve',
         children: [
-          { id: 's1', name: 'S1', path: '/products/air-valve#s1' },
-          { id: 's2', name: 'S2', path: '/products/air-valve#s2' },
+          { id: 's1', name: 'S1', path: '/products/single-air-valve#s1' },
+          { id: 's2', name: 'S2', path: '/products/single-air-valve#s2' },
         ],
       },
       {
         id: 'double-acting',
         name: 'Double Acting',
-        path: '/products/air-valve#double-acting',
+        path: '/products/double-acting-air-valve',
         children: [
-          { id: 'ds1', name: 'DS1', path: '/products/air-valve#ds1' },
-          { id: 'ds2', name: 'DS2', path: '/products/air-valve#ds2' },
+          { id: 'ds1', name: 'DS1', path: '/products/double-acting-air-valve#ds1' },
+          { id: 'ds2', name: 'DS2', path: '/products/double-acting-air-valve#ds2' },
         ],
       },
       {
         id: 'tamper-proof',
         name: 'Tamper Proof',
-        path: '/products/air-valve#tamper-proof',
+        path: '/products/tamper-proof-air-valve',
         children: [
-          { id: 'single-chamber', name: 'Single chamber', path: '/products/air-valve#single-chamber' },
-          { id: 'double-chamber', name: 'Double chamber', path: '/products/air-valve#double-chamber' },
+          { id: 'single-chamber', name: 'Single chamber', path: '/products/tamper-proof-air-valve#single-chamber' },
+          { id: 'double-chamber', name: 'Double chamber', path: '/products/tamper-proof-air-valve#double-chamber' },
         ],
       },
       {
         id: 'kinetic-double-acting',
         name: 'Kinetic Double Acting',
-        path: '/products/air-valve#kinetic-double-acting',
+        path: '/products/kinetic-double-acting-air-valve',
         children: [
-          { id: 'dk', name: 'DK', path: '/products/air-valve#dk' },
+          { id: 'dk', name: 'DK', path: '/products/kinetic-double-acting-air-valve#dk' },
         ],
       },
     ],

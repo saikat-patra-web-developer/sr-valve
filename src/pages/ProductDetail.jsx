@@ -158,6 +158,124 @@ const checkValveSections = [
   },
 ]
 
+const airValveSections = [
+  {
+    id: "single-air-valve",
+    sectionTitle: "Single Air Valve",
+    subItems: [
+      {
+        id: "s1",
+        title: "Small Orifice - S1",
+        image: "/images/products/air_valve_transparent.webp",
+        rows: [
+          { label: "Size Range", value: "15 mm to 40 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "IS: 14845 (S1)" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Ends", value: "Screwed" },
+          { label: "Material", value: "CI / DI" },
+        ],
+      },
+      {
+        id: "s2",
+        title: "Large Orifice - S2",
+        image: "/images/products/air_valve_angle_1.webp",
+        rows: [
+          { label: "Size Range", value: "25 mm to 50 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "IS: 14845 (S2) / G&K (H-4)" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Ends", value: "Screwed / Flange" },
+          { label: "Material", value: "CI / DI" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "double-acting",
+    sectionTitle: "Double Acting Air Valve",
+    subItems: [
+      {
+        id: "ds1",
+        title: "Inbuilt Isolating Valve – DS1",
+        image: "/images/products/air_valve_angle_2.webp",
+        rows: [
+          { label: "Size Range", value: "40 mm to 200 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "IS: 14845" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Flange Ends", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+        ],
+      },
+      {
+        id: "ds2",
+        title: "Double Air Valve – DS2",
+        image: "/images/products/air_valve_angle_4.webp",
+        rows: [
+          { label: "Size Range", value: "40 mm to 200 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "IS: 14845 (DS2) / G&K (H-7)" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Flange Ends", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "kinetic-double-acting",
+    sectionTitle: "Kinetic Double Acting Air Valve",
+    subItems: [
+      {
+        id: "dk",
+        title: "Kinetic Double Acting - DK",
+        image: "/images/products/air_valve_angle_3.webp",
+        rows: [
+          { label: "Size Range", value: "40 mm to 300 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "IS: 14845 (DK) / G&K (H-42K)" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Flange Ends", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "tamper-proof",
+    sectionTitle: "Tamper Proof Air Valve",
+    subItems: [
+      {
+        id: "single-chamber",
+        title: "Double Acting Triple Function (Single Chamber)",
+        image: "/images/products/air_valve_transparent.webp",
+        rows: [
+          { label: "Size Range", value: "40 mm to 400 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "AWWA C-512" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Flange Ends", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+        ],
+      },
+      {
+        id: "double-chamber",
+        title: "Double Acting Triple Function (Double Chamber)",
+        image: "/images/products/air_valve_angle_4.webp",
+        rows: [
+          { label: "Size Range", value: "40 mm to 400 mm" },
+          { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
+          { label: "Design Standard", value: "AWWA C-512" },
+          { label: "Testing Standard", value: "IS: 14845" },
+          { label: "Flange Ends", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+        ],
+      },
+    ],
+  },
+]
+
 export default function ProductDetail() {
   const { id } = useParams()
 
@@ -174,6 +292,20 @@ export default function ProductDetail() {
   const isDualPlate = id === 'dual-plate-check-valve' || id === 'dual-plate-non-return-valve'
   const isCheckFamily = isSingleDoor || isMultiDoor || isDualPlate
 
+  const isSingleAir =
+    id === 'single-air-valve' || id === 'air-valve' || id === 's1' || id === 's2'
+  const isDoubleActing =
+    id === 'double-acting-air-valve' || id === 'double-acting' || id === 'ds1' || id === 'ds2'
+  const isKinetic =
+    id === 'kinetic-double-acting-air-valve' || id === 'kinetic-double-acting' || id === 'dk'
+  const isTamperProof =
+    id === 'tamper-proof-air-valve' ||
+    id === 'tamper-proof' ||
+    id === 'single-chamber' ||
+    id === 'double-chamber'
+
+  const isAirFamily = isSingleAir || isDoubleActing || isKinetic || isTamperProof
+
   const baseProduct = productsData.find(
     (p) =>
       p.id ===
@@ -183,6 +315,8 @@ export default function ProductDetail() {
         ? 'butterfly-valve'
         : isCheckFamily
         ? 'check-valve'
+        : isAirFamily
+        ? 'air-valve'
         : id)
   )
 
@@ -256,6 +390,46 @@ export default function ProductDetail() {
         image: '/images/products/check_valve_angle_3.webp',
         detailMainImage: '/images/products/check_valve_angle_3.webp',
       }
+    : isSingleAir && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'single-air-valve',
+        name: 'Single Air Valve',
+        fullName: 'Single Air Valve (S1 / S2)',
+        tagline: 'Single Orifice Air Release Valve (IS: 14845)',
+        image: '/images/products/air_valve_transparent.webp',
+        detailMainImage: '/images/products/air_valve_transparent.webp',
+      }
+    : isDoubleActing && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'double-acting-air-valve',
+        name: 'Double Acting Air Valve',
+        fullName: 'Double Acting Air Valve (DS1 / DS2)',
+        tagline: 'Double Acting Air Valve with Isolating Valve (IS: 14845)',
+        image: '/images/products/air_valve_angle_2.webp',
+        detailMainImage: '/images/products/air_valve_angle_2.webp',
+      }
+    : isKinetic && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'kinetic-double-acting-air-valve',
+        name: 'Kinetic Double Acting Air Valve',
+        fullName: 'Kinetic Double Acting Air Valve (DK)',
+        tagline: 'Kinetic Double Acting Air Release Valve (IS: 14845 / G&K)',
+        image: '/images/products/air_valve_angle_3.webp',
+        detailMainImage: '/images/products/air_valve_angle_3.webp',
+      }
+    : isTamperProof && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'tamper-proof-air-valve',
+        name: 'Tamper Proof Air Valve',
+        fullName: 'Tamper Proof Air Valve',
+        tagline: 'Double Acting Triple Function Tamper Proof Air Valve (AWWA C-512)',
+        image: '/images/products/air_valve_transparent.webp',
+        detailMainImage: '/images/products/air_valve_transparent.webp',
+      }
     : baseProduct
 
   const [selection, setSelection] = useState({ productId: null, index: -1 })
@@ -289,12 +463,24 @@ export default function ProductDetail() {
     ? checkValveSections.filter((s) => s.id === 'dual-plate')
     : checkValveSections
 
-  const isThemeSpecPage = isSluiceFamily || isButterflyFamily || isCheckFamily
+  const displayedAirSections = isSingleAir
+    ? airValveSections.filter((s) => s.id === 'single-air-valve')
+    : isDoubleActing
+    ? airValveSections.filter((s) => s.id === 'double-acting')
+    : isKinetic
+    ? airValveSections.filter((s) => s.id === 'kinetic-double-acting')
+    : isTamperProof
+    ? airValveSections.filter((s) => s.id === 'tamper-proof')
+    : airValveSections
+
+  const isThemeSpecPage = isSluiceFamily || isButterflyFamily || isCheckFamily || isAirFamily
   const themeSpecSections = isSluiceFamily
     ? displayedSluiceSections
     : isButterflyFamily
     ? displayedButterflySections
-    : displayedCheckSections
+    : isCheckFamily
+    ? displayedCheckSections
+    : displayedAirSections
 
   // Related products
   const allCatalogProducts = [
@@ -334,9 +520,24 @@ export default function ProductDetail() {
       image: '/images/products/check_valve_angle_3.webp',
     },
     {
-      id: 'air-valve',
-      name: 'Air Valve',
+      id: 'single-air-valve',
+      name: 'Single Air Valve',
       image: '/images/products/air_valve_transparent.webp',
+    },
+    {
+      id: 'double-acting-air-valve',
+      name: 'Double Acting Air Valve',
+      image: '/images/products/air_valve_angle_2.webp',
+    },
+    {
+      id: 'kinetic-double-acting-air-valve',
+      name: 'Kinetic Double Acting Air Valve',
+      image: '/images/products/air_valve_angle_3.webp',
+    },
+    {
+      id: 'tamper-proof-air-valve',
+      name: 'Tamper Proof Air Valve',
+      image: '/images/products/air_valve_angle_4.webp',
     },
   ]
 
@@ -354,6 +555,14 @@ export default function ProductDetail() {
     ? 'multi-door-check-valve'
     : isDualPlate
     ? 'dual-plate-check-valve'
+    : isSingleAir
+    ? 'single-air-valve'
+    : isDoubleActing
+    ? 'double-acting-air-valve'
+    : isKinetic
+    ? 'kinetic-double-acting-air-valve'
+    : isTamperProof
+    ? 'tamper-proof-air-valve'
     : product.id
 
   const relatedProducts = allCatalogProducts.filter((p) => p.id !== currentEffectiveId).slice(0, 6)
@@ -377,7 +586,7 @@ export default function ProductDetail() {
 
                   <div className="space-y-12">
                     {section.subItems.map((item, iIdx) => (
-                      <div key={iIdx}>
+                      <div key={iIdx} id={item.id} className="scroll-mt-28">
                         {/* 2-Column Grid: Picture on Left, Table on Right - perfectly aligned */}
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                           {/* Left Column: Picture */}
