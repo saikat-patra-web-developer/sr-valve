@@ -241,6 +241,9 @@ img { max-width: 100%; }
   transition: background-color 0.15s ease, color 0.15s ease;
   cursor: pointer;
 }
+.nav-l2-chevron { margin-left:auto; flex-shrink:0; color:#6680b5; transition:transform .2s ease,color .2s ease; }
+.nav-l2-chevron.points-left { transform:rotate(180deg); }
+.nav-dropdown-l2-wrapper.active-hover > .nav-dropdown-l2-row .nav-l2-chevron { color:#0635b8; }
 
 .nav-dropdown-l2-wrapper.active-hover > .nav-dropdown-l2-row {
   background-color: #f0f6ff;

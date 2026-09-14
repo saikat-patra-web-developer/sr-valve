@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
 
 const productNavHierarchy = [
   {
@@ -333,6 +333,13 @@ export default function Navbar() {
                         }}
                       >
                         <span className="nav-l2-name">{cat.name}</span>
+                        {cat.children && (
+                          <ChevronRight
+                            size={15}
+                            className={`nav-l2-chevron ${isFlyoutLeft ? 'points-left' : ''} ${isCatHovered ? 'open' : ''}`}
+                            aria-hidden="true"
+                          />
+                        )}
                       </NavLink>
 
                       {/* Level 2 Submenu Flyout (e.g. Metal Seated, Resilient Seated) */}
