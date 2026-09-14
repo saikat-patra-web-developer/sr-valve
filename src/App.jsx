@@ -13,6 +13,9 @@ import ProductDetail from './pages/ProductDetail'
 import Infrastructure from './pages/Infrastructure'
 import Certifications from './pages/Certifications'
 import Contact from './pages/Contact'
+import WhyUs from './pages/WhyUs'
+import Experience from './pages/Experience'
+import Clients from './pages/Clients'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -88,6 +91,22 @@ export default function App() {
                 onShowToast={handleShowToast}
               />
             }
+          />
+          <Route
+            path="/why-us"
+            element={<WhyUs />}
+          />
+          <Route
+            path="/whyus"
+            element={<WhyUs />}
+          />
+          <Route
+            path="/experience"
+            element={<Experience />}
+          />
+          <Route
+            path="/clients"
+            element={<Clients />}
           />
           {/* 404 / Catch-all fallback route */}
           <Route
