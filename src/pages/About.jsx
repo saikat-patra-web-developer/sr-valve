@@ -46,21 +46,45 @@ export default function About() {
               </div>
             </div>
 
-            {/* Right Photo with Badge (6 cols) */}
-            <div className="lg:col-span-6 relative rounded-md overflow-hidden shadow-xl border border-slate-200 group">
-              <ResponsiveImage
-                src="/images/about/engineering_excellence.webp"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                alt="Engineering Excellence in Every Flow"
-                className="w-full h-80 sm:h-96 object-cover group-hover:scale-102 transition-transform duration-500"
-              />
-              <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-xs text-white p-3.5 rounded-md border border-white/20 max-w-[170px] text-right">
-                <span className="text-[11px] font-extrabold block text-amber-400">RELIABLE</span>
-                <span className="text-[11px] font-extrabold block">DURABLE</span>
-                <span className="text-[9px] font-medium text-slate-300 block mt-1">HIGH PERFORMANCE BUILT FOR INDIA</span>
-              </div>
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0d2857]/90 to-transparent py-2.5 px-4 text-center text-[10px] font-extrabold tracking-wider text-white uppercase">
-                INDUSTRIAL VALVES | FLOW CONTROL SOLUTIONS | MADE FOR A BETTER TOMORROW
+            {/* Modern three-frame office gallery (6 cols) */}
+            <div className="lg:col-span-6 relative">
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-blue-100/70 via-white to-orange-100/70 blur-xl" aria-hidden="true" />
+              <div className="relative grid grid-cols-2 gap-3 sm:gap-4 lg:h-[430px] lg:grid-cols-12 lg:grid-rows-2">
+                <figure className="group relative col-span-2 h-56 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl lg:col-span-7 lg:row-span-2 lg:h-auto">
+                  <ResponsiveImage
+                    src="/images/about/office-conference-room.webp"
+                    sizes="(min-width: 1024px) 30vw, 100vw"
+                    alt="SSPR Valve modern conference room"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0d2857]/90 to-transparent px-4 pb-3 pt-10 text-xs font-bold tracking-wide text-white">
+                    Conference Room
+                  </figcaption>
+                </figure>
+
+                <figure className="group relative h-36 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl sm:h-44 lg:col-span-5 lg:h-auto">
+                  <ResponsiveImage
+                    src="/images/about/office-reception.webp"
+                    sizes="(min-width: 1024px) 20vw, 50vw"
+                    alt="SSPR Group reception area"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0d2857]/90 to-transparent px-3 pb-2.5 pt-8 text-[11px] font-bold tracking-wide text-white">
+                    Reception
+                  </figcaption>
+                </figure>
+
+                <figure className="group relative h-36 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl sm:h-44 lg:col-span-5 lg:h-auto">
+                  <ResponsiveImage
+                    src="/images/about/office-client-lounge.webp"
+                    sizes="(min-width: 1024px) 20vw, 50vw"
+                    alt="SSPR Valve client lounge"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#f37021]/90 to-transparent px-3 pb-2.5 pt-8 text-[11px] font-bold tracking-wide text-white">
+                    Client Lounge
+                  </figcaption>
+                </figure>
               </div>
             </div>
 
