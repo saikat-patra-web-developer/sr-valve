@@ -608,4 +608,18 @@ img { max-width: 100%; }
  .site-footer .footer-brand { grid-column:1/-1; }
  .site-footer .footer-india { display:none; }
  .site-footer .footer-bottom { padding:12px 18px; text-align:left; align-items:flex-start; }
+
+ /* Keep the hero actions compact and prevent the primary label wrapping. */
+ .page-home .hero-actions { width:min(100%,250px); grid-template-columns:1.15fr 1fr; gap:8px; }
+ .page-home .hero-actions>* { min-height:40px; height:40px; padding:7px 9px; white-space:nowrap; }
+ .page-home .hero-actions .button-primary span { font-size:0; }
+ .page-home .hero-actions .button-primary span::after { content:'View Products'; font-size:11px; }
+ .page-home .hero-actions svg { width:14px; height:14px; }
+
+ /* A fixed logo row avoids the empty gaps produced by the animated desktop track. */
+ .page-home .clients-carousel { overflow:visible; }
+ .page-home .clients-carousel-track { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:100%; animation:none; transform:none; gap:7px; }
+ .page-home .client-carousel-item { width:auto; min-width:0; }
+ .page-home .client-carousel-item:nth-child(n+5) { display:none; }
+ .page-home .client-carousel-item>div { width:100%; height:68px; padding:4px; }
 }
