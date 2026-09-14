@@ -62,15 +62,15 @@ const productNavHierarchy = [
   {
     id: 'air-valve',
     name: 'Air Valve',
-    path: '/products/single-air-valve',
+    path: '/products/single-air-valve/s1',
     children: [
       {
         id: 'single-air-valve',
         name: 'Single Air Valve',
-        path: '/products/single-air-valve',
+        path: '/products/single-air-valve/s1',
         children: [
-          { id: 's1', name: 'S1', path: '/products/single-air-valve#s1' },
-          { id: 's2', name: 'S2', path: '/products/single-air-valve#s2' },
+          { id: 's1', name: 'S1', path: '/products/single-air-valve/s1' },
+          { id: 's2', name: 'S2', path: '/products/single-air-valve/s2' },
         ],
       },
       {

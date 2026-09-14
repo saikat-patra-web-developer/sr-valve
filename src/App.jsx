@@ -68,9 +68,28 @@ export default function App() {
             }
           />
           <Route
+            path="/products/:category/:id"
+            element={
+              <ProductDetail
+                key={window.location.pathname}
+                onShowToast={handleShowToast}
+              />
+            }
+          />
+          <Route
             path="/product/:id"
             element={
               <ProductDetail
+                key={window.location.pathname}
+                onShowToast={handleShowToast}
+              />
+            }
+          />
+          <Route
+            path="/product/:category/:id"
+            element={
+              <ProductDetail
+                key={window.location.pathname}
                 onShowToast={handleShowToast}
               />
             }
