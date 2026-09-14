@@ -647,4 +647,17 @@ img { max-width: 100%; }
  .site-page .contact-hero-features strong { color:#16418a; font-size:8px; }
  .site-page .contact-hero-features .round-icon { width:27px; height:27px; }
  .site-page .contact-hero-features .round-icon svg { width:15px; height:15px; }
+
+ /* Contact page: compact infrastructure gallery matching the mobile homepage. */
+ .page-contact>.infrastructure-strip { padding-block:16px; background:#fff; }
+ .page-contact>.infrastructure-strip .max-w-7xl { padding-inline:18px; }
+ .page-contact>.infrastructure-strip .max-w-7xl>div:first-child { margin-bottom:12px; padding-bottom:8px; }
+ .page-contact>.infrastructure-strip h2 { font-size:22px; }
+ .page-contact>.infrastructure-strip .infrastructure-showcase { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+ .page-contact>.infrastructure-strip .infra-showcase-card { min-height:122px; border-radius:7px; }
+ .page-contact>.infrastructure-strip .infra-showcase-image { height:122px; }
+ .page-contact>.infrastructure-strip .infra-showcase-copy { padding:10px; }
+ .page-contact>.infrastructure-strip .infra-showcase-copy h4 { font-size:12px; line-height:1.1; }
+ .page-contact>.infrastructure-strip .infra-showcase-copy p { margin-top:3px; font-size:8px; line-height:1.2; }
+ .page-contact>.infrastructure-strip .infra-showcase-copy>span { display:none; }
 }
