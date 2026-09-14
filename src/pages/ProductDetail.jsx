@@ -3,14 +3,19 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
 import { productsData } from '../data/productsData'
 import ResponsiveImage from '../components/ResponsiveImage'
+import NotFound from './NotFound'
 
 export default function ProductDetail() {
   const { id } = useParams()
-  const productId = id || 'butterfly-valve'
-  const product = productsData.find((p) => p.id === productId) || productsData[0]
+  const product = productsData.find((p) => p.id === id)
 
   const [selection, setSelection] = useState({ productId: null, index: -1 })
   const [zoomOpen, setZoomOpen] = useState(false)
+
+  if (!product) {
+    return <NotFound />
+  }
+
   const activeThumb = selection.productId === product.id ? selection.index : -1
   const selectedImage = product.thumbnails?.[activeThumb] || product.detailMainImage || product.image
 
