@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
 const productSubmenu = [
   {
@@ -146,19 +146,6 @@ export default function Navbar() {
                   </NavLink>
                 ))}
               </div>
-              <div className="nav-dropdown-footer">
-                <NavLink
-                  to="/products"
-                  className="nav-dropdown-all-link"
-                  onClick={() => {
-                    setDropdownOpen(false)
-                    setOpen(false)
-                  }}
-                >
-                  <span>View All Products</span>
-                  <ArrowRight size={13} />
-                </NavLink>
-              </div>
             </div>
 
             {/* Mobile / Tablet Accordion Submenu */}
@@ -179,16 +166,6 @@ export default function Navbar() {
                     <span className="mobile-submenu-title">{sub.name}</span>
                   </NavLink>
                 ))}
-                <NavLink
-                  to="/products"
-                  className="mobile-submenu-item mobile-all-products"
-                  onClick={() => {
-                    setMobileSubOpen(false)
-                    setOpen(false)
-                  }}
-                >
-                  <span>All Products &rarr;</span>
-                </NavLink>
               </div>
             )}
           </div>

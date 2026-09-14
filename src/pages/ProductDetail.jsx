@@ -11,6 +11,7 @@ export default function ProductDetail() {
 
   const [selection, setSelection] = useState({ productId: null, index: -1 })
   const [zoomOpen, setZoomOpen] = useState(false)
+  const [activeVariantIndex, setActiveVariantIndex] = useState(0)
 
   if (!product) {
     return <NotFound />
@@ -109,7 +110,13 @@ export default function ProductDetail() {
                   {product.tag}
                 </span>
                 <h1 className="product-title text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight mt-1">
-                  {product.fullName.includes('Butterfly') ? <>Resilient Seated <span>Butterfly Valve</span></> : product.fullName}
+                  {product.id === 'sluice-valve' ? (
+                    <>Metal &amp; Resilient Seated <span>Sluice Valve</span></>
+                  ) : product.fullName.includes('Butterfly') ? (
+                    <>Resilient Seated <span>Butterfly Valve</span></>
+                  ) : (
+                    product.fullName
+                  )}
                 </h1>
                 <p className="text-xs font-bold text-[#f37021] mt-1">
                   {product.tagline}
@@ -183,22 +190,91 @@ export default function ProductDetail() {
                 Technical Specifications
               </h3>
 
-              <div className="overflow-hidden border border-slate-200 rounded-md shadow-2xs">
-                <table className="min-w-full text-xs divide-y divide-slate-200">
-                  <tbody className="divide-y divide-slate-100 bg-white">
-                    {Object.entries(product.specsTable).map(([specKey, specVal], idx) => (
-                      <tr key={idx} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
-                        <td className="px-4 py-2.5 font-bold text-slate-700 w-1/3">
-                          {specKey}
-                        </td>
-                        <td className="px-4 py-2.5 text-slate-600">
-                          {specVal}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              {product.variants ? (
+                <div className="space-y-4">
+                  {/* Variant Tabs */}
+                  <div className="flex flex-wrap gap-2">
+                    {product.variants.map((v, vIdx) => {
+                      const isActive = activeVariantIndex === vIdx
+                      return (
+                        <button
+                          key={v.id}
+                          type="button"
+                          onClick={() => setActiveVariantIndex(vIdx)}
+                          className={`px-3.5 py-2 rounded-md text-left transition-all cursor-pointer border ${
+                            isActive
+                              ? 'bg-[#0d2857] text-white border-[#0d2857] shadow-xs'
+                              : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+                          }`}
+                        >
+                          <span className="text-xs font-bold block">{v.name}</span>
+                          <span
+                            className={`text-[10px] font-medium block mt-0.5 ${
+                              isActive ? 'text-amber-300' : 'text-slate-500'
+                            }`}
+                          >
+                            {v.category}
+                          </span>
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {/* Active Variant Specs Card */}
+                  <div className="overflow-hidden border border-slate-200 rounded-md shadow-2xs">
+                    <div className="bg-slate-50 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                      <div>
+                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">
+                          {product.variants[activeVariantIndex]?.category}
+                        </span>
+                        <h4 className="text-sm font-extrabold text-[#0d2857]">
+                          {product.variants[activeVariantIndex]?.name}
+                        </h4>
+                      </div>
+                      <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
+                        {product.variants[activeVariantIndex]?.badge}
+                      </span>
+                    </div>
+
+                    <table className="min-w-full text-xs divide-y divide-slate-200">
+                      <tbody className="divide-y divide-slate-100 bg-white">
+                        {Object.entries(product.variants[activeVariantIndex]?.specs || {}).map(
+                          ([specKey, specVal], idx) => (
+                            <tr
+                              key={idx}
+                              className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}
+                            >
+                              <td className="px-4 py-2.5 font-bold text-slate-700 w-2/5">
+                                {specKey}
+                              </td>
+                              <td className="px-4 py-2.5 text-slate-800 font-medium">
+                                {specVal}
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                <div className="overflow-hidden border border-slate-200 rounded-md shadow-2xs">
+                  <table className="min-w-full text-xs divide-y divide-slate-200">
+                    <tbody className="divide-y divide-slate-100 bg-white">
+                      {Object.entries(product.specsTable).map(([specKey, specVal], idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
+                          <td className="px-4 py-2.5 font-bold text-slate-700 w-1/3">
+                            {specKey}
+                          </td>
+                          <td className="px-4 py-2.5 text-slate-600">
+                            {specVal}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
 
             {/* Key Features & Benefits (5 cols) */}
@@ -225,6 +301,74 @@ export default function ProductDetail() {
             </div>
 
           </div>
+
+          {/* Full Side-by-Side Comparison Matrix for Sluice Valve Variants */}
+          {product.variants && (
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <div className="mb-4">
+                <span className="text-[10px] font-bold text-[#f37021] uppercase tracking-wider block">
+                  Complete Technical Matrix
+                </span>
+                <h3 className="text-xl font-extrabold text-[#0d2857]">
+                  Sluice Valve Specifications Matrix
+                </h3>
+                <p className="text-xs text-slate-500 mt-1">
+                  Side-by-side technical parameters across Metal Seated (Non-Rising Stem & Rising Stem) and Resilient Seated Sluice Valves.
+                </p>
+              </div>
+
+              <div className="overflow-x-auto border border-slate-200 rounded-md shadow-2xs">
+                <table className="min-w-full text-xs divide-y divide-slate-200">
+                  <thead>
+                    <tr className="bg-slate-100">
+                      <th className="px-4 py-3 text-left font-extrabold text-[#0d2857] w-1/4">
+                        Specification Parameter
+                      </th>
+                      {product.variants.map((v) => (
+                        <th
+                          key={v.id}
+                          className="px-4 py-3 text-left font-extrabold text-[#0d2857] w-1/4"
+                        >
+                          <span className="block">{v.name}</span>
+                          <span className="text-[10px] font-bold text-[#f37021] block">
+                            {v.category}
+                          </span>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {[
+                      "SIZE RANGE",
+                      "PRESSURE RATING",
+                      "DESIGN STANDARD",
+                      "TESTING STANDARD",
+                      "FLANGE STANDARD",
+                      "MATERIAL",
+                      "ACCESSORIES",
+                    ].map((param, pIdx) => (
+                      <tr
+                        key={pIdx}
+                        className={pIdx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}
+                      >
+                        <td className="px-4 py-3 font-bold text-slate-700 bg-slate-50/75">
+                          {param}
+                        </td>
+                        {product.variants.map((v) => (
+                          <td
+                            key={v.id}
+                            className="px-4 py-3 text-slate-800 font-medium leading-relaxed"
+                          >
+                            {v.specs[param]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
