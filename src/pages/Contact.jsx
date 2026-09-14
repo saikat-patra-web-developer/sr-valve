@@ -1,5 +1,5 @@
 import PageHero from '../components/PageHero'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { MapPin, Mail, Phone, Clock, ExternalLink, Plus, Minus, ArrowRight, Headphones, Wrench, ShieldCheck, Users } from 'lucide-react'
 import { companyData } from '../data/companyData'

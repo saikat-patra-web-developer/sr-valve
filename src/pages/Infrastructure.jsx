@@ -1,6 +1,6 @@
 import { PencilRuler, Layers, Settings, ClipboardCheck, Truck } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ArrowRight, Building, ShieldCheck, Users, Globe2, Cpu, Wrench, PhoneCall, X } from 'lucide-react'
