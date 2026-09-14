@@ -5,10 +5,6 @@ import {
   BadgeCheck,
   CheckCircle2,
   ClipboardCheck,
-  FileCheck2,
-  FlaskConical,
-  Gauge,
-  Microscope,
   ZoomIn,
   X,
   Sparkles,
@@ -16,13 +12,6 @@ import {
   Flame,
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
-
-const testingCapabilities = [
-  { icon: FlaskConical, title: 'Raw Material Testing', text: 'Incoming materials are evaluated in our in-house BIS-approved laboratory before they enter production.' },
-  { icon: Microscope, title: 'Material Verification', text: 'Defined inspection procedures help verify material properties and suitability for the intended application.' },
-  { icon: Gauge, title: 'Product Testing', text: 'Finished valves undergo relevant dimensional, pressure and performance checks before approval.' },
-  { icon: FileCheck2, title: 'Quality Documentation', text: 'Inspection and testing records support traceability and consistent quality across every production batch.' },
-]
 
 const facilityGallery = [
   {
@@ -55,13 +44,6 @@ const facilityGallery = [
     description: 'Analytical chemical testing station featuring high-temperature muffle furnaces, chemical reagent benches, and titration burettes to verify exact Carbon, Silicon, Manganese, and alloying content.',
     highlights: ['Wet-chemical analysis setup', 'Carbon & Silicon verification', 'High-temperature muffle furnace', '100% heat traceability assurance'],
   },
-]
-
-const qualityStages = [
-  { number: '01', title: 'Incoming material', text: 'Raw materials are received, identified and checked.' },
-  { number: '02', title: 'Laboratory verification', text: 'Materials are tested against defined requirements.' },
-  { number: '03', title: 'In-process inspection', text: 'Quality is monitored throughout manufacturing.' },
-  { number: '04', title: 'Final product testing', text: 'Completed valves are inspected before release.' },
 ]
 
 export default function InHouseTestingFacility() {
@@ -253,51 +235,6 @@ export default function InHouseTestingFacility() {
                 </div>
               )
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Testing Capabilities Cards */}
-      <section className="bg-slate-50 border-y border-slate-200 py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-9">
-            <span className="text-[11px] font-bold text-slate-400 tracking-[0.24em] uppercase">Testing & Inspection</span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0d2857]">A controlled approach to product quality</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {testingCapabilities.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className="w-11 h-11 rounded-lg bg-[#0d2857] flex items-center justify-center mb-5"><Icon className="w-5 h-5 text-white" /></div>
-                <h3 className="text-base font-extrabold text-[#0d2857]">{title}</h3>
-                <p className="mt-2 text-sm text-slate-600 leading-6">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quality Stages */}
-      <section className="bg-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-4">
-              <span className="text-[11px] font-bold text-[#f37021] tracking-[0.24em] uppercase">Quality at every stage</span>
-              <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight">From raw material to final approval</h2>
-              <p className="mt-4 text-sm text-slate-600 leading-6">Our quality process is designed to identify issues early, preserve traceability and deliver consistent performance from one product to the next.</p>
-              <div className="mt-5 space-y-2">
-                {['Defined inspection checkpoints', 'Engineer-led quality review', 'Product consistency across batches'].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-sm font-semibold text-slate-700"><CheckCircle2 className="w-4 h-4 text-[#f37021]" />{item}</div>
-                ))}
-              </div>
-            </div>
-            <div className="lg:col-span-8 grid sm:grid-cols-2 gap-4">
-              {qualityStages.map((stage) => (
-                <div key={stage.number} className="flex gap-4 rounded-xl border border-slate-200 bg-slate-50 p-5">
-                  <span className="text-2xl font-black text-[#f37021]">{stage.number}</span>
-                  <div><h3 className="font-extrabold text-[#0d2857]">{stage.title}</h3><p className="mt-1 text-sm text-slate-600 leading-6">{stage.text}</p></div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
