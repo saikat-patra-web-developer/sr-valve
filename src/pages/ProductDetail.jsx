@@ -944,9 +944,6 @@ export default function ProductDetail() {
               alt={product.fullName}
               className="max-h-[70vh] max-w-full object-contain"
             />
-            <span className="text-xs font-bold text-slate-700 mt-4">
-              {product.fullName} - Product View
-            </span>
           </div>
         </div>
       )}

@@ -207,75 +207,6 @@ img { max-width: 100%; }
   font-weight: 700 !important;
 }
 
-/* Level 3 Flyout Submenu (for S1, S2, etc.) */
-.nav-flyout-level3 {
-  position: absolute;
-  left: 100%;
-  top: -6px;
-  min-width: 170px;
-  background: #ffffff;
-  border: 1px solid #dbe6f5;
-  border-radius: 8px;
-  box-shadow: 0 16px 36px rgba(10, 35, 75, 0.14);
-  padding: 6px 0;
-  z-index: 70;
-  display: none;
-}
-
-.nav-flyout-level3::before {
-  content: '';
-  position: absolute;
-  left: -12px;
-  top: 0;
-  bottom: 0;
-  width: 14px;
-}
-
-/* Flyout Level 3: Left-opening when space on right is limited */
-.nav-flyout-level3.open-left {
-  left: auto !important;
-  right: 100% !important;
-}
-
-.nav-flyout-level3.open-left::before {
-  left: auto !important;
-  right: -12px !important;
-  width: 14px !important;
-}
-
-.nav-dropdown-l3-wrapper:hover > .nav-flyout-level3,
-.nav-dropdown-l3-wrapper.active-hover > .nav-flyout-level3 {
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-dropdown-l4-row {
-  display: flex !important;
-  align-items: center !important;
-  padding: 8px 16px !important;
-  border-bottom: 0 !important;
-  font-size: 12.5px !important;
-  font-weight: 500 !important;
-  color: #334155 !important;
-  text-align: left;
-  line-height: 1.25;
-  white-space: nowrap;
-  transition: background-color 0.15s ease, color 0.15s ease;
-  cursor: pointer;
-}
-
-.nav-dropdown-l4-row:hover {
-  background-color: #f1f7ff;
-  color: #ff7600 !important;
-}
-
-.nav-dropdown-l4-row.active {
-  background-color: #fff7f0;
-  color: #ff7600 !important;
-  font-weight: 700 !important;
-}
-
-
 .button-orange,.button-primary,.button-outline { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:43px; padding:10px 25px; border-radius:4px; font-weight:600; font-size:15px; transition:filter .2s; }
 .button-orange { background:linear-gradient(110deg,#ff9223,#ff7300); color:white; border:1px solid #ff7900; }
 .button-primary { color:white; background:linear-gradient(120deg,#125bc6,#00358e); border:1px solid #2c68d1; }
@@ -935,21 +866,6 @@ img { max-width: 100%; }
     font-size: 13px !important;
     font-weight: 600 !important;
     color: #1e293b !important;
-    border-bottom: 0 !important;
-  }
-  .mobile-l3-panel {
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    border-left: 1.5px dashed #cbd5e1;
-    margin: 2px 0 4px 10px;
-    gap: 2px;
-  }
-  .mobile-l3-link {
-    padding: 5px 10px !important;
-    font-size: 12.5px !important;
-    font-weight: 500 !important;
-    color: #475569 !important;
     border-bottom: 0 !important;
   }
 }

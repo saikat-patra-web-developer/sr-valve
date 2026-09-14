@@ -62,42 +62,27 @@ const productNavHierarchy = [
   {
     id: 'air-valve',
     name: 'Air Valve',
-    path: '/products/single-air-valve/s1',
+    path: '/products/single-air-valve',
     children: [
       {
         id: 'single-air-valve',
         name: 'Single Air Valve',
-        path: '/products/single-air-valve/s1',
-        children: [
-          { id: 's1', name: 'S1', path: '/products/single-air-valve/s1' },
-          { id: 's2', name: 'S2', path: '/products/single-air-valve/s2' },
-        ],
+        path: '/products/single-air-valve',
       },
       {
         id: 'double-acting',
         name: 'Double Acting',
         path: '/products/double-acting-air-valve',
-        children: [
-          { id: 'ds1', name: 'DS1', path: '/products/double-acting-air-valve#ds1' },
-          { id: 'ds2', name: 'DS2', path: '/products/double-acting-air-valve#ds2' },
-        ],
       },
       {
         id: 'tamper-proof',
         name: 'Tamper Proof',
         path: '/products/tamper-proof-air-valve',
-        children: [
-          { id: 'single-chamber', name: 'Single chamber', path: '/products/tamper-proof-air-valve#single-chamber' },
-          { id: 'double-chamber', name: 'Double chamber', path: '/products/tamper-proof-air-valve#double-chamber' },
-        ],
       },
       {
         id: 'kinetic-double-acting',
         name: 'Kinetic Double Acting',
         path: '/products/kinetic-double-acting-air-valve',
-        children: [
-          { id: 'dk', name: 'DK', path: '/products/kinetic-double-acting-air-valve#dk' },
-        ],
       },
     ],
   },
@@ -121,13 +106,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState(null)
-  const [activeSubCategory, setActiveSubCategory] = useState(null)
   const [flyoutSide, setFlyoutSide] = useState({})
-  const [subFlyoutSide, setSubFlyoutSide] = useState({})
 
   const [mobileSubOpen, setMobileSubOpen] = useState(false)
   const [mobileOpenCats, setMobileOpenCats] = useState({})
-  const [mobileOpenSubCats, setMobileOpenSubCats] = useState({})
 
   const [whyUsDropdownOpen, setWhyUsDropdownOpen] = useState(false)
   const [mobileWhyUsOpen, setMobileWhyUsOpen] = useState(false)
@@ -151,7 +133,6 @@ export default function Navbar() {
     setWhyUsDropdownOpen(false)
     setExpDropdownOpen(false)
     setActiveCategory(null)
-    setActiveSubCategory(null)
     setMobileSubOpen(false)
     setMobileWhyUsOpen(false)
     setMobileExpOpen(false)
@@ -166,24 +147,13 @@ export default function Navbar() {
     }))
   }
 
-  const toggleMobileSubCat = (subId, e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setMobileOpenSubCats((prev) => ({
-      ...prev,
-      [subId]: !prev[subId],
-    }))
-  }
-
   const updateFlyoutDirections = useCallback(() => {
     if (!dropdownRef.current) return
     const rect = dropdownRef.current.getBoundingClientRect()
     const level1Right = rect.left + 225
     const newFlyoutSide = {}
     productNavHierarchy.forEach((cat) => {
-      const hasLevel3 = cat.children?.some((c) => c.children?.length > 0)
-      const neededOnRight = hasLevel3 ? 410 : 230
-      const wouldOverflowRight = level1Right + neededOnRight > window.innerWidth - 12
+      const wouldOverflowRight = level1Right + 230 > window.innerWidth - 12
       newFlyoutSide[cat.id] = wouldOverflowRight ? 'left' : 'right'
     })
     setFlyoutSide(newFlyoutSide)
@@ -191,33 +161,12 @@ export default function Navbar() {
 
   const handleCatMouseEnter = (cat, e) => {
     setActiveCategory(cat.id)
-    setActiveSubCategory(null)
     if (e?.currentTarget) {
       const catRect = e.currentTarget.getBoundingClientRect()
-      const hasLevel3 = cat.children?.some((c) => c.children?.length > 0)
-      const neededOnRight = hasLevel3 ? 410 : 230
-      const opensLeft = catRect.right + neededOnRight > window.innerWidth - 12
+      const opensLeft = catRect.right + 230 > window.innerWidth - 12
       setFlyoutSide((prev) => ({
         ...prev,
         [cat.id]: opensLeft ? 'left' : 'right',
-      }))
-    }
-  }
-
-  const handleSubCatMouseEnter = (subItem, catId, e) => {
-    setActiveSubCategory(subItem.id)
-    if (e?.currentTarget) {
-      const subRect = e.currentTarget.getBoundingClientRect()
-      const parentIsLeft = flyoutSide[catId] === 'left'
-      let opensLeft = false
-      if (parentIsLeft) {
-        opensLeft = subRect.left - 180 >= 10
-      } else {
-        opensLeft = subRect.right + 180 > window.innerWidth - 12
-      }
-      setSubFlyoutSide((prev) => ({
-        ...prev,
-        [subItem.id]: opensLeft ? 'left' : 'right',
       }))
     }
   }
@@ -234,7 +183,6 @@ export default function Navbar() {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false)
         setActiveCategory(null)
-        setActiveSubCategory(null)
       }
       if (whyUsRef.current && !whyUsRef.current.contains(e.target)) {
         setWhyUsDropdownOpen(false)
@@ -353,50 +301,22 @@ export default function Navbar() {
                           className={`nav-flyout-level2 ${isFlyoutLeft ? 'open-left' : ''}`}
                           role="menu"
                         >
-                          {cat.children.map((subItem) => {
-                            const isSubHovered = activeSubCategory === subItem.id
-                            const isSubLeft =
-                              subFlyoutSide[subItem.id] === 'left' ||
-                              (subFlyoutSide[subItem.id] === undefined && isFlyoutLeft)
-                            return (
-                              <div
-                                key={subItem.id}
-                                className={`nav-dropdown-l3-wrapper ${isSubHovered ? 'active-hover' : ''}`}
-                                onMouseEnter={(e) => handleSubCatMouseEnter(subItem, cat.id, e)}
+                          {cat.children.map((subItem) => (
+                            <div
+                              key={subItem.id}
+                              className="nav-dropdown-l3-wrapper"
+                            >
+                              <NavLink
+                                to={subItem.path}
+                                className={({ isActive }) =>
+                                  `nav-dropdown-l3-row ${isActive ? 'active' : ''}`
+                                }
+                                onClick={closeAll}
                               >
-                                <NavLink
-                                  to={subItem.path}
-                                  className={({ isActive }) =>
-                                    `nav-dropdown-l3-row ${isActive ? 'active' : ''}`
-                                  }
-                                  onClick={closeAll}
-                                >
-                                  <span>{subItem.name}</span>
-                                </NavLink>
-
-                                {/* Level 3 Submenu Flyout (if have, e.g. S1, S2) */}
-                                {subItem.children && (
-                                  <div
-                                    className={`nav-flyout-level3 ${isSubLeft ? 'open-left' : ''}`}
-                                    role="menu"
-                                  >
-                                    {subItem.children.map((subSub) => (
-                                      <NavLink
-                                        key={subSub.id}
-                                        to={subSub.path}
-                                        className={({ isActive }) =>
-                                          `nav-dropdown-l4-row ${isActive ? 'active' : ''}`
-                                        }
-                                        onClick={closeAll}
-                                      >
-                                        <span>{subSub.name}</span>
-                                      </NavLink>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            )
-                          })}
+                                <span>{subItem.name}</span>
+                              </NavLink>
+                            </div>
+                          ))}
                         </div>
                       )}
                     </div>
@@ -405,7 +325,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Mobile / Tablet Accordion Submenu (Multi-Level) */}
+            {/* Mobile / Tablet Accordion Submenu */}
             {mobileSubOpen && (
               <div className="mobile-submenu-panel">
                 {productNavHierarchy.map((cat) => {
@@ -437,52 +357,21 @@ export default function Navbar() {
                       {/* Level 2 Submenu Mobile Panel */}
                       {cat.children && isCatOpen && (
                         <div className="mobile-l2-panel">
-                          {cat.children.map((subItem) => {
-                            const isSubOpen = !!mobileOpenSubCats[subItem.id]
-                            return (
-                              <div key={subItem.id} className="mobile-l2-item">
-                                <div className="mobile-l2-header">
-                                  <NavLink
-                                    to={subItem.path}
-                                    className={({ isActive }) =>
-                                      `mobile-l2-link ${isActive ? 'active' : ''}`
-                                    }
-                                    onClick={closeAll}
-                                  >
-                                    {subItem.name}
-                                  </NavLink>
-                                  {subItem.children && (
-                                    <button
-                                      type="button"
-                                      className={`mobile-toggle-btn ${isSubOpen ? 'rotate' : ''}`}
-                                      aria-label={isSubOpen ? `Collapse ${subItem.name}` : `Expand ${subItem.name}`}
-                                      onClick={(e) => toggleMobileSubCat(subItem.id, e)}
-                                    >
-                                      <ChevronDown size={14} aria-hidden="true" />
-                                    </button>
-                                  )}
-                                </div>
-
-                                {/* Level 3 Submenu Mobile Panel (if have, e.g. S1, S2) */}
-                                {subItem.children && isSubOpen && (
-                                  <div className="mobile-l3-panel">
-                                    {subItem.children.map((subSub) => (
-                                      <NavLink
-                                        key={subSub.id}
-                                        to={subSub.path}
-                                        className={({ isActive }) =>
-                                          `mobile-l3-link ${isActive ? 'active' : ''}`
-                                        }
-                                        onClick={closeAll}
-                                      >
-                                        <span>{subSub.name}</span>
-                                      </NavLink>
-                                    ))}
-                                  </div>
-                                )}
+                          {cat.children.map((subItem) => (
+                            <div key={subItem.id} className="mobile-l2-item">
+                              <div className="mobile-l2-header">
+                                <NavLink
+                                  to={subItem.path}
+                                  className={({ isActive }) =>
+                                    `mobile-l2-link ${isActive ? 'active' : ''}`
+                                  }
+                                  onClick={closeAll}
+                                >
+                                  {subItem.name}
+                                </NavLink>
                               </div>
-                            )
-                          })}
+                            </div>
+                          ))}
                         </div>
                       )}
                     </div>
