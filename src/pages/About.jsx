@@ -46,20 +46,42 @@ export default function About() {
               </div>
             </div>
 
-            {/* Right Photo with Badge (6 cols) */}
-            <div className="lg:col-span-6 relative rounded-md overflow-hidden shadow-xl border border-slate-200 group">
-              <img
-                src="/images/about/engineering_excellence.png"
-                alt="Engineering Excellence in Every Flow"
-                className="w-full h-80 sm:h-96 object-cover group-hover:scale-102 transition-transform duration-500"
-              />
-              <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-xs text-white p-3.5 rounded-md border border-white/20 max-w-[170px] text-right">
-                <span className="text-[11px] font-extrabold block text-amber-400">RELIABLE</span>
-                <span className="text-[11px] font-extrabold block">DURABLE</span>
-                <span className="text-[9px] font-medium text-slate-300 block mt-1">HIGH PERFORMANCE BUILT FOR INDIA</span>
-              </div>
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0d2857]/90 to-transparent py-2.5 px-4 text-center text-[10px] font-extrabold tracking-wider text-white uppercase">
-                INDUSTRIAL VALVES | FLOW CONTROL SOLUTIONS | MADE FOR A BETTER TOMORROW
+            {/* Modern overlapping office gallery (6 cols) */}
+            <div className="lg:col-span-6">
+              <div className="relative mx-auto h-[390px] max-w-[620px] sm:h-[470px] lg:h-[450px]">
+                <div className="absolute left-[3%] top-[6%] h-[58%] w-[70%] rounded-[2rem] bg-blue-50" aria-hidden="true" />
+                <div className="absolute bottom-[4%] right-[1%] h-[56%] w-[72%] rounded-[2rem] bg-orange-50" aria-hidden="true" />
+
+                <figure className="group absolute left-0 top-0 z-10 h-[58%] w-[67%] overflow-hidden rounded-[1.35rem] border-[5px] border-white bg-slate-100 shadow-[0_18px_45px_rgba(13,40,87,0.18)] sm:rounded-[1.75rem] sm:border-[7px]">
+                  <ResponsiveImage
+                    src="/images/about/office-conference-room.webp"
+                    sizes="(min-width: 1024px) 34vw, 67vw"
+                    alt="SSPR Valve modern conference room"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </figure>
+
+                <figure className="group absolute right-0 top-[20%] z-20 h-[47%] w-[55%] overflow-hidden rounded-[1.35rem] border-[5px] border-white bg-slate-100 shadow-[0_18px_45px_rgba(13,40,87,0.2)] sm:rounded-[1.75rem] sm:border-[7px]">
+                  <ResponsiveImage
+                    src="/images/about/office-reception.webp"
+                    sizes="(min-width: 1024px) 28vw, 55vw"
+                    alt="SSPR Group reception area"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </figure>
+
+                <figure className="group absolute bottom-0 left-[9%] z-30 h-[48%] w-[62%] overflow-hidden rounded-[1.35rem] border-[5px] border-white bg-slate-100 shadow-[0_20px_50px_rgba(13,40,87,0.22)] sm:rounded-[1.75rem] sm:border-[7px]">
+                  <ResponsiveImage
+                    src="/images/about/office-client-lounge.webp"
+                    sizes="(min-width: 1024px) 31vw, 62vw"
+                    alt="SSPR Valve client lounge"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </figure>
+
+                <div className="absolute bottom-[7%] right-[2%] z-40 rounded-full border border-blue-100 bg-white/95 px-3 py-2 text-[9px] font-extrabold uppercase tracking-[0.16em] text-[#0d2857] shadow-lg backdrop-blur-sm sm:px-4 sm:text-[10px]">
+                  Inside SSPR
+                </div>
               </div>
             </div>
 
