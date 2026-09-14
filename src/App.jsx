@@ -14,7 +14,14 @@ import Infrastructure from './pages/Infrastructure'
 import Certifications from './pages/Certifications'
 import Contact from './pages/Contact'
 import WhyUs from './pages/WhyUs'
+import InHouseManufacturing from './pages/InHouseManufacturing'
+import InHouseTestingFacility from './pages/InHouseTestingFacility'
+import CustomerSupport from './pages/CustomerSupport'
+import OnTimeDelivery from './pages/OnTimeDelivery'
 import Experience from './pages/Experience'
+import WaterSupplyProject from './pages/WaterSupplyProject'
+import WasteWaterProject from './pages/WasteWaterProject'
+import IrrigationProjects from './pages/IrrigationProjects'
 import Clients from './pages/Clients'
 import NotFound from './pages/NotFound'
 
@@ -101,8 +108,44 @@ export default function App() {
             element={<WhyUs />}
           />
           <Route
+            path="/why-us/in-house-manufacturing"
+            element={<InHouseManufacturing />}
+          />
+          <Route
+            path="/why-us/in-house-testing-facility"
+            element={<InHouseTestingFacility />}
+          />
+          <Route
+            path="/why-us/certifications"
+            element={
+              <Certifications
+                onShowToast={handleShowToast}
+              />
+            }
+          />
+          <Route
+            path="/why-us/customer-support"
+            element={<CustomerSupport />}
+          />
+          <Route
+            path="/why-us/on-time-delivery"
+            element={<OnTimeDelivery />}
+          />
+          <Route
             path="/experience"
             element={<Experience />}
+          />
+          <Route
+            path="/experience/water-supply-project"
+            element={<WaterSupplyProject />}
+          />
+          <Route
+            path="/experience/waste-water-project"
+            element={<WasteWaterProject />}
+          />
+          <Route
+            path="/experience/irrigation-projects"
+            element={<IrrigationProjects />}
           />
           <Route
             path="/clients"
