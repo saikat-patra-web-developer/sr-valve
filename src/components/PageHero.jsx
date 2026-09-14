@@ -53,7 +53,7 @@ export default function PageHero({ type }) {
           src={slide.image}
           sizes="100vw"
           alt={slide.alt}
-          className={`hero-slide${index === 1 ? ' hero-slide-panorama' : ''}${index === activeSlide ? ' active' : ''}`}
+          className={index === activeSlide ? 'hero-slide active' : 'hero-slide'}
         />)}
       </div>}
       <div className="hero-inner"><div className="hero-copy">
