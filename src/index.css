@@ -301,6 +301,35 @@ img { max-width: 100%; }
   flex-direction: column;
 }
 
+/* Desktop menus support both hover discovery and click-to-toggle. */
+@media (min-width: 1101px) {
+  .nav-item-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-item-dropdown:hover .nav-dropdown-chevron {
+    transform: rotate(180deg);
+    color: #ffffff;
+  }
+
+  .nav-dropdown-l2-wrapper:hover > .nav-dropdown-l2-row {
+    background-color: #f0f6ff;
+    color: #0635b8 !important;
+  }
+
+  .nav-dropdown-l2-wrapper:hover > .nav-dropdown-l2-row .nav-l2-chevron {
+    color: #0635b8;
+  }
+
+  .nav-dropdown-l2-wrapper:hover > .nav-flyout-level2 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 /* Level 3 Item Row inside Level 2 Flyout */
 .nav-dropdown-l3-wrapper {
   position: relative;
