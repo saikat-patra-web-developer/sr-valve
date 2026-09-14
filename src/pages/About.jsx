@@ -46,45 +46,42 @@ export default function About() {
               </div>
             </div>
 
-            {/* Modern three-frame office gallery (6 cols) */}
-            <div className="lg:col-span-6 relative">
-              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-blue-100/70 via-white to-orange-100/70 blur-xl" aria-hidden="true" />
-              <div className="relative grid grid-cols-2 gap-3 sm:gap-4 lg:h-[430px] lg:grid-cols-12 lg:grid-rows-2">
-                <figure className="group relative col-span-2 h-56 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl lg:col-span-7 lg:row-span-2 lg:h-auto">
+            {/* Modern overlapping office gallery (6 cols) */}
+            <div className="lg:col-span-6">
+              <div className="relative mx-auto h-[390px] max-w-[620px] sm:h-[470px] lg:h-[450px]">
+                <div className="absolute left-[3%] top-[6%] h-[58%] w-[70%] rounded-[2rem] bg-blue-50" aria-hidden="true" />
+                <div className="absolute bottom-[4%] right-[1%] h-[56%] w-[72%] rounded-[2rem] bg-orange-50" aria-hidden="true" />
+
+                <figure className="group absolute left-0 top-0 z-10 h-[58%] w-[67%] overflow-hidden rounded-[1.35rem] border-[5px] border-white bg-slate-100 shadow-[0_18px_45px_rgba(13,40,87,0.18)] sm:rounded-[1.75rem] sm:border-[7px]">
                   <ResponsiveImage
                     src="/images/about/office-conference-room.webp"
-                    sizes="(min-width: 1024px) 30vw, 100vw"
+                    sizes="(min-width: 1024px) 34vw, 67vw"
                     alt="SSPR Valve modern conference room"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0d2857]/90 to-transparent px-4 pb-3 pt-10 text-xs font-bold tracking-wide text-white">
-                    Conference Room
-                  </figcaption>
                 </figure>
 
-                <figure className="group relative h-36 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl sm:h-44 lg:col-span-5 lg:h-auto">
+                <figure className="group absolute right-0 top-[20%] z-20 h-[47%] w-[55%] overflow-hidden rounded-[1.35rem] border-[5px] border-white bg-slate-100 shadow-[0_18px_45px_rgba(13,40,87,0.2)] sm:rounded-[1.75rem] sm:border-[7px]">
                   <ResponsiveImage
                     src="/images/about/office-reception.webp"
-                    sizes="(min-width: 1024px) 20vw, 50vw"
+                    sizes="(min-width: 1024px) 28vw, 55vw"
                     alt="SSPR Group reception area"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0d2857]/90 to-transparent px-3 pb-2.5 pt-8 text-[11px] font-bold tracking-wide text-white">
-                    Reception
-                  </figcaption>
                 </figure>
 
-                <figure className="group relative h-36 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl sm:h-44 lg:col-span-5 lg:h-auto">
+                <figure className="group absolute bottom-0 left-[9%] z-30 h-[48%] w-[62%] overflow-hidden rounded-[1.35rem] border-[5px] border-white bg-slate-100 shadow-[0_20px_50px_rgba(13,40,87,0.22)] sm:rounded-[1.75rem] sm:border-[7px]">
                   <ResponsiveImage
                     src="/images/about/office-client-lounge.webp"
-                    sizes="(min-width: 1024px) 20vw, 50vw"
+                    sizes="(min-width: 1024px) 31vw, 62vw"
                     alt="SSPR Valve client lounge"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#f37021]/90 to-transparent px-3 pb-2.5 pt-8 text-[11px] font-bold tracking-wide text-white">
-                    Client Lounge
-                  </figcaption>
                 </figure>
+
+                <div className="absolute bottom-[7%] right-[2%] z-40 rounded-full border border-blue-100 bg-white/95 px-3 py-2 text-[9px] font-extrabold uppercase tracking-[0.16em] text-[#0d2857] shadow-lg backdrop-blur-sm sm:px-4 sm:text-[10px]">
+                  Inside SSPR
+                </div>
               </div>
             </div>
 

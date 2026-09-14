@@ -517,7 +517,6 @@ img { max-width: 100%; }
 .site-page .infrastructure-strip .infra-showcase-card:hover h4 { color:#fcd34d; }
 .site-page>section.text-white { background-image:linear-gradient(90deg,#06366ed9,#00458aa6),url('/images/infra/projects/treatment-plant-overview.webp'),url('/images/products/plant_piping.webp'); background-size:cover,45% auto,cover; background-position:center,left center,right center; background-repeat:no-repeat; padding-block:25px; }
 .site-page>section.text-white :is(h2,h3,h4) { color:white; }
-.page-about>section:nth-of-type(2) img { height:370px; }
 .page-about>section:nth-of-type(2) .absolute.top-4 { display:none; }
 .page-about>section:nth-of-type(2) .absolute.bottom-0 { background:#ff8200; font-size:10px; letter-spacing:2px; }
 .page-about .text-center.max-w-2xl,.page-about .text-center.max-w-xl,.page-infrastructure .text-center.max-w-xl { text-align:left; max-width:none; }
