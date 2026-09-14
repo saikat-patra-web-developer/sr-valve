@@ -13,6 +13,7 @@ import ProductDetail from './pages/ProductDetail'
 import Infrastructure from './pages/Infrastructure'
 import Certifications from './pages/Certifications'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   const [toastMessage, setToastMessage] = useState('')
@@ -88,10 +89,14 @@ export default function App() {
               />
             }
           />
-          {/* Catch-all fallback route */}
+          {/* 404 / Catch-all fallback route */}
+          <Route
+            path="/404"
+            element={<NotFound />}
+          />
           <Route
             path="*"
-            element={<Home />}
+            element={<NotFound />}
           />
         </Routes>
       </main>
