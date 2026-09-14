@@ -150,9 +150,6 @@ img { max-width: 100%; }
 .page-about>section:nth-of-type(2) .absolute.bottom-0 { background:#ff8200; font-size:10px; letter-spacing:2px; }
 .page-about .text-center.max-w-2xl,.page-about .text-center.max-w-xl,.page-infrastructure .text-center.max-w-xl { text-align:left; max-width:none; }
 .page-about .text-center.max-w-2xl p { max-width:500px; }
-.page-about .lg\:grid-cols-6>div { padding:14px; }
-.page-about .lg\:grid-cols-6>div .w-10 { border:1px solid #819fea; background:white; width:54px; height:54px; }
-.page-about .lg\:grid-cols-6>div { border-width:0 1px 0 0; border-radius:0; }
 .page-about .lg\:col-span-3 .w-36 { height:160px; width:180px; }
 .page-about .lg\:col-span-3:has(.w-36) { display:grid; grid-template-columns:180px 1fr; column-gap:18px; grid-column:span 5; }
 .page-about .lg\:col-span-3:has(.w-36) .w-36 { grid-row:span 4; }
