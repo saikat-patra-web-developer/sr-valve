@@ -9,6 +9,7 @@ const homeSlides = [
   { image: '/images/hero/home-hero-slide-3.webp', alt: 'SSPR butterfly valves displayed inside the manufacturing facility' },
 ]
 
+
 const copy = {
   home: { eyebrow: 'INDUSTRIAL VALVES  |  FLOW CONTROL SOLUTIONS  |  A STRONGER TOMORROW', title: <><span className="home-title-line"><em>SSPR Valve</em> Manufacturing</span><span className="home-title-line">Private Limited</span></>, description: 'SSPR Valve Manufacturing Private Limited manufactures high-quality industrial valves, penstocks and flow-control solutions for critical applications across water, infrastructure, irrigation, desalination and industrial projects.' },
   products: { crumb: 'Products', title: <>Our Product <em>Range</em></>, subtitle: 'Rugged. Reliable. Engineered for a Better Tomorrow.', description: 'Explore metal and resilient seated sluice valves, flanged and wafer butterfly valves, single-door, multi-door and dual-plate non-return valves, plus S1, S2, DS1, DS2, DK and tamper-proof air valves.', image: 'valve-range-wide.webp' },
@@ -16,6 +17,9 @@ const copy = {
   infrastructure: { crumb: 'Infrastructure', eyebrow: 'PROJECT INSTALLATIONS  |  WATER INFRASTRUCTURE  |  RELIABLE SOLUTIONS', title: <>Infrastructure &<br />Project <em>Experience</em></>, description: 'Client-supplied views of treatment plants, clarifiers, control rooms, pumping systems and installed SSPR valves across operating sites.', image: 'factory-hero-wide.webp' },
   contact: { crumb: 'Contact Us', eyebrow: 'LET’S BUILD A STRONGER TOMORROW TOGETHER', title: <>Contact <em>Us</em></>, description: 'We are here to assist you with your project enquiries, product requirements and technical discussions.', image: 'contact-wide.webp' },
   certifications: { crumb: 'Certifications', eyebrow: 'QUALITY & CERTIFICATIONS', title: <>Committed to<br /><em>Global Standards</em></>, description: 'ISO 9001 certification through June 2027, with ISO 14001:2015 and ISO 45001:2018 certifications valid through April 2028.', image: 'factory-hero-wide.webp' },
+  whyUs: { crumb: 'Why Us', eyebrow: 'WHY CHOOSE SSPR VALVE', title: <>Why <em>Us</em></>, description: 'Committed to engineering excellence, rigorous quality standards, and customer-centric industrial solutions.', image: 'factory-hero-wide.webp' },
+  experience: { crumb: 'Experience', eyebrow: 'EXPERIENCE & CAPABILITIES', title: <>Our <em>Experience</em></>, description: 'Proven track record of engineering precision, reliability, and excellence across mission-critical projects.', image: 'factory-hero-wide.webp' },
+  clients: { crumb: 'Clients', eyebrow: 'OUR VALUED PARTNERS', title: <>Our <em>Clients</em></>, description: 'Trusted by government authorities, municipal corporations, and major industrial enterprises nationwide.', image: 'factory-hero-wide.webp' },
   notFound: { crumb: 'Page Not Found', eyebrow: 'ERROR 404  |  PAGE NOT FOUND', title: <>Page <em>Not Found</em></>, subtitle: '404 Error — We could not find the page you are looking for.', description: 'The page you requested may have been moved, renamed, or is temporarily unavailable. Browse our industrial valve products or return to the home page.', image: 'valve-range-wide.webp' },
 }
 export function TrustBar({ expanded = false }) {
