@@ -1,22 +1,15 @@
 import { useEffect } from 'react'
-import PageHero from '../components/PageHero'
+import { Building2, Droplets, Network, Waves } from 'lucide-react'
+import ProjectSectorPage from '../components/ProjectSectorPage'
 
 export default function WaterSupplyProject() {
-  useEffect(() => {
-    document.title = 'Water Supply Project | SSPR Valve Manufacturing Private Limited'
-  }, [])
-
-  return (
-    <div className="site-page page-water-supply-project">
-      {/* 1. HERO BANNER */}
-      <PageHero type="waterSupplyProject" />
-
-      {/* 2. BLANK CONTENT SECTION */}
-      <section className="py-20 bg-white min-h-[400px] flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
-          <p className="text-base font-medium">Water Supply Project content coming soon.</p>
-        </div>
-      </section>
-    </div>
-  )
+  useEffect(() => { document.title = 'Water Supply Projects | SSPR Valve Manufacturing Private Limited' }, [])
+  return <ProjectSectorPage heroType="waterSupplyProject" eyebrow="Reliable water infrastructure" title="Controlling flow from source to" highlight="every community."
+    introduction="SSPR valves support dependable water transmission and distribution across urban and rural schemes. From raw-water intake and treatment to pumping, storage and final distribution, our flow-control solutions are engineered for reliable operation, low maintenance and long service life."
+    image="/images/infra/projects/treatment-plant-overview.webp" imageAlt="Large water treatment plant supported by industrial flow-control equipment" badge="Dependable flow control for essential water services"
+    benefits={['High-capacity pipeline control', 'Reliable isolation and protection', 'Solutions for new and retrofit projects', 'Technical support through completion']}
+    applications={[{ icon: Waves, title: 'Raw-Water Intake', text: 'Flow isolation and control at reservoirs, rivers, intake wells and transmission mains.' }, { icon: Building2, title: 'Treatment Plants', text: 'Valves for filtration, pumping, process lines and treated-water storage systems.' }, { icon: Network, title: 'Distribution Networks', text: 'Dependable control across trunk mains, service reservoirs and municipal networks.' }, { icon: Droplets, title: 'Rural Water Schemes', text: 'Durable solutions for regional, village and community drinking-water projects.' }]}
+    products={[{ id: 'sluice-valve', name: 'Sluice Valves', use: 'Isolation across treatment plants and distribution mains.', image: '/images/products/sluice_valve_non_rising_1.webp' }, { id: 'butterfly-valve', name: 'Butterfly Valves', use: 'Efficient control for large-diameter water pipelines.', image: '/images/products/butterfly_valve_flange.webp' }, { id: 'check-valve', name: 'Non Return Valves', use: 'Backflow and water-hammer protection for pumping systems.', image: '/images/products/check_valve_single_door.webp' }, { id: 'air-valve', name: 'Air Valves', use: 'Air release and vacuum protection along transmission mains.', image: '/images/products/air_valve_s1.webp' }]}
+    gallery={[{ image: '/images/infra/projects/water-treatment-basins.webp', alt: 'Water treatment basins', caption: 'Treatment & filtration systems' }, { image: '/images/infra/projects/treatment-plant-pump-house.webp', alt: 'Water treatment pump house', caption: 'Pumping stations & mains' }, { image: '/images/infra/projects/control-room.webp', alt: 'Water system control room', caption: 'Monitoring & control' }]}
+    ctaTitle="Planning a water-supply project?" ctaText="Share your flow, pressure and pipeline requirements with our engineers for valve selection and technical support." />
 }

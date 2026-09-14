@@ -1,22 +1,15 @@
 import { useEffect } from 'react'
-import PageHero from '../components/PageHero'
+import { Factory, Filter, Recycle, ShieldCheck } from 'lucide-react'
+import ProjectSectorPage from '../components/ProjectSectorPage'
 
 export default function WasteWaterProject() {
-  useEffect(() => {
-    document.title = 'Waste Water Project | SSPR Valve Manufacturing Private Limited'
-  }, [])
-
-  return (
-    <div className="site-page page-waste-water-project">
-      {/* 1. HERO BANNER */}
-      <PageHero type="wasteWaterProject" />
-
-      {/* 2. BLANK CONTENT SECTION */}
-      <section className="py-20 bg-white min-h-[400px] flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
-          <p className="text-base font-medium">Waste Water Project content coming soon.</p>
-        </div>
-      </section>
-    </div>
-  )
+  useEffect(() => { document.title = 'Wastewater Projects | SSPR Valve Manufacturing Private Limited' }, [])
+  return <ProjectSectorPage heroType="wasteWaterProject" eyebrow="Flow control for demanding media" title="Reliable performance in" highlight="challenging service."
+    introduction="Wastewater systems demand equipment that can withstand corrosive conditions, solids and frequent operating cycles. SSPR provides robust valves for sewage and effluent treatment processes, helping operators isolate equipment, regulate flow and protect pumps throughout the treatment network."
+    image="/images/infra/projects/clarifier-installation.webp" imageAlt="Circular clarifier operating at a wastewater treatment facility" badge="Durable valve solutions for treatment and recovery systems"
+    benefits={['Corrosion-resistant construction', 'Low-maintenance valve designs', 'Reliable pump protection', 'Application-specific material selection']}
+    applications={[{ icon: Factory, title: 'Sewage Treatment Plants', text: 'Isolation and control across inlet works, aeration, clarification and sludge systems.' }, { icon: Filter, title: 'Effluent Treatment', text: 'Valve solutions for industrial effluent processing and discharge networks.' }, { icon: Recycle, title: 'Water Reuse Systems', text: 'Dependable flow control for tertiary treatment and reclaimed-water distribution.' }, { icon: ShieldCheck, title: 'Pumping & Protection', text: 'Pump isolation, backflow prevention and pipeline protection in difficult service.' }]}
+    products={[{ id: 'sluice-valve', name: 'Sluice Valves', use: 'Robust isolation for inlet, outlet and sludge lines.', image: '/images/products/sluice_valve_resilient_1.webp' }, { id: 'butterfly-valve', name: 'Butterfly Valves', use: 'Compact flow control across treatment-process piping.', image: '/images/products/butterfly_valve_wafer.webp' }, { id: 'check-valve', name: 'Non Return Valves', use: 'Protection against reverse flow at wastewater pumps.', image: '/images/products/check_valve_dual_plate.webp' }, { id: 'air-valve', name: 'Air Valves', use: 'Pipeline air management on sewage and effluent mains.', image: '/images/products/air_valve_dk.webp' }]}
+    gallery={[{ image: '/images/infra/projects/clarifier-installation.webp', alt: 'Wastewater clarifier installation', caption: 'Clarification systems' }, { image: '/images/infra/projects/treatment-plant-overview.webp', alt: 'Treatment plant overview', caption: 'Integrated treatment facilities' }, { image: '/images/infra/projects/pipeline-valves-site.webp', alt: 'Valves installed on process pipelines', caption: 'Process piping & pumping' }]}
+    ctaTitle="Need valves for a treatment project?" ctaText="Tell us about the medium, operating conditions and project specifications so we can support the right valve configuration." />
 }

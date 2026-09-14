@@ -1,22 +1,15 @@
 import { useEffect } from 'react'
-import PageHero from '../components/PageHero'
+import { Gauge, LandPlot, Sprout, Waves } from 'lucide-react'
+import ProjectSectorPage from '../components/ProjectSectorPage'
 
 export default function IrrigationProjects() {
-  useEffect(() => {
-    document.title = 'Irrigation Projects | SSPR Valve Manufacturing Private Limited'
-  }, [])
-
-  return (
-    <div className="site-page page-irrigation-projects">
-      {/* 1. HERO BANNER */}
-      <PageHero type="irrigationProjects" />
-
-      {/* 2. BLANK CONTENT SECTION */}
-      <section className="py-20 bg-white min-h-[400px] flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
-          <p className="text-base font-medium">Irrigation Projects content coming soon.</p>
-        </div>
-      </section>
-    </div>
-  )
+  useEffect(() => { document.title = 'Irrigation Projects | SSPR Valve Manufacturing Private Limited' }, [])
+  return <ProjectSectorPage heroType="irrigationProjects" eyebrow="Efficient water management" title="Moving water where agriculture" highlight="needs it most."
+    introduction="SSPR supports irrigation infrastructure with heavy-duty valves for lifting, conveying and distributing water across large command areas. Our products are engineered for high flow rates, changing pressures and dependable operation in remote and demanding project environments."
+    image="/images/infra/projects/pipeline-valves-site.webp" imageAlt="Large pumps and pipeline valves operating at an irrigation project" badge="High-capacity solutions for dependable irrigation networks"
+    benefits={['Large-diameter valve capability', 'Low head-loss flow control', 'Protection for pumping systems', 'Manual and actuated operation']}
+    applications={[{ icon: Gauge, title: 'Lift Irrigation', text: 'High-capacity isolation and pump protection for rising mains and lift stations.' }, { icon: Waves, title: 'Dams & Barrages', text: 'Dependable water control at reservoir outlets, headworks and regulating structures.' }, { icon: LandPlot, title: 'Canal Networks', text: 'Flow regulation for main canals, branches and distribution control points.' }, { icon: Sprout, title: 'Command Areas', text: 'Efficient distribution across agricultural zones and pressurised irrigation systems.' }]}
+    products={[{ id: 'sluice-valve', name: 'Sluice Valves', use: 'Heavy-duty isolation for canals, mains and pump stations.', image: '/images/products/sluice_valve_rising_gear.webp' }, { id: 'butterfly-valve', name: 'Butterfly Valves', use: 'Low-loss control in large-diameter irrigation pipelines.', image: '/images/products/butterfly_valve_flange.webp' }, { id: 'check-valve', name: 'Non Return Valves', use: 'Pump protection and reverse-flow prevention in lift schemes.', image: '/images/products/check_valve_multi_door.webp' }, { id: 'air-valve', name: 'Air Valves', use: 'Air release and vacuum control along long rising mains.', image: '/images/products/air_valve_double_chamber.webp' }]}
+    gallery={[{ image: '/images/infra/projects/pipeline-valves-site.webp', alt: 'Irrigation pumping and valve installation', caption: 'Lift irrigation systems' }, { image: '/images/infra/projects/installed-butterfly-valves.webp', alt: 'Butterfly valves installed in a pumping station', caption: 'High-capacity flow control' }, { image: '/images/hero/home-hero-slide-1.webp', alt: 'Large SSPR valve at a project site', caption: 'Large-diameter project valves' }]}
+    ctaTitle="Planning an irrigation scheme?" ctaText="Discuss the required flow, head, pipeline size and operating method with our team for a dependable valve solution." />
 }

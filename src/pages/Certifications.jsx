@@ -15,6 +15,7 @@ export default function Certifications() {
       validity: "Valid to 10 June 2027",
       document: "/downloads/SSPR ISO upto 11.05.2027.pdf",
       image: "/images/certifications/badge_iso9001.webp",
+      certificateImage: "/images/certifications/certificate-iso-9001.webp",
       keyPoints: [
         "Stringent incoming raw material inspection with 100% mill test traceability",
         "Calibrated in-process dimensional tolerance checks",
@@ -30,6 +31,7 @@ export default function Certifications() {
       validity: "Valid to 16 April 2028",
       document: "/downloads/ISO 14001 - Upto 16.04.2028.pdf",
       image: "/images/certifications/badge_iso14001.webp",
+      certificateImage: "/images/certifications/certificate-iso-14001.webp",
       keyPoints: [
         "100% non-toxic, eco-friendly epoxy and powder coating systems",
         "Systematic metallic machining scrap separation and recycling",
@@ -45,6 +47,7 @@ export default function Certifications() {
       validity: "Valid to 16 April 2028",
       document: "/downloads/ISO 45001 - Upto 16.04.2028.pdf",
       image: "/images/certifications/badge_iso45001.webp",
+      certificateImage: "/images/certifications/certificate-iso-45001.webp",
       keyPoints: [
         "Comprehensive PPE compliance across foundry, machining & testing bays",
         "Heavy crane and hoist safety interlocks inspected regularly",
@@ -96,6 +99,21 @@ export default function Certifications() {
                       {cert.validity}
                     </span>
                   </div>
+
+                  <a
+                    href={cert.document}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="certificate-preview block mb-5 overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm"
+                    aria-label={`View ${cert.code} certificate PDF`}
+                  >
+                    <ResponsiveImage
+                      src={cert.certificateImage}
+                      alt={`${cert.code} certificate for SSPR Valve Manufacturing Private Limited`}
+                      className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.015]"
+                      sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+                    />
+                  </a>
 
                   <h3 className="text-base font-extrabold text-[#0d2857] group-hover:text-[#f37021] transition-colors">
                     {cert.code}
