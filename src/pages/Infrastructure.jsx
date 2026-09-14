@@ -124,13 +124,6 @@ Contact: info@ssprvalve.com | +91 7044090444
                 Integrated Facilities for <span className="text-[#f37021]">Superior Quality</span>
               </h2>
             </div>
-            <a
-              href="#gallery"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0d2857] hover:text-[#f37021] transition-colors"
-            >
-              <span>View Facility Tour</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
           </div>
 
           <div className="capabilities-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">

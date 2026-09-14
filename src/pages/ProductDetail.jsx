@@ -333,13 +333,6 @@ export default function ProductDetail() {
             <h3 className="text-xl font-extrabold text-[#0d2857]">
               Related <span className="text-[#f37021]">Products</span>
             </h3>
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#0d2857] hover:text-[#f37021] cursor-pointer"
-            >
-              <span>View All Products</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">

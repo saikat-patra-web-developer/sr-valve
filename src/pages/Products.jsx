@@ -88,13 +88,6 @@ export default function Products() {
                 Our valves are trusted across critical sectors, helping build a stronger and more sustainable tomorrow.
               </p>
             </div>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0d2857] hover:text-[#f37021] transition-colors cursor-pointer"
-            >
-              <span>View All Applications</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
