@@ -12,7 +12,10 @@ const sluiceValveSections = [
     subItems: [
       {
         title: "Non Rising Stem Sluice Valve",
-        image: "/images/products/sluice_valve_transparent.webp",
+        images: [
+          "/images/products/sluice_valve_non_rising_1.webp",
+          "/images/products/sluice_valve_non_rising_2.webp",
+        ],
         rows: [
           { label: "Size Range", value: "50 mm to 2000 mm" },
           { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300" },
@@ -25,7 +28,10 @@ const sluiceValveSections = [
       },
       {
         title: "Rising Stem Sluice Valve",
-        image: "/images/products/sluice_valve_angle_2.webp",
+        images: [
+          "/images/products/sluice_valve_rising_gear.webp",
+          "/images/products/sluice_valve_rising_handwheel.webp",
+        ],
         rows: [
           { label: "Size Range", value: "50 mm to 1200 mm" },
           { label: "Pressure Rating", value: "PN 1.0, PN 1.6" },
@@ -44,7 +50,10 @@ const sluiceValveSections = [
     subItems: [
       {
         title: null,
-        image: "/images/products/sluice_valve_angle_3.webp",
+        images: [
+          "/images/products/sluice_valve_resilient_1.webp",
+          "/images/products/sluice_valve_resilient_2.webp",
+        ],
         rows: [
           { label: "Size Range", value: "50 mm to 1200 mm" },
           { label: "Pressure Rating", value: "PN 1.0, PN 1.6" },
@@ -106,7 +115,7 @@ const checkValveSections = [
     subItems: [
       {
         title: null,
-        image: "/images/products/check_valve_transparent.webp",
+        image: "/images/products/check_valve_single_door.webp",
         rows: [
           { label: "Size Range", value: "50 mm to 600 mm" },
           { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300" },
@@ -125,7 +134,7 @@ const checkValveSections = [
     subItems: [
       {
         title: null,
-        image: "/images/products/check_valve_angle_2.webp",
+        image: "/images/products/check_valve_multi_door.webp",
         rows: [
           { label: "Size Range", value: "700 mm to 1500 mm" },
           { label: "Pressure Rating", value: "PN 1.0, PN 1.6 & PN 2.0" },
@@ -144,7 +153,7 @@ const checkValveSections = [
     subItems: [
       {
         title: null,
-        image: "/images/products/check_valve_angle_3.webp",
+        image: "/images/products/check_valve_dual_plate.webp",
         rows: [
           { label: "Size Range", value: "50 mm to 2000 mm" },
           { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300" },
@@ -166,7 +175,7 @@ const airValveSections = [
       {
         id: "s1",
         title: "Small Orifice - S1",
-        image: "/images/products/air_valve_transparent.webp",
+        image: "/images/products/air_valve_s1.webp",
         rows: [
           { label: "Size Range", value: "15 mm to 40 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -179,7 +188,7 @@ const airValveSections = [
       {
         id: "s2",
         title: "Large Orifice - S2",
-        image: "/images/products/air_valve_angle_1.webp",
+        image: "/images/products/air_valve_s2.webp",
         rows: [
           { label: "Size Range", value: "25 mm to 50 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -198,7 +207,7 @@ const airValveSections = [
       {
         id: "ds1",
         title: "Inbuilt Isolating Valve – DS1",
-        image: "/images/products/air_valve_angle_2.webp",
+        image: "/images/products/air_valve_ds1.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 200 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -211,7 +220,7 @@ const airValveSections = [
       {
         id: "ds2",
         title: "Double Air Valve – DS2",
-        image: "/images/products/air_valve_angle_4.webp",
+        image: "/images/products/air_valve_ds2.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 200 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -230,7 +239,7 @@ const airValveSections = [
       {
         id: "dk",
         title: "Kinetic Double Acting - DK",
-        image: "/images/products/air_valve_angle_3.webp",
+        image: "/images/products/air_valve_dk.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 300 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -249,7 +258,7 @@ const airValveSections = [
       {
         id: "single-chamber",
         title: "Double Acting Triple Function (Single Chamber)",
-        image: "/images/products/air_valve_transparent.webp",
+        image: "/images/products/air_valve_single_chamber.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 400 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -262,7 +271,7 @@ const airValveSections = [
       {
         id: "double-chamber",
         title: "Double Acting Triple Function (Double Chamber)",
-        image: "/images/products/air_valve_angle_4.webp",
+        image: "/images/products/air_valve_double_chamber.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 400 mm" },
           { label: "Pressure Rating", value: "PN 1.0 & PN 1.6" },
@@ -327,8 +336,9 @@ export default function ProductDetail() {
         name: 'Resilient Seated Sluice Valve',
         fullName: 'Resilient Seated Sluice Valve',
         tagline: 'Resilient Seated Gate Valve (BS 5163)',
-        image: '/images/products/sluice_valve_angle_3.webp',
-        detailMainImage: '/images/products/sluice_valve_angle_3.webp',
+        image: '/images/products/sluice_valve_resilient_1.webp',
+        detailMainImage: '/images/products/sluice_valve_resilient_1.webp',
+        thumbnails: ['/images/products/sluice_valve_resilient_1.webp', '/images/products/sluice_valve_resilient_2.webp'],
       }
     : isMetalSeated && baseProduct
     ? {
@@ -337,8 +347,9 @@ export default function ProductDetail() {
         name: 'Metal Seated Sluice Valve',
         fullName: 'Metal Seated Sluice Valve',
         tagline: 'Metal Seated Gate Valve (IS: 14846)',
-        image: '/images/products/sluice_valve_transparent.webp',
-        detailMainImage: '/images/products/sluice_valve_transparent.webp',
+        image: '/images/products/sluice_valve_non_rising_1.webp',
+        detailMainImage: '/images/products/sluice_valve_non_rising_1.webp',
+        thumbnails: ['/images/products/sluice_valve_non_rising_1.webp', '/images/products/sluice_valve_non_rising_2.webp', '/images/products/sluice_valve_rising_gear.webp', '/images/products/sluice_valve_rising_handwheel.webp'],
       }
     : isFlangeEnd && baseProduct
     ? {
@@ -349,6 +360,7 @@ export default function ProductDetail() {
         tagline: 'Double Flanged Butterfly Valve (IS 13095)',
         image: '/images/products/butterfly_valve_flange.webp',
         detailMainImage: '/images/products/butterfly_valve_flange.webp',
+        thumbnails: ['/images/products/butterfly_valve_flange.webp'],
       }
     : isWaferType && baseProduct
     ? {
@@ -359,6 +371,7 @@ export default function ProductDetail() {
         tagline: 'Wafer Type Butterfly Valve (BS 5155 / IS 13095 / AWWA C-504)',
         image: '/images/products/butterfly_valve_wafer.webp',
         detailMainImage: '/images/products/butterfly_valve_wafer.webp',
+        thumbnails: ['/images/products/butterfly_valve_wafer.webp'],
       }
     : isSingleDoor && baseProduct
     ? {
@@ -367,8 +380,9 @@ export default function ProductDetail() {
         name: 'Single Door Non Return Valve',
         fullName: 'Single Door Non Return Valve',
         tagline: 'Single Door Swing Check Valve (IS 5312 Part-I / BS 1868)',
-        image: '/images/products/check_valve_transparent.webp',
-        detailMainImage: '/images/products/check_valve_transparent.webp',
+        image: '/images/products/check_valve_single_door.webp',
+        detailMainImage: '/images/products/check_valve_single_door.webp',
+        thumbnails: ['/images/products/check_valve_single_door.webp'],
       }
     : isMultiDoor && baseProduct
     ? {
@@ -377,8 +391,9 @@ export default function ProductDetail() {
         name: 'Multi Door Non Return Valve',
         fullName: 'Multi Door Non Return Valve',
         tagline: 'Multi Door Swing Check Valve (IS 5312 Part-II)',
-        image: '/images/products/check_valve_angle_2.webp',
-        detailMainImage: '/images/products/check_valve_angle_2.webp',
+        image: '/images/products/check_valve_multi_door.webp',
+        detailMainImage: '/images/products/check_valve_multi_door.webp',
+        thumbnails: ['/images/products/check_valve_multi_door.webp'],
       }
     : isDualPlate && baseProduct
     ? {
@@ -387,8 +402,9 @@ export default function ProductDetail() {
         name: 'Dual Plate Check Valve',
         fullName: 'Dual Plate Check Valve',
         tagline: 'Dual Plate Wafer / Flanged Check Valve (API 594 / API 6D)',
-        image: '/images/products/check_valve_angle_3.webp',
-        detailMainImage: '/images/products/check_valve_angle_3.webp',
+        image: '/images/products/check_valve_dual_plate.webp',
+        detailMainImage: '/images/products/check_valve_dual_plate.webp',
+        thumbnails: ['/images/products/check_valve_dual_plate.webp'],
       }
     : isSingleAir && baseProduct
     ? {
@@ -397,8 +413,9 @@ export default function ProductDetail() {
         name: 'Single Air Valve',
         fullName: 'Single Air Valve (S1 / S2)',
         tagline: 'Single Orifice Air Release Valve (IS: 14845)',
-        image: '/images/products/air_valve_transparent.webp',
-        detailMainImage: '/images/products/air_valve_transparent.webp',
+        image: '/images/products/air_valve_s1.webp',
+        detailMainImage: '/images/products/air_valve_s1.webp',
+        thumbnails: ['/images/products/air_valve_s1.webp', '/images/products/air_valve_s2.webp'],
       }
     : isDoubleActing && baseProduct
     ? {
@@ -407,8 +424,9 @@ export default function ProductDetail() {
         name: 'Double Acting Air Valve',
         fullName: 'Double Acting Air Valve (DS1 / DS2)',
         tagline: 'Double Acting Air Valve with Isolating Valve (IS: 14845)',
-        image: '/images/products/air_valve_angle_2.webp',
-        detailMainImage: '/images/products/air_valve_angle_2.webp',
+        image: '/images/products/air_valve_ds1.webp',
+        detailMainImage: '/images/products/air_valve_ds1.webp',
+        thumbnails: ['/images/products/air_valve_ds1.webp', '/images/products/air_valve_ds2.webp'],
       }
     : isKinetic && baseProduct
     ? {
@@ -417,8 +435,9 @@ export default function ProductDetail() {
         name: 'Kinetic Double Acting Air Valve',
         fullName: 'Kinetic Double Acting Air Valve (DK)',
         tagline: 'Kinetic Double Acting Air Release Valve (IS: 14845 / G&K)',
-        image: '/images/products/air_valve_angle_3.webp',
-        detailMainImage: '/images/products/air_valve_angle_3.webp',
+        image: '/images/products/air_valve_dk.webp',
+        detailMainImage: '/images/products/air_valve_dk.webp',
+        thumbnails: ['/images/products/air_valve_dk.webp'],
       }
     : isTamperProof && baseProduct
     ? {
@@ -427,8 +446,9 @@ export default function ProductDetail() {
         name: 'Tamper Proof Air Valve',
         fullName: 'Tamper Proof Air Valve',
         tagline: 'Double Acting Triple Function Tamper Proof Air Valve (AWWA C-512)',
-        image: '/images/products/air_valve_transparent.webp',
-        detailMainImage: '/images/products/air_valve_transparent.webp',
+        image: '/images/products/air_valve_single_chamber.webp',
+        detailMainImage: '/images/products/air_valve_single_chamber.webp',
+        thumbnails: ['/images/products/air_valve_single_chamber.webp', '/images/products/air_valve_double_chamber.webp'],
       }
     : baseProduct
 
@@ -487,12 +507,12 @@ export default function ProductDetail() {
     {
       id: 'metal-seated-sluice-valve',
       name: 'Metal Seated Sluice Valve',
-      image: '/images/products/sluice_valve_transparent.webp',
+      image: '/images/products/sluice_valve_non_rising_1.webp',
     },
     {
       id: 'resilient-seated-sluice-valve',
       name: 'Resilient Seated Sluice Valve',
-      image: '/images/products/sluice_valve_angle_3.webp',
+      image: '/images/products/sluice_valve_resilient_1.webp',
     },
     {
       id: 'flange-end-butterfly-valve',
@@ -507,37 +527,37 @@ export default function ProductDetail() {
     {
       id: 'single-door-check-valve',
       name: 'Single Door Non Return Valve',
-      image: '/images/products/check_valve_transparent.webp',
+      image: '/images/products/check_valve_single_door.webp',
     },
     {
       id: 'multi-door-check-valve',
       name: 'Multi Door Non Return Valve',
-      image: '/images/products/check_valve_angle_2.webp',
+      image: '/images/products/check_valve_multi_door.webp',
     },
     {
       id: 'dual-plate-check-valve',
       name: 'Dual Plate Check Valve',
-      image: '/images/products/check_valve_angle_3.webp',
+      image: '/images/products/check_valve_dual_plate.webp',
     },
     {
       id: 'single-air-valve',
       name: 'Single Air Valve',
-      image: '/images/products/air_valve_transparent.webp',
+      image: '/images/products/air_valve_s1.webp',
     },
     {
       id: 'double-acting-air-valve',
       name: 'Double Acting Air Valve',
-      image: '/images/products/air_valve_angle_2.webp',
+      image: '/images/products/air_valve_ds1.webp',
     },
     {
       id: 'kinetic-double-acting-air-valve',
       name: 'Kinetic Double Acting Air Valve',
-      image: '/images/products/air_valve_angle_3.webp',
+      image: '/images/products/air_valve_dk.webp',
     },
     {
       id: 'tamper-proof-air-valve',
       name: 'Tamper Proof Air Valve',
-      image: '/images/products/air_valve_angle_4.webp',
+      image: '/images/products/air_valve_single_chamber.webp',
     },
   ]
 
@@ -596,20 +616,28 @@ export default function ProductDetail() {
                                 {item.title}
                               </div>
                             )}
-                            <div className="relative flex-1 bg-gradient-to-b from-slate-50/50 to-white rounded-xl border border-slate-200/90 p-6 flex flex-col items-center justify-center w-full shadow-2xs group hover:border-blue-300 hover:shadow-sm transition-all duration-200 min-h-[310px]">
-                              <ResponsiveImage
-                                src={item.image}
-                                alt={item.title || section.sectionTitle}
-                                className="max-h-64 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                              />
-                              <button
-                                type="button"
-                                onClick={() => setZoomModalImage(item.image)}
-                                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#0d2857] hover:bg-slate-100 cursor-pointer bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-2xs transition-colors"
-                              >
+                            <div className="relative flex-1 bg-gradient-to-b from-slate-50/50 to-white rounded-xl border border-slate-200/90 p-4 flex flex-col items-center justify-center w-full shadow-2xs group hover:border-blue-300 hover:shadow-sm transition-all duration-200 min-h-[310px]">
+                              <div className={`w-full grid ${(item.images || [item.image]).length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+                                {(item.images || [item.image]).map((image, imageIdx) => (
+                                  <button
+                                    key={image}
+                                    type="button"
+                                    onClick={() => setZoomModalImage(image)}
+                                    className="min-w-0 rounded-lg border border-slate-200 bg-white p-2 cursor-zoom-in hover:border-blue-300 transition-colors"
+                                    aria-label={`Zoom ${item.title || section.sectionTitle} view ${imageIdx + 1}`}
+                                  >
+                                    <ResponsiveImage
+                                      src={image}
+                                      alt={`${item.title || section.sectionTitle}${(item.images || []).length > 1 ? ` - view ${imageIdx + 1}` : ''}`}
+                                      className="h-56 w-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                                    />
+                                  </button>
+                                ))}
+                              </div>
+                              <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-2xs">
                                 <ZoomIn className="w-3.5 h-3.5 text-[#f37021]" />
-                                <span>Click to zoom</span>
-                              </button>
+                                Click an image to zoom
+                              </span>
                             </div>
                           </div>
 
