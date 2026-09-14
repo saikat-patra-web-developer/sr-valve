@@ -298,6 +298,7 @@ export const productsData = [
   },
 ]
 
+// Verified catalog data supplied in Doc/Product.xlsx and the four product specification documents.
 const suppliedCatalog = {
   "sluice-valve": {
     fullName: "Metal Seated & Resilient Seated Sluice Valves",
@@ -328,3 +329,12 @@ const suppliedCatalog = {
 productsData.forEach((product) => {
   if (suppliedCatalog[product.id]) Object.assign(product, suppliedCatalog[product.id])
 })
+
+// Only the four product families approved in the supplied Product.xlsx are published.
+const approvedProductOrder = ['sluice-valve', 'butterfly-valve', 'check-valve', 'air-valve']
+productsData.splice(
+  0,
+  productsData.length,
+  ...approvedProductOrder.map((id) => productsData.find((product) => product.id === id)),
+)
+
