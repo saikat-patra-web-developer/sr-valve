@@ -7,6 +7,7 @@ import NotFound from './NotFound'
 
 const sluiceValveSections = [
   {
+    id: "metal-seated",
     sectionTitle: "Metal Seated Sluice Valve",
     subItems: [
       {
@@ -38,6 +39,7 @@ const sluiceValveSections = [
     ],
   },
   {
+    id: "resilient-seated",
     sectionTitle: "Resilient Seated Sluice Valve",
     subItems: [
       {
@@ -57,9 +59,102 @@ const sluiceValveSections = [
   },
 ]
 
+const butterflyValveSections = [
+  {
+    id: "flange-end",
+    sectionTitle: "Flange End Butterfly Valve",
+    subItems: [
+      {
+        title: null,
+        image: "/images/products/butterfly_valve_flange.webp",
+        rows: [
+          { label: "Size Range", value: "100 mm to 2000 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, 2.5" },
+          { label: "Design Standard", value: "IS 13095" },
+          { label: "Testing Standard", value: "IS: 13095" },
+          { label: "Flange Standard", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+          { label: "Accessories", value: "Gear, actuator" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "wafer-type",
+    sectionTitle: "Wafer Type Butterfly Valve",
+    subItems: [
+      {
+        title: null,
+        image: "/images/products/butterfly_valve_wafer.webp",
+        rows: [
+          { label: "Size Range", value: "40 mm to 400 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6" },
+          { label: "Design Standard", value: "BS 5155, IS 13095, AWWA C-504" },
+          { label: "Testing Standard", value: "IS: 13095" },
+          { label: "Material", value: "CI / DI / CS" },
+          { label: "Accessories", value: "Gear, actuator, lever" },
+        ],
+      },
+    ],
+  },
+]
+
 export default function ProductDetail() {
   const { id } = useParams()
-  const product = productsData.find((p) => p.id === id)
+
+  const isMetalSeated = id === 'metal-seated-sluice-valve' || id === 'sluice-valve'
+  const isResilientSeated = id === 'resilient-seated-sluice-valve'
+  const isSluiceFamily = isMetalSeated || isResilientSeated
+
+  const isFlangeEnd = id === 'flange-end-butterfly-valve' || id === 'butterfly-valve'
+  const isWaferType = id === 'wafer-type-butterfly-valve' || id === 'wafer-end-butterfly-valve'
+  const isButterflyFamily = isFlangeEnd || isWaferType
+
+  const baseProduct = productsData.find(
+    (p) => p.id === (isSluiceFamily ? 'sluice-valve' : isButterflyFamily ? 'butterfly-valve' : id)
+  )
+
+  const product = isResilientSeated && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'resilient-seated-sluice-valve',
+        name: 'Resilient Seated Sluice Valve',
+        fullName: 'Resilient Seated Sluice Valve',
+        tagline: 'Resilient Seated Gate Valve (BS 5163)',
+        image: '/images/products/sluice_valve_angle_3.webp',
+        detailMainImage: '/images/products/sluice_valve_angle_3.webp',
+      }
+    : isMetalSeated && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'metal-seated-sluice-valve',
+        name: 'Metal Seated Sluice Valve',
+        fullName: 'Metal Seated Sluice Valve',
+        tagline: 'Metal Seated Gate Valve (IS: 14846)',
+        image: '/images/products/sluice_valve_transparent.webp',
+        detailMainImage: '/images/products/sluice_valve_transparent.webp',
+      }
+    : isFlangeEnd && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'flange-end-butterfly-valve',
+        name: 'Flange End Butterfly Valve',
+        fullName: 'Flange End Butterfly Valve',
+        tagline: 'Double Flanged Butterfly Valve (IS 13095)',
+        image: '/images/products/butterfly_valve_flange.webp',
+        detailMainImage: '/images/products/butterfly_valve_flange.webp',
+      }
+    : isWaferType && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'wafer-type-butterfly-valve',
+        name: 'Wafer Type Butterfly Valve',
+        fullName: 'Wafer Type Butterfly Valve',
+        tagline: 'Wafer Type Butterfly Valve (BS 5155 / IS 13095 / AWWA C-504)',
+        image: '/images/products/butterfly_valve_wafer.webp',
+        detailMainImage: '/images/products/butterfly_valve_wafer.webp',
+      }
+    : baseProduct
 
   const [selection, setSelection] = useState({ productId: null, index: -1 })
   const [zoomOpen, setZoomOpen] = useState(false)
@@ -72,22 +167,79 @@ export default function ProductDetail() {
   const activeThumb = selection.productId === product.id ? selection.index : -1
   const selectedImage = product.thumbnails?.[activeThumb] || product.detailMainImage || product.image
 
-  // Related products
-  const relatedProducts = productsData.filter((p) => p.id !== product.id).slice(0, 6)
+  const displayedSluiceSections = isResilientSeated
+    ? sluiceValveSections.filter((s) => s.id === 'resilient-seated')
+    : isMetalSeated
+    ? sluiceValveSections.filter((s) => s.id === 'metal-seated')
+    : sluiceValveSections
 
+  const displayedButterflySections = isWaferType
+    ? butterflyValveSections.filter((s) => s.id === 'wafer-type')
+    : isFlangeEnd
+    ? butterflyValveSections.filter((s) => s.id === 'flange-end')
+    : butterflyValveSections
+
+  const isThemeSpecPage = isSluiceFamily || isButterflyFamily
+  const themeSpecSections = isSluiceFamily ? displayedSluiceSections : displayedButterflySections
+
+  // Related products
+  const allCatalogProducts = [
+    {
+      id: 'metal-seated-sluice-valve',
+      name: 'Metal Seated Sluice Valve',
+      image: '/images/products/sluice_valve_transparent.webp',
+    },
+    {
+      id: 'resilient-seated-sluice-valve',
+      name: 'Resilient Seated Sluice Valve',
+      image: '/images/products/sluice_valve_angle_3.webp',
+    },
+    {
+      id: 'flange-end-butterfly-valve',
+      name: 'Flange End Butterfly Valve',
+      image: '/images/products/butterfly_valve_flange.webp',
+    },
+    {
+      id: 'wafer-type-butterfly-valve',
+      name: 'Wafer Type Butterfly Valve',
+      image: '/images/products/butterfly_valve_wafer.webp',
+    },
+    {
+      id: 'check-valve',
+      name: 'Non Return Valve',
+      image: '/images/products/check_valve_transparent.webp',
+    },
+    {
+      id: 'air-valve',
+      name: 'Air Valve',
+      image: '/images/products/air_valve_transparent.webp',
+    },
+  ]
+
+  const currentEffectiveId = isResilientSeated
+    ? 'resilient-seated-sluice-valve'
+    : isMetalSeated
+    ? 'metal-seated-sluice-valve'
+    : isWaferType
+    ? 'wafer-type-butterfly-valve'
+    : isFlangeEnd
+    ? 'flange-end-butterfly-valve'
+    : product.id
+
+  const relatedProducts = allCatalogProducts.filter((p) => p.id !== currentEffectiveId).slice(0, 6)
 
   return (
     <div className="site-page page-detail">
       
       <div className="product-banner"><div><h2>Our Products</h2><p>High-Performance Valves for a More Reliable Tomorrow.</p></div></div>
-      {product.id === 'sluice-valve' ? (
+      {isThemeSpecPage ? (
         <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white pt-6 pb-12 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Theme Specification Layout */}
             <div className="space-y-12">
-              {sluiceValveSections.map((section, sIdx) => (
-                <div key={sIdx} className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/90 shadow-sm">
+              {themeSpecSections.map((section, sIdx) => (
+                <div key={sIdx} id={section.id} className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/90 shadow-sm scroll-mt-24">
                   {/* Section Title (Centered & Underlined in Theme Style) */}
                   <h2 className="theme-doc-title">
                     {section.sectionTitle}

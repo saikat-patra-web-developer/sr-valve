@@ -1,6 +1,6 @@
 import PageHero from '../components/PageHero'
 import { Link } from 'react-router-dom'
-
+import ResponsiveImage from '../components/ResponsiveImage'
 import { ArrowRight, Target, Eye, HeartHandshake, CheckCircle } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
@@ -177,11 +177,11 @@ export default function About() {
               
               {/* MD Photo & Title */}
               <aside className="leadership-profile bg-[#0d2857] p-6 sm:p-8 text-center text-white flex flex-col items-center justify-center">
-                <div className="h-52 w-44 overflow-hidden rounded-lg border-4 border-white/20 bg-white shadow-xl">
-                  <img
-                    src="/images/about/md_prasenjit_dey.png"
+                <div className="h-56 w-44 overflow-hidden rounded-lg border-4 border-white/20 bg-white shadow-xl">
+                  <ResponsiveImage
+                    src="/images/about/md_prasenjit_dey.webp"
                     alt="Mr. Prasenjit Dey, Managing Director"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 <h3 className="mt-5 text-lg font-extrabold text-white">
