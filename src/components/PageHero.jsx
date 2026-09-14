@@ -1,8 +1,16 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Settings, ShieldCheck, Headphones, MapPin, Landmark, Users, Leaf, Award, Home as HomeIcon } from 'lucide-react'
+import ResponsiveImage from './ResponsiveImage'
+
+const homeSlides = [
+  { image: '/images/hero/home-hero-slide-1.webp', alt: 'Large SSPR industrial valve being positioned at a project site' },
+  { image: '/images/hero/home-hero-slide-2.webp', alt: 'Three large SSPR gate valves inside the manufacturing facility' },
+  { image: '/images/hero/home-hero-slide-3.webp', alt: 'SSPR butterfly valves displayed inside the manufacturing facility' },
+]
 
 const copy = {
-  home: { eyebrow: 'INDUSTRIAL VALVES  |  FLOW CONTROL SOLUTIONS  |  A STRONGER TOMORROW', title: <><span className="home-title-line"><em>SSPR Valve</em> Manufacturing</span><span className="home-title-line">Private Limited</span></>, description: 'SSPR Valve Manufacturing Private Limited manufactures high-quality industrial valves, penstocks and flow-control solutions for critical applications across water, infrastructure, irrigation, desalination and industrial projects.', image: 'valve-range-wide.webp' },
+  home: { eyebrow: 'INDUSTRIAL VALVES  |  FLOW CONTROL SOLUTIONS  |  A STRONGER TOMORROW', title: <><span className="home-title-line"><em>SSPR Valve</em> Manufacturing</span><span className="home-title-line">Private Limited</span></>, description: 'SSPR Valve Manufacturing Private Limited manufactures high-quality industrial valves, penstocks and flow-control solutions for critical applications across water, infrastructure, irrigation, desalination and industrial projects.' },
   products: { crumb: 'Products', title: <>Our Product <em>Range</em></>, subtitle: 'Rugged. Reliable. Engineered for a Better Tomorrow.', description: 'Explore metal and resilient seated sluice valves, flanged and wafer butterfly valves, single-door, multi-door and dual-plate non-return valves, plus S1, S2, DS1, DS2, DK and tamper-proof air valves.', image: 'valve-range-wide.webp' },
   about: { crumb: 'About Us', title: <>About SSPR Valve<br /><span className="ink">Manufacturing Private Limited</span></>, eyebrow: 'ENGINEERING RELIABILITY FOR A BETTER TOMORROW', description: 'More than 15 years of valve and penstock design and manufacturing experience from our Howrah, West Bengal facility.', image: 'factory-hero-wide.webp' },
   infrastructure: { crumb: 'Infrastructure', eyebrow: 'PROJECT INSTALLATIONS  |  WATER INFRASTRUCTURE  |  RELIABLE SOLUTIONS', title: <>Infrastructure &<br />Project <em>Experience</em></>, description: 'Client-supplied views of treatment plants, clarifiers, control rooms, pumping systems and installed SSPR valves across operating sites.', image: 'factory-hero-wide.webp' },
@@ -16,8 +24,27 @@ export function TrustBar({ expanded = false }) {
 }
 export default function PageHero({ type }) {
   const data = copy[type]
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    if (type !== 'home' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % homeSlides.length)
+    }, 6000)
+    return () => window.clearInterval(timer)
+  }, [type])
+
   return <>
-    <section className={`page-hero hero-${type}`} style={{ '--hero-image': `url('/images/hero/${data.image}')` }}>
+    <section className={`page-hero hero-${type}`} style={data.image ? { '--hero-image': `url('/images/hero/${data.image}')` } : undefined}>
+      {type === 'home' && <div className="hero-slider">
+        {homeSlides.map((slide, index) => <ResponsiveImage
+          key={slide.image}
+          src={slide.image}
+          sizes="100vw"
+          alt={slide.alt}
+          className={index === activeSlide ? 'hero-slide active' : 'hero-slide'}
+        />)}
+      </div>}
       <div className="hero-inner"><div className="hero-copy">
         {data.crumb && <div className="breadcrumb"><Link to="/">Home</Link><span>›</span>{data.crumb}</div>}
         {type === 'home' && <span className="mobile-hero-eyebrow">Precision. Performance. Trust.</span>}
@@ -31,6 +58,16 @@ export default function PageHero({ type }) {
         {type === 'contact' && <div className="contact-hero-features">{[[Settings,'Valves for critical applications'],[ShieldCheck,'Expert support at every step'],[Users,'A stronger tomorrow together']].map(([Icon,title]) => <div key={title}><span className="round-icon"><Icon/></span><strong>{title}</strong></div>)}</div>}
         {type === 'home' && <TrustBar />}
       </div></div>
+      {type === 'home' && <div className="hero-slider-controls" aria-label="Hero images">
+        {homeSlides.map((slide, index) => <button
+          key={slide.image}
+          type="button"
+          className={index === activeSlide ? 'active' : ''}
+          aria-label={`Show hero image ${index + 1}`}
+          aria-current={index === activeSlide ? 'true' : undefined}
+          onClick={() => setActiveSlide(index)}
+        />)}
+      </div>}
     </section>
     {type === 'about' && <div className="about-trust"><TrustBar expanded /></div>}
   </>
