@@ -948,6 +948,7 @@ img { max-width: 100%; }
  .site-header .nav-inner { position:relative; }
  .menu-toggle { display:inline-flex; }
  .main-nav { display:none; }
+ .main-nav.open { max-height:calc(100dvh - 72px); overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; }
  .site-footer .footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.5rem 3rem; }
  .site-footer .footer-grid>* { min-width:0; }
  .site-footer .footer-india { width:100%; }
@@ -1028,6 +1029,7 @@ img { max-width: 100%; }
 }
 
 @media(max-width:639px) {
+ .main-nav.open { max-height:calc(100dvh - 60px); }
  .site-footer .footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 14px; padding:22px 18px; }
  .site-footer .footer-brand { grid-column:1/-1; }
  .site-footer .footer-india { display:none; }
