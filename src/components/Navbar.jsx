@@ -159,8 +159,8 @@ export default function Navbar() {
     setFlyoutSide(newFlyoutSide)
   }, [])
 
-  const handleCatMouseEnter = (cat, e) => {
-    setActiveCategory(cat.id)
+  const handleDesktopCategoryToggle = (cat, e) => {
+    setActiveCategory((current) => current === cat.id ? null : cat.id)
     if (e?.currentTarget) {
       const catRect = e.currentTarget.getBoundingClientRect()
       const opensLeft = catRect.right + 230 > window.innerWidth - 12
@@ -172,25 +172,40 @@ export default function Navbar() {
   }
 
   const handleParentNavClick = (e, menu) => {
-    if (!window.matchMedia('(max-width: 1100px)').matches) {
-      closeAll()
+    e.preventDefault()
+    e.stopPropagation()
+    if (window.matchMedia('(max-width: 1100px)').matches) {
+      if (menu === 'products') {
+        setMobileSubOpen((current) => !current)
+        setMobileWhyUsOpen(false)
+        setMobileExpOpen(false)
+      } else if (menu === 'why-us') {
+        setMobileWhyUsOpen((current) => !current)
+        setMobileSubOpen(false)
+        setMobileExpOpen(false)
+      } else {
+        setMobileExpOpen((current) => !current)
+        setMobileSubOpen(false)
+        setMobileWhyUsOpen(false)
+      }
       return
     }
 
-    e.preventDefault()
-    e.stopPropagation()
     if (menu === 'products') {
-      setMobileSubOpen((current) => !current)
-      setMobileWhyUsOpen(false)
-      setMobileExpOpen(false)
+      setDropdownOpen((current) => !current)
+      setWhyUsDropdownOpen(false)
+      setExpDropdownOpen(false)
+      setActiveCategory(null)
     } else if (menu === 'why-us') {
-      setMobileWhyUsOpen((current) => !current)
-      setMobileSubOpen(false)
-      setMobileExpOpen(false)
+      setWhyUsDropdownOpen((current) => !current)
+      setDropdownOpen(false)
+      setExpDropdownOpen(false)
+      setActiveCategory(null)
     } else {
-      setMobileExpOpen((current) => !current)
-      setMobileSubOpen(false)
-      setMobileWhyUsOpen(false)
+      setExpDropdownOpen((current) => !current)
+      setDropdownOpen(false)
+      setWhyUsDropdownOpen(false)
+      setActiveCategory(null)
     }
   }
 
@@ -270,14 +285,6 @@ export default function Navbar() {
           <div
             className={`nav-item-dropdown ${mobileSubOpen ? 'mobile-open' : ''}`}
             ref={dropdownRef}
-            onMouseEnter={() => {
-              setDropdownOpen(true)
-              updateFlyoutDirections()
-            }}
-            onMouseLeave={() => {
-              setDropdownOpen(false)
-              setActiveCategory(null)
-            }}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
@@ -313,14 +320,17 @@ export default function Navbar() {
                     <div
                       key={cat.id}
                       className={`nav-dropdown-l2-wrapper ${isCatHovered ? 'active-hover' : ''}`}
-                      onMouseEnter={(e) => handleCatMouseEnter(cat, e)}
                     >
                       <NavLink
                         to={cat.path}
                         className={({ isActive }) =>
                           `nav-dropdown-l2-row ${isActive ? 'active' : ''}`
                         }
-                        onClick={closeAll}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          handleDesktopCategoryToggle(cat, e)
+                        }}
                       >
                         <span className="nav-l2-name">{cat.name}</span>
                       </NavLink>
@@ -406,8 +416,6 @@ export default function Navbar() {
           <div
             className={`nav-item-dropdown ${mobileWhyUsOpen ? 'mobile-open' : ''}`}
             ref={whyUsRef}
-            onMouseEnter={() => setWhyUsDropdownOpen(true)}
-            onMouseLeave={() => setWhyUsDropdownOpen(false)}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
@@ -478,8 +486,6 @@ export default function Navbar() {
           <div
             className={`nav-item-dropdown ${mobileExpOpen ? 'mobile-open' : ''}`}
             ref={expRef}
-            onMouseEnter={() => setExpDropdownOpen(true)}
-            onMouseLeave={() => setExpDropdownOpen(false)}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
