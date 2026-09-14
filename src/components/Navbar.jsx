@@ -171,6 +171,45 @@ export default function Navbar() {
     }
   }
 
+  const handleParentNavClick = (e, menu) => {
+    if (!window.matchMedia('(max-width: 1100px)').matches) {
+      closeAll()
+      return
+    }
+
+    e.preventDefault()
+    e.stopPropagation()
+    if (menu === 'products') {
+      setMobileSubOpen((current) => !current)
+      setMobileWhyUsOpen(false)
+      setMobileExpOpen(false)
+    } else if (menu === 'why-us') {
+      setMobileWhyUsOpen((current) => !current)
+      setMobileSubOpen(false)
+      setMobileExpOpen(false)
+    } else {
+      setMobileExpOpen((current) => !current)
+      setMobileSubOpen(false)
+      setMobileWhyUsOpen(false)
+    }
+  }
+
+  const handleMenuToggle = () => {
+    const nextOpen = !open
+    setOpen(nextOpen)
+    if (nextOpen) {
+      setMobileSubOpen(isProductActive)
+      setMobileWhyUsOpen(isWhyUsActive)
+      setMobileExpOpen(isExpActive)
+      if (isProductActive) {
+        const activeProductCategory = productNavHierarchy.find((cat) =>
+          cat.path === location.pathname || cat.children?.some((item) => item.path === location.pathname)
+        )
+        setMobileOpenCats(activeProductCategory ? { [activeProductCategory.id]: true } : {})
+      }
+    }
+  }
+
   // Close menu or dropdown on Escape key or outside click, and handle resize
   useEffect(() => {
     updateFlyoutDirections()
@@ -244,34 +283,17 @@ export default function Navbar() {
               <NavLink
                 to="/products"
                 className={({ isActive }) => `nav-btn ${isActive || isProductActive ? 'active' : ''}`}
-                onClick={closeAll}
+                onClick={(e) => handleParentNavClick(e, 'products')}
+                aria-expanded={mobileSubOpen}
               >
                 <span>Our Products</span>
                 <ChevronDown
                   size={14}
-                  className={`nav-dropdown-chevron ${dropdownOpen ? 'rotate' : ''}`}
+                  className={`nav-dropdown-chevron ${dropdownOpen || mobileSubOpen ? 'rotate' : ''}`}
                   aria-hidden="true"
                 />
               </NavLink>
 
-              {/* Mobile toggle button */}
-              <button
-                type="button"
-                className="mobile-sub-toggle"
-                aria-label={mobileSubOpen ? 'Hide Our Products submenu' : 'Show Our Products submenu'}
-                aria-expanded={mobileSubOpen}
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  setMobileSubOpen(!mobileSubOpen)
-                }}
-              >
-                <ChevronDown
-                  size={16}
-                  className={`mobile-sub-chevron ${mobileSubOpen ? 'rotate' : ''}`}
-                  aria-hidden="true"
-                />
-              </button>
             </div>
 
             {/* Desktop Dropdown Menu (Multi-Level Cascading Flyout) */}
@@ -338,28 +360,19 @@ export default function Navbar() {
               <div className="mobile-submenu-panel">
                 {productNavHierarchy.map((cat) => {
                   const isCatOpen = !!mobileOpenCats[cat.id]
+                  const isCatRouteActive = cat.path === location.pathname || cat.children?.some((item) => item.path === location.pathname)
                   return (
                     <div key={cat.id} className="mobile-l1-item">
                       <div className="mobile-l1-header">
                         <NavLink
                           to={cat.path}
-                          className={({ isActive }) =>
-                            `mobile-l1-link ${isActive ? 'active' : ''}`
-                          }
-                          onClick={closeAll}
+                          className={() => `mobile-l1-link ${isCatRouteActive ? 'active' : ''}`}
+                          onClick={(e) => toggleMobileCat(cat.id, e)}
+                          aria-expanded={isCatOpen}
                         >
-                          {cat.name}
+                          <span>{cat.name}</span>
+                          <ChevronDown size={15} className={`mobile-category-chevron ${isCatOpen ? 'rotate' : ''}`} aria-hidden="true" />
                         </NavLink>
-                        {cat.children && (
-                          <button
-                            type="button"
-                            className={`mobile-toggle-btn ${isCatOpen ? 'rotate' : ''}`}
-                            aria-label={isCatOpen ? `Collapse ${cat.name}` : `Expand ${cat.name}`}
-                            onClick={(e) => toggleMobileCat(cat.id, e)}
-                          >
-                            <ChevronDown size={15} aria-hidden="true" />
-                          </button>
-                        )}
                       </div>
 
                       {/* Level 2 Submenu Mobile Panel */}
@@ -400,33 +413,17 @@ export default function Navbar() {
               <NavLink
                 to="/why-us"
                 className={({ isActive }) => `nav-btn ${isActive || isWhyUsActive ? 'active' : ''}`}
-                onClick={closeAll}
+                onClick={(e) => handleParentNavClick(e, 'why-us')}
+                aria-expanded={mobileWhyUsOpen}
               >
                 <span>Why Us</span>
                 <ChevronDown
                   size={14}
-                  className={`nav-dropdown-chevron ${whyUsDropdownOpen ? 'rotate' : ''}`}
+                  className={`nav-dropdown-chevron ${whyUsDropdownOpen || mobileWhyUsOpen ? 'rotate' : ''}`}
                   aria-hidden="true"
                 />
               </NavLink>
 
-              <button
-                type="button"
-                className="mobile-sub-toggle"
-                aria-label={mobileWhyUsOpen ? 'Hide Why Us submenu' : 'Show Why Us submenu'}
-                aria-expanded={mobileWhyUsOpen}
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  setMobileWhyUsOpen(!mobileWhyUsOpen)
-                }}
-              >
-                <ChevronDown
-                  size={16}
-                  className={`mobile-sub-chevron ${mobileWhyUsOpen ? 'rotate' : ''}`}
-                  aria-hidden="true"
-                />
-              </button>
             </div>
 
             {/* Desktop Dropdown Menu */}
@@ -488,33 +485,17 @@ export default function Navbar() {
               <NavLink
                 to="/experience"
                 className={({ isActive }) => `nav-btn ${isActive || isExpActive ? 'active' : ''}`}
-                onClick={closeAll}
+                onClick={(e) => handleParentNavClick(e, 'experience')}
+                aria-expanded={mobileExpOpen}
               >
                 <span>Experience</span>
                 <ChevronDown
                   size={14}
-                  className={`nav-dropdown-chevron ${expDropdownOpen ? 'rotate' : ''}`}
+                  className={`nav-dropdown-chevron ${expDropdownOpen || mobileExpOpen ? 'rotate' : ''}`}
                   aria-hidden="true"
                 />
               </NavLink>
 
-              <button
-                type="button"
-                className="mobile-sub-toggle"
-                aria-label={mobileExpOpen ? 'Hide Experience submenu' : 'Show Experience submenu'}
-                aria-expanded={mobileExpOpen}
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  setMobileExpOpen(!mobileExpOpen)
-                }}
-              >
-                <ChevronDown
-                  size={16}
-                  className={`mobile-sub-chevron ${mobileExpOpen ? 'rotate' : ''}`}
-                  aria-hidden="true"
-                />
-              </button>
             </div>
 
             {/* Desktop Dropdown Menu */}
@@ -585,7 +566,7 @@ export default function Navbar() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="main-navigation"
-          onClick={() => setOpen(!open)}
+          onClick={handleMenuToggle}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
