@@ -256,7 +256,7 @@ export default function Navbar() {
                 className={({ isActive }) => (isActive || isProductActive ? 'active' : '')}
                 onClick={closeAll}
               >
-                <span>Products</span>
+                <span>Our Products</span>
                 <ChevronDown
                   size={14}
                   className={`nav-dropdown-chevron ${dropdownOpen ? 'rotate' : ''}`}
@@ -268,7 +268,7 @@ export default function Navbar() {
               <button
                 type="button"
                 className="mobile-sub-toggle"
-                aria-label={mobileSubOpen ? 'Hide Products submenu' : 'Show Products submenu'}
+                aria-label={mobileSubOpen ? 'Hide Our Products submenu' : 'Show Our Products submenu'}
                 aria-expanded={mobileSubOpen}
                 onClick={(e) => {
                   e.preventDefault()
@@ -458,6 +458,15 @@ export default function Navbar() {
             )}
           </div>
 
+          <NavLink to="/why-us" onClick={closeAll}>
+            Why Us
+          </NavLink>
+          <NavLink to="/experience" onClick={closeAll}>
+            Experience
+          </NavLink>
+          <NavLink to="/clients" onClick={closeAll}>
+            Clients
+          </NavLink>
           <NavLink to="/contact" onClick={closeAll}>
             Contact
           </NavLink>

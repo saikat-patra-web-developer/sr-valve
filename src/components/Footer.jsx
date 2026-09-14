@@ -5,9 +5,10 @@ import { companyData } from '../data/companyData'
 const footerLinks = [
   ['/', 'Home'],
   ['/about', 'About Us'],
-  ['/products', 'Products'],
-  ['/infrastructure', 'Infrastructure'],
-  ['/certifications', 'Certifications'],
+  ['/products', 'Our Products'],
+  ['/why-us', 'Why Us'],
+  ['/experience', 'Experience'],
+  ['/clients', 'Clients'],
   ['/contact', 'Contact'],
 ]
 
