@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# AI Assistant Context Files (Local only)
+AGENTS.md
+GEMINI.md
