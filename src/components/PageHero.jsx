@@ -20,6 +20,7 @@ export default function PageHero({ type }) {
       <div className="hero-inner"><div className="hero-copy">
         {data.crumb && <div className="breadcrumb"><Link to="/">Home</Link><span>›</span>{data.crumb}</div>}
         {type === 'home' && <span className="mobile-hero-eyebrow">Precision. Performance. Trust.</span>}
+        {type !== 'home' && data.eyebrow && <span className="mobile-page-eyebrow">{data.eyebrow}</span>}
         <h1>{data.title}</h1>
         {data.subtitle && <h2>{data.subtitle}</h2>}
         <p className="hero-description">{data.description}</p>
