@@ -64,4 +64,28 @@ export const clientData = [
     state: "Maharashtra",
     logo: "/images/clients/mjp.webp",
   },
+  {
+    id: "up_jal_nigam",
+    name: "Uttar Pradesh Jal Nigam (Rural)",
+    shortName: "UP Jal Nigam",
+    type: "Water Supply & Infrastructure",
+    state: "Uttar Pradesh",
+    logo: "/images/clients/up-jal-nigam.webp",
+  },
+  {
+    id: "kerala_water_authority",
+    name: "Kerala Water Authority",
+    shortName: "KWA",
+    type: "Water Supply & Sewerage",
+    state: "Kerala",
+    logo: "/images/clients/kerala-water-authority.webp",
+  },
+  {
+    id: "phed_rajasthan",
+    name: "Public Health Engineering Department Rajasthan",
+    shortName: "PHED Rajasthan",
+    type: "Public Health & Water Supply",
+    state: "Rajasthan",
+    logo: "/images/clients/phed-rajasthan.webp",
+  },
 ]

@@ -30,14 +30,14 @@ export default function Clients() {
             </p>
           </div>
 
-          {/* Static 8 Images in 2 Rows (4 columns on desktop = 2 rows) */}
+          {/* Static organization logo grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {clientData.map((client) => (
               <div
                 key={client.id}
                 className="group flex flex-col items-center justify-center p-5 sm:p-6 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
               >
-                <div className="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center rounded-full bg-white p-3 shadow-xs border border-slate-100 group-hover:scale-105 transition-transform duration-300">
+                <div className="w-full h-28 sm:h-32 flex items-center justify-center rounded-lg bg-white p-3 shadow-xs border border-slate-100 group-hover:scale-[1.03] transition-transform duration-300">
                   <ResponsiveImage
                     src={client.logo}
                     alt={client.name}
