@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, Send } from 'lucide-react'
 
 const productNavHierarchy = [
   {
@@ -211,10 +211,19 @@ export default function Navbar() {
           <img src="/images/logo/logo.webp" alt="SSPR Valve" />
         </Link>
         <nav id="main-navigation" className={open ? 'main-nav open' : 'main-nav'} aria-label="Main navigation">
-          <NavLink to="/" end onClick={closeAll}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
+            onClick={closeAll}
+          >
             Home
           </NavLink>
-          <NavLink to="/about" onClick={closeAll}>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
+            onClick={closeAll}
+          >
             About Us
           </NavLink>
 
@@ -229,13 +238,12 @@ export default function Navbar() {
             onMouseLeave={() => {
               setDropdownOpen(false)
               setActiveCategory(null)
-              setActiveSubCategory(null)
             }}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
                 to="/products"
-                className={({ isActive }) => (isActive || isProductActive ? 'active' : '')}
+                className={({ isActive }) => `nav-btn ${isActive || isProductActive ? 'active' : ''}`}
                 onClick={closeAll}
               >
                 <span>Our Products</span>
@@ -391,7 +399,7 @@ export default function Navbar() {
             <div className="nav-dropdown-trigger-row">
               <NavLink
                 to="/why-us"
-                className={({ isActive }) => (isActive || isWhyUsActive ? 'active' : '')}
+                className={({ isActive }) => `nav-btn ${isActive || isWhyUsActive ? 'active' : ''}`}
                 onClick={closeAll}
               >
                 <span>Why Us</span>
@@ -479,7 +487,7 @@ export default function Navbar() {
             <div className="nav-dropdown-trigger-row">
               <NavLink
                 to="/experience"
-                className={({ isActive }) => (isActive || isExpActive ? 'active' : '')}
+                className={({ isActive }) => `nav-btn ${isActive || isExpActive ? 'active' : ''}`}
                 onClick={closeAll}
               >
                 <span>Experience</span>
@@ -556,11 +564,20 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <NavLink to="/clients" onClick={closeAll}>
+          <NavLink
+            to="/clients"
+            className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
+            onClick={closeAll}
+          >
             Clients
           </NavLink>
-          <NavLink to="/contact" onClick={closeAll}>
-            Contact
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => `nav-btn nav-btn-cta ${isActive ? 'active' : ''}`}
+            onClick={closeAll}
+          >
+            <Send size={14} className="nav-btn-icon" aria-hidden="true" />
+            <span>Contact</span>
           </NavLink>
         </nav>
         <button
