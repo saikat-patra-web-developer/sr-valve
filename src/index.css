@@ -825,9 +825,7 @@ img { max-width: 100%; }
   .mobile-l1-link:hover,
   .mobile-l1-link.active,
   .mobile-l2-link:hover,
-  .mobile-l2-link.active,
-  .mobile-l3-link:hover,
-  .mobile-l3-link.active {
+  .mobile-l2-link.active {
     color: #ff7600 !important;
   }
   .mobile-toggle-btn {
