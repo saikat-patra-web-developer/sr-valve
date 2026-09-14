@@ -540,4 +540,40 @@ body {
     flex: 0 0 auto;
     text-align: center;
   }
+
+  .site-footer .footer-india {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.035);
+    text-align: center;
+  }
+
+  .site-footer .footer-india img {
+    width: 118px;
+    height: 92px;
+    object-fit: contain;
+  }
+
+  .site-footer .footer-india .footer-kicker {
+    display: block;
+    margin: 0;
+    color: #ff9138;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-align: center;
+  }
+
+  .site-footer .footer-india strong {
+    max-width: 245px;
+    color: #f4f8fc;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+  }
 }
