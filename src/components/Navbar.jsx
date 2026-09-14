@@ -1,96 +1,244 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-const productSubmenu = [
+const productNavHierarchy = [
   {
     id: 'sluice-valve',
     name: 'Sluice Valve',
-    desc: 'Metal Seated & Resilient Seated',
-    path: '/products/sluice-valve',
+    path: '/products/metal-seated-sluice-valve',
+    children: [
+      {
+        id: 'metal-seated',
+        name: 'Metal Seated',
+        path: '/products/metal-seated-sluice-valve',
+      },
+      {
+        id: 'resilient-seated',
+        name: 'Resilient Seated',
+        path: '/products/resilient-seated-sluice-valve',
+      },
+    ],
   },
   {
     id: 'butterfly-valve',
     name: 'Butterfly Valve',
-    desc: 'Flange End & Wafer End',
-    path: '/products/butterfly-valve',
+    path: '/products/flange-end-butterfly-valve',
+    children: [
+      {
+        id: 'flange-end',
+        name: 'Flange End',
+        path: '/products/flange-end-butterfly-valve',
+      },
+      {
+        id: 'wafer-end',
+        name: 'Wafer Type',
+        path: '/products/wafer-type-butterfly-valve',
+      },
+    ],
   },
   {
     id: 'check-valve',
     name: 'Non Return Valve',
-    desc: 'Single Door, Multi Door & Dual Plate',
-    path: '/products/check-valve',
+    path: '/products/single-door-check-valve',
+    children: [
+      {
+        id: 'single-door',
+        name: 'Single Door',
+        path: '/products/single-door-check-valve',
+      },
+      {
+        id: 'multi-door',
+        name: 'Multi Door',
+        path: '/products/multi-door-check-valve',
+      },
+      {
+        id: 'dual-plate',
+        name: 'Dual Plate',
+        path: '/products/dual-plate-check-valve',
+      },
+    ],
   },
   {
     id: 'air-valve',
     name: 'Air Valve',
-    desc: 'Single Air Valve, Double Acting, Tamper Proof & Kinetic Double Acting',
-    path: '/products/air-valve',
+    path: '/products/single-air-valve',
+    children: [
+      {
+        id: 'single-air-valve',
+        name: 'Single Air Valve',
+        path: '/products/single-air-valve',
+      },
+      {
+        id: 'double-acting',
+        name: 'Double Acting',
+        path: '/products/double-acting-air-valve',
+      },
+      {
+        id: 'tamper-proof',
+        name: 'Tamper Proof',
+        path: '/products/tamper-proof-air-valve',
+      },
+      {
+        id: 'kinetic-double-acting',
+        name: 'Kinetic Double Acting',
+        path: '/products/kinetic-double-acting-air-valve',
+      },
+    ],
   },
+]
+
+const whyUsNavLinks = [
+  { name: 'In-House Manufacturing', path: '/why-us/in-house-manufacturing' },
+  { name: 'In-House Testing Facility', path: '/why-us/in-house-testing-facility' },
+  { name: 'Certifications', path: '/why-us/certifications' },
+  { name: 'Customer Support', path: '/why-us/customer-support' },
+  { name: 'On-Time Delivery', path: '/why-us/on-time-delivery' },
+]
+
+const experienceNavLinks = [
+  { name: 'Water Supply Project', path: '/experience/water-supply-project' },
+  { name: 'Waste Water Project', path: '/experience/waste-water-project' },
+  { name: 'Irrigation Projects', path: '/experience/irrigation-projects' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [activeCategory, setActiveCategory] = useState(null)
+  const [flyoutSide, setFlyoutSide] = useState({})
+
   const [mobileSubOpen, setMobileSubOpen] = useState(false)
+  const [mobileOpenCats, setMobileOpenCats] = useState({})
+
+  const [whyUsDropdownOpen, setWhyUsDropdownOpen] = useState(false)
+  const [mobileWhyUsOpen, setMobileWhyUsOpen] = useState(false)
+  const whyUsRef = useRef(null)
+
+  const [expDropdownOpen, setExpDropdownOpen] = useState(false)
+  const [mobileExpOpen, setMobileExpOpen] = useState(false)
+  const expRef = useRef(null)
+
   const navRef = useRef(null)
   const dropdownRef = useRef(null)
   const location = useLocation()
 
   const isProductActive = location.pathname.startsWith('/product')
+  const isWhyUsActive = location.pathname.startsWith('/why-us')
+  const isExpActive = location.pathname.startsWith('/experience')
 
-  // Close menu or dropdown on Escape key or outside click
+  const closeAll = () => {
+    setOpen(false)
+    setDropdownOpen(false)
+    setWhyUsDropdownOpen(false)
+    setExpDropdownOpen(false)
+    setActiveCategory(null)
+    setMobileSubOpen(false)
+    setMobileWhyUsOpen(false)
+    setMobileExpOpen(false)
+  }
+
+  const toggleMobileCat = (catId, e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setMobileOpenCats((prev) => ({
+      ...prev,
+      [catId]: !prev[catId],
+    }))
+  }
+
+  const updateFlyoutDirections = useCallback(() => {
+    if (!dropdownRef.current) return
+    const rect = dropdownRef.current.getBoundingClientRect()
+    const level1Right = rect.left + 225
+    const newFlyoutSide = {}
+    productNavHierarchy.forEach((cat) => {
+      const wouldOverflowRight = level1Right + 230 > window.innerWidth - 12
+      newFlyoutSide[cat.id] = wouldOverflowRight ? 'left' : 'right'
+    })
+    setFlyoutSide(newFlyoutSide)
+  }, [])
+
+  const handleCatMouseEnter = (cat, e) => {
+    setActiveCategory(cat.id)
+    if (e?.currentTarget) {
+      const catRect = e.currentTarget.getBoundingClientRect()
+      const opensLeft = catRect.right + 230 > window.innerWidth - 12
+      setFlyoutSide((prev) => ({
+        ...prev,
+        [cat.id]: opensLeft ? 'left' : 'right',
+      }))
+    }
+  }
+
+  // Close menu or dropdown on Escape key or outside click, and handle resize
   useEffect(() => {
+    updateFlyoutDirections()
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setOpen(false)
-        setDropdownOpen(false)
+        closeAll()
       }
     }
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false)
+        setActiveCategory(null)
       }
+      if (whyUsRef.current && !whyUsRef.current.contains(e.target)) {
+        setWhyUsDropdownOpen(false)
+      }
+      if (expRef.current && !expRef.current.contains(e.target)) {
+        setExpDropdownOpen(false)
+      }
+    }
+    const handleResize = () => {
+      updateFlyoutDirections()
     }
     window.addEventListener('keydown', handleKeyDown)
     document.addEventListener('mousedown', handleClickOutside)
+    window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('mousedown', handleClickOutside)
+      window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [updateFlyoutDirections])
 
   return (
     <header className="site-header">
       <div className="nav-inner" ref={navRef}>
-        <Link to="/" className="brand" onClick={() => setOpen(false)}>
+        <Link to="/" className="brand" onClick={closeAll}>
           <img src="/images/logo/logo.webp" alt="SSPR Valve" />
         </Link>
         <nav id="main-navigation" className={open ? 'main-nav open' : 'main-nav'} aria-label="Main navigation">
-          <NavLink to="/" end onClick={() => setOpen(false)}>
+          <NavLink to="/" end onClick={closeAll}>
             Home
           </NavLink>
-          <NavLink to="/about" onClick={() => setOpen(false)}>
+          <NavLink to="/about" onClick={closeAll}>
             About Us
           </NavLink>
 
-          {/* Products Dropdown with 4 Sub-menus */}
+          {/* Products Dropdown with Multi-Level Submenus */}
           <div
             className={`nav-item-dropdown ${mobileSubOpen ? 'mobile-open' : ''}`}
             ref={dropdownRef}
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+            onMouseEnter={() => {
+              setDropdownOpen(true)
+              updateFlyoutDirections()
+            }}
+            onMouseLeave={() => {
+              setDropdownOpen(false)
+              setActiveCategory(null)
+              setActiveSubCategory(null)
+            }}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
                 to="/products"
                 className={({ isActive }) => (isActive || isProductActive ? 'active' : '')}
-                onClick={() => {
-                  setDropdownOpen(false)
-                  setOpen(false)
-                }}
+                onClick={closeAll}
               >
-                <span>Products</span>
+                <span>Our Products</span>
                 <ChevronDown
                   size={14}
                   className={`nav-dropdown-chevron ${dropdownOpen ? 'rotate' : ''}`}
@@ -102,7 +250,7 @@ export default function Navbar() {
               <button
                 type="button"
                 className="mobile-sub-toggle"
-                aria-label={mobileSubOpen ? 'Hide Products submenu' : 'Show Products submenu'}
+                aria-label={mobileSubOpen ? 'Hide Our Products submenu' : 'Show Our Products submenu'}
                 aria-expanded={mobileSubOpen}
                 onClick={(e) => {
                   e.preventDefault()
@@ -118,7 +266,7 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Desktop Dropdown Menu */}
+            {/* Desktop Dropdown Menu (Multi-Level Cascading Flyout) */}
             <div
               className={`nav-dropdown-menu ${dropdownOpen ? 'open' : ''}`}
               role="menu"
@@ -128,50 +276,290 @@ export default function Navbar() {
                 <span className="nav-dropdown-eyebrow">OUR VALVE RANGE</span>
               </div>
               <div className="nav-dropdown-items">
-                {productSubmenu.map((sub) => (
-                  <NavLink
-                    key={sub.id}
-                    to={sub.path}
-                    role="menuitem"
-                    className={({ isActive }) =>
-                      `nav-dropdown-item ${isActive ? 'active' : ''}`
-                    }
-                    onClick={() => {
-                      setDropdownOpen(false)
-                      setOpen(false)
-                    }}
-                  >
-                    <span className="nav-dropdown-title">{sub.name}</span>
-                    <span className="nav-dropdown-desc">{sub.desc}</span>
-                  </NavLink>
-                ))}
+                {productNavHierarchy.map((cat) => {
+                  const isCatHovered = activeCategory === cat.id
+                  const isFlyoutLeft = flyoutSide[cat.id] === 'left'
+                  return (
+                    <div
+                      key={cat.id}
+                      className={`nav-dropdown-l2-wrapper ${isCatHovered ? 'active-hover' : ''}`}
+                      onMouseEnter={(e) => handleCatMouseEnter(cat, e)}
+                    >
+                      <NavLink
+                        to={cat.path}
+                        className={({ isActive }) =>
+                          `nav-dropdown-l2-row ${isActive ? 'active' : ''}`
+                        }
+                        onClick={closeAll}
+                      >
+                        <span className="nav-l2-name">{cat.name}</span>
+                      </NavLink>
+
+                      {/* Level 2 Submenu Flyout (e.g. Metal Seated, Resilient Seated) */}
+                      {cat.children && (
+                        <div
+                          className={`nav-flyout-level2 ${isFlyoutLeft ? 'open-left' : ''}`}
+                          role="menu"
+                        >
+                          {cat.children.map((subItem) => (
+                            <div
+                              key={subItem.id}
+                              className="nav-dropdown-l3-wrapper"
+                            >
+                              <NavLink
+                                to={subItem.path}
+                                className={({ isActive }) =>
+                                  `nav-dropdown-l3-row ${isActive ? 'active' : ''}`
+                                }
+                                onClick={closeAll}
+                              >
+                                <span>{subItem.name}</span>
+                              </NavLink>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
 
             {/* Mobile / Tablet Accordion Submenu */}
             {mobileSubOpen && (
               <div className="mobile-submenu-panel">
-                {productSubmenu.map((sub) => (
-                  <NavLink
-                    key={sub.id}
-                    to={sub.path}
-                    className={({ isActive }) =>
-                      `mobile-submenu-item ${isActive ? 'active' : ''}`
-                    }
-                    onClick={() => {
-                      setMobileSubOpen(false)
-                      setOpen(false)
-                    }}
-                  >
-                    <span className="mobile-submenu-title">{sub.name}</span>
-                    <span className="mobile-submenu-desc">{sub.desc}</span>
-                  </NavLink>
+                {productNavHierarchy.map((cat) => {
+                  const isCatOpen = !!mobileOpenCats[cat.id]
+                  return (
+                    <div key={cat.id} className="mobile-l1-item">
+                      <div className="mobile-l1-header">
+                        <NavLink
+                          to={cat.path}
+                          className={({ isActive }) =>
+                            `mobile-l1-link ${isActive ? 'active' : ''}`
+                          }
+                          onClick={closeAll}
+                        >
+                          {cat.name}
+                        </NavLink>
+                        {cat.children && (
+                          <button
+                            type="button"
+                            className={`mobile-toggle-btn ${isCatOpen ? 'rotate' : ''}`}
+                            aria-label={isCatOpen ? `Collapse ${cat.name}` : `Expand ${cat.name}`}
+                            onClick={(e) => toggleMobileCat(cat.id, e)}
+                          >
+                            <ChevronDown size={15} aria-hidden="true" />
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Level 2 Submenu Mobile Panel */}
+                      {cat.children && isCatOpen && (
+                        <div className="mobile-l2-panel">
+                          {cat.children.map((subItem) => (
+                            <div key={subItem.id} className="mobile-l2-item">
+                              <div className="mobile-l2-header">
+                                <NavLink
+                                  to={subItem.path}
+                                  className={({ isActive }) =>
+                                    `mobile-l2-link ${isActive ? 'active' : ''}`
+                                  }
+                                  onClick={closeAll}
+                                >
+                                  {subItem.name}
+                                </NavLink>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Why Us Dropdown with Submenu */}
+          <div
+            className={`nav-item-dropdown ${mobileWhyUsOpen ? 'mobile-open' : ''}`}
+            ref={whyUsRef}
+            onMouseEnter={() => setWhyUsDropdownOpen(true)}
+            onMouseLeave={() => setWhyUsDropdownOpen(false)}
+          >
+            <div className="nav-dropdown-trigger-row">
+              <NavLink
+                to="/why-us"
+                className={({ isActive }) => (isActive || isWhyUsActive ? 'active' : '')}
+                onClick={closeAll}
+              >
+                <span>Why Us</span>
+                <ChevronDown
+                  size={14}
+                  className={`nav-dropdown-chevron ${whyUsDropdownOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </NavLink>
+
+              <button
+                type="button"
+                className="mobile-sub-toggle"
+                aria-label={mobileWhyUsOpen ? 'Hide Why Us submenu' : 'Show Why Us submenu'}
+                aria-expanded={mobileWhyUsOpen}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setMobileWhyUsOpen(!mobileWhyUsOpen)
+                }}
+              >
+                <ChevronDown
+                  size={16}
+                  className={`mobile-sub-chevron ${mobileWhyUsOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+
+            {/* Desktop Dropdown Menu */}
+            <div
+              className={`nav-dropdown-menu ${whyUsDropdownOpen ? 'open' : ''}`}
+              role="menu"
+              aria-label="Why Us Submenu"
+            >
+              <div className="nav-dropdown-header">
+                <span className="nav-dropdown-eyebrow">WHY CHOOSE US</span>
+              </div>
+              <div className="nav-dropdown-items">
+                {whyUsNavLinks.map((item) => (
+                  <div key={item.path} className="nav-dropdown-l2-wrapper">
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `nav-dropdown-l2-row ${isActive ? 'active' : ''}`
+                      }
+                      onClick={closeAll}
+                    >
+                      <span className="nav-l2-name">{item.name}</span>
+                    </NavLink>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile / Tablet Accordion Submenu */}
+            {mobileWhyUsOpen && (
+              <div className="mobile-submenu-panel">
+                {whyUsNavLinks.map((item) => (
+                  <div key={item.path} className="mobile-l1-item">
+                    <div className="mobile-l1-header">
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `mobile-l1-link ${isActive ? 'active' : ''}`
+                        }
+                        onClick={closeAll}
+                      >
+                        {item.name}
+                      </NavLink>
+                    </div>
+                  </div>
                 ))}
               </div>
             )}
           </div>
 
-          <NavLink to="/contact" onClick={() => setOpen(false)}>
+          {/* Experience Dropdown with Submenu */}
+          <div
+            className={`nav-item-dropdown ${mobileExpOpen ? 'mobile-open' : ''}`}
+            ref={expRef}
+            onMouseEnter={() => setExpDropdownOpen(true)}
+            onMouseLeave={() => setExpDropdownOpen(false)}
+          >
+            <div className="nav-dropdown-trigger-row">
+              <NavLink
+                to="/experience"
+                className={({ isActive }) => (isActive || isExpActive ? 'active' : '')}
+                onClick={closeAll}
+              >
+                <span>Experience</span>
+                <ChevronDown
+                  size={14}
+                  className={`nav-dropdown-chevron ${expDropdownOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </NavLink>
+
+              <button
+                type="button"
+                className="mobile-sub-toggle"
+                aria-label={mobileExpOpen ? 'Hide Experience submenu' : 'Show Experience submenu'}
+                aria-expanded={mobileExpOpen}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setMobileExpOpen(!mobileExpOpen)
+                }}
+              >
+                <ChevronDown
+                  size={16}
+                  className={`mobile-sub-chevron ${mobileExpOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+
+            {/* Desktop Dropdown Menu */}
+            <div
+              className={`nav-dropdown-menu ${expDropdownOpen ? 'open' : ''}`}
+              role="menu"
+              aria-label="Experience Submenu"
+            >
+              <div className="nav-dropdown-header">
+                <span className="nav-dropdown-eyebrow">OUR EXPERIENCE</span>
+              </div>
+              <div className="nav-dropdown-items">
+                {experienceNavLinks.map((item) => (
+                  <div key={item.path} className="nav-dropdown-l2-wrapper">
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `nav-dropdown-l2-row ${isActive ? 'active' : ''}`
+                      }
+                      onClick={closeAll}
+                    >
+                      <span className="nav-l2-name">{item.name}</span>
+                    </NavLink>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile / Tablet Accordion Submenu */}
+            {mobileExpOpen && (
+              <div className="mobile-submenu-panel">
+                {experienceNavLinks.map((item) => (
+                  <div key={item.path} className="mobile-l1-item">
+                    <div className="mobile-l1-header">
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `mobile-l1-link ${isActive ? 'active' : ''}`
+                        }
+                        onClick={closeAll}
+                      >
+                        {item.name}
+                      </NavLink>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <NavLink to="/clients" onClick={closeAll}>
+            Clients
+          </NavLink>
+          <NavLink to="/contact" onClick={closeAll}>
             Contact
           </NavLink>
         </nav>
@@ -189,7 +577,7 @@ export default function Navbar() {
       {open && (
         <div
           className="nav-backdrop"
-          onClick={() => setOpen(false)}
+          onClick={closeAll}
           aria-hidden="true"
         />
       )}
