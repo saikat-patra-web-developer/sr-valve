@@ -2,6 +2,7 @@
 @theme { --font-sans: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif; }
 :root { font-family: var(--font-sans); color: #0734b6; background: white; font-synthesis: none; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html,body,#root { max-width:100%; overflow-x:clip; }
 body { margin: 0; }
 button,a,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }
