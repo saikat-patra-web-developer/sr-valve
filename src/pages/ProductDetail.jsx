@@ -257,7 +257,7 @@ const airValveSections = [
     subItems: [
       {
         id: "single-chamber",
-        title: "Double Acting Triple Function (Single Chamber)",
+        title: "Double Acting (Single Chamber)",
         image: "/images/products/air_valve_single_chamber.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 400 mm" },
@@ -270,7 +270,7 @@ const airValveSections = [
       },
       {
         id: "double-chamber",
-        title: "Double Acting Triple Function (Double Chamber)",
+        title: "Double Acting (Double Chamber)",
         image: "/images/products/air_valve_double_chamber.webp",
         rows: [
           { label: "Size Range", value: "40 mm to 400 mm" },
