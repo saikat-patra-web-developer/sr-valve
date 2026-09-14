@@ -48,8 +48,9 @@ export default function About() {
 
             {/* Right Photo with Badge (6 cols) */}
             <div className="lg:col-span-6 relative rounded-md overflow-hidden shadow-xl border border-slate-200 group">
-              <img
-                src="/images/about/engineering_excellence.png"
+              <ResponsiveImage
+                src="/images/about/engineering_excellence.webp"
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 alt="Engineering Excellence in Every Flow"
                 className="w-full h-80 sm:h-96 object-cover group-hover:scale-102 transition-transform duration-500"
               />

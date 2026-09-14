@@ -671,23 +671,6 @@ img { max-width: 100%; }
 }
 
 @media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto} *,*::before,*::after {transition:none!important;animation:none!important} }
-.enquiry-form { display:grid; gap:20px; color:#5f719d; }
-.enquiry-fields { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.enquiry-form label { display:block; min-width:0; }
-.enquiry-form label>span { display:block; font-size:12px; margin-bottom:5px; }
-.enquiry-fields label>div { position:relative; }
-.enquiry-fields svg { position:absolute; left:14px; top:14px; width:20px; height:20px; color:#6e80a9; }
-.enquiry-form input,.enquiry-form select,.enquiry-form textarea { background:#ffffffa6; border:1px solid #ccd7eb; border-radius:4px; width:100%; padding:13px 14px; font-family:inherit; font-size:14px; color:#234a99; }
-.enquiry-fields input { padding-left:44px; }
-.enquiry-form input::placeholder,.enquiry-form textarea::placeholder { color:#8b99b8; }
-.enquiry-form textarea { resize:vertical; }
-.form-bottom { display:flex; align-items:center; gap:28px; }
-.form-bottom .button-orange { min-width:52%; min-height:52px; font-size:18px; }
-.form-bottom p { display:flex; align-items:center; gap:12px; font-size:11px; }
-.email-note { font-size:11px; color:#7082a8; }
-.draft-ready { padding:16px; background:#eef6ff; border:1px solid #abc6f1; border-radius:6px; }
-.draft-ready p { font-size:14px; margin-block:8px 14px; }
-.small-form { gap:10px; }.small-form .enquiry-fields { grid-template-columns:1fr; gap:10px; }.small-form label>span { font-size:11px; }.small-form input,.small-form textarea { padding:8px 10px; font-size:12px; }.small-form .enquiry-fields svg { display:none; }.small-form .form-bottom { display:block; }.small-form .button-orange { width:100%; min-height:40px; font-size:13px; }.small-form .form-bottom p { margin-top:12px; font-size:10px; }.small-form .email-note { font-size:10px; }
 .page-hero::before { background-size:cover; background-position:center; }
 .hero-about::before,.hero-infrastructure::before,.hero-certifications::before { background-size:cover; background-position:center; background-color:#eef7fd; }
 .hero-home::before { background-size:100% 100%; }
@@ -910,11 +893,6 @@ img { max-width: 100%; }
   padding-top: 2rem;
   padding-bottom: 2rem;
  }
- .enquiry-fields { grid-template-columns:1fr; gap:14px; }
- .enquiry-form { gap:14px; }
- .form-bottom { flex-direction:column; gap:12px; align-items:stretch; }
- .form-bottom p { justify-content:center; }
- .enquiry-form input,.enquiry-form textarea,.enquiry-form select { font-size:16px; }
  .page-home>section:nth-of-type(3)>div>div:first-child>div>span { display:none; }
  .page-home>section:nth-of-type(3)>div>div:first-child>div { display:block; }
 }
@@ -1625,11 +1603,6 @@ img { max-width: 100%; }
  .page-about .leadership-message,
  .page-about .leadership-message p { font-size:13px !important; line-height:1.5 !important; }
  .page-detail>.product-banner p { font-size:14px !important; line-height:1.4 !important; }
-
- .enquiry-form label>span,
- .enquiry-form .email-note,
- .enquiry-form .form-bottom p { font-size:12px !important; line-height:1.4 !important; }
- .enquiry-form :is(input,select,textarea) { font-size:16px !important; }
 
  .site-footer .footer-brand strong { font-size:16px !important; }
  .site-footer .footer-brand p { font-size:13px !important; line-height:1.5 !important; }

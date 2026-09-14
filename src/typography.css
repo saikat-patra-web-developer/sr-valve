@@ -39,7 +39,6 @@ body {
 }
 
 .site-page p,
-.enquiry-form,
 .contact-information {
   line-height: 1.55;
 }
@@ -110,14 +109,6 @@ body {
 
 .page-about .leadership-message p {
   max-width: 900px;
-}
-
-.enquiry-form input,
-.enquiry-form select,
-.enquiry-form textarea {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.4;
 }
 
 .footer-links a,
