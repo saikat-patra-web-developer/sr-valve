@@ -135,7 +135,7 @@ img { max-width: 100%; }
 
 /* Active State: selected page illuminated in theme blue glass style */
 .nav-btn.active {
-  background: linear-gradient(145deg, #347fdc 0%, #175ebd 48%, #073d91 100%);
+  background: linear-gradient(145deg, #ff9b2f 0%, #ff7800 48%, #dc5700 100%);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid rgba(3, 25, 70, 0.5);
   color: #ffffff !important;
@@ -162,7 +162,7 @@ img { max-width: 100%; }
 .nav-dropdown-trigger-row a { display: inline-flex; align-items: center; gap: 4px; }
 .nav-dropdown-chevron { transition: transform 0.2s ease, color 0.2s ease; color: #526eb0; margin-left: 2px; }
 .nav-item-dropdown:hover .nav-dropdown-chevron,
-.nav-dropdown-chevron.rotate { transform: rotate(180deg); color: #0635b8; }
+.nav-dropdown-chevron.rotate { transform: rotate(180deg); color: #ffffff; }
 .mobile-sub-toggle { display: none; }
 
 /* Level 1: Products Dropdown Menu */
