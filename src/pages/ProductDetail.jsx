@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
 import { productsData } from '../data/productsData'

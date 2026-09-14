@@ -1,4 +1,3 @@
-import React from 'react'
 import { Leaf } from 'lucide-react'
 import { companyData } from '../data/companyData'
 import ResponsiveImage from './ResponsiveImage'

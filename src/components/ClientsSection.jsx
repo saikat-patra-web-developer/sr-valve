@@ -1,4 +1,3 @@
-import React from 'react'
 import { clientData } from '../data/clientData'
 import ResponsiveImage from './ResponsiveImage'
 

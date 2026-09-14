@@ -1,21 +1,5 @@
 // Company information from Doc/About Us.docx and Doc/Contact Info.docx
 export const companyData = {
-  name: "SSPR Valve Manufacturing Private Limited",
-  tagline: "Flowing a Stronger Tomorrow",
-  established: "2009",
-  experienceYears: "15+",
-  md: {
-    name: "Mr. Prasenjit Dey",
-    designation: "Managing Director",
-    company: "SSPR Valve Manufacturing Private Limited",
-    image: "/images/about/md_prasenjit_dey.png",
-    signatureText: "Building A Better Tomorrow",
-    message:
-      "I am pleased to welcome you to the SSPR Valve website. Whether you're a potential customer with a challenging project ahead; an existing customer checking up on our latest news; or a partner, supplier or future employee looking for new opportunities, I trust you'll find what you're looking for here. SSPR Valve Manufacturing Private Limited is a company that is Driving Progress and, with our customers and partners, building better communities through safe, smart, efficient infrastructure. Something we have been doing consistently. Our progressive thinking and creative approach is what makes us stand out from the crowd allowing us to achieve what very few have been able to manage. We have a clear vision of what we want to be - leaders in Valve manufacturing and infrastructure development; and we guide our business using five core values - lead, grow, deliver, sustain and protect. I'm proud of the work we do and give you my personal commitment that we will deliver what we promise and do it safely and sustainably.",
-    highlightQuote: "Reliable Flow for a Brighter Tomorrow",
-    shortQuote:
-      "At SSPR Valve, we believe in engineering solutions that make a real difference. Our focus has always been on quality, reliability and long-term value for our customers. With a dedicated team, modern technology and a strong ethical foundation, we continue to work towards a safer and more sustainable future.",
-  },
   contact: {
     address: "ONGC Road, Dakshin Jhapordha, Domjur, Howrah – 711405, West Bengal, India.",
     email: "info@ssprvalve.com",
@@ -28,57 +12,11 @@ export const companyData = {
     { code: "ISO 14001:2015", label: "Valid to 16 April 2028", image: "/images/certifications/badge_iso14001.webp", document: "/downloads/ISO 14001 - Upto 16.04.2028.pdf" },
     { code: "ISO 45001:2018", label: "Valid to 16 April 2028", image: "/images/certifications/badge_iso45001.webp", document: "/downloads/ISO 45001 - Upto 16.04.2028.pdf" },
   ],
-  stats: [
-    { value: "15+", label: "Years Experience", sublabel: "Trusted Expertise" },
-    { value: "ISO Certified", label: "9001, 14001, 45001", sublabel: "Quality Assured" },
-    { value: "Pan India", label: "Govt & Private Supply", sublabel: "National Presence" },
-    { value: "Howrah (WB)", label: "Manufacturing Unit", sublabel: "Proudly Indian" },
-  ],
   keyMetrics: [
     { value: "20+", label: "Modern Machines", desc: "Advanced manufacturing equipment" },
     { value: "100%", label: "Quality Inspection", desc: "Stringent testing at every stage" },
     { value: "100+", label: "Experienced Team", desc: "Engineers, technicians and skilled workforce" },
     { value: "500+", label: "Projects Delivered", desc: "Trusted by customers globally" },
-  ],
-  timeline: [
-    {
-      year: "2009",
-      title: "The Beginning",
-      desc: "Started our manufacturing journey with a vision to serve India's critical infrastructure needs.",
-    },
-    {
-      year: "2012",
-      title: "Expanded Capabilities",
-      desc: "Invested in modern machinery and skilled team to enhance production capacity.",
-    },
-    {
-      year: "2016",
-      title: "Broader Markets",
-      desc: "Began supplying to major government and private projects across India.",
-    },
-    {
-      year: "2019",
-      title: "Growing Trust",
-      desc: "Strengthened our customer base through consistent quality and on-time delivery.",
-    },
-    {
-      year: "2022",
-      title: "Advanced Infrastructure",
-      desc: "Upgraded facilities with latest technology for enhanced precision and efficiency.",
-    },
-    {
-      year: "Today",
-      title: "A Stronger Tomorrow",
-      desc: "Continuing to innovate and serve with a focus on a sustainable, water-secure future.",
-    },
-  ],
-  sectors: [
-    { name: "Water Treatment Plants", desc: "Reliable solutions for municipal and industrial clean water distribution." },
-    { name: "Irrigation Projects", desc: "Efficient flow control systems supporting agricultural growth across states." },
-    { name: "Desalination Plants", desc: "Corrosion-resistant high pressure valves for marine water conversion." },
-    { name: "Civil Construction", desc: "Heavy-duty valves for dams, channels, reservoirs, and urban plumbing." },
-    { name: "Sea Water Applications", desc: "Special metallurgy valves engineered to resist aggressive saline corrosion." },
-    { name: "Infrastructure Projects", desc: "Robust valve systems for highways, energy hubs, and smart city networks." },
   ],
   capabilities: [
     {

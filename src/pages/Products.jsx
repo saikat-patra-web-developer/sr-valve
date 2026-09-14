@@ -1,5 +1,4 @@
 import PageHero from '../components/PageHero'
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Droplets, Sprout, Building, Cpu, Landmark, FlaskConical, PhoneCall } from 'lucide-react'
 import ProductCard from '../components/ProductCard'

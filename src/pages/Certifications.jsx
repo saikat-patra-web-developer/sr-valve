@@ -1,5 +1,4 @@
 import PageHero from '../components/PageHero'
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Check, ArrowRight } from 'lucide-react'
