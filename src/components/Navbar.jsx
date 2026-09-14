@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown, Send } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
 const productNavHierarchy = [
   {
@@ -576,7 +576,6 @@ export default function Navbar() {
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
           >
-            <Send size={14} className="nav-btn-icon" aria-hidden="true" />
             <span>Contact</span>
           </NavLink>
         </nav>

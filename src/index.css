@@ -38,8 +38,9 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: center;
   gap: 7px;
-  padding: 8px 18px;
-  border-radius: 9999px;
+  min-height: 40px;
+  padding: 10px 18px;
+  border-radius: 15px;
   font-size: 13.5px;
   font-weight: 600;
   line-height: 1.2;
@@ -51,19 +52,20 @@ img { max-width: 100%; }
   user-select: none;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Frosted Glassmorphism translucent base */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(234, 244, 255, 0.62) 45%, rgba(210, 232, 255, 0.42) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid rgba(13, 40, 87, 0.18);
-  border-right: 1px solid rgba(13, 40, 87, 0.12);
-  color: #0d2857 !important;
+  /* Layered blue glass surface inspired by the supplied reference. */
+  background: linear-gradient(145deg, #579cf1 0%, #2b70cf 42%, #1454b4 72%, #0a419c 100%);
+  border: 1px solid rgba(120, 183, 255, 0.95);
+  border-bottom-color: rgba(4, 42, 112, 0.88);
+  border-right-color: rgba(5, 51, 126, 0.72);
+  color: #ffffff !important;
   backdrop-filter: blur(14px) saturate(180%);
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   box-shadow: 
-    0 4px 14px -1px rgba(13, 40, 87, 0.08),
-    0 2px 5px rgba(13, 40, 87, 0.04),
-    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 2px rgba(13, 40, 87, 0.05);
+    0 7px 16px -5px rgba(4, 54, 145, 0.72),
+    0 2px 4px rgba(4, 40, 104, 0.2),
+    inset 0 2px 2px rgba(255, 255, 255, 0.72),
+    inset 0 -3px 4px rgba(0, 30, 91, 0.32),
+    inset 2px 0 2px rgba(255, 255, 255, 0.18);
 }
 
 /* Glass specular light dome reflection across upper curve */
@@ -74,9 +76,9 @@ img { max-width: 100%; }
   left: 2px;
   right: 2px;
   height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.12) 100%);
-  border-radius: 9999px 9999px 55% 55% / 9999px 9999px 35% 35%;
-  opacity: 0.85;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border-radius: 14px 14px 48% 48% / 14px 14px 35% 35%;
+  opacity: 0.9;
   pointer-events: none;
   transition: all 0.28s ease;
 }
@@ -87,12 +89,12 @@ img { max-width: 100%; }
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(13, 40, 87, 0.03) 100%);
+  background: linear-gradient(112deg, rgba(255, 255, 255, 0.2) 0%, transparent 43%, rgba(107, 185, 255, 0.2) 100%);
   pointer-events: none;
 }
 
 .nav-btn .nav-dropdown-chevron {
-  color: #0635b8;
+  color: #ffffff;
   transition: transform 0.2s ease, color 0.2s ease;
   margin-left: 2px;
   flex-shrink: 0;
@@ -106,11 +108,11 @@ img { max-width: 100%; }
 
 /* Hover: transforms into rich glowing 3D theme blue glass button */
 .nav-btn:hover {
-  background: linear-gradient(180deg, rgba(28, 118, 235, 0.92) 0%, rgba(13, 72, 172, 0.94) 55%, rgba(7, 48, 122, 0.96) 100%);
+  background: linear-gradient(145deg, #6cafff 0%, #3784e7 42%, #155ec7 75%, #0847aa 100%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-bottom: 1px solid rgba(4, 30, 80, 0.4);
   color: #ffffff !important;
-  transform: translateY(-1.5px);
+  transform: translateY(-2px);
   box-shadow: 
     0 8px 25px -2px rgba(13, 72, 172, 0.42),
     0 3px 8px rgba(13, 40, 87, 0.12),
@@ -133,7 +135,7 @@ img { max-width: 100%; }
 
 /* Active State: selected page illuminated in theme blue glass style */
 .nav-btn.active {
-  background: linear-gradient(180deg, rgba(22, 98, 208, 0.95) 0%, rgba(10, 63, 158, 0.96) 55%, rgba(6, 42, 108, 0.98) 100%);
+  background: linear-gradient(145deg, #347fdc 0%, #175ebd 48%, #073d91 100%);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid rgba(3, 25, 70, 0.5);
   color: #ffffff !important;
@@ -553,7 +555,7 @@ img { max-width: 100%; }
  .menu-toggle { display:inline-flex; }
  .main-nav { display:none; }
   .main-nav.open { display:flex; flex-direction:column; gap:8px; position:absolute; left:0; right:0; top:100%; background:rgba(255,255,255,0.94); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); padding:16px 20px; box-shadow:0 16px 36px rgba(13,40,87,0.14); z-index:40; border-bottom:1px solid rgba(210,225,245,0.8); }
-  .main-nav.open .nav-btn { width:100%; justify-content:space-between; min-height:44px; padding:10px 18px; font-size:14px; border-radius:9999px; }
+  .main-nav.open .nav-btn { width:100%; justify-content:space-between; min-height:44px; padding:10px 18px; font-size:14px; border-radius:15px; }
   .main-nav.open .nav-item-dropdown { width:100%; height:auto; flex-direction:column; }
   .main-nav.open .nav-dropdown-trigger-row { width:100%; display:flex; align-items:center; gap:8px; }
   .main-nav.open .nav-dropdown-trigger-row .nav-btn { flex:1; }
@@ -596,7 +598,7 @@ img { max-width: 100%; }
  .menu-toggle svg { width:22px; height:22px; }
  .nav-backdrop { display:block; position:fixed; inset:0; top:66px; background:rgba(10,25,47,.45); backdrop-filter:blur(2px); z-index:35; }
   .main-nav.open { position:absolute; left:0; right:0; top:100%; display:grid; grid-template-columns:1fr; justify-items:stretch; gap:8px; padding:.75rem var(--page-gutter) 1rem; border-top:1px solid rgba(210,225,245,0.8); background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); box-shadow:0 16px 30px rgba(15,42,82,.18); z-index:40; }
-  .main-nav.open .nav-btn { width:100%; padding:.75rem 1.25rem; min-height:44px; display:flex; align-items:center; border-radius:9999px; font-size:15px; font-weight:600; justify-content:space-between; }
+  .main-nav.open .nav-btn { width:100%; padding:.75rem 1.25rem; min-height:44px; display:flex; align-items:center; border-radius:15px; font-size:15px; font-weight:600; justify-content:space-between; }
   .main-nav.open .nav-item-dropdown { width:100%; height:auto; display:flex; flex-direction:column; }
   .main-nav.open .nav-dropdown-trigger-row { width:100%; display:flex; align-items:center; gap:8px; }
   .main-nav.open .nav-dropdown-trigger-row .nav-btn { flex:1; }
