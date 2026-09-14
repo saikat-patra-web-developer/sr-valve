@@ -9,7 +9,6 @@ import InfrastructureStrip from '../components/InfrastructureStrip'
 
 export default function Contact() {
   const [openFaq, setOpenFaq] = useState(null)
-  const [allFaqs, setAllFaqs] = useState(false)
 
   const toggleFaq = (id) => {
     setOpenFaq(openFaq === id ? null : id)
@@ -231,17 +230,10 @@ export default function Contact() {
                 Quick Answers to <span className="text-[#f37021]">Help You</span>
               </h3>
             </div>
-            <button
-              onClick={() => setAllFaqs(!allFaqs)}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0d2857] hover:text-[#f37021] transition-colors cursor-pointer"
-            >
-              <span>{allFaqs ? 'Show Fewer FAQs' : 'View All FAQs'}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {(allFaqs ? faqData : faqData.slice(0, 4)).map((faq) => {
+            {faqData.map((faq) => {
               const isOpen = openFaq === faq.id
               return (
                 <div
