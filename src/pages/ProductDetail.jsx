@@ -99,6 +99,65 @@ const butterflyValveSections = [
   },
 ]
 
+const checkValveSections = [
+  {
+    id: "single-door",
+    sectionTitle: "Single Door Non Return Valve",
+    subItems: [
+      {
+        title: null,
+        image: "/images/products/check_valve_transparent.webp",
+        rows: [
+          { label: "Size Range", value: "50 mm to 600 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300" },
+          { label: "Design Standard", value: "IS 5312 Part-I, BS 1868, AWWA C-508" },
+          { label: "Testing Standard", value: "IS 5312" },
+          { label: "Flange Standard", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+          { label: "Accessories", value: "By-pass arrangement, Hydraulic" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "multi-door",
+    sectionTitle: "Multi Door Non Return Valve",
+    subItems: [
+      {
+        title: null,
+        image: "/images/products/check_valve_angle_2.webp",
+        rows: [
+          { label: "Size Range", value: "700 mm to 1500 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6 & PN 2.0" },
+          { label: "Design Standard", value: "IS 5312, Part-II" },
+          { label: "Testing Standard", value: "IS 5312" },
+          { label: "Flange Standard", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+          { label: "Accessories", value: "By-pass arrangement" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "dual-plate",
+    sectionTitle: "Dual Plate Check Valve",
+    subItems: [
+      {
+        title: null,
+        image: "/images/products/check_valve_angle_3.webp",
+        rows: [
+          { label: "Size Range", value: "50 mm to 2000 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300" },
+          { label: "Design Standard", value: "API 594 / API 6D" },
+          { label: "Testing Standard", value: "API 598" },
+          { label: "Flange Standard", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+        ],
+      },
+    ],
+  },
+]
+
 export default function ProductDetail() {
   const { id } = useParams()
 
@@ -110,8 +169,21 @@ export default function ProductDetail() {
   const isWaferType = id === 'wafer-type-butterfly-valve' || id === 'wafer-end-butterfly-valve'
   const isButterflyFamily = isFlangeEnd || isWaferType
 
+  const isSingleDoor = id === 'single-door-check-valve' || id === 'single-door-non-return-valve' || id === 'check-valve'
+  const isMultiDoor = id === 'multi-door-check-valve' || id === 'multi-door-non-return-valve'
+  const isDualPlate = id === 'dual-plate-check-valve' || id === 'dual-plate-non-return-valve'
+  const isCheckFamily = isSingleDoor || isMultiDoor || isDualPlate
+
   const baseProduct = productsData.find(
-    (p) => p.id === (isSluiceFamily ? 'sluice-valve' : isButterflyFamily ? 'butterfly-valve' : id)
+    (p) =>
+      p.id ===
+      (isSluiceFamily
+        ? 'sluice-valve'
+        : isButterflyFamily
+        ? 'butterfly-valve'
+        : isCheckFamily
+        ? 'check-valve'
+        : id)
   )
 
   const product = isResilientSeated && baseProduct
@@ -154,6 +226,36 @@ export default function ProductDetail() {
         image: '/images/products/butterfly_valve_wafer.webp',
         detailMainImage: '/images/products/butterfly_valve_wafer.webp',
       }
+    : isSingleDoor && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'single-door-check-valve',
+        name: 'Single Door Non Return Valve',
+        fullName: 'Single Door Non Return Valve',
+        tagline: 'Single Door Swing Check Valve (IS 5312 Part-I / BS 1868)',
+        image: '/images/products/check_valve_transparent.webp',
+        detailMainImage: '/images/products/check_valve_transparent.webp',
+      }
+    : isMultiDoor && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'multi-door-check-valve',
+        name: 'Multi Door Non Return Valve',
+        fullName: 'Multi Door Non Return Valve',
+        tagline: 'Multi Door Swing Check Valve (IS 5312 Part-II)',
+        image: '/images/products/check_valve_angle_2.webp',
+        detailMainImage: '/images/products/check_valve_angle_2.webp',
+      }
+    : isDualPlate && baseProduct
+    ? {
+        ...baseProduct,
+        id: 'dual-plate-check-valve',
+        name: 'Dual Plate Check Valve',
+        fullName: 'Dual Plate Check Valve',
+        tagline: 'Dual Plate Wafer / Flanged Check Valve (API 594 / API 6D)',
+        image: '/images/products/check_valve_angle_3.webp',
+        detailMainImage: '/images/products/check_valve_angle_3.webp',
+      }
     : baseProduct
 
   const [selection, setSelection] = useState({ productId: null, index: -1 })
@@ -179,8 +281,20 @@ export default function ProductDetail() {
     ? butterflyValveSections.filter((s) => s.id === 'flange-end')
     : butterflyValveSections
 
-  const isThemeSpecPage = isSluiceFamily || isButterflyFamily
-  const themeSpecSections = isSluiceFamily ? displayedSluiceSections : displayedButterflySections
+  const displayedCheckSections = isSingleDoor
+    ? checkValveSections.filter((s) => s.id === 'single-door')
+    : isMultiDoor
+    ? checkValveSections.filter((s) => s.id === 'multi-door')
+    : isDualPlate
+    ? checkValveSections.filter((s) => s.id === 'dual-plate')
+    : checkValveSections
+
+  const isThemeSpecPage = isSluiceFamily || isButterflyFamily || isCheckFamily
+  const themeSpecSections = isSluiceFamily
+    ? displayedSluiceSections
+    : isButterflyFamily
+    ? displayedButterflySections
+    : displayedCheckSections
 
   // Related products
   const allCatalogProducts = [
@@ -205,9 +319,19 @@ export default function ProductDetail() {
       image: '/images/products/butterfly_valve_wafer.webp',
     },
     {
-      id: 'check-valve',
-      name: 'Non Return Valve',
+      id: 'single-door-check-valve',
+      name: 'Single Door Non Return Valve',
       image: '/images/products/check_valve_transparent.webp',
+    },
+    {
+      id: 'multi-door-check-valve',
+      name: 'Multi Door Non Return Valve',
+      image: '/images/products/check_valve_angle_2.webp',
+    },
+    {
+      id: 'dual-plate-check-valve',
+      name: 'Dual Plate Check Valve',
+      image: '/images/products/check_valve_angle_3.webp',
     },
     {
       id: 'air-valve',
@@ -224,6 +348,12 @@ export default function ProductDetail() {
     ? 'wafer-type-butterfly-valve'
     : isFlangeEnd
     ? 'flange-end-butterfly-valve'
+    : isSingleDoor
+    ? 'single-door-check-valve'
+    : isMultiDoor
+    ? 'multi-door-check-valve'
+    : isDualPlate
+    ? 'dual-plate-check-valve'
     : product.id
 
   const relatedProducts = allCatalogProducts.filter((p) => p.id !== currentEffectiveId).slice(0, 6)
