@@ -1126,3 +1126,21 @@ img { max-width: 100%; }
  .site-footer .footer-bottom-right { flex:0 0 auto; text-align:center; }
  .site-footer .footer-bottom a { color:#ffad5c; }
 }
+
+@media(max-width:639px) {
+ /* Seamless client-logo carousel on every mobile page. */
+ .clients-section .clients-carousel { width:100%; height:68px; overflow:hidden; }
+ .clients-section .clients-carousel-track,
+ .page-home .clients-carousel-track,
+ .page-about>.clients-section .clients-carousel-track,
+ .page-certifications>.clients-section .clients-carousel-track { display:flex !important; grid-template-columns:none !important; flex-wrap:nowrap; width:max-content; gap:0; transform:none; animation:clients-scroll 24s linear infinite; will-change:transform; }
+ .clients-section .client-carousel-item,
+ .page-home .client-carousel-item,
+ .page-about>.clients-section .client-carousel-item,
+ .page-certifications>.clients-section .client-carousel-item { display:flex !important; width:calc((100vw - 36px) / 4); flex:0 0 calc((100vw - 36px) / 4); min-width:0; }
+ .clients-section .client-carousel-item>div { width:100%; height:68px; padding:5px; }
+}
+
+@media(max-width:639px) and (prefers-reduced-motion:reduce) {
+ .clients-section .clients-carousel-track { animation:none; }
+}
