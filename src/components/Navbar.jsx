@@ -6,25 +6,25 @@ const productSubmenu = [
   {
     id: 'sluice-valve',
     name: 'Sluice Valve',
-    desc: 'Metal & Resilient Seated Gate Valves',
+    desc: 'Metal Seated & Resilient Seated',
     path: '/products/sluice-valve',
   },
   {
     id: 'butterfly-valve',
     name: 'Butterfly Valve',
-    desc: 'Wafer & Flanged End Butterfly Valves',
+    desc: 'Flange End & Wafer End',
     path: '/products/butterfly-valve',
   },
   {
     id: 'check-valve',
-    name: 'Non Return / Check Valve',
-    desc: 'Single Door, Multi-Door & Dual Plate',
+    name: 'Non Return Valve',
+    desc: 'Single Door, Multi Door & Dual Plate',
     path: '/products/check-valve',
   },
   {
     id: 'air-valve',
     name: 'Air Valve',
-    desc: 'Kinetic & Tamper-Proof Air Valves',
+    desc: 'Single Air Valve, Double Acting, Tamper Proof & Kinetic Double Acting',
     path: '/products/air-valve',
   },
 ]
@@ -164,18 +164,13 @@ export default function Navbar() {
                     }}
                   >
                     <span className="mobile-submenu-title">{sub.name}</span>
+                    <span className="mobile-submenu-desc">{sub.desc}</span>
                   </NavLink>
                 ))}
               </div>
             )}
           </div>
 
-          <NavLink to="/infrastructure" onClick={() => setOpen(false)}>
-            Infrastructure
-          </NavLink>
-          <NavLink to="/certifications" onClick={() => setOpen(false)}>
-            Certifications
-          </NavLink>
           <NavLink to="/contact" onClick={() => setOpen(false)}>
             Contact
           </NavLink>

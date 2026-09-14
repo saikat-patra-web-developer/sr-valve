@@ -46,7 +46,7 @@ img { max-width: 100%; }
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  width: 320px;
+  width: 360px;
   background: #ffffff;
   border: 1px solid #dbe6f5;
   border-radius: 8px;
@@ -715,9 +715,13 @@ img { max-width: 100%; }
  .mobile-sub-chevron.rotate { transform:rotate(180deg); color:#ff7600; }
  .nav-dropdown-menu { display:none !important; }
  .mobile-submenu-panel { display:flex; flex-direction:column; width:100%; padding:4px 0 6px 12px; background:#f8fafc; border-left:2px solid #ff7600; margin:4px 0 8px 4px; border-radius:0 6px 6px 0; gap:2px; }
- .mobile-submenu-item { padding:8px 12px !important; min-height:38px !important; font-size:13px !important; font-weight:600 !important; color:#173c94 !important; border-bottom:0 !important; display:flex !important; align-items:center !important; border-radius:4px; transition:background-color .15s ease, color .15s ease; }
- .mobile-submenu-item:hover,.mobile-submenu-item:focus-visible { background-color:#edf3fb; color:#ff7600 !important; }
- .mobile-submenu-item.active { background-color:#fff2e6 !important; color:#ff7600 !important; font-weight:700 !important; }
+  .mobile-submenu-item { padding:8px 12px !important; min-height:42px !important; font-size:13px !important; font-weight:600 !important; color:#173c94 !important; border-bottom:0 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; border-radius:4px; transition:background-color .15s ease, color .15s ease; }
+  .mobile-submenu-item:hover,.mobile-submenu-item:focus-visible { background-color:#edf3fb; color:#ff7600 !important; }
+  .mobile-submenu-item.active { background-color:#fff2e6 !important; color:#ff7600 !important; font-weight:700 !important; }
+  .mobile-submenu-title { font-size:13px; font-weight:700; color:#173c94; display:block; }
+  .mobile-submenu-desc { font-size:11px; font-weight:400; color:#6a7ea4; display:block; margin-top:2px; line-height:1.25; }
+  .mobile-submenu-item:hover .mobile-submenu-title, .mobile-submenu-item.active .mobile-submenu-title { color:#ff7600; }
+  .mobile-submenu-item:hover .mobile-submenu-desc, .mobile-submenu-item.active .mobile-submenu-desc { color:#915724; }
 }
 
 @media(min-width:640px) and (max-width:1100px) {
@@ -1348,9 +1352,120 @@ img { max-width: 100%; }
  .page-about .leadership-profile h3 { grid-column:2; grid-row:1; margin:0; }
  .page-about .leadership-profile>span:nth-of-type(1) { grid-column:2; grid-row:2; margin:3px 0 0; }
  .page-about .leadership-profile>span:nth-of-type(2) { grid-column:2; grid-row:3; max-width:none; margin:5px 0 0; }
- .page-about .leadership-message { padding:16px; }
-
  /* Present each material/standard pair on its own readable mobile row. */
  .page-detail>section:nth-of-type(4) .md\:grid-cols-3 ul { grid-template-columns:1fr; gap:8px; }
  .page-detail>section:nth-of-type(4) .md\:grid-cols-3 li { display:block; }
+}
+
+
+/* Theme-matched Specification Tables for Sluice Valve */
+.theme-doc-title {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0d2857;
+  text-decoration: underline;
+  text-decoration-color: #f37021;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2.5px;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+
+.theme-doc-subtitle {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d2857;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.theme-spec-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+}
+
+.page-detail table.theme-spec-table,
+table.theme-spec-table {
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  table-layout: auto !important;
+  background-color: #ffffff !important;
+}
+
+/* Zebra striping matching site theme: one white row, one gray row */
+.page-detail table.theme-spec-table tr:nth-child(odd),
+.page-detail table.theme-spec-table tr:nth-child(odd) td,
+table.theme-spec-table tr:nth-child(odd),
+table.theme-spec-table tr:nth-child(odd) td {
+  background-color: #f3f7fb !important;
+  background: #f3f7fb !important;
+}
+
+.page-detail table.theme-spec-table tr:nth-child(even),
+.page-detail table.theme-spec-table tr:nth-child(even) td,
+table.theme-spec-table tr:nth-child(even),
+table.theme-spec-table tr:nth-child(even) td {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+.page-detail table.theme-spec-table td,
+table.theme-spec-table td {
+  border: none !important;
+  padding: 10px 18px !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  vertical-align: middle !important;
+}
+
+.page-detail table.theme-spec-table td.param-label,
+table.theme-spec-table td.param-label {
+  font-weight: 700 !important;
+  width: 34% !important;
+  max-width: 38% !important;
+  color: #1e293b !important;
+  white-space: nowrap !important;
+}
+
+.page-detail table.theme-spec-table td.param-value,
+table.theme-spec-table td.param-value {
+  font-weight: 500 !important;
+  color: #475569 !important;
+}
+
+.page-detail table.theme-spec-table tr:hover td,
+table.theme-spec-table tr:hover td {
+  background-color: #eaf1f8 !important;
+  transition: background-color 0.15s ease;
+}
+
+@media (max-width: 768px) {
+  .theme-doc-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .theme-doc-subtitle {
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+  .page-detail table.theme-spec-table td,
+  table.theme-spec-table td {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+  .page-detail table.theme-spec-table td.param-label,
+  table.theme-spec-table td.param-label {
+    width: 38% !important;
+    white-space: normal !important;
+  }
 }

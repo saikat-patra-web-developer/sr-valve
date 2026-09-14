@@ -1,9 +1,61 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, ZoomIn, Droplets, Building, Flame, Zap, Wind, Anchor, Factory, Sprout, X } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ZoomIn, X } from 'lucide-react'
 import { productsData } from '../data/productsData'
 import ResponsiveImage from '../components/ResponsiveImage'
 import NotFound from './NotFound'
+
+const sluiceValveSections = [
+  {
+    sectionTitle: "Metal Seated Sluice Valve",
+    subItems: [
+      {
+        title: "Non Rising Stem Sluice Valve",
+        image: "/images/products/sluice_valve_transparent.webp",
+        rows: [
+          { label: "Size Range", value: "50 mm to 2000 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6, PN 2.0, PN 2.5, Class 150, Class 300" },
+          { label: "Design Standard", value: "IS: 14846" },
+          { label: "Testing Standard", value: "IS: 14846 : 2000 Clause 10" },
+          { label: "Flange Standard", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+          { label: "Accessories", value: "Gear, actuator, by-pass arrangement, shoe & channel, head stock" },
+        ],
+      },
+      {
+        title: "Rising Stem Sluice Valve",
+        image: "/images/products/sluice_valve_angle_2.webp",
+        rows: [
+          { label: "Size Range", value: "50 mm to 1200 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6" },
+          { label: "Design Standard", value: "IS: 14846" },
+          { label: "Testing Standard", value: "IS: 14846 : 2000 Clause 10" },
+          { label: "Flange Standard", value: "BS / IS / ANSI / DIN" },
+          { label: "Material", value: "CI / DI / CS" },
+          { label: "Accessories", value: "Gear, actuator, by-pass arrangement, shoe & channel, head stock" },
+        ],
+      },
+    ],
+  },
+  {
+    sectionTitle: "Resilient Seated Sluice Valve",
+    subItems: [
+      {
+        title: null,
+        image: "/images/products/sluice_valve_angle_3.webp",
+        rows: [
+          { label: "Size Range", value: "50 mm to 1200 mm" },
+          { label: "Pressure Rating", value: "PN 1.0, PN 1.6" },
+          { label: "Design Standard", value: "BS 5163" },
+          { label: "Testing Standard", value: "BS 5163" },
+          { label: "Flange Standard", value: "BS / IS" },
+          { label: "Material", value: "DI" },
+          { label: "Accessories", value: "Gear, actuator" },
+        ],
+      },
+    ],
+  },
+]
 
 export default function ProductDetail() {
   const { id } = useParams()
@@ -11,7 +63,7 @@ export default function ProductDetail() {
 
   const [selection, setSelection] = useState({ productId: null, index: -1 })
   const [zoomOpen, setZoomOpen] = useState(false)
-  const [activeVariantIndex, setActiveVariantIndex] = useState(0)
+  const [zoomModalImage, setZoomModalImage] = useState(null)
 
   if (!product) {
     return <NotFound />
@@ -23,456 +75,265 @@ export default function ProductDetail() {
   // Related products
   const relatedProducts = productsData.filter((p) => p.id !== product.id).slice(0, 6)
 
-  const applicationIcons = [
-    <Droplets key="icon-0" className="w-5 h-5 text-blue-600" />,
-    <Factory key="icon-1" className="w-5 h-5 text-blue-600" />,
-    <Flame key="icon-2" className="w-5 h-5 text-blue-600" />,
-    <Zap key="icon-3" className="w-5 h-5 text-blue-600" />,
-    <Wind key="icon-4" className="w-5 h-5 text-blue-600" />,
-    <Anchor key="icon-5" className="w-5 h-5 text-blue-600" />,
-    <Building key="icon-6" className="w-5 h-5 text-blue-600" />,
-    <Sprout key="icon-7" className="w-5 h-5 text-blue-600" />,
-  ]
 
   return (
     <div className="site-page page-detail">
       
       <div className="product-banner"><div><h2>Our Products</h2><p>High-Performance Valves for a More Reliable Tomorrow.</p></div></div>
-      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white pt-6 pb-10 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Breadcrumbs */}
-          <nav className="product-breadcrumb text-xs font-semibold text-slate-500 mb-8" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-blue-900 cursor-pointer">
-              Home
-            </Link>
-            <span aria-hidden="true">/</span>
-            <Link to="/products" className="hover:text-blue-900 cursor-pointer">
-              Products
-            </Link>
-            <span aria-hidden="true">/</span>
-            <span className="text-slate-700">{product.category}</span>
-            <span aria-hidden="true">/</span>
-            <span className="product-breadcrumb-current">{product.fullName}</span>
-          </nav>
+      {product.id === 'sluice-valve' ? (
+        <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white pt-6 pb-12 border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Product gallery */}
-            <div className="product-gallery lg:col-span-6 space-y-4">
-              <div className="flex flex-col-reverse sm:flex-row gap-3">
-                {/* Thumbnails */}
-                <div className="flex flex-row sm:flex-col gap-2.5 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
-                  {(product.thumbnails || [product.image]).map((thumb, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        setSelection({ productId: product.id, index: idx })
-                      }}
-                      className={`w-14 h-14 shrink-0 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
-                        activeThumb === idx
-                          ? 'border-[#f37021] shadow-xs'
-                          : 'border-slate-200 hover:border-blue-300'
-                      }`}
-                    >
-                      <ResponsiveImage
-                        src={thumb}
-                        alt={`Thumbnail ${idx + 1}`}
-                        className="w-full h-full object-contain"
-                      />
-                    </button>
-                  ))}
-                </div>
+            {/* Theme Specification Layout */}
+            <div className="space-y-12">
+              {sluiceValveSections.map((section, sIdx) => (
+                <div key={sIdx} className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/90 shadow-sm">
+                  {/* Section Title (Centered & Underlined in Theme Style) */}
+                  <h2 className="theme-doc-title">
+                    {section.sectionTitle}
+                  </h2>
 
-                {/* Main View Area */}
-                <div className="flex-1 relative bg-white rounded-md border border-slate-200 shadow-sm p-4 flex flex-col items-center justify-center min-h-[340px] group">
-                  <ResponsiveImage
-                    src={selectedImage}
-                    alt={product.fullName}
-                    className="max-h-72 max-w-full object-contain"
-                  />
-                  
-                  <button
-                    onClick={() => setZoomOpen(true)}
-                    className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-900 cursor-pointer bg-slate-50 hover:bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200"
-                  >
-                    <ZoomIn className="w-3.5 h-3.5" />
-                    <span>Click to zoom</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+                  <div className="space-y-12">
+                    {section.subItems.map((item, iIdx) => (
+                      <div key={iIdx}>
+                        {/* 2-Column Grid: Picture on Left, Table on Right - perfectly aligned */}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                          {/* Left Column: Picture */}
+                          <div className="lg:col-span-5 flex flex-col">
+                            {item.title && (
+                              <div className="theme-doc-subtitle invisible select-none hidden lg:block" aria-hidden="true">
+                                {item.title}
+                              </div>
+                            )}
+                            <div className="relative flex-1 bg-gradient-to-b from-slate-50/50 to-white rounded-xl border border-slate-200/90 p-6 flex flex-col items-center justify-center w-full shadow-2xs group hover:border-blue-300 hover:shadow-sm transition-all duration-200 min-h-[310px]">
+                              <ResponsiveImage
+                                src={item.image}
+                                alt={item.title || section.sectionTitle}
+                                className="max-h-64 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => setZoomModalImage(item.image)}
+                                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#0d2857] hover:bg-slate-100 cursor-pointer bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-2xs transition-colors"
+                              >
+                                <ZoomIn className="w-3.5 h-3.5 text-[#f37021]" />
+                                <span>Click to zoom</span>
+                              </button>
+                            </div>
+                          </div>
 
-            {/* Product information */}
-            <div className="lg:col-span-6 space-y-4 lg:pl-4">
-              <div>
-                <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
-                  {product.tag}
-                </span>
-                <h1 className="product-title text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight mt-1">
-                  {product.id === 'sluice-valve' ? (
-                    <>Metal &amp; Resilient Seated <span>Sluice Valve</span></>
-                  ) : product.fullName.includes('Butterfly') ? (
-                    <>Resilient Seated <span>Butterfly Valve</span></>
-                  ) : (
-                    product.fullName
-                  )}
-                </h1>
-                <p className="text-xs font-bold text-[#f37021] mt-1">
-                  {product.tagline}
-                </p>
-              </div>
-
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {product.detailedDesc}
-              </p>
-
-              {/* 4 quick badges */}
-              <div className="grid grid-cols-2 gap-2.5 pt-1">
-                {product.quickFeatures.map((feat, idx) => (
-                  <div key={idx} className="bg-slate-50 p-2 rounded-lg border border-slate-200">
-                    <span className="text-xs font-bold text-[#0d2857] block">
-                      {feat.title}
-                    </span>
-                    <span className="text-[10px] text-slate-500 block leading-tight mt-0.5">
-                      {feat.desc}
-                    </span>
+                          {/* Right Column: Title + Specification Table */}
+                          <div className="lg:col-span-7 flex flex-col">
+                            {/* Sub-item Title (Positioned directly above Table) */}
+                            {item.title && (
+                              <h3 className="theme-doc-subtitle">
+                                {item.title}
+                              </h3>
+                            )}
+                            <div className="theme-spec-wrapper overflow-x-auto flex-1 flex flex-col rounded-xl">
+                              <table className="theme-spec-table w-full h-full">
+                                <tbody>
+                                  {item.rows.map((row, rIdx) => (
+                                    <tr key={rIdx}>
+                                      <td className="param-label">{row.label}</td>
+                                      <td className="param-value">{row.value}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-
+                </div>
+              ))}
             </div>
 
           </div>
+        </section>
+      ) : (
+        <>
+          <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white pt-6 pb-10 border-b border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
 
-          {/* Quick Specs 4 Cards Bar */}
-          <div className="mt-10 pt-6 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">Size Range</span>
-              <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
-                {product.quickSpecs.sizeRange}
-              </span>
-            </div>
-
-            <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">Pressure Rating</span>
-              <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
-                {product.quickSpecs.pressureRating}
-              </span>
-            </div>
-
-            <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">End Connection</span>
-              <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
-                {product.quickSpecs.endConnection}
-              </span>
-            </div>
-
-            <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">Temperature Range</span>
-              <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
-                {product.quickSpecs.temperatureRange}
-              </span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 2. TECHNICAL SPECIFICATIONS & KEY FEATURES & BENEFITS */}
-      <section className="py-5 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            
-            {/* Technical Specifications Table (7 cols) */}
-            <div className="lg:col-span-7 space-y-4">
-              <h3 className="text-xl font-extrabold text-[#0d2857] border-b border-slate-200 pb-2">
-                Technical Specifications
-              </h3>
-
-              {product.variants ? (
-                <div className="space-y-4">
-                  {/* Variant Tabs */}
-                  <div className="flex flex-wrap gap-2">
-                    {product.variants.map((v, vIdx) => {
-                      const isActive = activeVariantIndex === vIdx
-                      return (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                {/* Product gallery */}
+                <div className="product-gallery lg:col-span-6 space-y-4">
+                  <div className="flex flex-col-reverse sm:flex-row gap-3">
+                    {/* Thumbnails */}
+                    <div className="flex flex-row sm:flex-col gap-2.5 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
+                      {(product.thumbnails || [product.image]).map((thumb, idx) => (
                         <button
-                          key={v.id}
-                          type="button"
-                          onClick={() => setActiveVariantIndex(vIdx)}
-                          className={`px-3.5 py-2 rounded-md text-left transition-all cursor-pointer border ${
-                            isActive
-                              ? 'bg-[#0d2857] text-white border-[#0d2857] shadow-xs'
-                              : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+                          key={idx}
+                          onClick={() => {
+                            setSelection({ productId: product.id, index: idx })
+                          }}
+                          className={`w-14 h-14 shrink-0 rounded-lg border-2 p-1 bg-white overflow-hidden transition-all cursor-pointer ${
+                            activeThumb === idx
+                              ? 'border-[#f37021] shadow-xs'
+                              : 'border-slate-200 hover:border-blue-300'
                           }`}
                         >
-                          <span className="text-xs font-bold block">{v.name}</span>
-                          <span
-                            className={`text-[10px] font-medium block mt-0.5 ${
-                              isActive ? 'text-amber-300' : 'text-slate-500'
-                            }`}
-                          >
-                            {v.category}
-                          </span>
+                          <ResponsiveImage
+                            src={thumb}
+                            alt={`Thumbnail ${idx + 1}`}
+                            className="w-full h-full object-contain"
+                          />
                         </button>
-                      )
-                    })}
-                  </div>
-
-                  {/* Active Variant Specs Card */}
-                  <div className="overflow-hidden border border-slate-200 rounded-md shadow-2xs">
-                    <div className="bg-slate-50 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
-                      <div>
-                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">
-                          {product.variants[activeVariantIndex]?.category}
-                        </span>
-                        <h4 className="text-sm font-extrabold text-[#0d2857]">
-                          {product.variants[activeVariantIndex]?.name}
-                        </h4>
-                      </div>
-                      <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
-                        {product.variants[activeVariantIndex]?.badge}
-                      </span>
+                      ))}
                     </div>
 
+                    {/* Main View Area */}
+                    <div className="flex-1 relative bg-white rounded-md border border-slate-200 shadow-sm p-4 flex flex-col items-center justify-center min-h-[340px] group">
+                      <ResponsiveImage
+                        src={selectedImage}
+                        alt={product.fullName}
+                        className="max-h-72 max-w-full object-contain"
+                      />
+                      
+                      <button
+                        onClick={() => setZoomOpen(true)}
+                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-900 cursor-pointer bg-slate-50 hover:bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200"
+                      >
+                        <ZoomIn className="w-3.5 h-3.5" />
+                        <span>Click to zoom</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Product information */}
+                <div className="lg:col-span-6 space-y-4 lg:pl-4">
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
+                      {product.tag}
+                    </span>
+                    <h1 className="product-title text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight mt-1">
+                      {product.fullName.includes('Butterfly') ? <>Resilient Seated <span>Butterfly Valve</span></> : product.fullName}
+                    </h1>
+                    <p className="text-xs font-bold text-[#f37021] mt-1">
+                      {product.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {product.detailedDesc}
+                  </p>
+
+                  {/* 4 quick badges */}
+                  <div className="grid grid-cols-2 gap-2.5 pt-1">
+                    {product.quickFeatures.map((feat, idx) => (
+                      <div key={idx} className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                        <span className="text-xs font-bold text-[#0d2857] block">
+                          {feat.title}
+                        </span>
+                        <span className="text-[10px] text-slate-500 block leading-tight mt-0.5">
+                          {feat.desc}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Quick Specs 4 Cards Bar */}
+              <div className="mt-10 pt-6 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Size Range</span>
+                  <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
+                    {product.quickSpecs.sizeRange}
+                  </span>
+                </div>
+
+                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Pressure Rating</span>
+                  <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
+                    {product.quickSpecs.pressureRating}
+                  </span>
+                </div>
+
+                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">End Connection</span>
+                  <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
+                    {product.quickSpecs.endConnection}
+                  </span>
+                </div>
+
+                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Temperature Range</span>
+                  <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
+                    {product.quickSpecs.temperatureRange}
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          {/* 2. TECHNICAL SPECIFICATIONS & KEY FEATURES & BENEFITS */}
+          <section className="py-5 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                {/* Technical Specifications Table (7 cols) */}
+                <div className="lg:col-span-7 space-y-4">
+                  <h3 className="text-xl font-extrabold text-[#0d2857] border-b border-slate-200 pb-2">
+                    Technical Specifications
+                  </h3>
+
+                  <div className="overflow-hidden border border-slate-200 rounded-md shadow-2xs">
                     <table className="min-w-full text-xs divide-y divide-slate-200">
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {Object.entries(product.variants[activeVariantIndex]?.specs || {}).map(
-                          ([specKey, specVal], idx) => (
-                            <tr
-                              key={idx}
-                              className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}
-                            >
-                              <td className="px-4 py-2.5 font-bold text-slate-700 w-2/5">
-                                {specKey}
-                              </td>
-                              <td className="px-4 py-2.5 text-slate-800 font-medium">
-                                {specVal}
-                              </td>
-                            </tr>
-                          )
-                        )}
+                        {Object.entries(product.specsTable).map(([specKey, specVal], idx) => (
+                          <tr key={idx} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
+                            <td className="px-4 py-2.5 font-bold text-slate-700 w-1/3">
+                              {specKey}
+                            </td>
+                            <td className="px-4 py-2.5 text-slate-600">
+                              {specVal}
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
                 </div>
-              ) : (
-                <div className="overflow-hidden border border-slate-200 rounded-md shadow-2xs">
-                  <table className="min-w-full text-xs divide-y divide-slate-200">
-                    <tbody className="divide-y divide-slate-100 bg-white">
-                      {Object.entries(product.specsTable).map(([specKey, specVal], idx) => (
-                        <tr key={idx} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
-                          <td className="px-4 py-2.5 font-bold text-slate-700 w-1/3">
-                            {specKey}
-                          </td>
-                          <td className="px-4 py-2.5 text-slate-600">
-                            {specVal}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
 
-            {/* Key Features & Benefits (5 cols) */}
-            <div className="lg:col-span-5 space-y-4">
-              <h3 className="text-xl font-extrabold text-[#0d2857] border-b border-slate-200 pb-2">
-                Key Features & Benefits
-              </h3>
+                {/* Key Features & Benefits (5 cols) */}
+                <div className="lg:col-span-5 space-y-4">
+                  <h3 className="text-xl font-extrabold text-[#0d2857] border-b border-slate-200 pb-2">
+                    Key Features & Benefits
+                  </h3>
 
-              <div className="space-y-3">
-                {product.keyFeatures.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 rounded-md bg-slate-50 border border-slate-200">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-xs font-bold text-[#0d2857]">
-                        {feat.title}
-                      </h4>
-                      <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
-                        {feat.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Full Side-by-Side Comparison Matrix for Sluice Valve Variants */}
-          {product.variants && (
-            <div className="mt-8 pt-6 border-t border-slate-200">
-              <div className="mb-4">
-                <span className="text-[10px] font-bold text-[#f37021] uppercase tracking-wider block">
-                  Complete Technical Matrix
-                </span>
-                <h3 className="text-xl font-extrabold text-[#0d2857]">
-                  Sluice Valve Specifications Matrix
-                </h3>
-                <p className="text-xs text-slate-500 mt-1">
-                  Side-by-side technical parameters across Metal Seated (Non-Rising Stem & Rising Stem) and Resilient Seated Sluice Valves.
-                </p>
-              </div>
-
-              <div className="overflow-x-auto border border-slate-200 rounded-md shadow-2xs">
-                <table className="min-w-full text-xs divide-y divide-slate-200">
-                  <thead>
-                    <tr className="bg-slate-100">
-                      <th className="px-4 py-3 text-left font-extrabold text-[#0d2857] w-1/4">
-                        Specification Parameter
-                      </th>
-                      {product.variants.map((v) => (
-                        <th
-                          key={v.id}
-                          className="px-4 py-3 text-left font-extrabold text-[#0d2857] w-1/4"
-                        >
-                          <span className="block">{v.name}</span>
-                          <span className="text-[10px] font-bold text-[#f37021] block">
-                            {v.category}
-                          </span>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 bg-white">
-                    {[
-                      "SIZE RANGE",
-                      "PRESSURE RATING",
-                      "DESIGN STANDARD",
-                      "TESTING STANDARD",
-                      "FLANGE STANDARD",
-                      "MATERIAL",
-                      "ACCESSORIES",
-                    ].map((param, pIdx) => (
-                      <tr
-                        key={pIdx}
-                        className={pIdx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}
-                      >
-                        <td className="px-4 py-3 font-bold text-slate-700 bg-slate-50/75">
-                          {param}
-                        </td>
-                        {product.variants.map((v) => (
-                          <td
-                            key={v.id}
-                            className="px-4 py-3 text-slate-800 font-medium leading-relaxed"
-                          >
-                            {v.specs[param]}
-                          </td>
-                        ))}
-                      </tr>
+                  <div className="space-y-3">
+                    {product.keyFeatures.map((feat, idx) => (
+                      <div key={idx} className="flex items-start gap-3 p-3 rounded-md bg-slate-50 border border-slate-200">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="text-xs font-bold text-[#0d2857]">
+                            {feat.title}
+                          </h4>
+                          <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
+                            {feat.desc}
+                          </p>
+                        </div>
+                      </div>
                     ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* 3. APPLICATIONS / INDUSTRIES SERVED + PHOTO */}
-      <section className="py-5 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left 8 cols: Applications */}
-            <div className="lg:col-span-8 space-y-4">
-              <h3 className="text-xl font-extrabold text-[#0d2857]">
-                Applications / Industries Served
-              </h3>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {product.applications.map((app, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white p-3 rounded-md border border-slate-200 shadow-2xs flex flex-col items-center text-center group hover:border-blue-400 transition-colors"
-                  >
-                    <div className="p-2 rounded-lg bg-blue-50 group-hover:scale-110 transition-transform mb-2">
-                      {applicationIcons[idx % applicationIcons.length]}
-                    </div>
-                    <span className="text-[11px] font-bold text-slate-700">
-                      {app}
-                    </span>
                   </div>
-                ))}
+                </div>
+
               </div>
             </div>
+          </section>
+        </>
+      )}
 
-            {/* Right 4 cols: Plant Photo */}
-            <div className="lg:col-span-4 relative rounded-md overflow-hidden shadow-sm border border-slate-200 group">
-              <ResponsiveImage
-                src="/images/infra/projects/industrial-valve-installation.webp"
-                alt="Industrial Piping Applications"
-                className="w-full h-48 sm:h-52 object-cover group-hover:scale-103 transition-transform duration-300"
-              />
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 to-transparent p-3 text-white">
-                <span className="text-[10px] font-bold text-amber-400 tracking-wider uppercase block">
-                  ENGINEERED FOR A CLEANER
-                </span>
-                <span className="text-xs font-extrabold block">
-                  SAFER TOMORROW
-                </span>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. MATERIALS & STANDARDS SUMMARY */}
-      <section className="py-5 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <h3 className="text-xl font-extrabold text-[#0d2857] mb-6">
-            Materials & Standards
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <div className="bg-slate-50 p-5 rounded-md border border-slate-200 space-y-2">
-              <h4 className="text-sm font-bold text-[#0d2857] border-b border-slate-200 pb-2">
-                Materials of Construction
-              </h4>
-              <ul className="text-xs text-slate-600 space-y-1 pt-1">
-                <li><strong className="text-slate-800">Body:</strong> {product.materials.body}</li>
-                <li><strong className="text-slate-800">Disc/Wedge:</strong> {product.materials.disc}</li>
-                <li><strong className="text-slate-800">Seat:</strong> {product.materials.seat}</li>
-                <li><strong className="text-slate-800">Shaft/Stem:</strong> {product.materials.shaft}</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-md border border-slate-200 space-y-2">
-              <h4 className="text-sm font-bold text-[#0d2857] border-b border-slate-200 pb-2">
-                Manufacturing Standards
-              </h4>
-              <ul className="text-xs text-slate-600 space-y-1 pt-1">
-                <li><strong className="text-slate-800">Design:</strong> {product.standards.design}</li>
-                <li><strong className="text-slate-800">Face to Face:</strong> {product.standards.faceToFace}</li>
-                <li><strong className="text-slate-800">End Connection:</strong> {product.standards.endConnection}</li>
-                <li><strong className="text-slate-800">Pressure Testing:</strong> {product.standards.testing}</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-md border border-slate-200 space-y-2">
-              <h4 className="text-sm font-bold text-[#0d2857] border-b border-slate-200 pb-2">
-                Pressure & Temperature
-              </h4>
-              <ul className="text-xs text-slate-600 space-y-1 pt-1">
-                <li><strong className="text-slate-800">Pressure Rating:</strong> {product.quickSpecs.pressureRating}</li>
-                <li><strong className="text-slate-800">Temperature Range:</strong> {product.quickSpecs.temperatureRange}</li>
-                <li><strong className="text-slate-800">Inspection:</strong> 100% Hydrostatic & Pneumatic Witness</li>
-                <li><strong className="text-slate-800">Testing Media:</strong> Water & Air per API 598</li>
-              </ul>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
 
       {/* 5. RELATED PRODUCTS */}
       <section className="py-5 bg-slate-50 border-t border-slate-200">
@@ -540,21 +401,27 @@ export default function ProductDetail() {
       </section>
 
       {/* ZOOM MODAL */}
-      {zoomOpen && (
+      {(zoomOpen || Boolean(zoomModalImage)) && (
         <div
-          onClick={() => setZoomOpen(false)}
+          onClick={() => {
+            setZoomOpen(false)
+            setZoomModalImage(null)
+          }}
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 cursor-zoom-out"
         >
           <div className="relative max-w-3xl w-full bg-white rounded-md p-6 flex flex-col items-center">
             <button
               aria-label="Close product image"
-              onClick={() => setZoomOpen(false)}
+              onClick={() => {
+                setZoomOpen(false)
+                setZoomModalImage(null)
+              }}
               className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-2 rounded-lg bg-slate-100 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
             <ResponsiveImage
-              src={selectedImage}
+              src={zoomModalImage || selectedImage}
               alt={product.fullName}
               className="max-h-[70vh] max-w-full object-contain"
             />
