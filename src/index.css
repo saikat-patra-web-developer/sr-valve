@@ -1014,3 +1014,115 @@ img { max-width: 100%; }
  .page-certifications>section:nth-of-type(2) .md\:grid-cols-2>div>div:last-child>span { font-size:7.5px; line-height:1.3; }
  .page-certifications>section:nth-of-type(2) .md\:grid-cols-2>div>div:last-child>a { font-size:8.5px; }
 }
+
+@media(max-width:639px) {
+ /* Complete individual product-view layout for mobile. */
+ .page-detail>.product-banner { background-image:linear-gradient(90deg,rgba(3,42,83,.96),rgba(1,69,124,.75)),url('/images/hero/valve-range-wide.webp'); background-size:cover; background-position:center; }
+ .page-detail>.product-banner>div { padding:18px; }
+ .page-detail>.product-banner h2 { font-size:24px; line-height:1; }
+ .page-detail>.product-banner p { margin-top:4px; font-size:10px; }
+ .page-detail>section { padding-block:18px; }
+ .page-detail>section>.max-w-7xl { padding-inline:18px; }
+
+ .page-detail>section:nth-of-type(1) { padding-top:12px; background:#fff; }
+ .page-detail .product-breadcrumb { display:flex; gap:5px; max-width:100%; margin-bottom:12px; padding-bottom:8px; overflow-x:auto; white-space:nowrap; font-size:8px; scrollbar-width:none; }
+ .page-detail .product-breadcrumb::-webkit-scrollbar { display:none; }
+ .page-detail .product-breadcrumb-current { padding-right:4px; }
+ .page-detail>section:nth-of-type(1) .max-w-7xl>.grid { gap:15px; }
+ .page-detail .product-gallery .flex.flex-col-reverse { gap:8px; }
+ .page-detail .product-gallery .min-h-\[340px\] { min-height:220px; height:220px; padding:8px; border:0; border-radius:7px; background:#f7faff; }
+ .page-detail .product-gallery .min-h-\[340px\] img { width:100%; height:175px; max-height:175px; }
+ .page-detail .product-gallery .min-h-\[340px\]>button { position:absolute; right:8px; bottom:8px; margin:0; padding:5px 8px; font-size:8px; background:#fff; }
+ .page-detail .product-gallery .min-h-\[340px\]>button svg { width:11px; height:11px; }
+ .page-detail .product-gallery .flex-row.sm\:flex-col { gap:6px; }
+ .page-detail .product-gallery .flex-row.sm\:flex-col>button { width:46px; height:46px; padding:3px; border-width:1px; border-radius:6px; }
+
+ .page-detail>section:nth-of-type(1) .lg\:col-span-6.space-y-4 { display:grid; gap:8px; }
+ .page-detail>section:nth-of-type(1) .lg\:col-span-6.space-y-4>div:first-child>span { font-size:8px; }
+ .page-detail .product-title { margin-top:2px; font-size:24px; line-height:1.02; }
+ .page-detail .product-title+p { margin-top:4px; font-size:10px; }
+ .page-detail>section:nth-of-type(1) .lg\:col-span-6.space-y-4>p { font-size:9px; line-height:1.4; }
+ .page-detail>section:nth-of-type(1) .grid.grid-cols-2.gap-2\.5 { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+ .page-detail>section:nth-of-type(1) .grid.grid-cols-2.gap-2\.5>div { padding:8px; border:0; border-radius:6px; background:#f3f8ff; }
+ .page-detail>section:nth-of-type(1) .grid.grid-cols-2.gap-2\.5 span:first-child { font-size:9px; }
+ .page-detail>section:nth-of-type(1) .grid.grid-cols-2.gap-2\.5 span:last-child { font-size:8px; }
+ .page-detail>section:nth-of-type(1) .mt-10.grid.grid-cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; margin-top:15px; padding-top:12px; }
+ .page-detail>section:nth-of-type(1) .mt-10.grid.grid-cols-2>div { min-height:58px; padding:8px 5px; border:0; border-radius:6px; background:#f6f9fd; }
+ .page-detail>section:nth-of-type(1) .mt-10.grid.grid-cols-2 span:first-child { font-size:7px; }
+ .page-detail>section:nth-of-type(1) .mt-10.grid.grid-cols-2 span:last-child { font-size:9px; line-height:1.15; }
+
+ .page-detail>section:nth-of-type(2) .max-w-7xl>.grid { gap:18px; }
+ .page-detail>section:nth-of-type(2) h3 { margin-bottom:10px; padding-bottom:7px; font-size:19px; }
+ .page-detail>section:nth-of-type(2) table { table-layout:fixed; }
+ .page-detail>section:nth-of-type(2) table td { padding:7px 8px; font-size:9px; line-height:1.3; overflow-wrap:anywhere; }
+ .page-detail>section:nth-of-type(2) table td:first-child { width:36%; }
+ .page-detail>section:nth-of-type(2) .lg\:col-span-5 .space-y-3 { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+ .page-detail>section:nth-of-type(2) .lg\:col-span-5 .space-y-3>div { display:grid; grid-template-columns:14px minmax(0,1fr); gap:5px; margin:0; padding:8px; border:0; border-radius:6px; background:#f5f9fe; }
+ .page-detail>section:nth-of-type(2) .lg\:col-span-5 svg { width:11px; height:11px; }
+ .page-detail>section:nth-of-type(2) .lg\:col-span-5 h4 { font-size:9px; line-height:1.15; }
+ .page-detail>section:nth-of-type(2) .lg\:col-span-5 p { font-size:7.5px; line-height:1.25; }
+
+ .page-detail>section:nth-of-type(3) { border:0; background:linear-gradient(135deg,#f1f7ff,#fff); }
+ .page-detail>section:nth-of-type(3) .max-w-7xl>.grid { grid-template-columns:minmax(0,1.35fr) minmax(105px,.65fr); gap:10px; align-items:start; }
+ .page-detail>section:nth-of-type(3) h3 { font-size:19px; line-height:1.05; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-8>.grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-8>.grid>div { display:grid; grid-template-columns:26px minmax(0,1fr); align-items:center; gap:5px; min-height:45px; padding:6px; border:0; border-radius:6px; text-align:left; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-8>.grid>div>div { width:25px; height:25px; display:grid; place-items:center; margin:0; padding:0; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-8>.grid svg { width:13px; height:13px; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-8>.grid span { font-size:7.5px; line-height:1.15; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-4 { min-height:170px; border:0; border-radius:7px; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-4 img { height:170px; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-4>div span:first-child { font-size:7px; }
+ .page-detail>section:nth-of-type(3) .lg\:col-span-4>div span:last-child { font-size:9px; }
+
+ .page-detail>section:nth-of-type(4) h3 { margin-bottom:12px; font-size:19px; }
+ .page-detail>section:nth-of-type(4) .md\:grid-cols-3 { gap:8px; }
+ .page-detail>section:nth-of-type(4) .md\:grid-cols-3>div { padding:11px; border:0; border-radius:7px; background:#f5f9fe; }
+ .page-detail>section:nth-of-type(4) .md\:grid-cols-3 h4 { padding-bottom:6px; font-size:10px; }
+ .page-detail>section:nth-of-type(4) .md\:grid-cols-3 ul { display:grid; grid-template-columns:1fr 1fr; gap:4px 8px; font-size:8px; line-height:1.25; }
+
+ .page-detail>section:nth-of-type(5) { border:0; background:#f5f9fe; }
+ .page-detail>section:nth-of-type(5) .max-w-7xl>div:first-child { margin-bottom:12px; padding-bottom:8px; }
+ .page-detail>section:nth-of-type(5) h3 { font-size:19px; }
+ .page-detail>section:nth-of-type(5) .max-w-7xl>div:first-child a { font-size:8px; }
+ .page-detail>section:nth-of-type(5) .lg\:grid-cols-6 { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+ .page-detail>section:nth-of-type(5) .lg\:grid-cols-6>a { padding:8px; border:0; border-radius:7px; }
+ .page-detail>section:nth-of-type(5) .lg\:grid-cols-6 .h-28 { height:92px; }
+ .page-detail>section:nth-of-type(5) .lg\:grid-cols-6 .max-h-24 { max-height:82px; }
+ .page-detail>section:nth-of-type(5) .lg\:grid-cols-6 h4 { font-size:9px; }
+ .page-detail>section:nth-of-type(5) .lg\:grid-cols-6 span { font-size:8px; }
+
+ .page-detail>section:nth-of-type(6) { padding-block:18px; background-image:linear-gradient(90deg,rgba(4,45,91,.97),rgba(1,70,126,.82)),url('/images/hero/valve-range-wide.webp'); background-size:cover; background-position:center; }
+ .page-detail>section:nth-of-type(6) h3 { font-size:20px; }
+ .page-detail>section:nth-of-type(6) p { max-width:300px; font-size:9px; }
+ .page-detail>section:nth-of-type(6) .gap-6 { gap:10px; }
+ .page-detail>section:nth-of-type(6) a { padding:9px 14px; border-radius:4px; font-size:9px; }
+
+ .page-detail .fixed.inset-0>.max-w-3xl { padding:12px; }
+ .page-detail .fixed.inset-0>.max-w-3xl>button { top:8px; right:8px; }
+}
+
+@media(max-width:639px) {
+ /* Shared mobile footer used consistently across every page. */
+ .site-footer { background:linear-gradient(145deg,#062b50 0%,#073b64 58%,#052844 100%); }
+ .site-footer .footer-grid { display:grid !important; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr) !important; gap:18px 16px; padding:22px 18px 18px; }
+ .site-footer .footer-grid>* { min-width:0; }
+ .site-footer .footer-brand { grid-column:1/-1; padding-bottom:15px; border-bottom:1px solid rgba(255,255,255,.13); }
+ .site-footer .footer-brand img { width:108px; height:48px; border-radius:4px; }
+ .site-footer .footer-brand strong { margin-top:8px; color:#fff; font-size:12px; line-height:1.2; }
+ .site-footer .footer-brand p { max-width:315px; margin-top:5px; color:#c8d9e8; font-size:9px; line-height:1.4; }
+ .site-footer .footer-certification,.site-footer .footer-kicker,.site-footer .footer-india { display:none; }
+ .site-footer .footer-links,.site-footer .footer-contact { display:block; min-width:0; }
+ .site-footer .footer-grid>div+div { padding:0; border:0; }
+ .site-footer .footer-grid h4 { margin-bottom:9px; color:#ff8a18; font-size:11px; }
+ .site-footer .footer-link-list { display:grid; gap:4px; }
+ .site-footer .footer-links a { display:flex; align-items:center; justify-content:space-between; min-height:22px; color:#dce8f3; font-size:9px; line-height:1.2; }
+ .site-footer .footer-links a svg { display:none; }
+ .site-footer .footer-contact>div,.site-footer .footer-contact>a { display:grid; grid-template-columns:13px minmax(0,1fr); align-items:start; gap:6px; margin-bottom:8px; color:#dce8f3; font-size:8px; line-height:1.3; }
+ .site-footer .footer-contact svg { width:11px; height:11px; margin-top:1px; color:#ff9a32; }
+ .site-footer .footer-contact p,.site-footer .footer-contact span { min-width:0; overflow-wrap:anywhere; }
+ .site-footer .footer-bottom { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px; padding:11px 18px; border-color:rgba(255,255,255,.13); text-align:center; font-size:8px; line-height:1.35; }
+ .site-footer .footer-bottom>p { max-width:100%; }
+ .site-footer .footer-bottom-right { flex:0 0 auto; text-align:center; }
+ .site-footer .footer-bottom a { color:#ffad5c; }
+}
