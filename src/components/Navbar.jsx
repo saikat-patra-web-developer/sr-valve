@@ -103,6 +103,20 @@ const productNavHierarchy = [
   },
 ]
 
+const whyUsNavLinks = [
+  { name: 'In-House Manufacturing', path: '/why-us/in-house-manufacturing' },
+  { name: 'In-House Testing Facility', path: '/why-us/in-house-testing-facility' },
+  { name: 'Certifications', path: '/why-us/certifications' },
+  { name: 'Customer Support', path: '/why-us/customer-support' },
+  { name: 'On-Time Delivery', path: '/why-us/on-time-delivery' },
+]
+
+const experienceNavLinks = [
+  { name: 'Water Supply Project', path: '/experience/water-supply-project' },
+  { name: 'Waste Water Project', path: '/experience/waste-water-project' },
+  { name: 'Irrigation Projects', path: '/experience/irrigation-projects' },
+]
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -115,18 +129,32 @@ export default function Navbar() {
   const [mobileOpenCats, setMobileOpenCats] = useState({})
   const [mobileOpenSubCats, setMobileOpenSubCats] = useState({})
 
+  const [whyUsDropdownOpen, setWhyUsDropdownOpen] = useState(false)
+  const [mobileWhyUsOpen, setMobileWhyUsOpen] = useState(false)
+  const whyUsRef = useRef(null)
+
+  const [expDropdownOpen, setExpDropdownOpen] = useState(false)
+  const [mobileExpOpen, setMobileExpOpen] = useState(false)
+  const expRef = useRef(null)
+
   const navRef = useRef(null)
   const dropdownRef = useRef(null)
   const location = useLocation()
 
   const isProductActive = location.pathname.startsWith('/product')
+  const isWhyUsActive = location.pathname.startsWith('/why-us')
+  const isExpActive = location.pathname.startsWith('/experience')
 
   const closeAll = () => {
     setOpen(false)
     setDropdownOpen(false)
+    setWhyUsDropdownOpen(false)
+    setExpDropdownOpen(false)
     setActiveCategory(null)
     setActiveSubCategory(null)
     setMobileSubOpen(false)
+    setMobileWhyUsOpen(false)
+    setMobileExpOpen(false)
   }
 
   const toggleMobileCat = (catId, e) => {
@@ -207,6 +235,12 @@ export default function Navbar() {
         setDropdownOpen(false)
         setActiveCategory(null)
         setActiveSubCategory(null)
+      }
+      if (whyUsRef.current && !whyUsRef.current.contains(e.target)) {
+        setWhyUsDropdownOpen(false)
+      }
+      if (expRef.current && !expRef.current.contains(e.target)) {
+        setExpDropdownOpen(false)
       }
     }
     const handleResize = () => {
@@ -458,12 +492,181 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/why-us" onClick={closeAll}>
-            Why Us
-          </NavLink>
-          <NavLink to="/experience" onClick={closeAll}>
-            Experience
-          </NavLink>
+          {/* Why Us Dropdown with Submenu */}
+          <div
+            className={`nav-item-dropdown ${mobileWhyUsOpen ? 'mobile-open' : ''}`}
+            ref={whyUsRef}
+            onMouseEnter={() => setWhyUsDropdownOpen(true)}
+            onMouseLeave={() => setWhyUsDropdownOpen(false)}
+          >
+            <div className="nav-dropdown-trigger-row">
+              <NavLink
+                to="/why-us"
+                className={({ isActive }) => (isActive || isWhyUsActive ? 'active' : '')}
+                onClick={closeAll}
+              >
+                <span>Why Us</span>
+                <ChevronDown
+                  size={14}
+                  className={`nav-dropdown-chevron ${whyUsDropdownOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </NavLink>
+
+              <button
+                type="button"
+                className="mobile-sub-toggle"
+                aria-label={mobileWhyUsOpen ? 'Hide Why Us submenu' : 'Show Why Us submenu'}
+                aria-expanded={mobileWhyUsOpen}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setMobileWhyUsOpen(!mobileWhyUsOpen)
+                }}
+              >
+                <ChevronDown
+                  size={16}
+                  className={`mobile-sub-chevron ${mobileWhyUsOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+
+            {/* Desktop Dropdown Menu */}
+            <div
+              className={`nav-dropdown-menu ${whyUsDropdownOpen ? 'open' : ''}`}
+              role="menu"
+              aria-label="Why Us Submenu"
+            >
+              <div className="nav-dropdown-header">
+                <span className="nav-dropdown-eyebrow">WHY CHOOSE US</span>
+              </div>
+              <div className="nav-dropdown-items">
+                {whyUsNavLinks.map((item) => (
+                  <div key={item.path} className="nav-dropdown-l2-wrapper">
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `nav-dropdown-l2-row ${isActive ? 'active' : ''}`
+                      }
+                      onClick={closeAll}
+                    >
+                      <span className="nav-l2-name">{item.name}</span>
+                    </NavLink>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile / Tablet Accordion Submenu */}
+            {mobileWhyUsOpen && (
+              <div className="mobile-submenu-panel">
+                {whyUsNavLinks.map((item) => (
+                  <div key={item.path} className="mobile-l1-item">
+                    <div className="mobile-l1-header">
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `mobile-l1-link ${isActive ? 'active' : ''}`
+                        }
+                        onClick={closeAll}
+                      >
+                        {item.name}
+                      </NavLink>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Experience Dropdown with Submenu */}
+          <div
+            className={`nav-item-dropdown ${mobileExpOpen ? 'mobile-open' : ''}`}
+            ref={expRef}
+            onMouseEnter={() => setExpDropdownOpen(true)}
+            onMouseLeave={() => setExpDropdownOpen(false)}
+          >
+            <div className="nav-dropdown-trigger-row">
+              <NavLink
+                to="/experience"
+                className={({ isActive }) => (isActive || isExpActive ? 'active' : '')}
+                onClick={closeAll}
+              >
+                <span>Experience</span>
+                <ChevronDown
+                  size={14}
+                  className={`nav-dropdown-chevron ${expDropdownOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </NavLink>
+
+              <button
+                type="button"
+                className="mobile-sub-toggle"
+                aria-label={mobileExpOpen ? 'Hide Experience submenu' : 'Show Experience submenu'}
+                aria-expanded={mobileExpOpen}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setMobileExpOpen(!mobileExpOpen)
+                }}
+              >
+                <ChevronDown
+                  size={16}
+                  className={`mobile-sub-chevron ${mobileExpOpen ? 'rotate' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+
+            {/* Desktop Dropdown Menu */}
+            <div
+              className={`nav-dropdown-menu ${expDropdownOpen ? 'open' : ''}`}
+              role="menu"
+              aria-label="Experience Submenu"
+            >
+              <div className="nav-dropdown-header">
+                <span className="nav-dropdown-eyebrow">OUR EXPERIENCE</span>
+              </div>
+              <div className="nav-dropdown-items">
+                {experienceNavLinks.map((item) => (
+                  <div key={item.path} className="nav-dropdown-l2-wrapper">
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `nav-dropdown-l2-row ${isActive ? 'active' : ''}`
+                      }
+                      onClick={closeAll}
+                    >
+                      <span className="nav-l2-name">{item.name}</span>
+                    </NavLink>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile / Tablet Accordion Submenu */}
+            {mobileExpOpen && (
+              <div className="mobile-submenu-panel">
+                {experienceNavLinks.map((item) => (
+                  <div key={item.path} className="mobile-l1-item">
+                    <div className="mobile-l1-header">
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `mobile-l1-link ${isActive ? 'active' : ''}`
+                        }
+                        onClick={closeAll}
+                      >
+                        {item.name}
+                      </NavLink>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <NavLink to="/clients" onClick={closeAll}>
             Clients
           </NavLink>
