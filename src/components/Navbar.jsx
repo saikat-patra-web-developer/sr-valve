@@ -171,6 +171,16 @@ export default function Navbar() {
     }
   }
 
+  const closeOtherDesktopMenus = (keep) => {
+    if (!window.matchMedia('(min-width: 1101px)').matches) return
+    if (keep !== 'products') {
+      setDropdownOpen(false)
+      setActiveCategory(null)
+    }
+    if (keep !== 'why-us') setWhyUsDropdownOpen(false)
+    if (keep !== 'experience') setExpDropdownOpen(false)
+  }
+
   const handleParentNavClick = (e, menu) => {
     e.preventDefault()
     e.stopPropagation()
@@ -270,6 +280,7 @@ export default function Navbar() {
             end
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
+            onMouseEnter={() => closeOtherDesktopMenus()}
           >
             Home
           </NavLink>
@@ -277,6 +288,7 @@ export default function Navbar() {
             to="/about"
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
+            onMouseEnter={() => closeOtherDesktopMenus()}
           >
             About Us
           </NavLink>
@@ -285,6 +297,10 @@ export default function Navbar() {
           <div
             className={`nav-item-dropdown ${mobileSubOpen ? 'mobile-open' : ''}`}
             ref={dropdownRef}
+            onMouseEnter={() => closeOtherDesktopMenus('products')}
+            onMouseLeave={() => {
+              if (!dropdownOpen) setActiveCategory(null)
+            }}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
@@ -320,6 +336,9 @@ export default function Navbar() {
                     <div
                       key={cat.id}
                       className={`nav-dropdown-l2-wrapper ${isCatHovered ? 'active-hover' : ''}`}
+                      onMouseEnter={() => {
+                        if (window.matchMedia('(min-width: 1101px)').matches) setActiveCategory(cat.id)
+                      }}
                     >
                       <NavLink
                         to={cat.path}
@@ -423,6 +442,7 @@ export default function Navbar() {
           <div
             className={`nav-item-dropdown ${mobileWhyUsOpen ? 'mobile-open' : ''}`}
             ref={whyUsRef}
+            onMouseEnter={() => closeOtherDesktopMenus('why-us')}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
@@ -493,6 +513,7 @@ export default function Navbar() {
           <div
             className={`nav-item-dropdown ${mobileExpOpen ? 'mobile-open' : ''}`}
             ref={expRef}
+            onMouseEnter={() => closeOtherDesktopMenus('experience')}
           >
             <div className="nav-dropdown-trigger-row">
               <NavLink
@@ -562,6 +583,7 @@ export default function Navbar() {
             to="/clients"
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
+            onMouseEnter={() => closeOtherDesktopMenus()}
           >
             Clients
           </NavLink>
@@ -569,6 +591,7 @@ export default function Navbar() {
             to="/contact"
             className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
             onClick={closeAll}
+            onMouseEnter={() => closeOtherDesktopMenus()}
           >
             <span>Contact</span>
           </NavLink>
