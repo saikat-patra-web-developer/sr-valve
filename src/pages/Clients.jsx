@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import PageHero from '../components/PageHero'
+import ClientsSection from '../components/ClientsSection'
 
 export default function Clients() {
   useEffect(() => {
@@ -11,12 +12,8 @@ export default function Clients() {
       {/* 1. HERO BANNER */}
       <PageHero type="clients" />
 
-      {/* 2. BLANK CONTENT SECTION */}
-      <section className="py-20 bg-white min-h-[400px] flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
-          <p className="text-base font-medium">Clients content coming soon.</p>
-        </div>
-      </section>
+      {/* 2. TRUSTED BY LEADING ORGANIZATIONS */}
+      <ClientsSection subtitle="POWERING NATION BUILDING TOGETHER" />
     </div>
   )
 }
