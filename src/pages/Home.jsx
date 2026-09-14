@@ -40,6 +40,14 @@ export default function Home() {
     },
   ]
 
+  const mobileWhyChooseItems = [
+    { icon: <Wrench />, title: 'Quality Manufacturing', desc: 'Compliant with international standards.' },
+    { icon: <CheckCircle2 />, title: 'Innovative Design', desc: 'Valves engineered for reliability.' },
+    { icon: <ShieldCheck />, title: 'Global Presence', desc: 'Trusted by clients in multiple countries.' },
+    { icon: <Headphones />, title: 'Customer Support', desc: 'Dedicated support for your needs.' },
+    { icon: <Clock />, title: 'Cost-Effective', desc: 'High performance at competitive pricing.' },
+  ]
+
   return (
     <div className="site-page page-home">
       
@@ -95,7 +103,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="why-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="why-grid desktop-why-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {whyChooseItems.map((item, idx) => (
               <div
                 key={idx}
@@ -112,6 +120,15 @@ export default function Home() {
                     {item.desc}
                   </p>
                 </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mobile-why-grid" aria-label="Why choose SSPR Valve">
+            {mobileWhyChooseItems.map((item) => (
+              <div key={item.title}>
+                <span>{item.icon}</span>
+                <div><h4>{item.title}</h4><p>{item.desc}</p></div>
               </div>
             ))}
           </div>
