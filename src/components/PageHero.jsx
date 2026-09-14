@@ -18,7 +18,14 @@ const copy = {
   contact: { crumb: 'Contact Us', eyebrow: 'LET’S BUILD A STRONGER TOMORROW TOGETHER', title: <>Contact <em>Us</em></>, description: 'We are here to assist you with your project enquiries, product requirements and technical discussions.', image: 'contact-wide.webp' },
   certifications: { crumb: 'Certifications', eyebrow: 'QUALITY & CERTIFICATIONS', title: <>Committed to<br /><em>Global Standards</em></>, description: 'ISO 9001 certification through June 2027, with ISO 14001:2015 and ISO 45001:2018 certifications valid through April 2028.', image: 'factory-hero-wide.webp' },
   whyUs: { crumb: 'Why Us', eyebrow: 'WHY CHOOSE SSPR VALVE', title: <>Why <em>Us</em></>, description: 'Committed to engineering excellence, rigorous quality standards, and customer-centric industrial solutions.', image: 'factory-hero-wide.webp' },
+  inHouseManufacturing: { parent: { name: 'Why Us', path: '/why-us' }, crumb: 'In-House Manufacturing', eyebrow: 'MODERN FOUNDRY & MACHINING', title: <>In-House <em>Manufacturing</em></>, description: 'Precision CNC machining, advanced foundry tooling, and heavy valve fabrication at our Howrah facility.', image: 'factory-hero-wide.webp' },
+  inHouseTestingFacility: { parent: { name: 'Why Us', path: '/why-us' }, crumb: 'In-House Testing Facility', eyebrow: 'COMPREHENSIVE TESTING & INSPECTION', title: <>In-House <em>Testing Facility</em></>, description: 'High-pressure hydrostatic, pneumatic, shell, and seat testing benches ensuring 100% zero-leakage performance.', image: 'factory-hero-wide.webp' },
+  customerSupport: { parent: { name: 'Why Us', path: '/why-us' }, crumb: 'Customer Support', eyebrow: 'TECHNICAL SUPPORT & SERVICE', title: <>Customer <em>Support</em></>, description: 'Dedicated engineering support, technical documentation, tender assistance, and after-sales field service.', image: 'factory-hero-wide.webp' },
+  onTimeDelivery: { parent: { name: 'Why Us', path: '/why-us' }, crumb: 'On-Time Delivery', eyebrow: 'RELIABLE SUPPLY CHAIN & LOGISTICS', title: <>On-Time <em>Delivery</em></>, description: 'Disciplined project scheduling, robust inventory planning, and dependable nationwide dispatch.', image: 'factory-hero-wide.webp' },
   experience: { crumb: 'Experience', eyebrow: 'EXPERIENCE & CAPABILITIES', title: <>Our <em>Experience</em></>, description: 'Proven track record of engineering precision, reliability, and excellence across mission-critical projects.', image: 'factory-hero-wide.webp' },
+  waterSupplyProject: { parent: { name: 'Experience', path: '/experience' }, crumb: 'Water Supply Projects', eyebrow: 'DRINKING WATER & MUNICIPAL INFRASTRUCTURE', title: <>Water Supply <em>Projects</em></>, description: 'Supplying heavy-duty sluice, butterfly, and air valves for major urban and rural water supply schemes across India.', image: 'factory-hero-wide.webp' },
+  wasteWaterProject: { parent: { name: 'Experience', path: '/experience' }, crumb: 'Waste Water Projects', eyebrow: 'SEWAGE & EFFLUENT TREATMENT INFRASTRUCTURE', title: <>Waste Water <em>Projects</em></>, description: 'Corrosion-resistant valves and penstocks engineered for sewage treatment plants and effluent processing networks.', image: 'factory-hero-wide.webp' },
+  irrigationProjects: { parent: { name: 'Experience', path: '/experience' }, crumb: 'Irrigation Projects', eyebrow: 'CANAL & IRRIGATION WATER MANAGEMENT', title: <>Irrigation <em>Projects</em></>, description: 'High-capacity flow-control valves for lift irrigation schemes, dams, barrages, and distribution canals.', image: 'factory-hero-wide.webp' },
   clients: { crumb: 'Clients', eyebrow: 'OUR VALUED PARTNERS', title: <>Our <em>Clients</em></>, description: 'Trusted by government authorities, municipal corporations, and major industrial enterprises nationwide.', image: 'factory-hero-wide.webp' },
   notFound: { crumb: 'Page Not Found', eyebrow: 'ERROR 404  |  PAGE NOT FOUND', title: <>Page <em>Not Found</em></>, subtitle: '404 Error — We could not find the page you are looking for.', description: 'The page you requested may have been moved, renamed, or is temporarily unavailable. Browse our industrial valve products or return to the home page.', image: 'valve-range-wide.webp' },
 }
@@ -46,11 +53,11 @@ export default function PageHero({ type }) {
           src={slide.image}
           sizes="100vw"
           alt={slide.alt}
-          className={index === activeSlide ? 'hero-slide active' : 'hero-slide'}
+          className={`hero-slide${index === 1 ? ' hero-slide-panorama' : ''}${index === activeSlide ? ' active' : ''}`}
         />)}
       </div>}
       <div className="hero-inner"><div className="hero-copy">
-        {data.crumb && <div className="breadcrumb"><Link to="/">Home</Link><span>›</span>{data.crumb}</div>}
+        {data.crumb && <div className="breadcrumb"><Link to="/">Home</Link><span>›</span>{data.parent && <><Link to={data.parent.path}>{data.parent.name}</Link><span>›</span></>}{data.crumb}</div>}
         {type === 'home' && <span className="mobile-hero-eyebrow">Precision. Performance. Trust.</span>}
         {type !== 'home' && data.eyebrow && <span className="mobile-page-eyebrow">{data.eyebrow}</span>}
         <h1>{data.title}</h1>
