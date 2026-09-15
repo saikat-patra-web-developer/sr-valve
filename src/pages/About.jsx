@@ -13,7 +13,7 @@ export default function About() {
       <PageHero type="about" />
 
       {/* 2. ENGINEERING EXCELLENCE IN EVERY FLOW */}
-      <section className="py-5 bg-white">
+      <section className="about-intro-section py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
@@ -47,8 +47,8 @@ export default function About() {
             </div>
 
             {/* Modern overlapping office gallery (6 cols) */}
-            <div className="lg:col-span-6">
-              <div className="relative mx-auto h-[390px] max-w-[620px] sm:h-[470px] lg:h-[450px]">
+            <div className="about-office-gallery lg:col-span-6">
+              <div className="about-office-gallery-stage relative mx-auto h-[390px] max-w-[620px] sm:h-[470px] lg:h-[450px]">
                 <div className="absolute left-[3%] top-[6%] h-[58%] w-[70%] rounded-[2rem] bg-blue-50" aria-hidden="true" />
                 <div className="absolute bottom-[4%] right-[1%] h-[56%] w-[72%] rounded-[2rem] bg-orange-50" aria-hidden="true" />
 
