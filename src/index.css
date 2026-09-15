@@ -1636,6 +1636,36 @@ img { max-width: 100%; }
  .page-home .home-about-panel>.grid>div:nth-child(2) p:first-of-type { grid-column:1; grid-row:3; margin:0; }
  .page-home .home-about-panel>.grid>div:nth-child(2) .pt-2 { grid-column:1; grid-row:4; padding-top:2px; }
 
+ /* Keep the About intro readable and give its gallery a full-width mobile row. */
+ .page-about>.about-intro-section>.max-w-7xl>.grid {
+  grid-template-columns:minmax(0,1fr);
+  gap:22px;
+ }
+ .page-about>.about-intro-section>.max-w-7xl>.grid>div:first-child p:nth-of-type(2),
+ .page-about>.about-intro-section>.max-w-7xl>.grid>div:first-child p:nth-of-type(3) {
+  display:block;
+ }
+ .page-about>.about-intro-section .about-office-gallery {
+  min-height:0;
+  width:100%;
+ }
+ .page-about>.about-intro-section .about-office-gallery-stage {
+  height:320px;
+  width:100%;
+  max-width:430px;
+ }
+ .page-about>.about-intro-section .about-office-gallery-stage figure img {
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover;
+ }
+ .page-about>.about-intro-section .about-office-gallery-stage .absolute.bottom-0 {
+  padding:0;
+ }
+ .page-about>.about-intro-section .about-office-gallery-stage>div:last-child {
+  padding:7px 12px;
+ }
+
  /* Stack the director profile above the message instead of squeezing two columns. */
  .page-about .leadership-card>.grid { grid-template-columns:1fr; }
  .page-about .leadership-profile { display:grid; grid-template-columns:96px minmax(0,1fr); grid-template-rows:auto auto auto; column-gap:16px; align-items:center; padding:16px; text-align:left; }
