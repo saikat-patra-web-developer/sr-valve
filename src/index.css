@@ -1638,19 +1638,19 @@ img { max-width: 100%; }
 
  /* Keep the About intro readable and give its gallery a full-width mobile row. */
  .page-about>.about-intro-section>.max-w-7xl>.grid {
-  grid-template-columns:minmax(0,1fr);
-  gap:22px;
+  grid-template-columns:minmax(0,1fr) !important;
+  gap:24px;
  }
  .page-about>.about-intro-section>.max-w-7xl>.grid>div:first-child p:nth-of-type(2),
  .page-about>.about-intro-section>.max-w-7xl>.grid>div:first-child p:nth-of-type(3) {
-  display:block;
+  display:block !important;
  }
  .page-about>.about-intro-section .about-office-gallery {
   min-height:0;
   width:100%;
  }
  .page-about>.about-intro-section .about-office-gallery-stage {
-  height:320px;
+  height:340px;
   width:100%;
   max-width:430px;
  }
@@ -1658,9 +1658,6 @@ img { max-width: 100%; }
   width:100% !important;
   height:100% !important;
   object-fit:cover;
- }
- .page-about>.about-intro-section .about-office-gallery-stage .absolute.bottom-0 {
-  padding:0;
  }
  .page-about>.about-intro-section .about-office-gallery-stage>div:last-child {
   padding:7px 12px;
