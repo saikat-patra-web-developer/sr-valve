@@ -100,6 +100,7 @@ const experienceNavLinks = [
   { name: 'Water Supply Project', path: '/experience/water-supply-project' },
   { name: 'Waste Water Project', path: '/experience/waste-water-project' },
   { name: 'Irrigation Projects', path: '/experience/irrigation-projects' },
+  { name: 'Automation', path: '/experience/automation' },
 ]
 
 export default function Navbar() {

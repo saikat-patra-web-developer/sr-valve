@@ -22,6 +22,7 @@ import Experience from './pages/Experience'
 import WaterSupplyProject from './pages/WaterSupplyProject'
 import WasteWaterProject from './pages/WasteWaterProject'
 import IrrigationProjects from './pages/IrrigationProjects'
+import Automation from './pages/Automation'
 import Clients from './pages/Clients'
 import NotFound from './pages/NotFound'
 
@@ -165,6 +166,10 @@ export default function App() {
           <Route
             path="/experience/irrigation-projects"
             element={<IrrigationProjects />}
+          />
+          <Route
+            path="/experience/automation"
+            element={<Automation />}
           />
           <Route
             path="/clients"
