@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, PhoneCall } from 'lucide-react'
 import PageHero from './PageHero'
 
-export default function ProjectSectorPage({ heroType, eyebrow, title, highlight, introduction, image, imageAlt, badge, applications, products, benefits, gallery, ctaTitle, ctaText }) {
+export default function ProjectSectorPage({ heroType, eyebrow, title, highlight, introduction, image, imageAlt, badge, applications, products, benefits, gallery, ctaTitle, ctaText, children }) {
   return (
     <div className={`site-page page-${heroType}`}>
       <PageHero type={heroType} />
@@ -77,6 +77,7 @@ export default function ProjectSectorPage({ heroType, eyebrow, title, highlight,
           </div>
         </div>
       </section>
+      {children}
 
       <section className="bg-[#0d2857] text-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
