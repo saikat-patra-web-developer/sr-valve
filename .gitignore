@@ -26,3 +26,4 @@ dist-ssr
 # AI Assistant Context Files (Local only)
 AGENTS.md
 GEMINI.md
+.ignore
