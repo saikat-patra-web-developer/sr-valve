@@ -95,7 +95,7 @@ export default function About() {
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 With over 15 years of experience in the design and manufacture of valves and penstocks, and many satisfied customers across India, SSPR Valve—together with its overseas technology associates—looks forward with renewed vigour to working with discerning customers, consultants, contracting companies and organizations engaged in:
               </p>
-              <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <StaggerContainer as="ul" className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {[
                   'Treatment, pumping and pipeline conveyance of water',
                   'Irrigation pumping and distribution',
@@ -104,12 +104,12 @@ export default function About() {
                   'Sea water applications',
                   'Complete PHED (West Bengal) monitoring and control systems, including 24×7 water distribution',
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <StaggerItem as="li" key={item} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
                     <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
                     <span>{item}</span>
-                  </li>
+                  </StaggerItem>
                 ))}
-              </ul>
+              </StaggerContainer>
             </div>
           </FadeIn>
 

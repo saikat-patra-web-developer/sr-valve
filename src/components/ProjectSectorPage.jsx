@@ -17,9 +17,14 @@ export default function ProjectSectorPage({ heroType, eyebrow, title, highlight,
               <span className="text-[11px] font-bold text-[#f37021] tracking-[0.24em] uppercase">{eyebrow}</span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[#0d2857] leading-tight">{title} <span className="text-[#f37021]">{highlight}</span></h2>
               <p className="mt-5 text-sm sm:text-base text-slate-600 leading-7">{introduction}</p>
-              <div className="mt-6 grid sm:grid-cols-2 gap-3">
-                {benefits.map((benefit) => <div key={benefit} className="flex items-center gap-2 text-sm font-semibold text-slate-700"><CheckCircle2 className="w-4 h-4 text-[#f37021] shrink-0" />{benefit}</div>)}
-              </div>
+              <StaggerContainer className="mt-6 grid sm:grid-cols-2 gap-3">
+                {benefits.map((benefit) => (
+                  <StaggerItem key={benefit} as="div" className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-[#f37021] shrink-0" />
+                    <span>{benefit}</span>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
             </FadeIn>
             <FadeIn direction="left" delay={0.15} className="lg:col-span-7 relative">
               <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-slate-100">

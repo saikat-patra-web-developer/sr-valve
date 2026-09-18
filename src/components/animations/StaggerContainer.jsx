@@ -7,7 +7,8 @@ export function StaggerContainer({
   staggerDelay = 0.08,
   initialDelay = 0,
   className = '',
-  amount = 0.1,
+  amount = 0.05,
+  margin,
   once = true,
   as = 'div',
   ...props
@@ -40,7 +41,11 @@ export function StaggerContainer({
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount }}
+      viewport={{
+        once,
+        amount,
+        margin: margin || '0px 0px -25px 0px',
+      }}
       className={className}
       {...props}
     >
@@ -52,7 +57,7 @@ export function StaggerContainer({
 export function StaggerItem({
   children,
   className = '',
-  yOffset = 25,
+  yOffset = 22,
   duration = 0.5,
   hoverEffect = false,
   as = 'div',

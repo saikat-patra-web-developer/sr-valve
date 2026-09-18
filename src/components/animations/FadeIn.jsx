@@ -7,29 +7,33 @@ export default function FadeIn({
   direction = 'up',
   delay = 0,
   duration = 0.55,
-  distance = 30,
+  distance = 25,
   className = '',
   once = true,
-  amount = 0.15,
+  amount = 0.06,
+  margin,
   as = 'div',
   ...props
 }) {
   const shouldReduceMotion = useReducedMotion()
 
-  const getInitialPosition = () => {
-    if (shouldReduceMotion) return { x: 0, y: 0 }
+  const getInitialState = () => {
+    if (shouldReduceMotion) return { opacity: 1, x: 0, y: 0, scale: 1 }
     switch (direction) {
       case 'up':
-        return { y: distance, x: 0 }
+        return { opacity: 0, y: distance, x: 0, scale: 1 }
       case 'down':
-        return { y: -distance, x: 0 }
+        return { opacity: 0, y: -distance, x: 0, scale: 1 }
       case 'left':
-        return { x: distance, y: 0 }
+        return { opacity: 0, x: distance, y: 0, scale: 1 }
       case 'right':
-        return { x: -distance, y: 0 }
+        return { opacity: 0, x: -distance, y: 0, scale: 1 }
+      case 'scale':
+      case 'zoom':
+        return { opacity: 0, scale: 0.94, x: 0, y: 0 }
       case 'none':
       default:
-        return { x: 0, y: 0 }
+        return { opacity: 0, x: 0, y: 0, scale: 1 }
     }
   }
 
@@ -45,16 +49,18 @@ export default function FadeIn({
 
   return (
     <MotionComponent
-      initial={{
-        opacity: 0,
-        ...getInitialPosition(),
-      }}
+      initial={getInitialState()}
       whileInView={{
         opacity: 1,
         x: 0,
         y: 0,
+        scale: 1,
       }}
-      viewport={{ once, amount }}
+      viewport={{
+        once,
+        amount,
+        margin: margin || '0px 0px -30px 0px',
+      }}
       transition={{
         duration,
         delay,

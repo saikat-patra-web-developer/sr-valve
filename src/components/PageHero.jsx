@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Settings, ShieldCheck, Headphones, MapPin, Landmark, Users, Leaf, Award, Home as HomeIcon } from 'lucide-react'
-import { motion, useReducedMotion } from 'motion/react'
+import { ArrowRight, Settings, ShieldCheck, Headphones, MapPin, Landmark, Users, Leaf, Award, Home as HomeIcon, ChevronDown } from 'lucide-react'
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import ResponsiveImage from './ResponsiveImage'
 
 const homeSlides = [
@@ -58,6 +58,9 @@ export default function PageHero({ type, _onDownload }) {
   const data = copy[type]
   const [activeSlide, setActiveSlide] = useState(0)
   const shouldReduceMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  const parallaxY = useTransform(scrollY, [0, 500], [0, 60])
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.85])
 
   useEffect(() => {
     if (type !== 'home' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
@@ -68,10 +71,11 @@ export default function PageHero({ type, _onDownload }) {
   }, [type])
 
   return <>
-    <section className={`page-hero hero-${type}`} style={data.image ? { '--hero-image': `url('/images/hero/${data.image}')` } : undefined}>
+    <section className={`page-hero hero-${type} relative overflow-hidden`} style={data.image ? { '--hero-image': `url('/images/hero/${data.image}')` } : undefined}>
       {type === 'home' && (
         <motion.div
           className="hero-slider"
+          style={shouldReduceMotion ? undefined : { y: parallaxY }}
           initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.35, ease: easeCurve }}
@@ -87,7 +91,10 @@ export default function PageHero({ type, _onDownload }) {
           ))}
         </motion.div>
       )}
-      <div className="hero-inner">
+      <motion.div
+        className="hero-inner"
+        style={shouldReduceMotion ? undefined : { opacity: heroOpacity }}
+      >
         <div className="hero-copy">
           {data.crumb && (
             <motion.div
@@ -242,21 +249,41 @@ export default function PageHero({ type, _onDownload }) {
 
           {type === 'home' && <TrustBar />}
         </div>
-      </div>
+      </motion.div>
 
       {type === 'home' && (
-        <div className="hero-slider-controls" aria-label="Hero images">
-          {homeSlides.map((slide, index) => (
-            <button
-              key={slide.image}
-              type="button"
-              className={index === activeSlide ? 'active' : ''}
-              aria-label={`Show hero image ${index + 1}`}
-              aria-current={index === activeSlide ? 'true' : undefined}
-              onClick={() => setActiveSlide(index)}
-            />
-          ))}
-        </div>
+        <>
+          <div className="hero-slider-controls" aria-label="Hero images">
+            {homeSlides.map((slide, index) => (
+              <button
+                key={slide.image}
+                type="button"
+                className={index === activeSlide ? 'active' : ''}
+                aria-label={`Show hero image ${index + 1}`}
+                aria-current={index === activeSlide ? 'true' : undefined}
+                onClick={() => setActiveSlide(index)}
+              />
+            ))}
+          </div>
+
+          <motion.button
+            type="button"
+            onClick={() => window.scrollTo({ top: 580, behavior: 'smooth' })}
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-0.5 text-white/80 hover:text-white cursor-pointer transition-colors group select-none"
+            aria-label="Scroll to explore"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+          >
+            <span className="text-[10px] font-bold tracking-widest uppercase text-white/70 group-hover:text-white">Scroll</span>
+            <motion.div
+              animate={shouldReduceMotion ? undefined : { y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-4 h-4 text-[#f37021]" />
+            </motion.div>
+          </motion.button>
+        </>
       )}
     </section>
     {type === 'about' && <div className="about-trust"><TrustBar expanded /></div>}

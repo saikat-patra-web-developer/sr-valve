@@ -28,7 +28,7 @@ export default function AnimatedImage({
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.06, margin: '0px 0px -30px 0px' }}
         whileHover={hoverScale ? { scale: hoverScaleAmount } : undefined}
         transition={{ duration, delay, ease: easeCurve }}
         className={wrapperClassName}
@@ -44,7 +44,7 @@ export default function AnimatedImage({
       alt={alt}
       initial={{ opacity: 0, scale: 0.96 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.06, margin: '0px 0px -30px 0px' }}
       whileHover={hoverScale ? { scale: hoverScaleAmount } : undefined}
       transition={{ duration, delay, ease: easeCurve }}
       className={className}

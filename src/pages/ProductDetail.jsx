@@ -615,7 +615,8 @@ export default function ProductDetail() {
 
                     <div className="space-y-12">
                       {section.subItems.map((item, iIdx) => (
-                        <div key={iIdx} id={item.id} className="scroll-mt-28">
+                        <FadeIn key={iIdx} direction="up">
+                          <div id={item.id} className="scroll-mt-28">
                           {/* 2-Column Grid: Picture on Left, Table on Right - perfectly aligned */}
                           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                             {/* Left Column: Picture */}
@@ -673,6 +674,7 @@ export default function ProductDetail() {
                             </div>
                           </div>
                         </div>
+                      </FadeIn>
                       ))}
                     </div>
                   </div>

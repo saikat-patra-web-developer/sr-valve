@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Toast from './components/Toast'
 import ScrollToTop from './components/ScrollToTop'
 import PageTransition from './components/animations/PageTransition'
+import ScrollProgressBar from './components/animations/ScrollProgressBar'
 
 // Pages
 import Home from './pages/Home'
@@ -39,7 +40,10 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-800 selection:bg-[#f37021] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white text-slate-800 selection:bg-[#f37021] selection:text-white relative">
+      {/* Global Scroll Progress Bar */}
+      <ScrollProgressBar />
+
       {/* Scroll restoration on route change */}
       <ScrollToTop />
 

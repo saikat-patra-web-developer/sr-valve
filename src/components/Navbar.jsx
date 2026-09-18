@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
 const productNavHierarchy = [
   {
@@ -120,6 +120,17 @@ export default function Navbar() {
   const [expDropdownOpen, setExpDropdownOpen] = useState(false)
   const [mobileExpOpen, setMobileExpOpen] = useState(false)
   const expRef = useRef(null)
+
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navRef = useRef(null)
   const dropdownRef = useRef(null)
@@ -274,7 +285,9 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className="site-header"
+      className={`site-header transition-all duration-300 ${
+        isScrolled ? 'is-scrolled shadow-md bg-white/95 backdrop-blur-md' : 'bg-white'
+      }`}
       initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -401,50 +414,66 @@ export default function Navbar() {
             </div>
 
             {/* Mobile / Tablet Accordion Submenu */}
-            {mobileSubOpen && (
-              <div className="mobile-submenu-panel">
-                {productNavHierarchy.map((cat) => {
-                  const isCatOpen = !!mobileOpenCats[cat.id]
-                  const isCatRouteActive = cat.path === location.pathname || cat.children?.some((item) => item.path === location.pathname)
-                  return (
-                    <div key={cat.id} className="mobile-l1-item">
-                      <div className="mobile-l1-header">
-                        <NavLink
-                          to={cat.path}
-                          className={() => `mobile-l1-link ${isCatRouteActive ? 'active' : ''}`}
-                          onClick={(e) => toggleMobileCat(cat.id, e)}
-                          aria-expanded={isCatOpen}
-                        >
-                          <span>{cat.name}</span>
-                          <ChevronDown size={15} className={`mobile-category-chevron ${isCatOpen ? 'rotate' : ''}`} aria-hidden="true" />
-                        </NavLink>
-                      </div>
-
-                      {/* Level 2 Submenu Mobile Panel */}
-                      {cat.children && isCatOpen && (
-                        <div className="mobile-l2-panel">
-                          {cat.children.map((subItem) => (
-                            <div key={subItem.id} className="mobile-l2-item">
-                              <div className="mobile-l2-header">
-                                <NavLink
-                                  to={subItem.path}
-                                  className={({ isActive }) =>
-                                    `mobile-l2-link ${isActive ? 'active' : ''}`
-                                  }
-                                  onClick={closeAll}
-                                >
-                                  {subItem.name}
-                                </NavLink>
-                              </div>
-                            </div>
-                          ))}
+            <AnimatePresence>
+              {mobileSubOpen && (
+                <motion.div
+                  className="mobile-submenu-panel overflow-hidden"
+                  initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {productNavHierarchy.map((cat) => {
+                    const isCatOpen = !!mobileOpenCats[cat.id]
+                    const isCatRouteActive = cat.path === location.pathname || cat.children?.some((item) => item.path === location.pathname)
+                    return (
+                      <div key={cat.id} className="mobile-l1-item">
+                        <div className="mobile-l1-header">
+                          <NavLink
+                            to={cat.path}
+                            className={() => `mobile-l1-link ${isCatRouteActive ? 'active' : ''}`}
+                            onClick={(e) => toggleMobileCat(cat.id, e)}
+                            aria-expanded={isCatOpen}
+                          >
+                            <span>{cat.name}</span>
+                            <ChevronDown size={15} className={`mobile-category-chevron ${isCatOpen ? 'rotate' : ''}`} aria-hidden="true" />
+                          </NavLink>
                         </div>
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
-            )}
+
+                        {/* Level 2 Submenu Mobile Panel */}
+                        <AnimatePresence>
+                          {cat.children && isCatOpen && (
+                            <motion.div
+                              className="mobile-l2-panel overflow-hidden"
+                              initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                              {cat.children.map((subItem) => (
+                                <div key={subItem.id} className="mobile-l2-item">
+                                  <div className="mobile-l2-header">
+                                    <NavLink
+                                      to={subItem.path}
+                                      className={({ isActive }) =>
+                                        `mobile-l2-link ${isActive ? 'active' : ''}`
+                                      }
+                                      onClick={closeAll}
+                                    >
+                                      {subItem.name}
+                                    </NavLink>
+                                  </div>
+                                </div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Why Us Dropdown with Submenu */}
@@ -497,25 +526,33 @@ export default function Navbar() {
             </div>
 
             {/* Mobile / Tablet Accordion Submenu */}
-            {mobileWhyUsOpen && (
-              <div className="mobile-submenu-panel">
-                {whyUsNavLinks.map((item) => (
-                  <div key={item.path} className="mobile-l1-item">
-                    <div className="mobile-l1-header">
-                      <NavLink
-                        to={item.path}
-                        className={({ isActive }) =>
-                          `mobile-l1-link ${isActive ? 'active' : ''}`
-                        }
-                        onClick={closeAll}
-                      >
-                        {item.name}
-                      </NavLink>
+            <AnimatePresence>
+              {mobileWhyUsOpen && (
+                <motion.div
+                  className="mobile-submenu-panel overflow-hidden"
+                  initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {whyUsNavLinks.map((item) => (
+                    <div key={item.path} className="mobile-l1-item">
+                      <div className="mobile-l1-header">
+                        <NavLink
+                          to={item.path}
+                          className={({ isActive }) =>
+                            `mobile-l1-link ${isActive ? 'active' : ''}`
+                          }
+                          onClick={closeAll}
+                        >
+                          {item.name}
+                        </NavLink>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Experience Dropdown with Submenu */}
@@ -568,25 +605,33 @@ export default function Navbar() {
             </div>
 
             {/* Mobile / Tablet Accordion Submenu */}
-            {mobileExpOpen && (
-              <div className="mobile-submenu-panel">
-                {experienceNavLinks.map((item) => (
-                  <div key={item.path} className="mobile-l1-item">
-                    <div className="mobile-l1-header">
-                      <NavLink
-                        to={item.path}
-                        className={({ isActive }) =>
-                          `mobile-l1-link ${isActive ? 'active' : ''}`
-                        }
-                        onClick={closeAll}
-                      >
-                        {item.name}
-                      </NavLink>
+            <AnimatePresence>
+              {mobileExpOpen && (
+                <motion.div
+                  className="mobile-submenu-panel overflow-hidden"
+                  initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {experienceNavLinks.map((item) => (
+                    <div key={item.path} className="mobile-l1-item">
+                      <div className="mobile-l1-header">
+                        <NavLink
+                          to={item.path}
+                          className={({ isActive }) =>
+                            `mobile-l1-link ${isActive ? 'active' : ''}`
+                          }
+                          onClick={closeAll}
+                        >
+                          {item.name}
+                        </NavLink>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           <NavLink
             to="/clients"
@@ -613,16 +658,33 @@ export default function Navbar() {
           aria-controls="main-navigation"
           onClick={handleMenuToggle}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={open ? 'close' : 'menu'}
+              initial={shouldReduceMotion ? false : { rotate: -90, opacity: 0, scale: 0.8 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              exit={shouldReduceMotion ? false : { rotate: 90, opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-center"
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
+          </AnimatePresence>
         </button>
       </div>
-      {open && (
-        <div
-          className="nav-backdrop"
-          onClick={closeAll}
-          aria-hidden="true"
-        />
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="nav-backdrop"
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={shouldReduceMotion ? false : { opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={closeAll}
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }
