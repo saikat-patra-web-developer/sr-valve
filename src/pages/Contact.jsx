@@ -1,11 +1,12 @@
 import PageHero from '../components/PageHero'
 import { useState } from 'react'
-
 import { MapPin, Mail, Phone, Clock, ExternalLink, Plus, Minus, ArrowRight, Headphones, Wrench, ShieldCheck, Users } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
 import { companyData } from '../data/companyData'
 import { faqData } from '../data/faqData'
-
 import InfrastructureStrip from '../components/InfrastructureStrip'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
 
 export default function Contact() {
   const [openFaq, setOpenFaq] = useState(null)
@@ -25,19 +26,19 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div id="contact-details" className="contact-information space-y-6">
               
-              <div>
+              <FadeIn direction="up">
                 <h2 className="text-2xl font-extrabold text-[#0d2857]">
                   Our Contact <span className="text-[#f37021]">Information</span>
                 </h2>
                 <p className="text-xs text-slate-500 mt-1">
                   Reach out to us through any of the channels below. Our team is ready to help with your valve solutions.
                 </p>
-              </div>
+              </FadeIn>
 
               {/* Contact details */}
-              <div className="contact-details-grid grid grid-cols-1 md:grid-cols-3 gap-4">
+              <StaggerContainer className="contact-details-grid grid grid-cols-1 md:grid-cols-3 gap-4">
                 
-                <div className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
+                <StaggerItem hoverEffect={true} className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
                   <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#0d2857] flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5 text-blue-700" />
                   </div>
@@ -49,9 +50,9 @@ export default function Contact() {
                       {companyData.contact.address}
                     </p>
                   </div>
-                </div>
+                </StaggerItem>
 
-                <div className="contact-channels-card p-4 rounded-md bg-slate-50 border border-slate-200">
+                <StaggerItem hoverEffect={true} className="contact-channels-card p-4 rounded-md bg-slate-50 border border-slate-200">
                   <div className="contact-channel">
                     <div className="contact-channel-icon">
                       <Mail className="w-5 h-5 text-blue-700" />
@@ -80,9 +81,9 @@ export default function Contact() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </StaggerItem>
 
-                <div className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
+                <StaggerItem hoverEffect={true} className="flex items-start gap-4 p-4 rounded-md bg-slate-50 border border-slate-200">
                   <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#0d2857] flex items-center justify-center shrink-0">
                     <Clock className="w-5 h-5 text-blue-700" />
                   </div>
@@ -97,12 +98,12 @@ export default function Contact() {
                       {companyData.contact.closedNotice}
                     </span>
                   </div>
-                </div>
+                </StaggerItem>
 
-              </div>
+              </StaggerContainer>
 
               {/* Map Card */}
-              <div className="bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs">
+              <FadeIn direction="up" delay={0.15} className="bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs">
                 <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0d2857]">
                     <MapPin className="w-4 h-4 text-[#f37021]" />
@@ -128,7 +129,7 @@ export default function Contact() {
                     allowFullScreen
                   />
                 </div>
-              </div>
+              </FadeIn>
           </div>
 
         </div>
@@ -138,16 +139,16 @@ export default function Contact() {
       <section className="py-5 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="mb-3 pb-3 border-b border-slate-200">
+          <FadeIn direction="up" className="mb-3 pb-3 border-b border-slate-200">
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857]">
               Quick Contact — <span className="text-[#f37021]">Get in Touch for Specific Support</span>
             </h3>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Sales Support */}
-            <div className="bg-white p-6 rounded-md border border-slate-200 shadow-2xs hover:border-blue-400 transition-all space-y-2">
+            <StaggerItem hoverEffect={true} className="bg-white p-6 rounded-md border border-slate-200 shadow-2xs hover:border-blue-400 transition-all space-y-2">
               <div className="w-12 h-12 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
                 <Users className="w-6 h-6" />
               </div>
@@ -166,10 +167,10 @@ export default function Contact() {
                   <span>{companyData.contact.email}</span>
                 </a>
               </div>
-            </div>
+            </StaggerItem>
 
             {/* Technical Assistance */}
-            <div className="bg-white p-6 rounded-md border border-slate-200 shadow-2xs hover:border-blue-400 transition-all space-y-2">
+            <StaggerItem hoverEffect={true} className="bg-white p-6 rounded-md border border-slate-200 shadow-2xs hover:border-blue-400 transition-all space-y-2">
               <div className="w-12 h-12 rounded-md bg-amber-50 text-[#f37021] flex items-center justify-center mb-3">
                 <Wrench className="w-6 h-6" />
               </div>
@@ -188,10 +189,10 @@ export default function Contact() {
                   <span>{companyData.contact.email}</span>
                 </a>
               </div>
-            </div>
+            </StaggerItem>
 
             {/* General Inquiries */}
-            <div className="bg-white p-6 rounded-md border border-slate-200 shadow-2xs hover:border-blue-400 transition-all space-y-2">
+            <StaggerItem hoverEffect={true} className="bg-white p-6 rounded-md border border-slate-200 shadow-2xs hover:border-blue-400 transition-all space-y-2">
               <div className="w-12 h-12 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
                 <Headphones className="w-6 h-6" />
               </div>
@@ -210,9 +211,9 @@ export default function Contact() {
                   <span>{companyData.contact.phone}</span>
                 </a>
               </div>
-            </div>
+            </StaggerItem>
 
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -221,7 +222,7 @@ export default function Contact() {
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-transparent gap-2">
+          <FadeIn direction="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-transparent gap-2">
             <div>
               <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
                 FREQUENTLY ASKED QUESTIONS
@@ -230,13 +231,13 @@ export default function Contact() {
                 Quick Answers to <span className="text-[#f37021]">Help You</span>
               </h3>
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {faqData.map((faq) => {
               const isOpen = openFaq === faq.id
               return (
-                <div
+                <StaggerItem
                   key={faq.id}
                   className="bg-slate-50 rounded-md border border-slate-200 overflow-hidden shadow-2xs transition-colors"
                 >
@@ -256,21 +257,31 @@ export default function Contact() {
                     )}
                   </button>
 
-                  {isOpen && (
-                    <div className="px-4 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-200/60 animate-in fade-in duration-200">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-200/60">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
 
       {/* 5. HAVE A PROJECT IN MIND CTA BANNER */}
-      <section className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-5">
+      <FadeIn direction="up" as="section" className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -282,34 +293,36 @@ export default function Contact() {
                 Let's discuss how our valve solutions can support your business with high durability and on-time project execution.
               </p>
               <div className="pt-2">
-                <a
-                  href={`mailto:${companyData.contact.email}?subject=Project%20Inquiry`}
-                  className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="inline-block">
+                  <a
+                    href={`mailto:${companyData.contact.email}?subject=Project%20Inquiry`}
+                    className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
+                  >
+                    <span>Contact Us</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </motion.div>
               </div>
             </div>
 
-            <div className="lg:col-span-4 grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="bg-white/10 p-3 rounded-md border border-white/10">
+            <StaggerContainer className="lg:col-span-4 grid grid-cols-3 gap-2 text-center text-xs">
+              <StaggerItem className="bg-white/10 p-3 rounded-md border border-white/10">
                 <Wrench className="w-5 h-5 text-amber-400 mx-auto mb-1" />
                 <span className="font-bold text-[10px] block">ENGINEERING EXCELLENCE</span>
-              </div>
-              <div className="bg-white/10 p-3 rounded-md border border-white/10">
+              </StaggerItem>
+              <StaggerItem className="bg-white/10 p-3 rounded-md border border-white/10">
                 <ShieldCheck className="w-5 h-5 text-amber-400 mx-auto mb-1" />
                 <span className="font-bold text-[10px] block">RELIABLE PRODUCTS</span>
-              </div>
-              <div className="bg-white/10 p-3 rounded-md border border-white/10">
+              </StaggerItem>
+              <StaggerItem className="bg-white/10 p-3 rounded-md border border-white/10">
                 <Users className="w-5 h-5 text-amber-400 mx-auto mb-1" />
                 <span className="font-bold text-[10px] block">LONG-TERM PARTNERSHIPS</span>
-              </div>
-            </div>
+              </StaggerItem>
+            </StaggerContainer>
 
           </div>
         </div>
-      </section>
+      </FadeIn>
 
       {/* 6. INFRASTRUCTURE 4-PHOTO STRIP */}
       <InfrastructureStrip />

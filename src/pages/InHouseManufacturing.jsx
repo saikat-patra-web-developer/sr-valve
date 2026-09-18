@@ -15,6 +15,9 @@ import {
   X,
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
+import { motion, AnimatePresence } from 'motion/react'
 
 const manufacturingGallery = [
   {
@@ -88,7 +91,7 @@ export default function InHouseManufacturing() {
       <section className="bg-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-5">
+            <FadeIn direction="right" className="lg:col-span-5">
               <span className="text-[11px] font-bold text-[#f37021] tracking-[0.24em] uppercase">Complete Manufacturing Under One Roof</span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[#0d2857] leading-tight">
                 Built in-house. <span className="text-[#f37021]">Built with confidence.</span>
@@ -134,9 +137,9 @@ export default function InHouseManufacturing() {
                   ))}
                 </div>
               </div>
-            </div>
+            </FadeIn>
 
-            <div className="lg:col-span-7 relative">
+            <FadeIn direction="left" className="lg:col-span-7 relative">
               <div
                 className="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-slate-100 cursor-pointer"
                 onClick={() => setModalImage(manufacturingGallery[activeImageIndex])}
@@ -171,7 +174,7 @@ export default function InHouseManufacturing() {
                   </p>
                 </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -179,7 +182,7 @@ export default function InHouseManufacturing() {
       {/* In-House Manufacturing Capabilities Showcase Gallery */}
       <section className="bg-gradient-to-b from-slate-50 to-white py-14 sm:py-20 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <FadeIn direction="up" className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-[11px] font-bold text-[#f37021] tracking-[0.24em] uppercase">Shop Floor & Operations Showcase</span>
             <h2 className="mt-2 text-2xl sm:text-4xl font-extrabold text-[#0d2857]">
               In-House Machining & Fabrication Facilities
@@ -187,14 +190,15 @@ export default function InHouseManufacturing() {
             <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
               Equipped with heavy overhead gantry hoists, large rotary lathes, and dedicated dressing bays to execute critical valve manufacturing operations under one roof.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <StaggerContainer className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {manufacturingGallery.map((facility) => {
               const FacilityIcon = facility.icon
               return (
-                <div
+                <StaggerItem
                   key={facility.id}
+                  hoverEffect={true}
                   className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                 >
                   <div
@@ -244,29 +248,29 @@ export default function InHouseManufacturing() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Capabilities */}
       <section className="bg-slate-50 border-y border-slate-200 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-9">
+          <FadeIn direction="up" className="text-center max-w-2xl mx-auto mb-9">
             <span className="text-[11px] font-bold text-slate-400 tracking-[0.24em] uppercase">Our Manufacturing Strength</span>
             <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0d2857]">Capability at every stage of production</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          </FadeIn>
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {capabilities.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <StaggerItem key={title} hoverEffect={true} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
                 <div className="w-11 h-11 rounded-lg bg-[#0d2857] flex items-center justify-center mb-5"><Icon className="w-5 h-5 text-white" /></div>
                 <h3 className="text-base font-extrabold text-[#0d2857]">{title}</h3>
                 <p className="mt-2 text-sm text-slate-600 leading-6">{text}</p>
-              </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -274,90 +278,106 @@ export default function InHouseManufacturing() {
       <section className="bg-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-4">
+            <FadeIn direction="right" className="lg:col-span-4">
               <span className="text-[11px] font-bold text-[#f37021] tracking-[0.24em] uppercase">One Integrated Workflow</span>
               <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0d2857] leading-tight">From engineering to a finished valve</h2>
               <p className="mt-4 text-sm text-slate-600 leading-6">Keeping core operations in-house gives our team better visibility, tighter control and clear accountability throughout production.</p>
-            </div>
-            <div className="lg:col-span-8 grid sm:grid-cols-5 gap-3">
+            </FadeIn>
+            <StaggerContainer className="lg:col-span-8 grid sm:grid-cols-5 gap-3">
               {process.map((step, index) => (
-                <div key={step} className="bg-slate-50 border border-slate-200 rounded-xl p-4 min-h-32">
+                <StaggerItem key={step} hoverEffect={true} className="bg-slate-50 border border-slate-200 rounded-xl p-4 min-h-32">
                   <span className="text-3xl font-black text-slate-200">0{index + 1}</span>
                   <p className="mt-4 text-sm font-bold text-[#0d2857] leading-snug">{step}</p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bg-[#0d2857] text-white py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex items-start gap-4 max-w-2xl">
-            <Gauge className="w-9 h-9 text-[#f37021] shrink-0 mt-1" />
-            <div>
-              <h2 className="text-2xl font-extrabold">Discuss your valve requirement with our engineers</h2>
-              <p className="mt-2 text-sm text-slate-300 leading-6">Talk to us about standard products, project specifications or custom manufacturing requirements.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="flex items-start gap-4 max-w-2xl">
+                <Gauge className="w-9 h-9 text-[#f37021] shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-2xl font-extrabold">Discuss your valve requirement with our engineers</h2>
+                  <p className="mt-2 text-sm text-slate-300 leading-6">Talk to us about standard products, project specifications or custom manufacturing requirements.</p>
+                </div>
+              </div>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="shrink-0">
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#dc5d13] text-white font-bold px-6 py-3 rounded-lg transition-colors">
+                  Contact Our Team <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
             </div>
-          </div>
-          <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-[#f37021] hover:bg-[#dc5d13] text-white font-bold px-6 py-3 rounded-lg transition-colors shrink-0">
-            Contact Our Team <ArrowRight className="w-4 h-4" />
-          </Link>
+          </FadeIn>
         </div>
       </section>
 
       {/* Fullscreen Lightbox Modal */}
-      {modalImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setModalImage(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="relative max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {modalImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setModalImage(null)}
+            role="dialog"
+            aria-modal="true"
           >
-            <div className="relative bg-slate-950 flex items-center justify-center max-h-[75vh] overflow-hidden">
-              <img
-                src={modalImage.image}
-                alt={modalImage.title}
-                className="max-h-[75vh] w-auto max-w-full object-contain"
-              />
-              <button
-                type="button"
-                onClick={() => setModalImage(null)}
-                className="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 transition-colors cursor-pointer"
-                aria-label="Close modal"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            <div className="p-6 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <span className="text-xs font-bold text-[#f37021] uppercase tracking-wider">
-                  {modalImage.category}
-                </span>
-                <h3 className="text-xl font-extrabold text-[#0d2857] mt-0.5">
-                  {modalImage.title}
-                </h3>
-                <p className="text-sm text-slate-600 mt-1 max-w-2xl">
-                  {modalImage.description}
-                </p>
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative bg-slate-950 flex items-center justify-center max-h-[75vh] overflow-hidden">
+                <img
+                  src={modalImage.image}
+                  alt={modalImage.title}
+                  className="max-h-[75vh] w-auto max-w-full object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={() => setModalImage(null)}
+                  className="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X size={20} />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setModalImage(null)}
-                className="px-5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-[#0d2857] font-bold text-sm transition-colors cursor-pointer self-start sm:self-auto shrink-0"
-              >
-                Close View
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+
+              <div className="p-6 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <span className="text-xs font-bold text-[#f37021] uppercase tracking-wider">
+                    {modalImage.category}
+                  </span>
+                  <h3 className="text-xl font-extrabold text-[#0d2857] mt-0.5">
+                    {modalImage.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+                    {modalImage.description}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setModalImage(null)}
+                  className="px-5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-[#0d2857] font-bold text-sm transition-colors cursor-pointer self-start sm:self-auto shrink-0"
+                >
+                  Close View
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

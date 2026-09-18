@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Settings, ShieldCheck, Headphones, MapPin, Landmark, Users, Leaf, Award, Home as HomeIcon } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 import ResponsiveImage from './ResponsiveImage'
 
 const homeSlides = [
@@ -30,13 +31,33 @@ const copy = {
   clients: { crumb: 'Clients', eyebrow: 'OUR VALUED PARTNERS', title: <>Our <em>Clients</em></>, description: 'Trusted by government authorities, municipal corporations, and major industrial enterprises nationwide.', image: 'factory-hero-wide.webp' },
   notFound: { crumb: 'Page Not Found', eyebrow: 'ERROR 404  |  PAGE NOT FOUND', title: <>Page <em>Not Found</em></>, subtitle: '404 Error — We could not find the page you are looking for.', description: 'The page you requested may have been moved, renamed, or is temporarily unavailable. Browse our industrial valve products or return to the home page.', image: 'valve-range-wide.webp' },
 }
+const easeCurve = [0.22, 1, 0.36, 1]
+
 export function TrustBar({ expanded = false }) {
   const items = expanded ? [[Settings, '15+', 'Years of Manufacturing Experience'], [Landmark, 'Trusted by', 'Government & Private Organizations'], [Award, 'High-Quality', 'Industrial Valves'], [Leaf, 'Committed to', 'a Sustainable Future']] : [[Settings, '15+', 'Years Experience'], [Award, 'ISO 9001:2015', '14001:2015 · 45001:2018'], [Landmark, 'Government &', 'Private Project Supply'], [MapPin, 'Based in Howrah,', 'West Bengal']]
-  return <div className={`trust-bar ${expanded ? 'expanded' : ''}`}>{items.map(([Icon, title, desc]) => <div key={title}><span className="round-icon"><Icon /></span><p><strong>{title}</strong><small>{desc}</small></p></div>)}</div>
+  const shouldReduceMotion = useReducedMotion()
+
+  return (
+    <div className={`trust-bar ${expanded ? 'expanded' : ''}`}>
+      {items.map(([Icon, title, desc], index) => (
+        <motion.div
+          key={title}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 + index * 0.08, ease: easeCurve }}
+        >
+          <span className="round-icon"><Icon /></span>
+          <p><strong>{title}</strong><small>{desc}</small></p>
+        </motion.div>
+      ))}
+    </div>
+  )
 }
-export default function PageHero({ type }) {
+
+export default function PageHero({ type, _onDownload }) {
   const data = copy[type]
   const [activeSlide, setActiveSlide] = useState(0)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     if (type !== 'home' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
@@ -48,38 +69,195 @@ export default function PageHero({ type }) {
 
   return <>
     <section className={`page-hero hero-${type}`} style={data.image ? { '--hero-image': `url('/images/hero/${data.image}')` } : undefined}>
-      {type === 'home' && <div className="hero-slider">
-        {homeSlides.map((slide, index) => <ResponsiveImage
-          key={slide.image}
-          src={slide.image}
-          sizes="100vw"
-          alt={slide.alt}
-          className={index === activeSlide ? 'hero-slide active' : 'hero-slide'}
-        />)}
-      </div>}
-      <div className="hero-inner"><div className="hero-copy">
-        {data.crumb && <div className="breadcrumb"><Link to="/">Home</Link><span>›</span>{data.parent && <><Link to={data.parent.path}>{data.parent.name}</Link><span>›</span></>}{data.crumb}</div>}
-        {type === 'home' && <span className="mobile-hero-eyebrow">Precision. Performance. Trust.</span>}
-        {type !== 'home' && data.eyebrow && <span className="mobile-page-eyebrow">{data.eyebrow}</span>}
-        <h1>{data.title}</h1>
-        {data.subtitle && <h2>{data.subtitle}</h2>}
-        <p className="hero-description">{data.description}</p>
-        {type === 'home' && <div className="hero-actions"><Link className="button-primary" to="/products">Explore Products <ArrowRight /></Link><Link className="button-outline" to="/contact">Contact Us</Link></div>}
-        {type === 'notFound' && <div className="hero-actions"><Link className="button-primary" to="/"><HomeIcon /> Return to Home</Link><Link className="button-outline" to="/products">Explore Products <ArrowRight /></Link></div>}
-        {type === 'products' && <div className="hero-features">{[[ShieldCheck,'Proven Reliability','Built for tough conditions'],[Settings,'Wide Range','For diverse applications'],[Award,'Superior Quality','Tested. Trusted. Global.'],[Headphones,'Technical Support','From selection to service']].map(([Icon,title,desc]) => <div key={title}><Icon/><strong>{title}</strong><small>{desc}</small></div>)}</div>}
-        {type === 'contact' && <div className="contact-hero-features">{[[Settings,'Valves for critical applications'],[ShieldCheck,'Expert support at every step'],[Users,'A stronger tomorrow together']].map(([Icon,title]) => <div key={title}><span className="round-icon"><Icon/></span><strong>{title}</strong></div>)}</div>}
-        {type === 'home' && <TrustBar />}
-      </div></div>
-      {type === 'home' && <div className="hero-slider-controls" aria-label="Hero images">
-        {homeSlides.map((slide, index) => <button
-          key={slide.image}
-          type="button"
-          className={index === activeSlide ? 'active' : ''}
-          aria-label={`Show hero image ${index + 1}`}
-          aria-current={index === activeSlide ? 'true' : undefined}
-          onClick={() => setActiveSlide(index)}
-        />)}
-      </div>}
+      {type === 'home' && (
+        <motion.div
+          className="hero-slider"
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.35, ease: easeCurve }}
+        >
+          {homeSlides.map((slide, index) => (
+            <ResponsiveImage
+              key={slide.image}
+              src={slide.image}
+              sizes="100vw"
+              alt={slide.alt}
+              className={index === activeSlide ? 'hero-slide active' : 'hero-slide'}
+            />
+          ))}
+        </motion.div>
+      )}
+      <div className="hero-inner">
+        <div className="hero-copy">
+          {data.crumb && (
+            <motion.div
+              className="breadcrumb"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: easeCurve }}
+            >
+              <Link to="/">Home</Link>
+              <span>›</span>
+              {data.parent && (
+                <>
+                  <Link to={data.parent.path}>{data.parent.name}</Link>
+                  <span>›</span>
+                </>
+              )}
+              {data.crumb}
+            </motion.div>
+          )}
+
+          {type === 'home' && (
+            <motion.span
+              className="mobile-hero-eyebrow"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.0, ease: easeCurve }}
+            >
+              Precision. Performance. Trust.
+            </motion.span>
+          )}
+
+          {type !== 'home' && data.eyebrow && (
+            <motion.span
+              className="mobile-page-eyebrow"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.0, ease: easeCurve }}
+            >
+              {data.eyebrow}
+            </motion.span>
+          )}
+
+          <motion.h1
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.0, ease: easeCurve }}
+          >
+            {data.title}
+          </motion.h1>
+
+          {data.subtitle && (
+            <motion.h2
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: easeCurve }}
+            >
+              {data.subtitle}
+            </motion.h2>
+          )}
+
+          <motion.p
+            className="hero-description"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: easeCurve }}
+          >
+            {data.description}
+          </motion.p>
+
+          {type === 'home' && (
+            <motion.div
+              className="hero-actions"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: easeCurve }}
+            >
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link className="button-primary" to="/products">
+                  Explore Products <ArrowRight />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link className="button-outline" to="/contact">
+                  Contact Us
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+
+          {type === 'notFound' && (
+            <motion.div
+              className="hero-actions"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: easeCurve }}
+            >
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link className="button-primary" to="/">
+                  <HomeIcon /> Return to Home
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                <Link className="button-outline" to="/products">
+                  Explore Products <ArrowRight />
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+
+          {type === 'products' && (
+            <motion.div
+              className="hero-features"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: easeCurve }}
+            >
+              {[[ShieldCheck,'Proven Reliability','Built for tough conditions'],[Settings,'Wide Range','For diverse applications'],[Award,'Superior Quality','Tested. Trusted. Global.'],[Headphones,'Technical Support','From selection to service']].map(([Icon,title,desc], idx) => (
+                <motion.div
+                  key={title}
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.25 + idx * 0.08, ease: easeCurve }}
+                >
+                  <Icon/>
+                  <strong>{title}</strong>
+                  <small>{desc}</small>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+
+          {type === 'contact' && (
+            <motion.div
+              className="contact-hero-features"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: easeCurve }}
+            >
+              {[[Settings,'Valves for critical applications'],[ShieldCheck,'Expert support at every step'],[Users,'A stronger tomorrow together']].map(([Icon,title], idx) => (
+                <motion.div
+                  key={title}
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.25 + idx * 0.08, ease: easeCurve }}
+                >
+                  <span className="round-icon"><Icon/></span>
+                  <strong>{title}</strong>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+
+          {type === 'home' && <TrustBar />}
+        </div>
+      </div>
+
+      {type === 'home' && (
+        <div className="hero-slider-controls" aria-label="Hero images">
+          {homeSlides.map((slide, index) => (
+            <button
+              key={slide.image}
+              type="button"
+              className={index === activeSlide ? 'active' : ''}
+              aria-label={`Show hero image ${index + 1}`}
+              aria-current={index === activeSlide ? 'true' : undefined}
+              onClick={() => setActiveSlide(index)}
+            />
+          ))}
+        </div>
+      )}
     </section>
     {type === 'about' && <div className="about-trust"><TrustBar expanded /></div>}
   </>

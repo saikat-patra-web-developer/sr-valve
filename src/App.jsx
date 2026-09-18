@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Toast from './components/Toast'
 import ScrollToTop from './components/ScrollToTop'
+import PageTransition from './components/animations/PageTransition'
 
 // Pages
 import Home from './pages/Home'
@@ -28,6 +29,7 @@ import NotFound from './pages/NotFound'
 
 export default function App() {
   const [toastMessage, setToastMessage] = useState('')
+  const location = useLocation()
 
   const handleShowToast = (msg) => {
     setToastMessage(msg)
@@ -46,6 +48,7 @@ export default function App() {
 
       {/* Main Page Area */}
       <main className="flex-1">
+        <PageTransition key={location.pathname}>
         <Routes>
           <Route
             path="/"
@@ -185,6 +188,7 @@ export default function App() {
             element={<NotFound />}
           />
         </Routes>
+        </PageTransition>
       </main>
 
       {/* Footer */}

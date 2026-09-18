@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 
 import { ArrowRight, Building, ShieldCheck, Users, Globe2, Cpu, Wrench, PhoneCall, X } from 'lucide-react'
 import { companyData } from '../data/companyData'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
+import { motion, AnimatePresence } from 'motion/react'
 
 export default function Infrastructure({ onShowToast }) {
   const [activeModalCap, setActiveModalCap] = useState(null)
@@ -60,7 +63,7 @@ Contact: info@ssprvalve.com | +91 7044090444
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
             
             {/* Left text & 4 badges */}
-            <div className="lg:col-span-6 space-y-4">
+            <FadeIn direction="right" className="lg:col-span-6 space-y-4">
               <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
                 OUR INFRASTRUCTURE
               </span>
@@ -91,10 +94,10 @@ Contact: info@ssprvalve.com | +91 7044090444
                   </div>
                 ))}
               </div>
-            </div>
+            </FadeIn>
 
             {/* Right Large Assembly Photo */}
-            <div className="lg:col-span-6 relative rounded-md overflow-hidden shadow-xl border border-slate-200 group">
+            <FadeIn direction="left" className="lg:col-span-6 relative rounded-md overflow-hidden shadow-xl border border-slate-200 group">
               <img
                 src="/images/infra/valve-assembly.png"
                 alt="Large Industrial Valve Assembly & Testing"
@@ -104,7 +107,7 @@ Contact: info@ssprvalve.com | +91 7044090444
                 <span className="text-xs font-bold text-amber-400 block">INDUSTRIAL VALVES</span>
                 <span className="text-[10px] text-slate-200 block">ENGINEERED WITH PURPOSE</span>
               </div>
-            </div>
+            </FadeIn>
 
           </div>
 
@@ -115,48 +118,54 @@ Contact: info@ssprvalve.com | +91 7044090444
       <section className="py-5 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 pb-3 border-b border-slate-200 gap-2">
-            <div>
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                OUR MANUFACTURING CAPABILITIES
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
-                Integrated Facilities for <span className="text-[#f37021]">Superior Quality</span>
-              </h2>
+          <FadeIn direction="up">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 pb-3 border-b border-slate-200 gap-2">
+              <div>
+                <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
+                  OUR MANUFACTURING CAPABILITIES
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
+                  Integrated Facilities for <span className="text-[#f37021]">Superior Quality</span>
+                </h2>
+              </div>
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="capabilities-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <StaggerContainer className="capabilities-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {companyData.capabilities.map((cap) => (
-              <button
-                type="button"
+              <StaggerItem
                 key={cap.id}
-                onClick={() => setActiveModalCap(cap)}
-                aria-haspopup="dialog"
-                aria-label={`View details for ${cap.title}`}
-                className="capability-card bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group text-left"
+                hoverEffect={true}
+                className="h-full"
               >
-                <div>
-                  <div className="h-44 w-full overflow-hidden bg-slate-100 relative">
-                    <img
-                      src={cap.image}
-                      alt={cap.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                <button
+                  type="button"
+                  onClick={() => setActiveModalCap(cap)}
+                  aria-haspopup="dialog"
+                  aria-label={`View details for ${cap.title}`}
+                  className="capability-card w-full h-full bg-white rounded-md border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group text-left cursor-pointer"
+                >
+                  <div>
+                    <div className="h-44 w-full overflow-hidden bg-slate-100 relative">
+                      <img
+                        src={cap.image}
+                        alt={cap.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4 space-y-2">
+                      <h4 className="text-sm font-bold text-[#0d2857] group-hover:text-[#f37021] transition-colors">
+                        {cap.title}
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                        {cap.desc}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-4 space-y-2">
-                    <h4 className="text-sm font-bold text-[#0d2857] group-hover:text-[#f37021] transition-colors">
-                      {cap.title}
-                    </h4>
-                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                      {cap.desc}
-                    </p>
-                  </div>
-                </div>
-
-              </button>
+                </button>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -165,24 +174,27 @@ Contact: info@ssprvalve.com | +91 7044090444
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 pb-3 border-b border-transparent gap-2">
-            <div>
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                OUR MANUFACTURING PROCESS
+          <FadeIn direction="up">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 pb-3 border-b border-transparent gap-2">
+              <div>
+                <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
+                  OUR MANUFACTURING PROCESS
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
+                  From Design to Dispatch — <span className="text-[#f37021]">A Seamless Journey</span>
+                </h2>
+              </div>
+              <span className="text-xs font-bold text-slate-500">
+                Precision at Every Step | Quality in Every Flow
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
-                From Design to Dispatch — <span className="text-[#f37021]">A Seamless Journey</span>
-              </h2>
             </div>
-            <span className="text-xs font-bold text-slate-500">
-              Precision at Every Step | Quality in Every Flow
-            </span>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {companyData.processSteps.map((p, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                hoverEffect={true}
                 className="process-step bg-slate-50 p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-sm hover:border-[#f37021] transition-all flex flex-col justify-between group"
               >
                 <div>
@@ -197,9 +209,9 @@ Contact: info@ssprvalve.com | +91 7044090444
                     {p.desc}
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -208,21 +220,24 @@ Contact: info@ssprvalve.com | +91 7044090444
       <section className="py-5 bg-slate-50 border-t border-slate-200" id="gallery">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="mb-3 pb-3 border-b border-slate-200">
-            <div>
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                OUR FACILITY GALLERY
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
-                Inside Our <span className="text-[#f37021]">Manufacturing Unit</span>
-              </h2>
+          <FadeIn direction="up">
+            <div className="mb-3 pb-3 border-b border-slate-200">
+              <div>
+                <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
+                  OUR FACILITY GALLERY
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
+                  Inside Our <span className="text-[#f37021]">Manufacturing Unit</span>
+                </h2>
+              </div>
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {companyData.facilityGallery.map((photo, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                hoverEffect={true}
                 role="button" tabIndex={0} aria-label={`View ${photo.title}`}
                 onKeyDown={e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLightboxImg(photo) } }}
                 onClick={() => setLightboxImg(photo)}
@@ -240,9 +255,9 @@ Contact: info@ssprvalve.com | +91 7044090444
                     {photo.title}
                   </span>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -251,19 +266,20 @@ Contact: info@ssprvalve.com | +91 7044090444
       <section className="py-5 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-xl mx-auto mb-4">
+          <FadeIn direction="up" className="text-center max-w-xl mx-auto mb-4">
             <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
               OUR KEY FACTS & STRENGTHS
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857] mt-1">
               Built on Capability, <span className="text-[#f37021]">Driven by Trust</span>
             </h2>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {companyData.keyMetrics.map((metric, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                hoverEffect={true}
                 className="bg-slate-50 p-3.5 sm:p-6 rounded-md border border-slate-200 shadow-2xs text-center hover:border-blue-400 transition-colors"
               >
                 <span className="text-3xl sm:text-4xl font-extrabold text-[#0d2857] block">
@@ -275,9 +291,9 @@ Contact: info@ssprvalve.com | +91 7044090444
                 <p className="text-xs text-slate-500 mt-1">
                   {metric.desc}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -286,24 +302,27 @@ Contact: info@ssprvalve.com | +91 7044090444
       <section className="py-5 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-200 gap-2">
-            <div>
-              <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
-                CERTIFICATIONS & COMPLIANCE
+          <FadeIn direction="up">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-200 gap-2">
+              <div>
+                <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
+                  CERTIFICATIONS & COMPLIANCE
+                </span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1">
+                  Committed to <span className="text-[#f37021]">Global Standards</span>
+                </h3>
+              </div>
+              <span className="text-xs font-bold text-slate-500">
+                Compliant | Reliable | Future Ready
               </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1">
-                Committed to <span className="text-[#f37021]">Global Standards</span>
-              </h3>
             </div>
-            <span className="text-xs font-bold text-slate-500">
-              Compliant | Reliable | Future Ready
-            </span>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {companyData.certifications.map((cert, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                hoverEffect={true}
                 className="bg-white p-3 rounded-md border border-slate-200 shadow-2xs flex flex-col items-center justify-center text-center h-28 hover:shadow-sm transition-all"
               >
                 <div className="h-12 flex items-center justify-center">
@@ -316,9 +335,9 @@ Contact: info@ssprvalve.com | +91 7044090444
                 <span className="text-[10px] font-bold text-slate-700 mt-2 line-clamp-1">
                   {cert.label}
                 </span>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -326,114 +345,141 @@ Contact: info@ssprvalve.com | +91 7044090444
       {/* 8. CTA BANNER */}
       <section className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div className="lg:col-span-8 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Have a Project Requirement?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
-                Let's discuss how our infrastructure and manufacturing capabilities can support your next project with assured quality and strict delivery schedules.
-              </p>
-              <div className="pt-3 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+          <FadeIn direction="up">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div className="lg:col-span-8 space-y-2">
+                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                  Have a Project Requirement?
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
+                  Let's discuss how our infrastructure and manufacturing capabilities can support your next project with assured quality and strict delivery schedules.
+                </p>
+                <div className="pt-3 flex flex-wrap items-center gap-4">
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="inline-block">
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm"
+                    >
+                      <span>Contact Us</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </motion.div>
+                </div>
               </div>
-            </div>
 
-            <div className="lg:col-span-4 grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="bg-white/10 p-3 rounded-md border border-white/10">
-                <PhoneCall className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                <span className="font-bold block">Quick Enquiry</span>
+              <div className="lg:col-span-4 grid grid-cols-3 gap-2 text-center text-xs">
+                <div className="bg-white/10 p-3 rounded-md border border-white/10">
+                  <PhoneCall className="w-5 h-5 text-amber-400 mx-auto mb-1" />
+                  <span className="font-bold block">Quick Enquiry</span>
+                </div>
+                <div className="bg-white/10 p-3 rounded-md border border-white/10">
+                  <Cpu className="w-5 h-5 text-amber-400 mx-auto mb-1" />
+                  <span className="font-bold block">Technical Consultation</span>
+                </div>
+                <div className="bg-white/10 p-3 rounded-md border border-white/10">
+                  <Wrench className="w-5 h-5 text-amber-400 mx-auto mb-1" />
+                  <span className="font-bold block">Customized Solutions</span>
+                </div>
               </div>
-              <div className="bg-white/10 p-3 rounded-md border border-white/10">
-                <Cpu className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                <span className="font-bold block">Technical Consultation</span>
-              </div>
-              <div className="bg-white/10 p-3 rounded-md border border-white/10">
-                <Wrench className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                <span className="font-bold block">Customized Solutions</span>
-              </div>
-            </div>
 
-          </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* LIGHTBOX MODAL */}
-      {lightboxImg && (
-        <div
-          onClick={() => setLightboxImg(null)}
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 cursor-pointer"
-        >
-          <div className="relative max-w-3xl w-full bg-white rounded-md overflow-hidden p-3 text-center">
-            <button
-              aria-label="Close photo"
-              onClick={() => setLightboxImg(null)}
-              className="absolute top-4 right-4 text-slate-600 hover:text-black p-2 rounded-lg bg-slate-100 z-10 cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <img
-              src={lightboxImg.image}
-              alt={lightboxImg.title}
-              className="max-h-[75vh] w-auto mx-auto object-contain rounded-md"
-            />
-            <h4 className="text-base font-extrabold text-[#0d2857] mt-3">
-              {lightboxImg.title}
-            </h4>
-          </div>
-        </div>
-      )}
-
-      {/* CAPABILITY DETAIL MODAL */}
-      {activeModalCap && (
-        <div
-          onClick={() => setActiveModalCap(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="capability-dialog-title"
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-md max-w-md w-full p-6 shadow-2xl space-y-4"
+      <AnimatePresence>
+        {lightboxImg && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setLightboxImg(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 cursor-pointer"
           >
-            <div className="flex items-center justify-between border-b border-transparent pb-3">
-              <h3 id="capability-dialog-title" className="text-lg font-bold text-[#0d2857]">
-                {activeModalCap.title}
-              </h3>
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-3xl w-full bg-white rounded-md overflow-hidden p-3 text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
-                aria-label="Close facility details"
-                onClick={() => setActiveModalCap(null)}
-                className="text-slate-400 hover:text-slate-700 p-1 cursor-pointer"
+                aria-label="Close photo"
+                onClick={() => setLightboxImg(null)}
+                className="absolute top-4 right-4 text-slate-600 hover:text-black p-2 rounded-lg bg-slate-100 z-10 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
-            </div>
-            <img
-              src={activeModalCap.image}
-              alt={activeModalCap.title}
-              className="w-full h-44 object-cover rounded-md border border-slate-200"
-            />
-            <p className="text-xs text-slate-600 leading-relaxed">
-              {activeModalCap.desc}
-            </p>
-            <Link
-              to="/contact"
-              onClick={() => setActiveModalCap(null)}
-              className="inline-flex w-full min-h-12 items-center justify-center bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-5 py-3 rounded-lg text-sm cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f37021]"
+              <img
+                src={lightboxImg.image}
+                alt={lightboxImg.title}
+                className="max-h-[75vh] w-auto mx-auto object-contain rounded-md"
+              />
+              <h4 className="text-base font-extrabold text-[#0d2857] mt-3">
+                {lightboxImg.title}
+              </h4>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CAPABILITY DETAIL MODAL */}
+      <AnimatePresence>
+        {activeModalCap && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setActiveModalCap(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="capability-dialog-title"
+            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-md max-w-md w-full p-6 shadow-2xl space-y-4 cursor-default"
             >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      )}
+              <div className="flex items-center justify-between border-b border-transparent pb-3">
+                <h3 id="capability-dialog-title" className="text-lg font-bold text-[#0d2857]">
+                  {activeModalCap.title}
+                </h3>
+                <button
+                  aria-label="Close facility details"
+                  onClick={() => setActiveModalCap(null)}
+                  className="text-slate-400 hover:text-slate-700 p-1 cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <img
+                src={activeModalCap.image}
+                alt={activeModalCap.title}
+                className="w-full h-44 object-cover rounded-md border border-slate-200"
+              />
+              <p className="text-xs text-slate-600 leading-relaxed">
+                {activeModalCap.desc}
+              </p>
+              <Link
+                to="/contact"
+                onClick={() => setActiveModalCap(null)}
+                className="inline-flex w-full min-h-12 items-center justify-center bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-5 py-3 rounded-lg text-sm cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f37021]"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   )

@@ -1,11 +1,14 @@
 import PageHero from '../components/PageHero'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ShieldCheck, Clock, Wrench, Headphones, CheckCircle2, Check } from 'lucide-react'
+import { motion } from 'motion/react'
 import ProductCard from '../components/ProductCard'
 import ClientsSection from '../components/ClientsSection'
 import CertificationsStrip from '../components/CertificationsStrip'
 import InfrastructureStrip from '../components/InfrastructureStrip'
 import ResponsiveImage from '../components/ResponsiveImage'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
 import { productsData } from '../data/productsData'
 
 export default function Home() {
@@ -57,7 +60,7 @@ export default function Home() {
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-transparent gap-2">
+          <FadeIn direction="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-transparent gap-2">
             <div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857]">
                 Our Core <span className="text-[#f37021]">Product Range</span>
@@ -66,16 +69,16 @@ export default function Home() {
                 Robust, Reliable. Built for Real-World Applications.
               </p>
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="home-products grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+          <StaggerContainer className="home-products grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {coreProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
               />
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -84,7 +87,7 @@ export default function Home() {
       <section className="py-5 bg-slate-50 border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-200 gap-2">
+          <FadeIn direction="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-200 gap-2">
             <div>
               <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
                 ENGINEERING EXCELLENCE IN EVERY FLOW
@@ -93,12 +96,13 @@ export default function Home() {
                 Why Choose <span className="text-[#f37021]">SSPR Valve</span>
               </h2>
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="why-grid desktop-why-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <StaggerContainer className="why-grid desktop-why-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {whyChooseItems.map((item, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                hoverEffect={true}
                 className="bg-white p-4 rounded-md border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-start gap-2 sm:max-lg:[&:last-child]:col-span-2"
               >
                 <div className="p-2.5 rounded-lg bg-blue-50 shrink-0">
@@ -112,18 +116,18 @@ export default function Home() {
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
-          <div className="mobile-why-grid" aria-label="Why choose SSPR Valve">
+          <StaggerContainer className="mobile-why-grid" aria-label="Why choose SSPR Valve">
             {mobileWhyChooseItems.map((item) => (
-              <div key={item.title}>
+              <StaggerItem key={item.title} as="div">
                 <span>{item.icon}</span>
                 <div><h4>{item.title}</h4><p>{item.desc}</p></div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -139,7 +143,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               {/* Left: Facility Image (4 cols) */}
-              <div className="lg:col-span-4 relative rounded-md overflow-hidden border border-slate-200 shadow-xs group">
+              <FadeIn direction="right" className="lg:col-span-4 relative rounded-md overflow-hidden border border-slate-200 shadow-xs group">
                 <ResponsiveImage
                   src="/images/hero/factory-client.webp"
                   sizes="(min-width: 1024px) 33vw, 100vw"
@@ -150,10 +154,10 @@ export default function Home() {
                   <span className="text-[11px] font-bold block">Our Facility</span>
                   <span className="text-[10px] text-slate-300 block">Howrah, West Bengal</span>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Middle: Content (5 cols) */}
-              <div className="lg:col-span-5 space-y-4">
+              <FadeIn direction="up" delay={0.1} className="lg:col-span-5 space-y-4">
                 <div>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-[#0d2857] mt-1 leading-tight">
                     SSPR Valve Manufacturing Private Limited
@@ -169,18 +173,20 @@ export default function Home() {
                 </p>
 
                 <div className="pt-2">
-                  <Link
-                    to="/about"
-                    className="inline-flex items-center gap-2 bg-[#0d2857] hover:bg-blue-900 text-white text-xs font-bold px-5 py-2.5 rounded-lg shadow-2xs transition-colors cursor-pointer"
-                  >
-                    <span>Know More About Us</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="inline-block">
+                    <Link
+                      to="/about"
+                      className="inline-flex items-center gap-2 bg-[#0d2857] hover:bg-blue-900 text-white text-xs font-bold px-5 py-2.5 rounded-lg shadow-2xs transition-colors cursor-pointer"
+                    >
+                      <span>Know More About Us</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </motion.div>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Right: Key Highlights (3 cols) */}
-              <div className="lg:col-span-3 bg-slate-50/80 rounded-md p-4 border border-slate-200/80 space-y-3">
+              <FadeIn direction="left" delay={0.15} className="lg:col-span-3 bg-slate-50/80 rounded-md p-4 border border-slate-200/80 space-y-3">
                 <h4 className="text-xs font-bold text-[#0d2857] uppercase tracking-wider border-b border-slate-200 pb-2">
                   Key Strengths
                 </h4>
@@ -205,7 +211,7 @@ export default function Home() {
                     Water Treatment | Irrigation | Desalination & DM Water | Civil Construction | Sea Water | PHED Monitoring & Control
                   </p>
                 </div>
-              </div>
+              </FadeIn>
 
             </div>
           </div>
@@ -220,7 +226,7 @@ export default function Home() {
       <InfrastructureStrip />
 
       {/* 8. CUSTOM VALVE REQUIREMENT CTA BANNER */}
-      <section className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-4">
+      <FadeIn direction="up" as="section" className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-1 max-w-xl">
@@ -232,7 +238,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="shrink-0">
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="shrink-0">
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
@@ -240,10 +246,10 @@ export default function Home() {
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </FadeIn>
 
     </div>
   )

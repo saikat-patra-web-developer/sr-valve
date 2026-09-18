@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import ResponsiveImage from '../components/ResponsiveImage'
 import { clientData } from '../data/clientData'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
 
 export default function Clients() {
   useEffect(() => {
@@ -18,7 +20,7 @@ export default function Clients() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-10">
+          <FadeIn direction="up" className="text-center max-w-3xl mx-auto mb-10">
             <span className="text-xs font-bold text-[#f37021] tracking-[0.2em] uppercase block mb-1">
               ESTEEMED CLIENTELE
             </span>
@@ -28,13 +30,14 @@ export default function Clients() {
             <p className="text-xs sm:text-sm text-slate-500 mt-2 font-medium">
               Proud to manufacture and supply high-performance valves for India's major water supply, irrigation, and municipal infrastructure projects.
             </p>
-          </div>
+          </FadeIn>
 
           {/* Static organization logo grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {clientData.map((client) => (
-              <div
+              <StaggerItem
                 key={client.id}
+                hoverEffect={true}
                 className="group flex flex-col items-center justify-center p-5 sm:p-6 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
               >
                 <div className="w-full h-28 sm:h-32 flex items-center justify-center rounded-lg bg-white p-3 shadow-xs border border-slate-100 group-hover:scale-[1.03] transition-transform duration-300">
@@ -54,9 +57,9 @@ export default function Clients() {
                 <span className="text-[10px] text-slate-400 mt-0.5">
                   {client.state}
                 </span>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>

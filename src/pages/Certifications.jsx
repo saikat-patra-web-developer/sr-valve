@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import { Check, ArrowRight } from 'lucide-react'
 import ClientsSection from '../components/ClientsSection'
 import ResponsiveImage from '../components/ResponsiveImage'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
+import { motion } from 'motion/react'
 
 export default function Certifications() {
   const detailedCerts = [
@@ -67,7 +70,7 @@ export default function Certifications() {
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-2xl mx-auto mb-4">
+          <FadeIn direction="up" className="text-center max-w-2xl mx-auto mb-4">
             <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
               ACCREDITATIONS & STANDARDS
             </span>
@@ -77,12 +80,13 @@ export default function Certifications() {
             <p className="text-xs sm:text-sm text-slate-500 mt-2 font-medium">
               Certified by premier national and international accreditation bodies for precision, safety and environmental stewardship.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {detailedCerts.map((cert, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                hoverEffect={true}
                 className="bg-slate-50 rounded-md border border-slate-200 p-6 flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group md:max-lg:[&:last-child]:col-span-2"
               >
                 <div>
@@ -141,9 +145,9 @@ export default function Certifications() {
                   </span>
                   {cert.document && <a href={cert.document} target="_blank" rel="noreferrer" className="inline-flex mt-3 text-xs font-bold text-blue-700 hover:text-[#f37021]">View certificate PDF</a>}
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -152,16 +156,16 @@ export default function Certifications() {
       <section className="py-5 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="max-w-3xl mx-auto text-center mb-4">
+          <FadeIn direction="up" className="max-w-3xl mx-auto text-center mb-4">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0d2857]">
               Rigorous <span className="text-[#f37021]">Inspection & Testing</span> Protocols
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-2">
               Every valve leaving our Howrah facility undergoes comprehensive physical and non-destructive examination.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
                 title: "Hydrostatic Shell Test",
@@ -180,13 +184,13 @@ export default function Certifications() {
                 desc: "Dye-penetrant, ultrasonic wall thickness, and chemical spectrometer verification with 3.1 MTC.",
               },
             ].map((p, idx) => (
-              <div key={idx} className="bg-white p-5 rounded-md border border-slate-200 shadow-2xs">
+              <StaggerItem key={idx} hoverEffect={true} className="bg-white p-5 rounded-md border border-slate-200 shadow-2xs">
                 <span className="text-xl font-extrabold text-[#f37021] block mb-2">0{idx + 1}</span>
                 <h4 className="text-sm font-bold text-[#0d2857]">{p.title}</h4>
                 <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">{p.desc}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -197,26 +201,30 @@ export default function Certifications() {
       {/* 5. CTA */}
       <section className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-1">
-              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
-                Need Certified Valves for Your Government Tender or Private Project?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-200">
-                Our team provides complete pre-qualification documentation, ISO audit certificates, and test credentials.
-              </p>
-            </div>
+          <FadeIn direction="up">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-1">
+                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+                  Need Certified Valves for Your Government Tender or Private Project?
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-200">
+                  Our team provides complete pre-qualification documentation, ISO audit certificates, and test credentials.
+                </p>
+              </div>
 
-            <div className="shrink-0">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
-              >
-                <span>Contact Us</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="shrink-0">
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="inline-block">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
+                  >
+                    <span>Contact Us</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </motion.div>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 

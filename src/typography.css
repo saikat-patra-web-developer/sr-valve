@@ -124,7 +124,7 @@ body {
 
 /* Corporate footer */
 .site-footer { position:relative; overflow:hidden; background:radial-gradient(circle at 88% 12%,rgba(47,111,178,.22),transparent 28rem),linear-gradient(120deg,#091f32 0%,#0d2b43 58%,#123b5c 100%); color:#cbd9e7; }
-.site-footer .footer-grid { display:grid; grid-template-columns:minmax(17rem,1.35fr) minmax(9rem,.65fr) minmax(19rem,1.25fr) minmax(13rem,.75fr); gap:clamp(2rem,4vw,4.5rem); align-items:start; padding-top:clamp(3rem,5vw,4.5rem); padding-bottom:clamp(2.75rem,4vw,4rem); }
+.site-footer .footer-grid { display:grid; grid-template-columns:minmax(17rem,1.6fr) minmax(11rem,1.05fr) minmax(17rem,1.45fr) minmax(12rem,1fr); gap:clamp(1.75rem,3vw,3rem); align-items:start; padding-top:clamp(2.5rem,4vw,3.5rem); padding-bottom:clamp(2.25rem,3.5vw,3rem); }
 .site-footer .footer-grid>div+div,.site-footer .footer-grid>nav { border:0; padding-left:0; }
 .footer-logo { display:inline-flex; padding:.45rem .75rem; border-radius:.5rem; background:#fff; box-shadow:0 10px 28px rgba(0,0,0,.18); }
 .site-footer .footer-brand img { width:10.5rem; height:4.5rem; border-radius:0; background:transparent; object-fit:contain; }
@@ -132,14 +132,14 @@ body {
 .site-footer .footer-brand>p { max-width:24rem; margin-top:.75rem; color:#aebfd0; font-family:'Roboto',Arial,sans-serif; font-size:.8125rem; line-height:1.6; }
 .footer-certification { display:inline-flex; align-items:center; gap:.5rem; margin-top:1rem; color:#cfe2f5; font-size:.75rem; font-weight:600; }
 .footer-certification svg { width:1rem; color:#ff9b3d; }
-.footer-kicker { display:block; margin-bottom:.35rem; color:#ff9b3d; font-size:.6875rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
-.site-footer .footer-grid h4 { margin-bottom:1.1rem; color:#fff; font-size:1rem; font-weight:700; }
-.footer-link-list { display:grid; gap:.35rem; }
-.site-footer .footer-links a { display:flex; width:fit-content; align-items:center; gap:.4rem; padding:.15rem 0; color:#c5d4e2; font-size:.8125rem; transition:color 160ms ease,transform 160ms ease; }
+.footer-kicker { display:block; margin-bottom:.45rem; color:#ff9b3d; font-size:.6875rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+.site-footer .footer-grid h4 { margin-bottom:.85rem; color:#fff; font-size:1rem; font-weight:700; }
+.footer-link-list { display:grid; gap:.6rem; }
+.site-footer .footer-links a { display:flex; width:fit-content; align-items:center; gap:.45rem; padding:.15rem 0; color:#c5d4e2; font-size:.845rem; line-height:1.4; transition:color 160ms ease,transform 160ms ease; }
 .site-footer .footer-links a svg { width:.75rem; opacity:0; transition:opacity 160ms ease; }
-.site-footer .footer-links a:hover { color:#fff; transform:translateX(.2rem); }
+.site-footer .footer-links a:hover { color:#fff; transform:translateX(.25rem); }
 .site-footer .footer-links a:hover svg { opacity:1; }
-.site-footer .footer-contact>div,.site-footer .footer-contact>a { display:grid; grid-template-columns:1.1rem minmax(0,1fr); gap:.7rem; margin-bottom:.8rem; color:#c5d4e2; font-family:'Roboto',Arial,sans-serif; font-size:.8125rem; line-height:1.45; }
+.site-footer .footer-contact>div,.site-footer .footer-contact>a { display:grid; grid-template-columns:1.15rem minmax(0,1fr); gap:.75rem; margin-bottom:.8rem; color:#c5d4e2; font-family:'Roboto',Arial,sans-serif; font-size:.845rem; line-height:1.45; }
 .site-footer .footer-contact>a:hover { color:#fff; }
 .site-footer .footer-contact svg { width:1rem; height:1rem; margin-top:.12rem; color:#ff9b3d; }
 .site-footer .footer-india { display:flex; flex-direction:column; align-items:flex-start; gap:1rem; padding:1.1rem; border:1px solid rgba(255,255,255,.1); border-radius:.65rem; background:transparent; }

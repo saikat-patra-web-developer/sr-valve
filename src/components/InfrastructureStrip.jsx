@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import ResponsiveImage from './ResponsiveImage'
+import FadeIn from './animations/FadeIn'
+import { StaggerContainer, StaggerItem } from './animations/StaggerContainer'
 
 export default function InfrastructureStrip() {
   const infraItems = [
@@ -31,7 +33,7 @@ export default function InfrastructureStrip() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-100 gap-2">
+        <FadeIn direction="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-3 border-b border-slate-100 gap-2">
           <div>
             <span className="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase block">
               BUILT FOR PRECISION, EQUIPPED FOR THE FUTURE.
@@ -47,15 +49,15 @@ export default function InfrastructureStrip() {
             <span>Explore Facilities</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
-        </div>
+        </FadeIn>
 
         {/* 4 Cards Grid */}
-        <div className="infrastructure-showcase grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <StaggerContainer className="infrastructure-showcase grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {infraItems.map((item, index) => (
+            <StaggerItem key={index} hoverEffect={true} as="div">
             <Link
-              key={index}
               to="/infrastructure"
-              className="infra-showcase-card group relative rounded-xl overflow-hidden cursor-pointer"
+              className="infra-showcase-card group relative rounded-xl overflow-hidden cursor-pointer block h-full"
             >
               <div className="infra-showcase-image w-full overflow-hidden bg-slate-100 relative">
                 <ResponsiveImage
@@ -81,8 +83,9 @@ export default function InfrastructureStrip() {
                 </span>
               </div>
             </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { Cpu, Network, Gauge, Sliders, Radio, ShieldCheck, Zap, Server } from 'lucide-react'
 import ProjectSectorPage from '../components/ProjectSectorPage'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
 
 const automationFeatures = [
   {
@@ -120,20 +122,22 @@ export default function Automation() {
     >
       <section className="bg-white py-12 sm:py-16 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <FadeIn direction="up" className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-[11px] font-bold text-[#f37021] tracking-[0.24em] uppercase">Control Architecture</span>
             <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0d2857]">Engineered for complete automation & telemetry</h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600">
               Our automated packages integrate directly with standard industrial protocols, providing plant operators and field engineers with total remote visibility and actuation reliability.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {automationFeatures.map((feat) => {
               const Icon = feat.icon
               return (
-                <div
+                <StaggerItem
                   key={feat.title}
+                  hoverEffect={true}
+                  as="div"
                   className="bg-slate-50 rounded-xl border border-slate-200 p-6 flex flex-col justify-between hover:border-blue-300 hover:shadow-lg transition-all duration-300"
                 >
                   <div>
@@ -151,10 +155,10 @@ export default function Automation() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
     </ProjectSectorPage>

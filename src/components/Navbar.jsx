@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 
 const productNavHierarchy = [
   {
@@ -269,8 +270,15 @@ export default function Navbar() {
     }
   }, [updateFlyoutDirections])
 
+  const shouldReduceMotion = useReducedMotion()
+
   return (
-    <header className="site-header">
+    <motion.header
+      className="site-header"
+      initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="nav-inner" ref={navRef}>
         <Link to="/" className="brand" onClick={closeAll}>
           <img src="/images/logo/logo.webp" alt="SSPR Valve" />
@@ -615,6 +623,6 @@ export default function Navbar() {
           aria-hidden="true"
         />
       )}
-    </header>
+    </motion.header>
   )
 }

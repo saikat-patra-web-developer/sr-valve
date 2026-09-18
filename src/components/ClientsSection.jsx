@@ -1,5 +1,6 @@
 import { clientData } from '../data/clientData'
 import ResponsiveImage from './ResponsiveImage'
+import FadeIn from './animations/FadeIn'
 
 export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TOGETHER" }) {
   const carouselClients = [...clientData, ...clientData]
@@ -9,7 +10,7 @@ export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TO
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 pb-4 border-b border-slate-100 gap-2">
+        <FadeIn direction="up" className="flex flex-col md:flex-row md:items-end justify-between mb-3 pb-4 border-b border-slate-100 gap-2">
           <div>
             <span className="text-[11px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
               {subtitle}
@@ -21,10 +22,10 @@ export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TO
           <p className="text-xs text-slate-500 font-medium">
             Supplying critical valves for premier central and state government infrastructure projects
           </p>
-        </div>
+        </FadeIn>
 
         {/* Continuously moving client logos: six visible on desktop */}
-        <div className="clients-carousel" aria-label="Client organizations">
+        <FadeIn direction="up" delay={0.15} className="clients-carousel" aria-label="Client organizations">
           <div className="clients-carousel-track">
           {carouselClients.map((client, index) => (
             <div
@@ -51,7 +52,7 @@ export default function ClientsSection({ subtitle = "POWERING NATION BUILDING TO
             </div>
           ))}
           </div>
-        </div>
+        </FadeIn>
 
       </div>
     </section>

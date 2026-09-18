@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, ZoomIn, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
 import { productsData } from '../data/productsData'
 import ResponsiveImage from '../components/ResponsiveImage'
 import NotFound from './NotFound'
+import FadeIn from '../components/animations/FadeIn'
+import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer'
 
 const sluiceValveSections = [
   {
@@ -590,7 +593,12 @@ export default function ProductDetail() {
   return (
     <div className="site-page page-detail">
       
-      <div className="product-banner"><div><h2>Our Products</h2><p>High-Performance Valves for a More Reliable Tomorrow.</p></div></div>
+      <FadeIn direction="up" className="product-banner">
+        <div>
+          <h2>Our Products</h2>
+          <p>High-Performance Valves for a More Reliable Tomorrow.</p>
+        </div>
+      </FadeIn>
       {isThemeSpecPage ? (
         <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white pt-6 pb-12 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -598,75 +606,77 @@ export default function ProductDetail() {
             {/* Theme Specification Layout */}
             <div className="space-y-12">
               {themeSpecSections.map((section, sIdx) => (
-                <div key={sIdx} id={section.id} className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/90 shadow-sm scroll-mt-24">
-                  {/* Section Title (Centered & Underlined in Theme Style) */}
-                  <h2 className="theme-doc-title">
-                    {section.sectionTitle}
-                  </h2>
+                <FadeIn key={sIdx} direction="up" delay={sIdx * 0.1}>
+                  <div id={section.id} className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/90 shadow-sm scroll-mt-24">
+                    {/* Section Title (Centered & Underlined in Theme Style) */}
+                    <h2 className="theme-doc-title">
+                      {section.sectionTitle}
+                    </h2>
 
-                  <div className="space-y-12">
-                    {section.subItems.map((item, iIdx) => (
-                      <div key={iIdx} id={item.id} className="scroll-mt-28">
-                        {/* 2-Column Grid: Picture on Left, Table on Right - perfectly aligned */}
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                          {/* Left Column: Picture */}
-                          <div className="lg:col-span-5 flex flex-col">
-                            {item.title && (
-                              <div className="theme-doc-subtitle invisible select-none hidden lg:block" aria-hidden="true">
-                                {item.title}
-                              </div>
-                            )}
-                            <div className="relative flex-1 bg-gradient-to-b from-slate-50/50 to-white rounded-xl border border-slate-200/90 p-4 flex flex-col items-center justify-center w-full shadow-2xs group hover:border-blue-300 hover:shadow-sm transition-all duration-200 min-h-[310px]">
-                              <div className={`w-full grid ${(item.images || [item.image]).length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
-                                {(item.images || [item.image]).map((image, imageIdx) => (
-                                  <button
-                                    key={image}
-                                    type="button"
-                                    onClick={() => setZoomModalImage(image)}
-                                    className="min-w-0 rounded-lg border border-slate-200 bg-white p-2 cursor-zoom-in hover:border-blue-300 transition-colors"
-                                    aria-label={`Zoom ${item.title || section.sectionTitle} view ${imageIdx + 1}`}
-                                  >
-                                    <ResponsiveImage
-                                      src={image}
-                                      alt={`${item.title || section.sectionTitle}${(item.images || []).length > 1 ? ` - view ${imageIdx + 1}` : ''}`}
-                                      className="h-56 w-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                                    />
-                                  </button>
-                                ))}
-                              </div>
-                              <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-2xs">
-                                <ZoomIn className="w-3.5 h-3.5 text-[#f37021]" />
-                                Click an image to zoom
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Right Column: Title + Specification Table */}
-                          <div className="lg:col-span-7 flex flex-col">
-                            {/* Sub-item Title (Positioned directly above Table) */}
-                            {item.title && (
-                              <h3 className="theme-doc-subtitle">
-                                {item.title}
-                              </h3>
-                            )}
-                            <div className="theme-spec-wrapper overflow-x-auto flex-1 flex flex-col rounded-xl">
-                              <table className="theme-spec-table w-full h-full">
-                                <tbody>
-                                  {item.rows.map((row, rIdx) => (
-                                    <tr key={rIdx}>
-                                      <td className="param-label">{row.label}</td>
-                                      <td className="param-value">{row.value}</td>
-                                    </tr>
+                    <div className="space-y-12">
+                      {section.subItems.map((item, iIdx) => (
+                        <div key={iIdx} id={item.id} className="scroll-mt-28">
+                          {/* 2-Column Grid: Picture on Left, Table on Right - perfectly aligned */}
+                          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                            {/* Left Column: Picture */}
+                            <div className="lg:col-span-5 flex flex-col">
+                              {item.title && (
+                                <div className="theme-doc-subtitle invisible select-none hidden lg:block" aria-hidden="true">
+                                  {item.title}
+                                </div>
+                              )}
+                              <div className="relative flex-1 bg-gradient-to-b from-slate-50/50 to-white rounded-xl border border-slate-200/90 p-4 flex flex-col items-center justify-center w-full shadow-2xs group hover:border-blue-300 hover:shadow-sm transition-all duration-200 min-h-[310px]">
+                                <div className={`w-full grid ${(item.images || [item.image]).length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+                                  {(item.images || [item.image]).map((image, imageIdx) => (
+                                    <button
+                                      key={image}
+                                      type="button"
+                                      onClick={() => setZoomModalImage(image)}
+                                      className="min-w-0 rounded-lg border border-slate-200 bg-white p-2 cursor-zoom-in hover:border-blue-300 transition-colors"
+                                      aria-label={`Zoom ${item.title || section.sectionTitle} view ${imageIdx + 1}`}
+                                    >
+                                      <ResponsiveImage
+                                        src={image}
+                                        alt={`${item.title || section.sectionTitle}${(item.images || []).length > 1 ? ` - view ${imageIdx + 1}` : ''}`}
+                                        className="h-56 w-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                                      />
+                                    </button>
                                   ))}
-                                </tbody>
-                              </table>
+                                </div>
+                                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-2xs">
+                                  <ZoomIn className="w-3.5 h-3.5 text-[#f37021]" />
+                                  Click an image to zoom
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Right Column: Title + Specification Table */}
+                            <div className="lg:col-span-7 flex flex-col">
+                              {/* Sub-item Title (Positioned directly above Table) */}
+                              {item.title && (
+                                <h3 className="theme-doc-subtitle">
+                                  {item.title}
+                                </h3>
+                              )}
+                              <div className="theme-spec-wrapper overflow-x-auto flex-1 flex flex-col rounded-xl">
+                                <table className="theme-spec-table w-full h-full">
+                                  <tbody>
+                                    {item.rows.map((row, rIdx) => (
+                                      <tr key={rIdx}>
+                                        <td className="param-label">{row.label}</td>
+                                        <td className="param-value">{row.value}</td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </FadeIn>
               ))}
             </div>
 
@@ -681,7 +691,7 @@ export default function ProductDetail() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
                 {/* Product gallery */}
-                <div className="product-gallery lg:col-span-6 space-y-4">
+                <FadeIn direction="right" className="product-gallery lg:col-span-6 space-y-4">
                   <div className="flex flex-col-reverse sm:flex-row gap-3">
                     {/* Thumbnails */}
                     <div className="flex flex-row sm:flex-col gap-2.5 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
@@ -723,10 +733,10 @@ export default function ProductDetail() {
                       </button>
                     </div>
                   </div>
-                </div>
+                </FadeIn>
 
                 {/* Product information */}
-                <div className="lg:col-span-6 space-y-4 lg:pl-4">
+                <FadeIn direction="left" className="lg:col-span-6 space-y-4 lg:pl-4">
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase block">
                       {product.tag}
@@ -744,53 +754,53 @@ export default function ProductDetail() {
                   </p>
 
                   {/* 4 quick badges */}
-                  <div className="grid grid-cols-2 gap-2.5 pt-1">
+                  <StaggerContainer className="grid grid-cols-2 gap-2.5 pt-1">
                     {product.quickFeatures.map((feat, idx) => (
-                      <div key={idx} className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <StaggerItem key={idx} as="div" className="bg-slate-50 p-2 rounded-lg border border-slate-200">
                         <span className="text-xs font-bold text-[#0d2857] block">
                           {feat.title}
                         </span>
                         <span className="text-[10px] text-slate-500 block leading-tight mt-0.5">
                           {feat.desc}
                         </span>
-                      </div>
+                      </StaggerItem>
                     ))}
-                  </div>
+                  </StaggerContainer>
 
-                </div>
+                </FadeIn>
 
               </div>
 
               {/* Quick Specs 4 Cards Bar */}
-              <div className="mt-10 pt-6 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+              <StaggerContainer className="mt-10 pt-6 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <StaggerItem hoverEffect={true} as="div" className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
                   <span className="text-[10px] font-bold text-slate-400 uppercase block">Size Range</span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
                     {product.quickSpecs.sizeRange}
                   </span>
-                </div>
+                </StaggerItem>
 
-                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                <StaggerItem hoverEffect={true} as="div" className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
                   <span className="text-[10px] font-bold text-slate-400 uppercase block">Pressure Rating</span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
                     {product.quickSpecs.pressureRating}
                   </span>
-                </div>
+                </StaggerItem>
 
-                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                <StaggerItem hoverEffect={true} as="div" className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
                   <span className="text-[10px] font-bold text-slate-400 uppercase block">End Connection</span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
                     {product.quickSpecs.endConnection}
                   </span>
-                </div>
+                </StaggerItem>
 
-                <div className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
+                <StaggerItem hoverEffect={true} as="div" className="bg-white p-3 rounded-md border border-slate-200 text-center shadow-2xs">
                   <span className="text-[10px] font-bold text-slate-400 uppercase block">Temperature Range</span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#0d2857] block mt-1">
                     {product.quickSpecs.temperatureRange}
                   </span>
-                </div>
-              </div>
+                </StaggerItem>
+              </StaggerContainer>
 
             </div>
           </section>
@@ -801,7 +811,7 @@ export default function ProductDetail() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 
                 {/* Technical Specifications Table (7 cols) */}
-                <div className="lg:col-span-7 space-y-4">
+                <FadeIn direction="up" className="lg:col-span-7 space-y-4">
                   <h3 className="text-xl font-extrabold text-[#0d2857] border-b border-slate-200 pb-2">
                     Technical Specifications
                   </h3>
@@ -822,10 +832,10 @@ export default function ProductDetail() {
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </FadeIn>
 
                 {/* Key Features & Benefits (5 cols) */}
-                <div className="lg:col-span-5 space-y-4">
+                <FadeIn direction="up" delay={0.15} className="lg:col-span-5 space-y-4">
                   <h3 className="text-xl font-extrabold text-[#0d2857] border-b border-slate-200 pb-2">
                     Key Features & Benefits
                   </h3>
@@ -845,7 +855,7 @@ export default function ProductDetail() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </FadeIn>
 
               </div>
             </div>
@@ -858,47 +868,57 @@ export default function ProductDetail() {
       <section className="py-5 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex items-center justify-between mb-3 pb-3 border-b border-slate-200">
+          <FadeIn direction="up" className="flex items-center justify-between mb-3 pb-3 border-b border-slate-200">
             <h3 className="text-xl font-extrabold text-[#0d2857]">
               Related <span className="text-[#f37021]">Products</span>
             </h3>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {relatedProducts.map((rel) => (
-              <Link
-                key={rel.id}
-                to={`/products/${rel.id}`}
-                className="group bg-white rounded-md border border-slate-200 p-3 hover:border-blue-400 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div className="h-28 w-full flex items-center justify-center bg-slate-50 rounded-lg p-2 group-hover:bg-blue-50/40">
-                  <ResponsiveImage
-                    src={rel.image}
-                    alt={rel.name}
-                    className="max-h-24 max-w-full object-contain group-hover:scale-108 transition-transform"
-                  />
-                </div>
-                <div className="mt-3">
-                  <h4 className="text-xs font-bold text-[#0d2857] group-hover:text-[#f37021] line-clamp-1">
-                    {rel.name}
-                  </h4>
-                  <span className="text-[10px] text-blue-700 font-semibold mt-1 inline-flex items-center gap-0.5">
-                    View Details &rarr;
-                  </span>
-                </div>
-              </Link>
+              <StaggerItem key={rel.id} hoverEffect={true} as="div">
+                <Link
+                  to={`/products/${rel.id}`}
+                  className="group bg-white rounded-md border border-slate-200 p-3 hover:border-blue-400 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between h-full"
+                >
+                  <div className="h-28 w-full flex items-center justify-center bg-slate-50 rounded-lg p-2 group-hover:bg-blue-50/40">
+                    <ResponsiveImage
+                      src={rel.image}
+                      alt={rel.name}
+                      className="max-h-24 max-w-full object-contain group-hover:scale-108 transition-transform"
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <h4 className="text-xs font-bold text-[#0d2857] group-hover:text-[#f37021] line-clamp-1">
+                      {rel.name}
+                    </h4>
+                    <span className="text-[10px] text-blue-700 font-semibold mt-1 inline-flex items-center gap-0.5">
+                      View Details &rarr;
+                    </span>
+                  </div>
+                </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
 
       {/* 6. CTA BANNER */}
-      <section className="bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-10">
+      <FadeIn
+        direction="up"
+        as="section"
+        className="product-cta-banner bg-gradient-to-r from-[#0d2857] via-[#123674] to-[#0d2857] text-white py-10"
+        style={{
+          backgroundImage: "linear-gradient(90deg, rgba(4,45,91,0.97), rgba(1,70,126,0.85)), url('/images/hero/valve-range-wide.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-1">
-              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
                 Need a Customized Valve Solution?
               </h3>
               <p className="text-xs sm:text-sm text-slate-200">
@@ -906,7 +926,7 @@ export default function ProductDetail() {
               </p>
             </div>
 
-            <div className="shrink-0">
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="shrink-0">
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 bg-[#f37021] hover:bg-[#e05f13] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-sm"
@@ -914,39 +934,51 @@ export default function ProductDetail() {
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </FadeIn>
 
       {/* ZOOM MODAL */}
-      {(zoomOpen || Boolean(zoomModalImage)) && (
-        <div
-          onClick={() => {
-            setZoomOpen(false)
-            setZoomModalImage(null)
-          }}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 cursor-zoom-out"
-        >
-          <div className="relative max-w-3xl w-full bg-white rounded-md p-6 flex flex-col items-center">
-            <button
-              aria-label="Close product image"
-              onClick={() => {
-                setZoomOpen(false)
-                setZoomModalImage(null)
-              }}
-              className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-2 rounded-lg bg-slate-100 cursor-pointer"
+      <AnimatePresence>
+        {(zoomOpen || Boolean(zoomModalImage)) && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => {
+              setZoomOpen(false)
+              setZoomModalImage(null)
+            }}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative max-w-3xl w-full bg-white rounded-md p-6 flex flex-col items-center"
             >
-              <X className="w-5 h-5" />
-            </button>
-            <ResponsiveImage
-              src={zoomModalImage || selectedImage}
-              alt={product.fullName}
-              className="max-h-[70vh] max-w-full object-contain"
-            />
-          </div>
-        </div>
-      )}
+              <button
+                aria-label="Close product image"
+                onClick={() => {
+                  setZoomOpen(false)
+                  setZoomModalImage(null)
+                }}
+                className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-2 rounded-lg bg-slate-100 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <ResponsiveImage
+                src={zoomModalImage || selectedImage}
+                alt={product.fullName}
+                className="max-h-[70vh] max-w-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   )
